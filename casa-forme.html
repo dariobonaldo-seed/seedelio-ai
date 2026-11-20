@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototipo forme del riquadro — non in menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #eef2f6; color: #0f172a; font-family: Outfit, ui-sans-serif, system-ui, sans-serif; }
+  .ico { width: 1em; height: 1em; fill: currentColor; display: inline-block; flex: none; }
+  main { max-width: 1320px; margin: 0 auto; padding: 36px 28px 56px; }
+  h1 { margin: 0; font-size: 28px; letter-spacing: -0.03em; }
+  .lead { margin: 6px 0 28px; color: #64748b; font-size: 15px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 400px); gap: 36px 32px; justify-content: center; }
+  .variant { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .label { display: flex; align-items: center; gap: 10px; align-self: flex-start; margin-left: 8px; }
+  .num { width: 28px; height: 28px; border-radius: 999px; background: #0f172a; color: #fff; font-size: 14px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+  .label b { font-size: 15px; font-weight: 700; }
+  .card { width: 400px; height: 560px; position: relative; background: #fff; filter: drop-shadow(0 8px 16px rgba(15,23,42,.10)); }
+  .card .content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+  .links { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; font-size: 16px; font-weight: 600; line-height: 1; }
+  .links a { color: #334155; text-underline-offset: 3px; text-decoration-color: #cbd5e1; }
+  .house { margin-top: 14px; min-height: 0; flex: 1; display: flex; align-items: center; justify-content: center; }
+  .house img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; pointer-events: none; }
+  button.live-call { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: flex-start; gap: 22px; min-height: 68px; margin-top: 17px; width: 100%; padding: 10px 16px 10px 14px; border-radius: 16px; border: 1px solid rgba(251,191,36,.35); background: radial-gradient(120% 160% at 0% 0%, rgba(34,211,238,.18), transparent 46%), linear-gradient(180deg, #1e293b, #020617); color: #fbbf24; box-shadow: 0 14px 28px -12px rgba(2,6,23,.7), inset 0 1px 0 rgba(255,255,255,.08); }
+  button.live-call .phone { position: relative; color: #67e8f9; flex: none; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; font-size: 20px; }
+  button.live-call .phone .wave { position: absolute; inset: 5px; border-radius: 999px; border: 1.5px solid rgba(103,232,249,.8); animation: soundWave 1.8s ease-out infinite; pointer-events: none; }
+  button.live-call .phone .wave:nth-child(2) { animation-delay: .6s; }
+  button.live-call .phone .wave:nth-child(3) { animation-delay: 1.2s; }
+  button.live-call .phone .ico { position: relative; z-index: 1; animation: phoneGlow 1.8s ease-in-out infinite; }
+  button.live-call .live-copy { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; text-align: left; min-width: 0; }
+  button.live-call .live-title { font-size: 12px; font-weight: 800; color: #fbbf24; letter-spacing: -0.02em; white-space: nowrap; }
+  button.live-call .live-ai { display: inline-block; margin-left: 5px; padding: 1px 6px 0; border-radius: 6px; background: linear-gradient(180deg, #fff7d6, #f59e0b); color: #0f172a; font-size: 12px; font-weight: 900; letter-spacing: .06em; box-shadow: 0 0 12px rgba(251,191,36,.7); vertical-align: 1px; }
+  button.live-call .live-status { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; font-size: 12px; font-weight: 700; color: #34d399; }
+  button.live-call .live-dot { width: 6px; height: 6px; border-radius: 999px; background: #34d399; box-shadow: 0 0 6px rgba(52,211,153,.9); animation: liveBlink 1.4s ease-in-out infinite; }
+  @keyframes soundWave { 0% { transform: scale(.5); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
+  @keyframes phoneGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(103,232,249,0)); } 50% { filter: drop-shadow(0 0 7px rgba(103,232,249,.95)); } }
+  @keyframes liveBlink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+  .tonda { border-radius: 96px; border: 1px solid #e2e8f0; overflow: hidden; }
+  .tonda .content { padding: 36px 20px 44px; }
+  .arco { border-radius: 200px 200px 24px 24px; border: 1px solid #e2e8f0; overflow: hidden; }
+  .arco .content { padding: 108px 36px 26px; }
+  .cut { background: #fff; }
+  .cut .content { clip-path: inherit; }
+  .rim { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+  .ticket { border: 1px solid #e2e8f0; border-radius: 18px; -webkit-mask-image: radial-gradient(circle 26px at 0 22%, transparent 25px, #000 26px), radial-gradient(circle 26px at 100% 22%, transparent 25px, #000 26px); -webkit-mask-composite: source-in; mask-image: radial-gradient(circle 26px at 0 22%, transparent 25px, #000 26px), radial-gradient(circle 26px at 100% 22%, transparent 25px, #000 26px); mask-composite: intersect; }
+  .ticket .content { padding: 26px 28px 24px; }
+  .goccia { clip-path: path("M 200 0 C 228 36 372 48 384 96 L 392 500 Q 392 548 200 552 Q 8 548 8 500 L 16 96 C 28 48 172 36 200 0 Z"); }
+  .goccia .content { padding: 96px 28px 28px; }
+  .scudo { clip-path: path("M 16 6 H 384 Q 396 6 396 20 V 390 C 396 470 320 530 200 554 C 80 530 4 470 4 390 V 20 Q 4 6 16 6 Z"); }
+  .scudo .content { padding: 22px 22px 150px; }
+  .etichetta { clip-path: path(evenodd, "M 78 10 H 384 Q 396 10 396 24 V 536 Q 396 550 382 550 H 78 L 12 280 Z M 52 78 m -11 0 a 11 11 0 1 0 22 0 a 11 11 0 1 0 -22 0"); }
+  .etichetta .content { padding: 22px 10px 22px 70px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone-volume" viewBox="0 0 576 512"><path d="M344-32c128.1 0 232 103.9 232 232 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184-13.3 0-24-10.7-24-24s10.7-24 24-24zm8 192a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM320 88c0-13.3 10.7-24 24-24 75.1 0 136 60.9 136 136 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88-13.3 0-24-10.7-24-24zM144.1 1.4c19.7-5.4 40.3 4.7 48.1 23.5l40.5 97.3c6.9 16.5 2.1 35.6-11.8 47l-44.1 36.1c32.5 71.6 89 130 159.3 164.9L374.7 323c11.3-13.9 30.4-18.6 47-11.8L519 351.8c18.8 7.8 28.9 28.4 23.5 48.1l-1.5 5.5C523.4 470.1 460.9 525.3 384.6 509.2 209.6 472.1 71.9 334.4 34.8 159.4 18.7 83.1 73.9 20.6 138.5 2.9l5.5-1.5z"/></symbol>
+</svg>
+<main>
+  <h1>Prototipo forme del riquadro</h1>
+  <p class="lead">La homepage resta il rettangolo. Qui ci sono solo prove, fuori da menu e footer.</p>
+  <div class="grid">
+    <article class="variant">
+      <div class="label"><span class="num">1</span><b>Tonda</b></div>
+      <div class="card tonda"><div class="content" data-box></div></div>
+    </article>
+    <article class="variant">
+      <div class="label"><span class="num">2</span><b>Biglietto</b></div>
+      <div class="card ticket"><div class="content" data-box></div></div>
+    </article>
+    <article class="variant">
+      <div class="label"><span class="num">3</span><b>Arco</b></div>
+      <div class="card arco"><div class="content" data-box></div></div>
+    </article>
+    <article class="variant">
+      <div class="label"><span class="num">4</span><b>Goccia</b></div>
+      <div class="card cut goccia"><div class="content" data-box></div><svg class="rim" viewBox="0 0 400 560"><path d="M 200 0 C 228 36 372 48 384 96 L 392 500 Q 392 548 200 552 Q 8 548 8 500 L 16 96 C 28 48 172 36 200 0 Z" fill="none" stroke="#e2e8f0" stroke-width="2"/></svg></div>
+    </article>
+    <article class="variant">
+      <div class="label"><span class="num">5</span><b>Scudo</b></div>
+      <div class="card cut scudo"><div class="content" data-box></div><svg class="rim" viewBox="0 0 400 560"><path d="M 16 6 H 384 Q 396 6 396 20 V 390 C 396 470 320 530 200 554 C 80 530 4 470 4 390 V 20 Q 4 6 16 6 Z" fill="none" stroke="#e2e8f0" stroke-width="2"/></svg></div>
+    </article>
+    <article class="variant">
+      <div class="label"><span class="num">6</span><b>Etichetta</b></div>
+      <div class="card cut etichetta"><div class="content" data-box></div><svg class="rim" viewBox="0 0 400 560"><path fill-rule="evenodd" d="M 78 10 H 384 Q 396 10 396 24 V 536 Q 396 550 382 550 H 78 L 12 280 Z M 52 78 m -11 0 a 11 11 0 1 0 22 0 a 11 11 0 1 0 -22 0" fill="none" stroke="#e2e8f0" stroke-width="2"/></svg></div>
+    </article>
+  </div>
+</main>
+<template id="box">
+  <div class="links">
+    <a href="tre-simulazioni.html">3 simulazioni</a>
+    <a href="casa-seed-variante-4.html">ingrandisci</a>
+  </div>
+  <div class="house">
+    <img src="img/casa-seed-variante-4-senza-verde.png" alt="Casa Seed con i personaggi della genealogia" width="873" height="761">
+  </div>
+  <button type="button" class="live-call">
+    <span class="phone" aria-hidden="true"><span class="wave"></span><span class="wave"></span><span class="wave"></span><svg class="ico" style="width:1.05em"><use href="#i-phone-volume"/></svg></span>
+    <span class="live-copy">
+      <span class="live-title">Prova la chiamata reale con SeedElisa <span class="live-ai">AI</span></span>
+      <span class="live-status"><span class="live-dot" aria-hidden="true"></span>Live &amp; Attivo 24/7</span>
+    </span>
+  </button>
+</template>
+<script>
+  var tpl = document.getElementById("box");
+  document.querySelectorAll("[data-box]").forEach(function (slot) {
+    slot.appendChild(tpl.content.cloneNode(true));
+  });
+</script>
+</body>
+</html>

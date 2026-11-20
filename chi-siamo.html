@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi Siamo | Dario Bonaldo | SeedElio.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="logo-dondolio.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&family=Plus+Jakarta+Sans:wght@500..800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['"Plus Jakarta Sans"', 'Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+        },
+        keyframes: {
+          breathe: {
+            '0%, 100%': { boxShadow: '0 0 0 0 rgba(251,191,36,0)' },
+            '50%': { boxShadow: '0 0 26px 5px rgba(251,191,36,.6)' }
+          },
+          blink: {
+            '0%, 100%': { opacity: '1', boxShadow: '0 0 0 0 rgba(52,211,153,0)' },
+            '30%': { opacity: '1', boxShadow: '0 0 6px 2px rgba(52,211,153,.6)' },
+            '65%': { opacity: '.25', boxShadow: '0 0 0 0 rgba(52,211,153,0)' }
+          },
+          aiBlink: {
+            '0%, 100%': { opacity: '1' },
+            '50%': { opacity: '.32' }
+          },
+          ripple: {
+            '0%': { transform: 'scale(.3)', opacity: '0' },
+            '15%': { opacity: '1' },
+            '100%': { transform: 'scale(1.75)', opacity: '0' }
+          }
+        },
+        animation: {
+          breathe: 'breathe 3s ease-in-out infinite',
+          blink: 'blink 2.4s ease-in-out infinite',
+          aiBlink: 'aiBlink 4.4s ease-in-out infinite',
+          ripple: 'ripple 2.4s ease-out infinite'
+        },
+        colors: {
+          ink: '#020617',
+          navy: '#0f172a',
+          sun: '#fbbf24',
+          cyanbrand: '#22d3ee'
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .ico { width: 1em; height: 1em; fill: currentColor; display: inline-block; flex: none; }
+  .grad-a { background: linear-gradient(90deg, #d97706, #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .grad-b { background: linear-gradient(90deg, #da7806 0%, #c59b2d 8%, #a19a47 25%, #6f9769 50%, #3a948e 75%, #0c91af 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(15,23,42,.18), 0 8px 24px -8px rgba(15,23,42,.08); }
+  @keyframes ping2 { 75%, 100% { transform: scale(2); opacity: 0; } }
+
+  a.logo-sig {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 4px;
+    margin-left: 1px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: #065f46;
+    text-decoration: none;
+  }
+  @media (min-width: 1024px) {
+    a.logo-sig { font-size: 14px; }
+  }
+  a.logo-sig .logo-sig-go {
+    display: inline-block;
+    width: 0;
+    margin-left: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-3px);
+    transition: width 160ms ease, margin 160ms ease, opacity 160ms ease, transform 160ms ease;
+  }
+  a.logo-sig:hover,
+  a.logo-sig:focus-visible {
+    color: #064e3b;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  a.logo-sig:hover .logo-sig-go,
+  a.logo-sig:focus-visible .logo-sig-go {
+    width: 14px;
+    margin-left: 4px;
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+
+</head>
+<body class="bg-white text-slate-900 antialiased">
+<style>
+  .avatar-ring { background: linear-gradient(to bottom right, #fbbf24 0%, #22d3ee 50%); }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-bolt" viewBox="0 0 448 512"><path d="M338.8-9.9c11.9 8.6 16.3 24.2 10.9 37.8L271.3 224 416 224c13.5 0 25.5 8.4 30.1 21.1s.7 26.9-9.6 35.5l-288 240c-11.3 9.4-27.4 9.9-39.3 1.3s-16.3-24.2-10.9-37.8L176.7 288 32 288c-13.5 0-25.5-8.4-30.1-21.1s-.7-26.9 9.6-35.5l288-240c11.3-9.4 27.4-9.9 39.3-1.3z"/></symbol>
+<symbol id="i-gamepad" viewBox="0 0 640 512"><path d="M448 64c106 0 192 86 192 192S554 448 448 448l-256 0C86 448 0 362 0 256S86 64 192 64l256 0zM192 176c-13.3 0-24 10.7-24 24l0 32-32 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l32 0 0 32c0 13.3 10.7 24 24 24s24-10.7 24-24l0-32 32 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-32 0 0-32c0-13.3-10.7-24-24-24zm240 96a32 32 0 1 0 0 64 32 32 0 1 0 0-64zm64-96a32 32 0 1 0 0 64 32 32 0 1 0 0-64z"/></symbol>
+<symbol id="i-headset" viewBox="0 0 448 512"><path d="M224 64c-79 0-144.7 57.3-157.7 132.7 9.3-3 19.3-4.7 29.7-4.7l16 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0c-53 0-96-43-96-96l0-64C0 100.3 100.3 0 224 0S448 100.3 448 224l0 168.1c0 66.3-53.8 120-120.1 120l-87.9-.1-32 0c-26.5 0-48-21.5-48-48s21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 0 40 0c39.8 0 72-32.2 72-72l0-20.9c-14.1 8.2-30.5 12.8-48 12.8l-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48l16 0c10.4 0 20.3 1.6 29.7 4.7-13-75.3-78.6-132.7-157.7-132.7z"/></symbol>
+<symbol id="i-tower-broadcast" viewBox="0 0 576 512"><path d="M87.9 11.5c-11.3-6.9-26.1-3.2-33 8.1-24.8 41-39 89.1-39 140.4s14.2 99.4 39 140.4c6.9 11.3 21.6 15 33 8.1s15-21.6 8.1-33C75.7 241.9 64 202.3 64 160S75.7 78.1 96.1 44.4c6.9-11.3 3.2-26.1-8.1-33zm400.1 0c-11.3 6.9-15 21.6-8.1 33 20.4 33.7 32.1 73.3 32.1 115.6s-11.7 81.9-32.1 115.6c-6.9 11.3-3.2 26.1 8.1 33s26.1 3.2 33-8.1c24.8-41 39-89.1 39-140.4S545.8 60.6 521 19.6c-6.9-11.3-21.6-15-33-8.1zM320 215.4c19.1-11.1 32-31.7 32-55.4 0-35.3-28.7-64-64-64s-64 28.7-64 64c0 23.7 12.9 44.4 32 55.4L256 480c0 17.7 14.3 32 32 32s32-14.3 32-32l0-264.6zM180.2 91c7.2-11.2 3.9-26-7.2-33.2s-26-3.9-33.2 7.2c-17.6 27.4-27.8 60-27.8 95s10.2 67.6 27.8 95c7.2 11.2 22 14.4 33.2 7.2s14.4-22 7.2-33.2c-12.8-19.9-20.2-43.6-20.2-69s7.4-49.1 20.2-69zM436.2 65c-7.2-11.2-22-14.4-33.2-7.2s-14.4 22-7.2 33.2c12.8 19.9 20.2 43.6 20.2 69s-7.4 49.1-20.2 69c-7.2 11.2-3.9 26 7.2 33.2s26 3.9 33.2-7.2c17.6-27.4 27.8-60 27.8-95s-10.2-67.6-27.8-95z"/></symbol>
+<symbol id="i-phone-volume" viewBox="0 0 576 512"><path d="M344-32c128.1 0 232 103.9 232 232 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184-13.3 0-24-10.7-24-24s10.7-24 24-24zm8 192a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM320 88c0-13.3 10.7-24 24-24 75.1 0 136 60.9 136 136 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88-13.3 0-24-10.7-24-24zM144.1 1.4c19.7-5.4 40.3 4.7 48.1 23.5l40.5 97.3c6.9 16.5 2.1 35.6-11.8 47l-44.1 36.1c32.5 71.6 89 130 159.3 164.9L374.7 323c11.3-13.9 30.4-18.6 47-11.8L519 351.8c18.8 7.8 28.9 28.4 23.5 48.1l-1.5 5.5C523.4 470.1 460.9 525.3 384.6 509.2 209.6 472.1 71.9 334.4 34.8 159.4 18.7 83.1 73.9 20.6 138.5 2.9l5.5-1.5z"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 512 512"><path d="M32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 224zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384z"/></symbol>
+<symbol id="i-house-laptop" viewBox="0 0 640 512"><path d="M448 240l19.9 0c15.5 0 28.1-12.6 28.1-28.1 0-7.6-3.1-14.9-8.6-20.2L283.5-4.9C276.1-12 266.3-16 256-16s-20.1 4-27.5 11.1L24.6 191.7C19.1 197 16 204.3 16 211.9 16 227.4 28.6 240 44.1 240l19.9 0 0 144c0 35.3 28.7 64 64 64l85.7 0c7.4-6.6 16.4-11.4 26.3-14l0-130c0-5.5 .7-10.9 2-16l-10 0c-13.3 0-24-10.7-24-24l0-48c0-13.3 10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 24 144 0zM352 352l160 0 0 128-160 0 0-128zm-64-32l0 160-32 0c-8.8 0-16 7.2-16 16 0 26.5 21.5 48 48 48l288 0c26.5 0 48-21.5 48-48 0-8.8-7.2-16-16-16l-32 0 0-160c0-17.7-14.3-32-32-32l-224 0c-17.7 0-32 14.3-32 32z"/></symbol>
+<symbol id="i-face-smile" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM165.4 321.9c20.4 28 53.4 46.1 90.6 46.1s70.2-18.1 90.6-46.1c7.8-10.7 22.8-13.1 33.5-5.3s13.1 22.8 5.3 33.5C356.3 390 309.2 416 256 416s-100.3-26-129.4-65.9c-7.8-10.7-5.4-25.7 5.3-33.5s25.7-5.4 33.5 5.3zM144 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></symbol>
+<symbol id="i-gift" viewBox="0 0 512 512"><path d="M321.5 68.8C329.1 55.9 342.9 48 357.8 48l2.2 0c22.1 0 40 17.9 40 40s-17.9 40-40 40l-73.3 0 34.8-59.2zm-131 0l34.8 59.2-73.3 0c-22.1 0-40-17.9-40-40s17.9-40 40-40l2.2 0c14.9 0 28.8 7.9 36.3 20.8zm89.6-24.3l-24.1 41-24.1-41C215.7 16.9 186.1 0 154.2 0L152 0c-48.6 0-88 39.4-88 88 0 14.4 3.5 28 9.6 40L32 128c-17.7 0-32 14.3-32 32l0 32c0 17.7 14.3 32 32 32l448 0c17.7 0 32-14.3 32-32l0-32c0-17.7-14.3-32-32-32l-41.6 0c6.1-12 9.6-25.6 9.6-40 0-48.6-39.4-88-88-88l-2.2 0c-31.9 0-61.5 16.9-77.7 44.4zM480 272l-200 0 0 208 136 0c35.3 0 64-28.7 64-64l0-144zm-248 0l-200 0 0 144c0 35.3 28.7 64 64 64l136 0 0-208z"/></symbol>
+<symbol id="i-solar-panel" viewBox="0 0 576 512"><path d="M121.8 32c-30 0-56 20.8-62.5 50.1L9.6 306.1C.7 346.1 31.1 384 72 384l184.1 0 0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l192 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64 184.1 0c40.9 0 71.4-37.9 62.5-77.9l-49.8-224C510.4 52.8 484.5 32 454.5 32L121.8 32zM245.6 96l85.2 0 7.3 88-99.8 0 7.3-88zm-55.5 88l-87.8 0 19.6-88 75.6 0-7.3 88zM91.6 232l94.5 0-7.3 88-106.7 0 19.6-88zm142.6 0l107.8 0 7.3 88-122.5 0 7.3-88zm156 0l94.5 0 19.6 88-106.7 0-7.3-88zM474 184l-87.8 0-7.3-88 75.6 0 19.6 88z"/></symbol>
+<symbol id="i-helicopter" viewBox="0 0 576 512"><path d="M176 32c-13.3 0-24 10.7-24 24s10.7 24 24 24l152 0 0 48-220.8 0-32.8-39.4C69.9 83.2 63.1 80 56 80L24 80C15.7 80 8 84.3 3.6 91.4s-4.8 15.9-1.1 23.4l48 96C54.6 218.9 62.9 224 72 224l107.8 0 104 143.1c15.1 20.7 39.1 32.9 64.7 32.9l75.5 0c75.1 0 136-60.9 136-136S499.1 128 424 128l-48 0 0-48 152 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L176 32zM376 192l48 0c39.8 0 72 32.2 72 72s-32.2 72-72 72l-48 0 0-144zM552 416c-13.3 0-24 10.7-24 24 0 4.4-3.6 8-8 8l-272 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l272 0c30.9 0 56-25.1 56-56 0-13.3-10.7-24-24-24z"/></symbol>
+<symbol id="i-champagne-glasses" viewBox="0 0 640 512"><path d="M155.6 17.3C163 3 179.9-3.6 195 1.9l125 45.6 125-45.6c15.1-5.5 32 1.1 39.4 15.4l78.8 152.9c28.8 55.8 10.3 122.3-38.5 156.6l31.3 86.2 41-15c16.6-6 35 2.5 41 19.1s-2.5 35-19.1 41c-47.4 17.3-94.8 34.5-142.2 51.8-16.6 6.1-35-2.5-41-19.1s2.5-35 19.1-41l41-15-31.3-86.2c-59.4 5.2-116.2-33.9-130-95.2l-14.6-64.7-14.6 64.7c-13.8 61.3-70.6 100.4-130 95.2l-31.3 86.2 41 15c16.6 6.1 25.2 24.4 19.1 41s-24.4 25.2-41 19.1c-47.4-17.3-94.8-34.6-142.2-51.8-16.6-6.1-25.2-24.4-19.1-41S26.3 392 42.9 398l41 15 31.3-86.2C66.5 292.5 48.1 226 76.9 170.2L155.6 17.3zm44 54.4l-27.2 52.8 89.2 32.5 13.1-57.9-75.1-27.4zm240.9 0l-75.1 27.4 13.1 57.9 89.2-32.5-27.2-52.8z"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 512 512"><path d="M471.3 6.7C477.7 .6 487-1.6 495.6 1.2 505.4 4.5 512 13.7 512 24l0 186.9c0 131.2-108.1 237.1-238.8 237.1-77 0-143.4-49.5-167.5-118.7-35.4 30.8-57.7 76.1-57.7 126.7 0 13.3-10.7 24-24 24S0 469.3 0 456C0 381.1 38.2 315.1 96.1 276.3 131.4 252.7 173.5 240 216 240l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0c-39.7 0-77.3 8.8-111 24.5 23.3-70 89.2-120.5 167-120.5 66.4 0 115.8-22.1 148.7-44 19.2-12.8 35.5-28.1 50.7-45.3z"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 448 512"><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></symbol>
+<symbol id="i-scale-balanced" viewBox="0 0 640 512"><path d="M384 32l128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L398.4 96c-5.2 25.8-22.9 47.1-46.4 57.3l0 294.7 160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-384 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l160 0 0-294.7c-23.5-10.3-41.2-31.6-46.4-57.3L128 96c-17.7 0-32-14.3-32-32s14.3-32 32-32l128 0c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288L584.4 320 512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9zM126.8 195.8L54.4 320 199.3 320 126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9S11.7 382 .9 337.1z"/></symbol>
+<symbol id="i-building" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L64 0zM176 352l32 0c17.7 0 32 14.3 32 32l0 80-96 0 0-80c0-17.7 14.3-32 32-32zM96 112c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM240 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zM96 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm144-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></symbol>
+<symbol id="i-user-tie" viewBox="0 0 448 512"><path d="M224 248a120 120 0 1 1 0-240 120 120 0 1 1 0 240zm-30.5 56l61 0c9.7 0 17.5 7.8 17.5 17.5 0 4.2-1.5 8.2-4.2 11.4l-27.4 32 31 115.1 .6 0 34.6-138.5c2.2-8.7 11.1-14 19.5-10.8 61.9 23.6 105.9 83.6 105.9 153.8 0 15.1-12.3 27.4-27.4 27.4L43.4 512c-15.1 0-27.4-12.3-27.4-27.4 0-70.2 44-130.2 105.9-153.8 8.4-3.2 17.3 2.1 19.5 10.8l34.6 138.5 .6 0 31-115.1-27.4-32c-2.7-3.2-4.2-7.2-4.2-11.4 0-9.7 7.8-17.5 17.5-17.5z"/></symbol>
+<symbol id="i-shield-halved" viewBox="0 0 512 512"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.8 82.8c22 9.3 38.4 31 38.3 57.2-.5 99.2-41.3 280.7-213.6 363.2-16.7 8-36.1 8-52.8 0-172.4-82.5-213.1-264-213.6-363.2-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.9 1 251.4 0 256 0zm0 66.8l0 378.1c138-66.8 175.1-214.8 176-303.4l-176-74.6 0 0z"/></symbol>
+<symbol id="i-arrow-up-right-from-square" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0-201.4 201.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3 448 192c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 96C35.8 96 0 131.8 0 176L0 432c0 44.2 35.8 80 80 80l256 0c44.2 0 80-35.8 80-80l0-80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 80c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l80 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 96z"/></symbol>
+<symbol id="i-check" viewBox="0 0 448 512"><path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 512 512"><path d="M160.2 25C152.3 6.1 131.7-3.9 112.1 1.4l-5.5 1.5c-64.6 17.6-119.8 80.2-103.7 156.4 37.1 175 174.8 312.7 349.8 349.8 76.3 16.2 138.8-39.1 156.4-103.7l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2C233.9 335.4 177.3 277 144.8 205.3L189 169.3c13.9-11.3 18.6-30.4 11.8-47L160.2 25z"/></symbol>
+<symbol id="i-envelope" viewBox="0 0 512 512"><path d="M48 64c-26.5 0-48 21.5-48 48 0 15.1 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48L48 64zM0 196L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-188-198.4 148.8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"/></symbol>
+<symbol id="i-house" viewBox="0 0 512 512"><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272l16 0 0 176c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-176 16 0c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1l-224-208zM240 320l32 0c26.5 0 48 21.5 48 48l0 96-128 0 0-96c0-26.5 21.5-48 48-48z"/></symbol>
+<symbol id="i-square-root-variable" viewBox="0 0 576 512"><path d="M282.6 78.1c8-27.3 33-46.1 61.4-46.1l200 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L344 96 238.7 457c-3.6 12.3-14.1 21.2-26.8 22.8s-25.1-4.6-31.5-15.6L77.6 288 32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l45.6 0c22.8 0 43.8 12.1 55.3 31.8l65.2 111.8 84.4-289.5zM393.4 233.4c12.5-12.5 32.8-12.5 45.3 0l41.4 41.4 41.4-41.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-41.4 41.4 41.4 41.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-41.4-41.4-41.4 41.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l41.4-41.4-41.4-41.4c-12.5-12.5-12.5-32.8 0-45.3z"/></symbol>
+<symbol id="i-user" viewBox="0 0 448 512"><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 512 512"><path d="M351.9 280l-190.9 0c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zM160.9 232l190.9 0C349 167.5 334.7 108.1 314.4 64.6 303 40.2 290.7 22.8 279.3 12.2 268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4zm-48 0C116.4 146.4 138.5 66.9 170.8 14.7 78.7 47.3 10.9 131.2 1.5 232l111.4 0zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3L1.5 280zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3l-111.4 0zm111.4-48C501.9 131.2 434.1 47.3 342 14.7 374.3 66.9 396.4 146.4 399.9 232l111.4 0z"/></symbol>
+<symbol id="i-linkedin-in" viewBox="0 0 448 512"><path d="M100.3 448l-92.9 0 0-299.1 92.9 0 0 299.1zM53.8 108.1C24.1 108.1 0 83.5 0 53.8 0 39.5 5.7 25.9 15.8 15.8s23.8-15.8 38-15.8 27.9 5.7 38 15.8 15.8 23.8 15.8 38c0 29.7-24.1 54.3-53.8 54.3zM447.9 448l-92.7 0 0-145.6c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7l0 148.1-92.8 0 0-299.1 89.1 0 0 40.8 1.3 0c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3l0 164.3-.1 0z"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 448 512"><path d="M416 32L31.9 32C14.3 32 0 46.5 0 64.3L0 447.7C0 465.5 14.3 480 31.9 480L416 480c17.6 0 32-14.5 32-32.3l0-383.4C448 46.5 433.6 32 416 32zM135.4 416l-66.4 0 0-213.8 66.5 0 0 213.8-.1 0zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77zM384.3 416l-66.4 0 0-104c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9l0 105.8-66.4 0 0-213.8 63.7 0 0 29.2 .9 0c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9l0 117.2z"/></symbol>
+<symbol id="i-seedling" viewBox="0 0 512 512"><path d="M512 32C512 140.1 435.4 230.3 333.6 251.4 325.7 193.3 299.6 141 261.1 100.5 301.2 40 369.9 0 448 0l32 0c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64l32 0c123.7 0 224 100.3 224 224l0 192c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160C100.3 320 0 219.7 0 96z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 576 512"><path d="M288-32c8.4 0 16.3 4.4 20.6 11.7L364.1 72.3 468.9 46c8.2-2 16.9 .4 22.8 6.3S500 67 498 75.1l-26.3 104.7 92.7 55.5c7.2 4.3 11.7 12.2 11.7 20.6s-4.4 16.3-11.7 20.6L471.7 332.1 498 436.8c2 8.2-.4 16.9-6.3 22.8S477 468 468.9 466l-104.7-26.3-55.5 92.7c-4.3 7.2-12.2 11.7-20.6 11.7s-16.3-4.4-20.6-11.7L211.9 439.7 107.2 466c-8.2 2-16.8-.4-22.8-6.3S76 445 78 436.8l26.2-104.7-92.6-55.5C4.4 272.2 0 264.4 0 256s4.4-16.3 11.7-20.6L104.3 179.9 78 75.1c-2-8.2 .3-16.8 6.3-22.8S99 44 107.2 46l104.7 26.2 55.5-92.6 1.8-2.6c4.5-5.7 11.4-9.1 18.8-9.1zm0 144a144 144 0 1 0 0 288 144 144 0 1 0 0-288zm0 240a96 96 0 1 1 0-192 96 96 0 1 1 0 192z"/></symbol>
+<symbol id="i-microchip" viewBox="0 0 512 512"><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40c-35.3 0-64 28.7-64 64l-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0 0 56-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0 0 56-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0c0 35.3 28.7 64 64 64l0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40 56 0 0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40 56 0 0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40c35.3 0 64-28.7 64-64l40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0 0-56 40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0 0-56 40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0c0-35.3-28.7-64-64-64l0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40-56 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40-56 0 0-40zM160 128l192 0c17.7 0 32 14.3 32 32l0 192c0 17.7-14.3 32-32 32l-192 0c-17.7 0-32-14.3-32-32l0-192c0-17.7 14.3-32 32-32zm16 48l0 160 160 0 0-160-160 0z"/></symbol>
+<symbol id="i-signature" viewBox="0 0 640 512"><path d="M192 128c0-17.7 14.3-32 32-32s32 14.3 32 32l0 7.8c0 27.7-2.4 55.3-7.1 82.5l-84.4 25.3c-40.6 12.2-68.4 49.6-68.4 92l0 32.4-72 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l72.5 0c4.2 36 34.8 64 72 64 26 0 50-13.9 62.9-36.5l13.9-24.3c26.8-47 46.5-97.7 58.4-150.5l94.4-28.3-12.5 37.5c-3.3 9.8-1.6 20.5 4.4 28.8S405.7 320 416 320l128 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-83.6 0 18-53.9c3.8-11.3 .9-23.8-7.4-32.4s-20.7-11.8-32.2-8.4L316.4 198.1c2.4-20.7 3.6-41.4 3.6-62.3l0-7.8c0-53-43-96-96-96s-96 43-96 96l0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32zm-9.2 177l49-14.7c-10.4 33.8-24.5 66.4-42.1 97.2l-13.9 24.3c-1.5 2.6-4.3 4.3-7.4 4.3-4.7 0-8.5-3.8-8.5-8.5l0-71.9c0-14.1 9.3-26.6 22.8-30.7zM616 416c13.3 0 24-10.7 24-24s-10.7-24-24-24l-292.9 0c-6.5 16.3-13.7 32.3-21.6 48L616 416z"/></symbol>
+<symbol id="i-link" viewBox="0 0 576 512"><path d="M419.5 96c-16.6 0-32.7 4.5-46.8 12.7-15.8-16-34.2-29.4-54.5-39.5 28.2-24 64.1-37.2 101.3-37.2 86.4 0 156.5 70 156.5 156.5 0 41.5-16.5 81.3-45.8 110.6l-71.1 71.1c-29.3 29.3-69.1 45.8-110.6 45.8-86.4 0-156.5-70-156.5-156.5 0-1.5 0-3 .1-4.5 .5-17.7 15.2-31.6 32.9-31.1s31.6 15.2 31.1 32.9c0 .9 0 1.8 0 2.6 0 51.1 41.4 92.5 92.5 92.5 24.5 0 48-9.7 65.4-27.1l71.1-71.1c17.3-17.3 27.1-40.9 27.1-65.4 0-51.1-41.4-92.5-92.5-92.5zM275.2 173.3c-1.9-.8-3.8-1.9-5.5-3.1-12.6-6.5-27-10.2-42.1-10.2-24.5 0-48 9.7-65.4 27.1L91.1 258.2c-17.3 17.3-27.1 40.9-27.1 65.4 0 51.1 41.4 92.5 92.5 92.5 16.5 0 32.6-4.4 46.7-12.6 15.8 16 34.2 29.4 54.6 39.5-28.2 23.9-64 37.2-101.3 37.2-86.4 0-156.5-70-156.5-156.5 0-41.5 16.5-81.3 45.8-110.6l71.1-71.1c29.3-29.3 69.1-45.8 110.6-45.8 86.6 0 156.5 70.6 156.5 156.9 0 1.3 0 2.6 0 3.9-.4 17.7-15.1 31.6-32.8 31.2s-31.6-15.1-31.2-32.8c0-.8 0-1.5 0-2.3 0-33.7-18-63.3-44.8-79.6z"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 512 512"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></symbol>
+<symbol id="i-award" viewBox="0 0 448 512"><path d="M245.9-25.9c-13.4-8.2-30.3-8.2-43.7 0-24.4 14.9-39.5 18.9-68.1 18.3-15.7-.4-30.3 8.1-37.9 21.9-13.7 25.1-24.8 36.2-49.9 49.9-13.8 7.5-22.2 22.2-21.9 37.9 .7 28.6-3.4 43.7-18.3 68.1-8.2 13.4-8.2 30.3 0 43.7 14.9 24.4 18.9 39.5 18.3 68.1-.4 15.7 8.1 30.3 21.9 37.9 22.1 12.1 33.3 22.1 45.1 41.5L42.7 458.5c-5.9 11.9-1.1 26.3 10.7 32.2l86 43c11.5 5.7 25.5 1.4 31.7-9.8l52.8-95.1 52.8 95.1c6.2 11.2 20.2 15.6 31.7 9.8l86-43c11.9-5.9 16.7-20.3 10.7-32.2l-48.6-97.2c11.7-19.4 23-29.4 45.1-41.5 13.8-7.5 22.2-22.2 21.9-37.9-.7-28.6 3.4-43.7 18.3-68.1 8.2-13.4 8.2-30.3 0-43.7-14.9-24.4-18.9-39.5-18.3-68.1 .4-15.7-8.1-30.3-21.9-37.9-25.1-13.7-36.2-24.8-49.9-49.9-7.5-13.8-22.2-22.2-37.9-21.9-28.6 .7-43.7-3.4-68.1-18.3zM224 96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></symbol>
+<symbol id="i-people-group" viewBox="0 0 512 512"><path d="M256 0a64 64 0 1 1 0 128 64 64 0 1 1 0-128zm96 312c0 25-12.7 47-32 59.9l0 92.1c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-92.1C172.7 359 160 337 160 312l0-40c0-53 43-96 96-96s96 43 96 96l0 40zM96 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112zm16 240l0 32c0 32.5 12.1 62.1 32 84.7l0 75.3c0 1.2 0 2.5 .1 3.7-8.5 7.6-19.7 12.3-32.1 12.3l-32 0c-26.5 0-48-21.5-48-48l0-56.6C12.9 364.4 0 343.7 0 320l0-32c0-53 43-96 96-96 12.7 0 24.8 2.5 35.9 6.9-12.6 21.4-19.9 46.4-19.9 73.1zM368 464l0-75.3c19.9-22.5 32-52.2 32-84.7l0-32c0-26.7-7.3-51.6-19.9-73.1 11.1-4.5 23.2-6.9 35.9-6.9 53 0 96 43 96 96l0 32c0 23.7-12.9 44.4-32 55.4l0 56.6c0 26.5-21.5 48-48 48l-32 0c-12.3 0-23.6-4.6-32.1-12.3 0-1.2 .1-2.5 .1-3.7zM416 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></symbol>
+<symbol id="i-users" viewBox="0 0 640 512"><path d="M320 16a104 104 0 1 1 0 208 104 104 0 1 1 0-208zM96 88a72 72 0 1 1 0 144 72 72 0 1 1 0-144zM0 416c0-70.7 57.3-128 128-128 12.8 0 25.2 1.9 36.9 5.4-32.9 36.8-52.9 85.4-52.9 138.6l0 16c0 11.4 2.4 22.2 6.7 32L32 480c-17.7 0-32-14.3-32-32l0-32zm521.3 64c4.3-9.8 6.7-20.6 6.7-32l0-16c0-53.2-20-101.8-52.9-138.6 11.7-3.5 24.1-5.4 36.9-5.4 70.7 0 128 57.3 128 128l0 32c0 17.7-14.3 32-32 32l-86.7 0zM472 160a72 72 0 1 1 144 0 72 72 0 1 1 -144 0zM160 432c0-88.4 71.6-160 160-160s160 71.6 160 160l0 16c0 17.7-14.3 32-32 32l-256 0c-17.7 0-32-14.3-32-32l0-16z"/></symbol>
+<symbol id="i-handshake" viewBox="0 0 576 512"><path d="M268.9 85.2L152.3 214.8c-4.6 5.1-4.4 13 .5 17.9 30.5 30.5 80 30.5 110.5 0l31.8-31.8c4.2-4.2 9.5-6.5 14.9-6.9 6.8-.6 13.8 1.7 19 6.9L505.6 376 576 320 576 32 464 96 440.2 80.1C424.4 69.6 405.9 64 386.9 64l-70.4 0c-1.1 0-2.3 0-3.4 .1-16.9 .9-32.8 8.5-44.2 21.1zM116.6 182.7L223.4 64 183.8 64c-25.5 0-49.9 10.1-67.9 28.1L112 96 0 32 0 320 156.4 450.3c23 19.2 52 29.7 81.9 29.7l15.7 0-7-7c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l41 41 9 0c19.1 0 37.8-4.3 54.8-12.3L359 441c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l32 32 17.5-17.5c8.9-8.9 11.5-21.8 7.6-33.1l-137.9-136.8-14.9 14.9c-49.3 49.3-129.1 49.3-178.4 0-23-23-23.9-59.9-2.2-84z"/></symbol>
+<symbol id="i-calendar-check" viewBox="0 0 448 512"><path d="M320 0c17.7 0 32 14.3 32 32l0 32 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32zm22 161.7c-10.7-7.8-25.7-5.4-33.5 5.3L189.1 331.2 137 279.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.9 7.5 18.8 7s13.4-4.1 17.5-9.8L347.3 195.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></symbol>
+<symbol id="logo" viewBox="69 70 101 45"><path d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></symbol>
+</svg>
+
+<div class="sticky top-0 z-50 overflow-visible bg-white shadow-md">
+<!-- TOP BAR -->
+<div class="h-[45px] bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-between" style="padding-left:max(48.5px,calc((100% - 80rem) / 2 + 48.5px));padding-right:max(32px,calc((100% - 80rem) / 2 + 32px))">
+  <div class="flex items-center gap-[9px] min-w-0 overflow-hidden">
+    <p class="text-[16px] font-normal text-slate-300 whitespace-nowrap">SeedElisa è l'AI di SeedElio: ti risponde a domande sul modo del Fotovoltaico e ti prenota una web-conf gratuita con Dario Bonaldo !</p>
+  </div>
+  <div class="hidden lg:flex items-center shrink-0">
+    <svg class="ico text-amber-400 text-[12px] mr-[3px]" style="width:0.875em"><use href="#i-headset"/></svg>
+    <span class="text-[11px] font-medium text-white">Risposta Istantanea 24/7</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="bg-white border-b border-slate-200 h-[97px] relative z-10">
+  <div class="seedelio-header-bar max-w-7xl mx-auto px-8 h-[96px]">
+    <div class="flex items-center gap-[11px] ml-[2px] shrink-0">
+      <div class="block">
+        <a href="index.html" class="logo-line block w-[226px] border-t border-slate-500 h-[48px] overflow-hidden relative flex items-center">
+          <svg class="logo-mark absolute left-0 top-0" viewBox="69 70 101 45" width="101" height="45"><path class="seed s1" d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path class="seed s2" d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path class="seed s3" d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></svg>
+          <span class="absolute left-[110px] top-[6px] text-[26.5px] lg:text-[30px] font-semibold text-slate-700 tracking-tight leading-none">SeedElio</span>
+        </a>
+        <a href="significato-del-logo.html" class="logo-sig">Significato del Logo<span class="logo-sig-go" aria-hidden="true">→</span></a>
+      </div>
+      <span class="font-mono font-semibold text-[22px] text-cyan-700 bg-cyan-50 border-2 border-cyan-300 rounded-xl w-[63px] h-[44px] flex items-center justify-center mt-[-4px]">.AI</span>
+    </div>
+
+    <nav class="seedelio-header-tools hidden lg:flex">
+      <div class="flex items-center gap-7">
+        <div id="svcMenu" class="svc group relative -mx-4 px-4 h-[42px] rounded-xl flex items-center transition-colors duration-200 hover:bg-slate-100/70 [&.is-open]:bg-slate-100/70">
+          <button type="button" id="svcBtn" aria-haspopup="true" aria-expanded="false" aria-controls="svcPanel" class="text-slate-700 group-hover:text-amber-600 group-[.is-open]:text-amber-600 transition-colors duration-200 font-bold uppercase tracking-wider flex items-center gap-2 whitespace-nowrap text-[16px] focus-visible:outline-none">I 4 Servizi
+            <svg class="ico text-slate-400 group-hover:text-amber-600 group-[.is-open]:text-amber-600 text-[10px] transition-[transform,color] duration-200 group-hover:rotate-180 group-[.is-open]:rotate-180" style="width:0.875em"><use href="#i-chevron-down"/></svg></button>
+          <div id="svcPanel" class="absolute left-0 top-full z-50 w-96 pt-2 invisible opacity-0 -translate-y-1 scale-[.98] origin-top-left pointer-events-none transition-[opacity,transform,visibility] duration-200 ease-out group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto group-[.is-open]:visible group-[.is-open]:opacity-100 group-[.is-open]:translate-y-0 group-[.is-open]:scale-100 group-[.is-open]:pointer-events-auto motion-reduce:transition-none motion-reduce:transform-none">
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl px-6 pt-5 pb-2" role="menu" aria-label="I 4 Servizi">
+              <p class="font-bold text-[13px] leading-4 uppercase tracking-[0.12em] text-slate-400 mb-3">Seleziona un servizio</p>
+            <a href="consulenza-impianto-fv.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-amber-50 text-amber-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.2em" aria-hidden="true"><use href="#i-solar-panel"/></svg><span class="text-[20px] leading-none">1</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Consulenza Impianto FV</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Perizia scientifica e simulazione</span>
+              </span>
+            </a>
+            <a href="riprese-drone-professionali.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-blue-50 text-blue-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.2em" aria-hidden="true"><use href="#i-helicopter"/></svg><span class="text-[20px] leading-none">2</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Riprese con Droni Professionali</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Video 4K e ispezione coperture</span>
+              </span>
+            </a>
+            <a href="landing-page-ai-seedelisa.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-cyan-50 text-cyan-700 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.05em" aria-hidden="true"><use href="#i-headset"/></svg><span class="text-[20px] leading-none">3</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Landing Page &amp; AI SeedElisa</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Online-to-Offline &amp; Voice Care</span>
+              </span>
+            </a>
+            <a href="inaugurazione-green.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-emerald-50 text-emerald-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.25em" aria-hidden="true"><use href="#i-people-group"/></svg><span class="text-[20px] leading-none">4</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Inaugurazione Green</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Eventi &amp; educazione ambientale</span>
+              </span>
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+            <div class="tool-rail flex items-center bg-slate-50 border border-slate-200 rounded-2xl h-[54px] w-auto px-2.5 xl:px-3 gap-0 shadow-[0_1px_2px_rgba(15,23,42,0.04)] shrink min-w-0">
+        <a href="simulatore-2.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-amber-500/15 text-amber-500 flex items-center justify-center text-[13px]"><svg class="ico" style="width:0.875em"><use href="#i-bolt"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-amber-700 tracking-wider">TOOL 1</span><span class="block text-[16px] font-semibold text-slate-900">Simulatore</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="glossario-tecnico-fotovoltaico.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-cyan-500/15 text-cyan-600 flex items-center justify-center text-[13px]"><svg class="ico" style="width:0.875em" viewBox="0 0 448 512" aria-hidden="true"><path d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l288 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0 0-32 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l32 0 0-320c0-53-43-96-96-96L96 0zM64 96c0-17.7 14.3-32 32-32l256 0c17.7 0 32 14.3 32 32l0 224-32 0c-35.3 0-64 28.7-64 64l-224 0 0-288z"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-cyan-700 tracking-wider">TOOL 2</span><span class="block text-[16px] font-semibold text-slate-900">Glossario</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="libretto_impianto_fotovoltaico_a3_seedelio_ai_v002.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-violet-500/15 text-violet-600 flex items-center justify-center text-[13px]"><svg class="ico tool-diario-menu-glyph" style="width:1.25em;height:1.25em" viewBox="6 2 17 21" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M8 4h6v4h4v12H8V4z"/><path d="M14 4v4h4"/><path d="M10 10h5M10 13h5M10 16h3"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-violet-700 tracking-wider">TOOL 3</span><span class="block text-[16px] font-semibold text-slate-900">Diario FV</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="green-games.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-[13px]"><svg class="ico" style="width:1.25em"><use href="#i-gamepad"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-emerald-600 tracking-wider">TOOL 4</span><span class="block text-[16px] font-semibold text-slate-900">Green Games</span></span>
+        </a>
+      </div>
+    </nav>
+
+    <a href="#" class="group relative flex items-center gap-2 rounded-2xl border-2 border-amber-300 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-300 pl-[11px] pr-[13px] h-[60px] w-[208px] shrink-0 shadow-lg shadow-amber-400/30 transition-[transform,box-shadow] duration-300 ease-out hover:scale-[1.03] hover:shadow-xl hover:shadow-amber-400/50 active:scale-[.98] active:duration-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:active:scale-100">
+      <span aria-hidden="true" class="pointer-events-none absolute -inset-[2px] rounded-2xl opacity-60 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 animate-breathe motion-reduce:animate-none"></span>
+      <span class="relative w-[37px] h-[37px] rounded-xl bg-slate-950 text-amber-400 flex items-center justify-center text-[17px] shrink-0">
+        <svg class="ico" style="width:0.875em"><use href="#i-headset"/></svg>
+        <span class="absolute -top-[4px] -right-[4px] w-[9px] h-[9px] rounded-full bg-emerald-400 border-[1.5px] border-white animate-blink motion-reduce:animate-none"></span>
+      </span>
+      <span class="leading-[16px] whitespace-nowrap"><span class="block font-mono text-[10px] font-bold text-slate-800 tracking-wide">VOCE AI 24/7</span><span class="block text-[15px] font-bold text-slate-950">Chiama SeedElisa</span></span>
+      <span class="relative overflow-hidden ml-auto shrink-0 w-[30px] h-[30px] rounded-xl bg-[#c8c27a] text-slate-900 flex items-center justify-center text-[12px]"><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:0s"></span><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:0.8s"></span><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:1.6s"></span><svg class="ico relative z-10" style="width:1.125em"><use href="#i-tower-broadcast"/></svg></span>
+    </a>
+  </div>
+  <script>
+    (function () {
+      var m = document.getElementById('svcMenu'), b = document.getElementById('svcBtn');
+      if (!m || !b) return;
+      function set(o) { m.classList.toggle('is-open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+      b.addEventListener('click', function () { set(!m.classList.contains('is-open')); });
+      b.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown') { e.preventDefault(); set(true); setTimeout(function () { var f = m.querySelector('[role=menuitem]'); if (f) f.focus(); }, 90); }
+      });
+      m.addEventListener('mouseleave', function () { set(false); });
+      m.addEventListener('keydown', function (e) {
+        var it = Array.prototype.slice.call(m.querySelectorAll('[role=menuitem]')), i = it.indexOf(document.activeElement);
+        if (e.key === 'Escape') { set(false); b.focus(); }
+        else if (e.key === 'ArrowDown' && i >= 0) { e.preventDefault(); it[(i + 1) % it.length].focus(); }
+        else if (e.key === 'ArrowUp' && i >= 0) { e.preventDefault(); (i === 0 ? b : it[i - 1]).focus(); }
+      });
+      m.addEventListener('focusout', function (e) { if (!m.contains(e.relatedTarget)) set(false); });
+      document.addEventListener('click', function (e) { if (!m.contains(e.target)) set(false); });
+    })();
+  </script>
+</header>
+</div>
+
+<!-- HERO -->
+<section class="bg-slate-950 border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 flex flex-col items-center lg:flex-row lg:items-center lg:gap-6">
+    <img src="img/seedelisa-chi-siamo.png" alt="SeedElisa con una mano sul petto e l'altra verso il titolo" width="538" height="1235" class="mx-auto mb-4 h-52 w-auto shrink-0 object-contain lg:mx-0 lg:mb-0 lg:h-64">
+    <div class="w-full min-w-0">
+      <div class="flex items-center gap-3 h-[26px]">
+        <span class="inline-flex items-center h-[26px] px-4 rounded-full border border-amber-500/30 bg-amber-500/10 font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-amber-400 whitespace-nowrap">Profilo Professionale &amp; Fondatore</span>
+        <span class="font-mono text-[11px] text-slate-400 whitespace-nowrap">Vicenza (VI) • Operatività Nazionale</span>
+      </div>
+      <h1 class="font-display text-[34px] leading-[38px] lg:text-[44px] lg:leading-[48px] font-extrabold text-white mt-[12px]">Chi Siamo • Dario Bonaldo</h1>
+      <p class="mt-[12px] text-[16px] leading-[24px] text-slate-300 max-w-2xl">Consulente tecnico indipendente, esperto di sistemi di qualità ISO 9001 e pilota UAS certificato ENAC/EASA. Dal 2010 sul portale storico <b class="font-bold text-white">seedelio.com</b> per una transizione energetica trasparente e priva di conflitti d'interesse.</p>
+    </div>
+    <a href="significato-del-logo.html" class="self-start lg:self-center shrink-0 h-[38px] rounded-full bg-slate-900 border border-slate-700 pl-4 pr-[17px] flex items-center gap-2 text-[12px] font-bold text-emerald-400 whitespace-nowrap"><svg class="ico text-[11px]"><use href="#i-leaf"/></svg>Come nasce il Logo SeedElio <svg class="arr -ml-[5px]" width="11" height="5" viewBox="0 0 11 5" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 2.5H10.5M8.5 .5L10.5 2.5L8.5 4.5"/></svg></a>
+  </div>
+</section>
+
+<main class="bg-slate-50 py-12">
+  <div class="max-w-7xl mx-auto px-8">
+
+    <!-- PROFILO -->
+    <section class="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12">
+        <div class="p-8 lg:col-span-4">
+          <div class="rounded-3xl border border-slate-200 p-6 pb-[23px] flex flex-col items-center text-center" style="background:linear-gradient(to bottom,#f8fafc,#f1f5f9)">
+            <div class="relative w-[112px] h-[112px]">
+              <div class="avatar-ring w-full h-full rounded-full p-1 shadow-lg">
+                <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="w-full h-full rounded-full object-cover" style="object-position:center 18%">
+              </div>
+              <span class="absolute right-1 bottom-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-white text-white flex items-center justify-center text-[11px]"><svg class="ico" style="width:0.875em"><use href="#i-check"/></svg></span>
+            </div>
+            <h2 class="mt-[18px] text-[20px] leading-6 font-bold text-slate-900">Dario Bonaldo</h2>
+            <p class="mt-1 font-mono text-[11px] leading-4 font-bold text-cyan-700">Consulente Tecnico &amp; Pilota UAS</p>
+            <p class="mt-1 text-[11px] leading-4 text-slate-500">Vicenza (VI) • Veneto &amp; Tutta Italia</p>
+            <div class="mt-[25px] flex items-center justify-center gap-2">
+              <a href="https://www.linkedin.com/in/dariobonaldo" target="_blank" rel="noopener" class="h-8 rounded-xl px-[13px] flex items-center gap-2 text-[12px] font-bold text-white whitespace-nowrap" style="background:#0077b5"><svg class="ico text-[12px]" style="width:0.875em"><use href="#i-linkedin"/></svg>Profilo LinkedIn</a>
+              <a href="#" class="h-8 rounded-xl px-[13px] flex items-center gap-2 text-[12px] font-bold text-amber-400 bg-slate-900 whitespace-nowrap"><svg class="ico text-[13px]"><use href="#i-globe"/></svg>seedelio.com</a>
+            </div>
+            <div class="mt-4 w-full border-t border-slate-200 pt-[11px] text-left font-mono text-[10px] leading-5 text-slate-400">
+              <p><span>P.IVA:</span> <span class="text-slate-900">03986430241</span></p>
+              <p><span>Attestato EASA:</span> <span class="text-slate-900">C1 - C3 Open</span></p>
+              <p><span>Registro D-Flight:</span> <span class="text-slate-900">Attivo QR-Code</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="relative min-h-[320px] lg:col-span-8">
+          <img src="img/installatori-nuova.jpg" alt="Installatori al lavoro sui pannelli fotovoltaici" width="2758" height="1536" class="absolute inset-0 h-full w-full object-cover object-center">
+        </div>
+      </div>
+    </section>
+    <div class="mt-5 flex items-start justify-between">
+      <a href="le-4-competenze.html" class="ml-[33px] flex items-center gap-3 text-[17px] font-bold leading-6 text-slate-900 hover:text-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"><svg class="ico shrink-0 text-cyan-700" style="width:1em" aria-hidden="true"><use href="#i-award"/></svg>Le 4 Competenze di Dario Bonaldo</a>
+      <a href="genealogia-seed.html" class="flex items-center gap-3 text-[17px] font-bold leading-6 text-slate-900 hover:text-amber-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"><svg class="ico shrink-0 text-amber-500" style="width:1.15em" aria-hidden="true"><use href="#i-users"/></svg>Genealogia Seed</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<style>
+  footer .text-\[16px\] { font-size: 19.2px; }
+  footer .text-\[12px\] { font-size: 14.4px; }
+  footer .text-\[11px\] { font-size: 13.2px; line-height: 16px; }
+  footer .text-\[10px\] { font-size: 12px; line-height: 16px; }
+  footer .text-\[9\.5px\] { font-size: 11.4px; line-height: 14px; }
+  footer .text-\[9px\] { font-size: 10.8px; line-height: 16px; }
+  footer .leading-\[18\.3px\] { line-height: 21.96px; }
+  footer .leading-\[18\.4px\] { line-height: 22.08px; }
+  footer .leading-\[15px\] { line-height: 18px; }
+  footer .leading-4 { line-height: 19.2px; }
+  footer [class~="w-[132px]"] { width: 146px; }
+  footer [class~="w-[37px]"] { width: 44px; }
+  footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+<footer class="bg-slate-950 border-t border-slate-800 text-slate-400">
+  <div class="max-w-7xl mx-auto px-8 pt-16 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="relative mt-[7px] h-[26px] flex items-start">
+          <div class="logo-line w-[132px] border-t border-slate-400/70 h-[26px] overflow-hidden relative">
+            <svg class="logo-mark absolute left-[8px] top-0" viewBox="69 70 101 45" width="47.5" height="21.2"><path class="seed s1" d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path class="seed s2" d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path class="seed s3" d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></svg>
+            <span class="absolute left-[64px] top-[4px] text-[16px] font-semibold text-white leading-none tracking-tight">SeedElio</span>
+          </div>
+          <span class="ml-[11px] mt-px font-mono text-[12px] font-bold text-cyan-400 bg-cyan-500/20 border border-cyan-500/30 rounded-md w-[37px] h-[23px] flex items-center justify-center">.AI</span>
+        </div>
+        <p class="mt-[17px] text-[11px] leading-[18.3px] text-slate-400">Piattaforma etica e indipendente di consulenza scientifica sul fotovoltaico residenziale e commerciale. Dal 2010 al fianco di famiglie e imprese.</p>
+        <div class="mt-auto border-t border-slate-800 pt-[11px] space-y-2 text-[11px] font-bold">
+          <a href="chi-siamo.html" class="flex items-center gap-[7px] h-4 text-amber-400"><svg class="ico text-[11px]" style="width:0.875em"><use href="#i-user-tie"/></svg>Chi Siamo (Dario Bonaldo)</a>
+          <a href="significato-del-logo.html" class="flex items-center gap-[7px] h-4 text-emerald-400"><svg class="ico text-[11px]"><use href="#i-leaf"/></svg>Significato Marchio &amp; Logo</a>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[14px] box-content pb-[9px] border-b border-slate-800"><span class="font-mono text-[10px] font-bold tracking-[0.1em] text-amber-400">SERVIZI E TOOL</span><span class="font-mono text-[9.5px] text-slate-500">SeedElio</span></div>
+        <ul class="mt-[12px] space-y-[6px] text-[11px] text-slate-400">
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-amber-500/20 border border-amber-500/25 text-amber-400 text-[10px] font-bold flex items-center justify-center">1</span>Consulenza Impianto FV</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-blue-500/20 border border-blue-500/25 text-blue-300 text-[10px] font-bold flex items-center justify-center">2</span>Riprese Drone 4K</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-cyan-500/20 border border-cyan-500/25 text-cyan-300 text-[10px] font-bold flex items-center justify-center">3</span>Landing Page &amp; AI</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-emerald-500/20 border border-emerald-500/25 text-emerald-300 text-[10px] font-bold flex items-center justify-center">4</span>Inaugurazione Green</li>
+        </ul>
+        <div class="mt-[10px] border-t border-slate-800"></div>
+        <ul class="mt-[10px] space-y-[6px] text-[11px] font-bold text-slate-200">
+                    <li><a href="simulatore-2.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-amber-400 text-[11px]" style="width:0.875em"><use href="#i-bolt"/></svg></span>Tool 1: Simulatore Energetico</a></li>
+          <li><a href="glossario-tecnico-fotovoltaico.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-cyan-400 text-[11px]" style="width:0.875em" viewBox="0 0 448 512" aria-hidden="true"><path d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l288 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0 0-32 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l32 0 0-320c0-53-43-96-96-96L96 0zM64 96c0-17.7 14.3-32 32-32l256 0c17.7 0 32 14.3 32 32l0 224-32 0c-35.3 0-64 28.7-64 64l-224 0 0-288z"/></svg></span>Tool 2: Glossario</a></li>
+          <li><a href="libretto_impianto_fotovoltaico_a3_seedelio_ai_v002.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-violet-400 text-[11px]" style="width:0.875em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true"><path d="M8 4h6v4h4v12H8V4z"/><path d="M14 4v4h4"/><path d="M10 10h5M10 13h5M10 16h3"/></svg></span>Tool 3: Diario FV</a></li>
+          <li><a href="green-games.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-emerald-400 text-[11px]" style="width:1.25em"><use href="#i-gamepad"/></svg></span>Tool 4: Green Games (1 vs 1)</a></li>
+        </ul>
+        <div class="mt-auto border-t border-slate-800 pt-[13px] flex gap-[4px] font-mono text-[9px] leading-[15px] text-slate-500"><svg class="ico text-amber-400 text-[11px] mt-[2px]"><use href="#i-shield-halved"/></svg><span>Metodo Preliminare Senza Vincoli</span></div>
+      </div>
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[14px] box-content pb-[9px] border-b border-slate-800"><span class="font-mono text-[10px] font-bold tracking-[0.1em] text-cyan-400 whitespace-nowrap">PAGINE</span><span class="font-mono text-[9.5px] text-slate-500">Mappa</span></div>
+        <ul class="mt-[10px] space-y-[6px] text-[11px] text-slate-400">
+          <li><a href="index.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]"><use href="#i-house"/></svg></span>Home</a></li>
+          <li><a href="#" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.125em"><use href="#i-solar-panel"/></svg></span>Consulenza Impianto FV</a></li>
+          <li><a href="#" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.125em"><use href="#i-helicopter"/></svg></span>Riprese Drone</a></li>
+          <li><a href="landing-page-ai-seedelisa.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:0.875em"><use href="#i-headset"/></svg></span>Landing Page &amp; AI</a></li>
+          <li><a href="inaugurazione-green.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.25em"><use href="#i-champagne-glasses"/></svg></span>Inaugurazione Green</a></li>
+          <li><a href="significato-del-logo.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]"><use href="#i-leaf"/></svg></span>Significato del Logo</a></li>
+          <li><a href="chi-siamo.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:0.875em"><use href="#i-user"/></svg></span>Chi Siamo (Dario Bonaldo)</a></li>
+        </ul>
+        <div class="mt-auto border-t border-slate-800 pt-2 font-mono text-[9.5px] font-bold text-cyan-400 flex items-center gap-1.5 h-[17px] box-content"><svg class="ico text-[10px]" style="width:0.875em"><use href="#i-check"/></svg>Navigazione Istantanea</div>
+      </div>
+
+      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[22px] box-content pb-px border-b border-slate-800">
+          <span class="font-mono text-[10px] font-bold tracking-[0.1em] text-amber-400 flex items-center gap-1.5"><svg class="ico text-[11px]" style="width:0.875em"><use href="#i-headset"/></svg>SEEDELISA AI</span>
+          <span class="font-mono text-[9px] font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-600/40 rounded-full px-2.5 h-[22px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>24/7</span>
+        </div>
+        <h4 class="mt-3 text-[12px] font-bold text-white leading-4">SeedElisa, assistente AI</h4>
+        <p class="mt-2 text-[11px] leading-[18.4px] text-slate-400">Assistente ufficiale di <b class="font-bold text-slate-300">SeedElio.AI</b>, 24/7.</p>
+        <div class="mt-3 space-y-2 text-[11px] leading-4 text-slate-300">
+          <div class="flex gap-2"><span class="w-[20px] h-[20px] rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-400 text-[10px] font-bold flex items-center justify-center shrink-0">1</span><p><b class="font-bold text-white">Risponde</b> su servizi e fotovoltaico.</p></div>
+          <div class="flex gap-2"><span class="w-[20px] h-[20px] rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold flex items-center justify-center shrink-0">2</span><p><b class="font-bold text-white">Web conference gratuita</b> con <b class="font-bold text-white">Dario.</b></p></div>
+        </div>
+        <div class="mt-auto border-t border-slate-800 pt-3 font-mono text-[9px] text-emerald-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-800 inline-block"></span>Risposta Telefonica Immediata</div>
+      </div>
+
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var DESIGN_W = 1620;
+    function fit() {
+      var w = window.innerWidth;
+      document.documentElement.style.zoom = (w >= 1024 && w < DESIGN_W) ? (w / DESIGN_W) : 1;
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+</script>
+
+<div id="callModal" class="fixed inset-0 z-[80] hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="callTitle">
+  <div class="absolute inset-0 bg-[#020617]/75 backdrop-blur-sm" data-call-overlay></div>
+  <div class="relative z-10 flex min-h-full items-center justify-center p-4" data-call-overlay>
+    <div data-call-card class="w-full max-w-[540px] rounded-[24px] bg-white shadow-2xl px-5 pt-3.5 pb-3.5">
+      <div class="flex items-start gap-2">
+        <span class="w-9 h-9 shrink-0 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center" aria-hidden="true"><svg class="ico" style="width:1.05em"><use href="#i-headset"/></svg></span>
+        <div class="min-w-0 flex-1 pt-px">
+          <div class="flex items-center gap-2">
+            <h2 id="callTitle" class="text-[16px] leading-5 font-bold text-slate-900">Parla con SeedElisa AI</h2>
+            <span class="ml-auto inline-flex h-6 shrink-0 items-center gap-1 rounded-full bg-[#0d3d34] pl-1.5 pr-2 text-[12px] font-semibold leading-none text-white"><span class="h-[7px] w-[7px] rounded-full bg-emerald-400 animate-blink motion-reduce:animate-none" aria-hidden="true"></span>Live &amp; Attivo 24/7</span>
+          </div>
+          <p class="mt-px text-[12px] leading-4 font-semibold text-[#159c73]">Attiva e pronta 24/7</p>
+        </div>
+        <button type="button" id="callClose" aria-label="Chiudi" class="-mr-1 shrink-0 w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
+          <svg class="ico" viewBox="0 0 384 512" style="width:0.85em" aria-hidden="true"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </button>
+      </div>
+      <div class="mt-2 border-t border-slate-200"></div>
+      <figure class="mt-2 flex justify-center rounded-2xl bg-[#e7eef6] px-2 pb-2 pt-4">
+        <div class="flex w-full items-center justify-center gap-4">
+          <div class="relative shrink-0">
+            <img src="img/famiglia-v5-famiglia.png" alt="Famiglia con la bolletta da 486 euro: Che cifra, Il fotovoltaico ci può aiutare" width="1244" height="704" class="h-[137px] w-auto">
+          </div>
+          <span class="flex h-14 w-[4.25rem] shrink-0 items-center justify-center gap-0.5 rounded-2xl bg-amber-400 text-slate-950 shadow-md" aria-label="Telefono"><svg class="ico" style="width:1.15em" aria-hidden="true"><use href="#i-phone"/></svg><svg class="ico" viewBox="0 0 24 24" style="width:0.9em" aria-hidden="true"><path d="M5 11h11.2l-3.6-3.6L14 6l6 6-6 6-1.4-1.4 3.6-3.6H5z"/></svg></span>
+          <div class="relative shrink-0">
+            <img src="img/famiglia-v5-seedelisa.png" alt="SeedElisa con la spilla" width="502" height="706" class="h-[186px] w-auto object-contain">
+            <span class="absolute top-[22%] -right-1.5 inline-flex h-6 items-center rounded-[5px] border border-cyan-300 bg-white px-1.5 font-mono text-[12px] font-bold leading-none text-cyan-700 animate-aiBlink motion-reduce:animate-none">AI</span>
+          </div>
+        </div>
+      </figure>
+      <div class="mt-2">
+        <p class="text-[13.5px] leading-5 font-semibold text-slate-800">Con la chiamata succede questo:</p>
+        <div class="mt-1 space-y-1 text-[13px] leading-5 text-slate-600">
+          <div class="flex items-start gap-2"><span class="w-[18px] h-[18px] rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-700 text-[10px] font-bold flex items-center justify-center shrink-0">1</span><p><b class="font-bold text-slate-800">Risponde alle domande</b> sul mondo del fotovoltaico.</p></div>
+          <div class="flex items-start gap-2"><span class="w-[18px] h-[18px] rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-700 text-[10px] font-bold flex items-center justify-center shrink-0">2</span><p><b class="font-bold text-slate-800">Prenota la web conference gratuita</b> con Dario Bonaldo.</p></div>
+        </div>
+      </div>
+      <div class="mt-2 rounded-2xl border border-[#f6e6c4] bg-[#fff8eb] px-3 pt-2 pb-2">
+        <p class="text-center text-[11px] leading-4 font-bold tracking-[0.14em] text-[#9a5b32]">CHIAMATA IMMEDIATA</p>
+        <a href="tel:+39029991481" class="mt-1.5 h-[104px] rounded-xl bg-amber-400 text-slate-950 font-bold text-[16px] flex items-center justify-center gap-2 hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"><svg class="ico" style="width:0.9em" aria-hidden="true"><use href="#i-phone"/></svg>Chiama SeedElisa</a>
+      </div>
+      <p class="mt-2.5 text-[14px] leading-5 font-semibold text-slate-800">Oppure inserisci il numero per farti richiamare adesso:</p>
+      <form id="callBackForm" class="mt-2">
+        <div class="grid grid-cols-2 gap-2">
+          <input name="nome" type="text" autocomplete="name" placeholder="Il tuo nome" aria-label="Il tuo nome" class="w-full h-10 rounded-full border border-slate-200 bg-white px-4 text-[14px] text-slate-800 placeholder:text-slate-400 outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+          <input name="cellulare" type="tel" autocomplete="tel" placeholder="Cellulare" aria-label="Cellulare" class="w-full h-10 rounded-full border border-slate-200 bg-white px-4 text-[14px] text-slate-800 placeholder:text-slate-400 outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+        </div>
+        <button type="submit" class="mt-2 w-full h-10 rounded-xl bg-slate-950 text-white font-bold text-[14px] hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">Fatti Richiamare da SeedElisa AI</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var modal = document.getElementById('callModal');
+    var openBtns = Array.prototype.slice.call(document.querySelectorAll('header a.group, [data-open-call]'));
+    var closeBtn = document.getElementById('callClose');
+    var form = document.getElementById('callBackForm');
+    if (!modal || !openBtns.length || !closeBtn || !form) return;
+    var last = null, prevOverflow = '';
+    function nodes() {
+      return Array.prototype.filter.call(modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])'), function (el) {
+        return el.offsetWidth || el.offsetHeight || el.getClientRects().length;
+      });
+    }
+    function open() {
+      last = document.activeElement;
+      prevOverflow = document.body.style.overflow;
+      modal.classList.remove('hidden');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function close() {
+      if (modal.classList.contains('hidden')) return;
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = prevOverflow;
+      if (last && last.focus) last.focus();
+    }
+    openBtns.forEach(function (openBtn) {
+      openBtn.addEventListener('click', function (e) { e.preventDefault(); open(); });
+    });
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (!e.target.closest('[data-call-card]')) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;
+      var list = nodes();
+      if (!list.length) return;
+      var first = list[0], lastEl = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastEl.focus(); }
+      else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); first.focus(); }
+    });
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+  })();
+</script>
+
+
+</body>
+</html>

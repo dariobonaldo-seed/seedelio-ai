@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fumetto bianco · 5 varianti | SeedElio (prova)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500..800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+    background: #e8edf2;
+    color: #334155;
+    min-height: 100vh;
+  }
+  .lab-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .lab-card {
+    background: #eef2f6; border: 1px solid #b9c6d3; border-radius: 1rem;
+    padding: 16px 18px 20px; box-shadow: 0 6px 18px rgba(15,23,42,.08);
+  }
+  .lab-card h2 { font-size: 13px; font-weight: 800; color: #0f172a; margin: 0 0 14px; }
+  .lab-stage { min-height: 110px; display: flex; align-items: center; }
+
+  .say-row {
+    display: flex; align-items: flex-end; gap: 8px; width: 100%; max-width: 380px; margin: 0 auto;
+  }
+  .say-bubble {
+    position: relative; flex: 1; min-width: 0;
+    background: #fff; border: 1px solid #cbd5e1; padding: 11px 13px;
+  }
+  .say-bubble.tail-r::after {
+    content: ""; position: absolute; right: -8px; width: 0; height: 0;
+    border-top: 7px solid transparent; border-bottom: 7px solid transparent;
+    border-left: 9px solid #fff;
+  }
+  .say-text {
+    margin: 0; font-size: 16px; line-height: 1.45; letter-spacing: -.01em; color: #475569;
+  }
+  .say-text b { font-weight: 700; color: #1e293b; }
+  .say-dario {
+    flex: none; width: 66px; height: 66px; border-radius: 50%; object-fit: cover;
+    object-position: center 18%; border: 2px solid #fff; box-shadow: 0 2px 10px rgba(15,23,42,.12);
+  }
+
+  /* 1 — base: angoli morbidi */
+  .wb-v1 .say-bubble { border-radius: 14px; box-shadow: none; }
+  .wb-v1 .say-bubble.tail-r::after {
+    bottom: 22px; filter: drop-shadow(1px 0 0 #cbd5e1);
+  }
+
+  /* 2 — bordo scuro, coda corta */
+  .wb-v2 .say-bubble { border-radius: 14px; border-color: #475569; border-width: 1.5px; }
+  .wb-v2 .say-bubble.tail-r::after {
+    bottom: 24px; right: -5px;
+    border-top-width: 5px; border-bottom-width: 5px; border-left-width: 6px;
+    filter: drop-shadow(1px 0 0 #475569);
+  }
+
+  /* 3 — ombra leggera */
+  .wb-v3 .say-bubble {
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15,23,42,.12), 0 1px 3px rgba(15,23,42,.08);
+  }
+  .wb-v3 .say-bubble.tail-r::after {
+    bottom: 22px; filter: drop-shadow(1px 0 0 #cbd5e1);
+  }
+
+  /* 4 — angoli quasi retti */
+  .wb-v4 .say-bubble { border-radius: 5px; }
+  .wb-v4 .say-bubble.tail-r::after {
+    bottom: 22px; filter: drop-shadow(1px 0 0 #cbd5e1);
+  }
+
+  /* 5 — testo più grande, più compatto */
+  .wb-v5 .say-row { max-width: 340px; gap: 6px; }
+  .wb-v5 .say-bubble { border-radius: 14px; padding: 8px 11px; }
+  .wb-v5 .say-text { font-size: 18px; line-height: 1.38; }
+  .wb-v5 .say-dario { width: 60px; height: 60px; }
+  .wb-v5 .say-bubble.tail-r::after {
+    bottom: 20px; filter: drop-shadow(1px 0 0 #cbd5e1);
+  }
+</style>
+</head>
+<body class="antialiased px-4 py-10 sm:px-8 max-w-5xl mx-auto">
+  <header class="mb-8">
+    <p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500 mb-2">Solo prova · non in menu</p>
+    <h1 class="text-2xl font-extrabold text-slate-900">Fumetto bianco — 5 affinamenti</h1>
+    <p class="mt-2 text-sm text-slate-600">Variante 1 di base (bianco, Dario a destra, coda). Sfondo freccia.</p>
+  </header>
+
+  <div class="lab-grid">
+    <article class="lab-card">
+      <h2>1. Angoli morbidi</h2>
+      <div class="lab-stage wb-v1">
+        <div class="say-row">
+          <div class="say-bubble tail-r"><p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p></div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+    <article class="lab-card">
+      <h2>2. Bordo scuro, coda corta</h2>
+      <div class="lab-stage wb-v2">
+        <div class="say-row">
+          <div class="say-bubble tail-r"><p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p></div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+    <article class="lab-card">
+      <h2>3. Ombra leggera</h2>
+      <div class="lab-stage wb-v3">
+        <div class="say-row">
+          <div class="say-bubble tail-r"><p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p></div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+    <article class="lab-card">
+      <h2>4. Angoli quasi retti</h2>
+      <div class="lab-stage wb-v4">
+        <div class="say-row">
+          <div class="say-bubble tail-r"><p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p></div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+    <article class="lab-card">
+      <h2>5. Testo grande, compatto</h2>
+      <div class="lab-stage wb-v5">
+        <div class="say-row">
+          <div class="say-bubble tail-r"><p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p></div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

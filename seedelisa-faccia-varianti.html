@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeedElisa — due animazioni del volto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fbfbf6;
+    --ink: #0f172a;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--cream) 0%, #fff 38%, #f8fafc 100%);
+    color: var(--ink);
+    font-family: Outfit, "Segoe UI", sans-serif;
+  }
+  .top {
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    height: 64px;
+    display: flex;
+    align-items: center;
+  }
+  .top-in, .wrap { width: min(1100px, calc(100% - 36px)); margin: 0 auto; }
+  .brand { display: flex; align-items: baseline; gap: 8px; text-decoration: none; color: inherit; }
+  .brand b {
+    font-family: "Plus Jakarta Sans", Outfit, sans-serif;
+    font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: #334155;
+  }
+  .brand i {
+    font-style: normal; font-size: 12px; font-weight: 700; color: #0e7490;
+    background: #ecfeff; border: 2px solid #67e8f9; border-radius: 10px; padding: 3px 6px;
+  }
+  .wrap { padding: 22px 0 40px; }
+  .kicker { margin: 0 0 6px; font-size: 15px; line-height: 1.45; color: #475569; }
+  .kicker strong { color: var(--ink); }
+  .slogan {
+    margin: 0 0 16px;
+    font-family: "Plus Jakarta Sans", Outfit, sans-serif;
+    font-weight: 800; letter-spacing: -0.03em;
+    font-size: 22px; line-height: 1.2; color: #020617;
+  }
+  .grad-a {
+    background: linear-gradient(90deg, #d97706, #f59e0b);
+    -webkit-background-clip: text; background-clip: text; color: transparent; font-style: normal;
+  }
+  .grad-b {
+    background: linear-gradient(90deg, #da7806 0%, #c59b2d 18%, #6f9769 55%, #0c91af 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; font-style: normal;
+  }
+  .dot { color: #0c91af; }
+  .faces {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .card {
+    display: flex; flex-direction: column; gap: 8px;
+    padding: 0; border: 0; background: transparent; text-align: left;
+    cursor: pointer; border-radius: 22px; color: inherit; font: inherit;
+  }
+  .card:focus-visible { outline: 3px solid #0f172a; outline-offset: 3px; }
+  .stage {
+    display: block; position: relative; border-radius: 20px;
+    border: 2px solid #e7e5e4;
+    background: linear-gradient(180deg, #fffdf8, #fbfbf6);
+    overflow: hidden;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .card:hover .stage { border-color: #fcd34d; }
+  .card.is-on .stage {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, .28);
+  }
+  .crop { display: block; position: relative; aspect-ratio: 410 / 490; overflow: hidden; }
+  .rig {
+    display: block; width: 90%; margin: 0 auto; aspect-ratio: 410 / 700;
+    position: relative; transform-origin: 50% 34%;
+  }
+  .rig img, .rig svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .rig svg { z-index: 2; }
+  .meta { padding: 0 2px; }
+  .name {
+    display: flex; align-items: center; gap: 8px;
+    font-family: "Plus Jakarta Sans", Outfit, sans-serif;
+    font-weight: 800; font-size: 16px; letter-spacing: -0.02em;
+  }
+  .num {
+    width: 22px; height: 22px; border-radius: 7px; color: #fff;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 12px;
+  }
+  .pick { display: none; margin-left: auto; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: #b45309; }
+  .card.is-on .pick { display: inline; }
+  .meta p { margin: 3px 0 0; font-size: 13px; line-height: 1.35; color: var(--muted); }
+  @media (max-width: 720px) { .faces { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .rig { transform: none !important; } }
+</style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-in"><a class="brand" href="index.html"><b>SeedElio</b><i>.AI</i></a></div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">Due animazioni del volto, <strong>nel punto della home in cui compare SeedElisa</strong>. Cuffie e microfono, girano da sole. Clicca quella che preferisci.</p>
+    <p class="slogan">Il tuo Fotovoltaico perfetto, <em class="grad-a">prima di spendere</em> <em class="grad-b">un solo euro</em><span class="dot">.</span></p>
+    <div class="faces" id="faces"></div>
+  </main>
+<script>
+(function () {
+  var IMG = "img/seedelisa-faccia-senza-badge.png";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var SHOT = /(?:\?|&)shot=1(?:&|$)/.test(location.search);
+  var SHOT_T = 1.55;
+  var EYES = [
+    { cx: 121, cy: 238, rx: 31, ry: 21, iris: 11.2 },
+    { cx: 237, cy: 222, rx: 33, ry: 20.5, iris: 11.4 }
+  ];
+  var MOUTH = { x: 190, y: 318, rot: -8 };
+
+  var PROFILES = [
+    {
+      id: "voce", n: "1", color: "#0e7490", name: "Voce",
+      line: "La bocca cambia sillaba di continuo, il capo annuisce e gli occhi restano su chi ascolta.",
+      rest: { open: 0.12, wide: 0.42, round: 0.04 },
+      seed: 19, talk: 0.86, gazePx: 9, headPx: 14, turn: 0.35, tilt: 1.6,
+      headHold: 0.7, headSpan: 0.6,
+      vowels: [
+        { open: 0.92, wide: 0.42, round: 0.04 },
+        { open: 0.55, wide: 0.96, round: 0 },
+        { open: 0.78, wide: 0.2, round: 0.92 },
+        { open: 0.34, wide: 0.7, round: 0.08 }
+      ],
+      gazeIntro: [
+        { t: 0, x: 0.05, y: 0.02 },
+        { t: 0.7, x: 0.28, y: -0.06 },
+        { t: 1.7, x: -0.08, y: 0.04 },
+        { t: 2.6, x: 0.12, y: 0 }
+      ],
+      mouthIntro: [
+        { t: 0, open: 0.12, wide: 0.4, round: 0.04 },
+        { t: 0.36, open: 0.06, wide: 0.22, round: 0.1 },
+        { t: 0.5, open: 0.9, wide: 0.38, round: 0.05 },
+        { t: 0.68, open: 0.22, wide: 0.9, round: 0 },
+        { t: 0.86, open: 0.7, wide: 0.18, round: 0.9 },
+        { t: 1.05, open: 0.08, wide: 0.3, round: 0.12 },
+        { t: 1.22, open: 1, wide: 0.72, round: 0.02 },
+        { t: 1.78, open: 0.9, wide: 0.58, round: 0.04 },
+        { t: 2.05, open: 0.14, wide: 0.42, round: 0.04 }
+      ],
+      headIntro: [
+        { t: 0, x: 0, y: 0, r: 0 },
+        { t: 0.55, x: 0.12, y: 0.15, r: -0.6 },
+        { t: 1.25, x: 0.08, y: 1.05, r: 0.8 },
+        { t: 1.75, x: 0.12, y: 0.35, r: -0.3 },
+        { t: 2.5, x: 0, y: 0, r: 0 }
+      ]
+    },
+    {
+      id: "ascolto", n: "2", color: "#b45309", name: "Ascolto",
+      line: "La testa si inclina e gira, lo sguardo si sposta, e la bocca passa da un sorriso largo a un «oh» aperto.",
+      rest: { open: 0.22, wide: 0.78, round: 0.02 },
+      seed: 73, talk: 0.62, gazePx: 14, headPx: 18, turn: 0.95, tilt: 5.2,
+      headHold: 0.9, headSpan: 0.8,
+      vowels: [
+        { open: 0.4, wide: 1, round: 0 },
+        { open: 0.88, wide: 0.12, round: 1 },
+        { open: 0.7, wide: 0.85, round: 0.05 },
+        { open: 0.5, wide: 0.25, round: 0.8 }
+      ],
+      gazeIntro: [
+        { t: 0, x: 0.1, y: 0.05 },
+        { t: 0.8, x: -0.72, y: -0.55 },
+        { t: 1.85, x: -0.35, y: -0.9 },
+        { t: 2.9, x: 0.45, y: 0.1 },
+        { t: 3.8, x: 0.05, y: 0 }
+      ],
+      mouthIntro: [
+        { t: 0, open: 0.2, wide: 0.72, round: 0.02 },
+        { t: 0.55, open: 0.32, wide: 0.98, round: 0 },
+        { t: 1.05, open: 0.18, wide: 0.4, round: 0.15 },
+        { t: 1.28, open: 1, wide: 0.08, round: 1 },
+        { t: 1.9, open: 0.92, wide: 0.1, round: 0.96 },
+        { t: 2.3, open: 0.28, wide: 0.86, round: 0.02 }
+      ],
+      headIntro: [
+        { t: 0, x: 0, y: 0, r: 0 },
+        { t: 0.7, x: -0.7, y: -0.15, r: -4.2 },
+        { t: 1.7, x: -1, y: -0.28, r: -6.4 },
+        { t: 2.7, x: 0.45, y: 0.25, r: 2.4 },
+        { t: 3.6, x: 0, y: 0, r: 0 }
+      ]
+    }
+  ];
+
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = (t + Math.imul(t ^ t >>> 7, 61 | t)) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  function svgFor(id) {
+    function eye(e, i) {
+      var n = id + "e" + i;
+      return '<clipPath id="' + n + '"><ellipse cx="' + e.cx + '" cy="' + e.cy + '" rx="' + e.rx + '" ry="' + e.ry + '"/></clipPath>';
+    }
+    function eyeball(e, i) {
+      var n = id + "e" + i;
+      return ''
+        + '<g class="eye' + i + '" clip-path="url(#' + n + ')">'
+        + '<ellipse cx="' + e.cx + '" cy="' + e.cy + '" rx="' + e.rx + '" ry="' + e.ry + '" fill="url(#' + id + 'sc)"/>'
+        + '<g class="iris">'
+        + '<circle cx="' + e.cx + '" cy="' + e.cy + '" r="' + e.iris + '" fill="url(#' + id + 'ir)"/>'
+        + '<circle cx="' + e.cx + '" cy="' + e.cy + '" r="' + (e.iris - 0.35) + '" fill="none" stroke="#3a2416" stroke-width="1.1"/>'
+        + '<circle cx="' + e.cx + '" cy="' + e.cy + '" r="5.1" fill="#140c08"/>'
+        + '<circle cx="' + (e.cx + 3.2) + '" cy="' + (e.cy - 3.4) + '" r="1.9" fill="#fff"/>'
+        + '<circle cx="' + (e.cx - 2.4) + '" cy="' + (e.cy + 2.6) + '" r="0.85" fill="#fff" opacity="0.4"/>'
+        + '</g>'
+        + '<circle class="lid" cx="' + e.cx + '" r="' + (e.rx * 1.5) + '" fill="#fdc496"/>'
+        + '<circle class="low" cx="' + e.cx + '" r="' + (e.rx * 1.25) + '" fill="#f3b48a"/>'
+        + '</g>';
+    }
+    var band = "M 78 214 C 58 150, 86 52, 150 30 C 214 12, 292 34, 332 128 C 348 176, 342 200, 334 216";
+    return ''
+      + '<svg viewBox="0 0 410 700" aria-hidden="true">'
+      + '<defs>'
+      + '<radialGradient id="' + id + 'ir" cx="40%" cy="36%" r="68%">'
+      + '<stop offset="0" stop-color="#b07a48"/><stop offset="55%" stop-color="#7a4a28"/><stop offset="100%" stop-color="#3d2414"/>'
+      + '</radialGradient>'
+      + '<radialGradient id="' + id + 'sc" cx="50%" cy="42%" r="70%">'
+      + '<stop offset="0" stop-color="#fff7f1"/><stop offset="75%" stop-color="#f4e2d2"/><stop offset="100%" stop-color="#e4c6b0"/>'
+      + '</radialGradient>'
+      + '<linearGradient id="' + id + 'skin" x1="0" y1="0" x2="0" y2="1">'
+      + '<stop offset="0" stop-color="#fec89c"/><stop offset="1" stop-color="#f6b184"/>'
+      + '</linearGradient>'
+      + '<linearGradient id="' + id + 'up" x1="0" y1="0" x2="0" y2="1">'
+      + '<stop offset="0" stop-color="#f3a88a"/><stop offset="1" stop-color="#e07a62"/>'
+      + '</linearGradient>'
+      + '<linearGradient id="' + id + 'lo" x1="0" y1="0" x2="0" y2="1">'
+      + '<stop offset="0" stop-color="#f6b09a"/><stop offset="50%" stop-color="#e88770"/><stop offset="100%" stop-color="#d46a58"/>'
+      + '</linearGradient>'
+      + '<filter id="' + id + 'soft" x="-20%" y="-30%" width="140%" height="160%"><feGaussianBlur stdDeviation="0.85"/></filter>'
+      + '<clipPath id="' + id + 'hole"><path class="holeclip"/></clipPath>'
+      + eye(EYES[0], 0) + eye(EYES[1], 1)
+      + '</defs>'
+      + eyeball(EYES[0], 0) + eyeball(EYES[1], 1)
+      + '<g class="cover" transform="translate(' + MOUTH.x + ' ' + MOUTH.y + ') rotate(' + MOUTH.rot + ')">'
+      + '<ellipse cx="2" cy="0" rx="86" ry="30" fill="#f6b78a" filter="url(#' + id + 'soft)"/>'
+      + '<ellipse cx="2" cy="-2" rx="76" ry="26" fill="url(#' + id + 'skin)"/>'
+      + '</g>'
+      + '<g class="mouth" transform="translate(' + MOUTH.x + ' ' + MOUTH.y + ') rotate(' + MOUTH.rot + ')">'
+      + '<path class="upper" fill="url(#' + id + 'up)"/>'
+      + '<path class="hole" fill="#6a221c"/>'
+      + '<g clip-path="url(#' + id + 'hole)">'
+      + '<path class="teeth" fill="#fff4ea"/>'
+      + '<g class="gaps" stroke="#e3cfc0" stroke-width="0.7"></g>'
+      + '<ellipse class="tongue" fill="#e07a68"/>'
+      + '</g>'
+      + '<path class="lower" fill="url(#' + id + 'lo)"/>'
+      + '<path class="line" fill="none" stroke="#b85a48" stroke-width="1.15" stroke-linecap="round"/>'
+      + '</g>'
+      + '<g class="headset">'
+      + '<path d="' + band + '" fill="none" stroke="#141414" stroke-width="18" stroke-linecap="round"/>'
+      + '<path d="' + band + '" fill="none" stroke="#3a3a3a" stroke-width="5" stroke-linecap="round"/>'
+      + '<g transform="translate(68,252)">'
+      + '<ellipse rx="30" ry="36" fill="#101010"/>'
+      + '<ellipse rx="20" ry="25" fill="#2a2a2a"/>'
+      + '<ellipse rx="11" ry="15" fill="#161616"/>'
+      + '</g>'
+      + '<g transform="translate(326,246)">'
+      + '<ellipse rx="34" ry="40" fill="#101010"/>'
+      + '<ellipse rx="23" ry="28" fill="#2c2c2c"/>'
+      + '<ellipse rx="13" ry="16" fill="#161616"/>'
+      + '</g>'
+      + '<path d="M 308 272 C 348 300, 300 368, 250 352" fill="none" stroke="#161616" stroke-width="5.5" stroke-linecap="round"/>'
+      + '<g transform="translate(248,354) rotate(-18)">'
+      + '<rect x="-9" y="-12" width="18" height="24" rx="7" fill="#111"/>'
+      + '<ellipse cx="0" cy="1" rx="6.5" ry="8" fill="#3a3a3a"/>'
+      + '<ellipse cx="-1.5" cy="-1" rx="2" ry="2.4" fill="#6a6a6a"/>'
+      + '</g>'
+      + '</g>'
+      + '</svg>';
+  }
+
+  function mouthGeom(open, wide, round) {
+    var smile = wide * (1 - round);
+    var hw = 34 + smile * 46 + round * 6;
+    var lift = 5 + smile * 18;
+    var gap = 4 + open * (34 + round * 12);
+    var yL = -lift * 0.2 * (1 - round);
+    var yR = -lift * 0.62 * (1 - round) - round * 2;
+    var top = -gap * (0.42 + round * 0.2) - 1.5;
+    var bot = gap * (0.82 + round * 0.08);
+    var xL = -hw, xR = hw;
+    var bow = hw * (0.2 + round * 0.45);
+    var hole = "M " + (xL + 1) + " " + yL
+      + " C " + (-bow) + " " + (top - 3) + " " + bow + " " + (top - 3) + " " + (xR - 1) + " " + yR
+      + " C " + (xR * 0.72) + " " + (bot * 0.3) + " " + (bow * 0.6) + " " + (bot + 2) + " 0 " + bot
+      + " C " + (-bow * 0.6) + " " + (bot + 2) + " " + (xL * 0.72) + " " + (bot * 0.3) + " " + (xL + 1) + " " + yL + " Z";
+    var upper = "M " + xL + " " + (yL - 1)
+      + " C " + (-bow) + " " + (top - 10) + " " + bow + " " + (top - 10) + " " + xR + " " + (yR - 1)
+      + " C " + (bow * 0.45) + " " + (top + 2) + " " + (-bow * 0.45) + " " + (top + 2) + " " + xL + " " + (yL - 1) + " Z";
+    var lower = "M " + (xL + 1) + " " + (yL + 1)
+      + " C " + (-bow * 0.3) + " " + (bot * 0.22) + " " + (bow * 0.3) + " " + (bot * 0.18) + " " + (xR - 1) + " " + (yR + 1)
+      + " C " + bow + " " + (bot + 8) + " " + (-bow) + " " + (bot + 9) + " " + (xL + 1) + " " + (yL + 1) + " Z";
+    var line = "M " + (xL + 5) + " " + yL + " Q 0 " + (top + 1) + " " + (xR - 5) + " " + yR;
+    var toothH = Math.max(2.2, gap) * (0.42 - round * 0.18);
+    var inset = hw * (0.16 + round * 0.12);
+    var teeth = "M " + (xL + inset) + " " + (top + 0.5)
+      + " Q 0 " + (top - 1) + " " + (xR - inset) + " " + (top + 1.2)
+      + " L " + (xR - inset) + " " + (top + toothH)
+      + " Q 0 " + (top + toothH + 2) + " " + (xL + inset) + " " + (top + toothH) + " Z";
+    return { hole: hole, upper: upper, lower: lower, line: line, teeth: teeth, hw: hw, top: top, bot: bot, gap: gap };
+  }
+
+  function sample(t, keys) {
+    var dur = keys[keys.length - 1].t;
+    var tt = ((t % dur) + dur) % dur;
+    var i = 0;
+    while (i < keys.length - 2 && keys[i + 1].t <= tt) i++;
+    var a = keys[i], b = keys[i + 1];
+    var u = (tt - a.t) / Math.max(0.0001, b.t - a.t);
+    var s = u * u * (3 - 2 * u);
+    var o = {};
+    for (var k in a) {
+      if (k === "t") continue;
+      o[k] = a[k] + (b[k] - a[k]) * s;
+    }
+    return o;
+  }
+
+  function gazeAt(t, keys) {
+    var dur = keys[keys.length - 1].t;
+    var tt = ((t % dur) + dur) % dur;
+    var i = 0;
+    while (i < keys.length - 2 && keys[i + 1].t <= tt) i++;
+    var a = keys[i], b = keys[i + 1];
+    var start = b.t - 0.12;
+    if (tt <= start || b.t <= a.t) return { x: a.x, y: a.y };
+    var u = Math.min(1, (tt - start) / 0.12);
+    var s = 1 - Math.pow(1 - u, 3);
+    return { x: a.x + (b.x - a.x) * s, y: a.y + (b.y - a.y) * s };
+  }
+
+  function blinkAmt(t, ev, eye) {
+    var best = 0;
+    var tt = ((t % 28) + 28) % 28;
+    for (var i = 0; i < ev.length; i++) {
+      var e = ev[i];
+      if (e.single && e.lead !== eye) continue;
+      var start = e.t + (e.lead === eye ? 0 : e.lag);
+      var u = (tt - start) / e.dur;
+      if (u < 0 || u > 1) {
+        var u2 = ((tt + 28) - start) / e.dur;
+        if (u2 < 0 || u2 > 1) continue;
+        u = u2;
+      }
+      var k = u < 0.32 ? Math.sin((u / 0.32) * Math.PI / 2) : Math.cos(((u - 0.32) / 0.68) * Math.PI / 2);
+      if (k > best) best = k;
+    }
+    return best;
+  }
+
+  function buildMouth(p, rnd) {
+    var keys = p.mouthIntro.map(function (k) { return { t: k.t, open: k.open, wide: k.wide, round: k.round }; });
+    var t = keys[keys.length - 1].t;
+    var rest = p.rest;
+    while (t < 27.2) {
+      if (rnd() < p.talk) {
+        var syl = 3 + Math.floor(rnd() * 5);
+        for (var s = 0; s < syl; s++) {
+          keys.push({ t: t, open: 0.05 + rnd() * 0.08, wide: 0.16 + rnd() * 0.2, round: rnd() * 0.15 });
+          t += 0.05 + rnd() * 0.035;
+          var v = p.vowels[Math.floor(rnd() * p.vowels.length)];
+          var j = 0.82 + rnd() * 0.28;
+          keys.push({
+            t: t,
+            open: Math.min(1, v.open * j),
+            wide: Math.min(1, v.wide * (0.88 + rnd() * 0.16)),
+            round: Math.min(1, v.round)
+          });
+          t += 0.09 + rnd() * 0.08;
+        }
+        keys.push({ t: t, open: rest.open, wide: rest.wide, round: rest.round });
+        t += 0.22 + rnd() * 0.55;
+      } else {
+        keys.push({ t: t, open: rest.open, wide: rest.wide * (0.85 + rnd() * 0.2), round: rest.round });
+        t += 0.45 + rnd() * 0.5;
+      }
+    }
+    keys.push({ t: 28, open: rest.open, wide: rest.wide, round: rest.round });
+    return keys;
+  }
+
+  function buildGaze(p, rnd) {
+    var keys = p.gazeIntro.map(function (k) { return { t: k.t, x: k.x, y: k.y }; });
+    var t = keys[keys.length - 1].t;
+    while (t < 27.2) {
+      var far = rnd() < (p.id === "ascolto" ? 0.72 : 0.4);
+      keys.push({
+        t: t,
+        x: (rnd() * 2 - 1) * (far ? 0.95 : 0.35),
+        y: (rnd() * 2 - 1) * (far ? 0.8 : 0.28) - (p.id === "ascolto" ? 0.12 : 0)
+      });
+      t += (p.id === "voce" ? 0.55 : 0.38) + rnd() * (p.id === "voce" ? 0.7 : 0.45);
+    }
+    keys.push({ t: 28, x: 0, y: 0 });
+    return keys;
+  }
+
+  function buildBlinks(p, rnd) {
+    var ev = [];
+    var t = 2.15;
+    ev.push({ t: 0.38, dur: 0.16, lead: 0, lag: 0.045, single: false });
+    while (t < 27.4) {
+      var single = rnd() < 0.18;
+      var lead = rnd() < 0.5 ? 0 : 1;
+      ev.push({
+        t: t,
+        dur: 0.11 + rnd() * 0.06,
+        lead: lead,
+        lag: 0.028 + rnd() * 0.05,
+        single: single
+      });
+      if (!single && rnd() < (p.id === "ascolto" ? 0.28 : 0.14)) {
+        ev.push({ t: t + 0.2, dur: 0.1, lead: lead, lag: 0.03, single: false });
+      }
+      t += (p.id === "voce" ? 2.4 : 1.7) + rnd() * 1.8;
+    }
+    return ev;
+  }
+
+  function buildHead(p, rnd) {
+    var keys = p.headIntro.map(function (k) { return { t: k.t, x: k.x, y: k.y, r: k.r }; });
+    var t = keys[keys.length - 1].t;
+    while (t < 27.2) {
+      keys.push({
+        t: t,
+        x: (rnd() * 2 - 1) * p.turn,
+        y: (rnd() * 1.4 - 0.2) * (p.id === "voce" ? 0.85 : 0.45),
+        r: (rnd() * 2 - 1) * p.tilt
+      });
+      t += p.headHold + rnd() * p.headSpan;
+    }
+    keys.push({ t: 28, x: 0, y: 0, r: 0 });
+    return keys;
+  }
+
+  function clampEye(dx, dy, eye) {
+    var ax = Math.max(2, eye.rx - eye.iris - 1.2);
+    var ay = Math.max(1.6, eye.ry - eye.iris - 1.1);
+    var n = Math.hypot(dx / ax, dy / ay);
+    if (n > 1) { dx /= n; dy /= n; }
+    return [dx, dy];
+  }
+
+  function applyMouth(face, m) {
+    var g = mouthGeom(m.open, m.wide, m.round);
+    face.upper.setAttribute("d", g.upper);
+    face.hole.setAttribute("d", g.hole);
+    face.holeclip.setAttribute("d", g.hole);
+    face.lower.setAttribute("d", g.lower);
+    face.line.setAttribute("d", g.line);
+    face.teeth.setAttribute("d", g.teeth);
+    face.teeth.style.opacity = m.open > 0.22 && m.round < 0.75 ? "1" : "0";
+    face.tongue.setAttribute("cx", "1");
+    face.tongue.setAttribute("cy", String(g.top + g.gap * 0.72));
+    face.tongue.setAttribute("rx", String(Math.max(6, g.hw * 0.34)));
+    face.tongue.setAttribute("ry", String(Math.max(2, g.gap * 0.22)));
+    face.tongue.style.opacity = m.open > 0.45 ? "1" : "0";
+    var gaps = "";
+    if (m.open > 0.28 && m.round < 0.7) {
+      var n = 4;
+      for (var i = 0; i < n; i++) {
+        var x = (i - (n - 1) / 2) * g.hw * 0.26;
+        gaps += '<line x1="' + x + '" y1="' + (g.top + 1) + '" x2="' + x + '" y2="' + (g.top + g.gap * 0.4) + '"/>';
+      }
+    }
+    if (face.gapsHTML !== gaps) { face.gaps.innerHTML = gaps; face.gapsHTML = gaps; }
+    var jaw = m.open * 8;
+    face.mouth.setAttribute("transform", "translate(" + MOUTH.x + " " + (MOUTH.y + jaw) + ") rotate(" + MOUTH.rot + ")");
+  }
+
+  function applyLids(face, closes, squint) {
+    for (var i = 0; i < 2; i++) {
+      var e = EYES[i];
+      var amount = Math.min(1, closes[i] + squint * (1 - closes[i]));
+      var R = e.rx * 1.5;
+      var bottom = (e.cy - e.ry) + e.ry * 2 * (0.03 + amount * 0.97);
+      face.lid[i].setAttribute("cy", String(bottom - R));
+      var R2 = e.rx * 1.25;
+      var topEdge = (e.cy + e.ry) - squint * e.ry * 0.7;
+      face.low[i].setAttribute("cy", String(topEdge + R2));
+    }
+  }
+
+  function mount(card, p) {
+    var rnd = mulberry32(p.seed * 97);
+    var rig = card.querySelector(".rig");
+    rig.innerHTML = '<img alt="" src="' + IMG + '" width="410" height="700">' + svgFor(p.id);
+    var svg = rig.querySelector("svg");
+    var face = {
+      rig: rig,
+      mouth: svg.querySelector(".mouth"),
+      iris: [svg.querySelector(".eye0 .iris"), svg.querySelector(".eye1 .iris")],
+      lid: [svg.querySelector(".eye0 .lid"), svg.querySelector(".eye1 .lid")],
+      low: [svg.querySelector(".eye0 .low"), svg.querySelector(".eye1 .low")],
+      upper: svg.querySelector(".upper"),
+      hole: svg.querySelector(".hole"),
+      holeclip: svg.querySelector(".holeclip"),
+      lower: svg.querySelector(".lower"),
+      line: svg.querySelector(".line"),
+      teeth: svg.querySelector(".teeth"),
+      tongue: svg.querySelector(".tongue"),
+      gaps: svg.querySelector(".gaps"),
+      gapsHTML: ""
+    };
+    var mouthKeys = buildMouth(p, rnd);
+    var gazeKeys = buildGaze(p, rnd);
+    var blinks = buildBlinks(p, rnd);
+    var headKeys = buildHead(p, rnd);
+    return function (t) {
+      var m = sample(t, mouthKeys);
+      var g = gazeAt(t, gazeKeys);
+      g.x += Math.sin(t * 1.3 + p.seed) * 0.03;
+      g.y += Math.sin(t * 0.85 + p.seed) * 0.025;
+      var d0 = clampEye(g.x * p.gazePx, g.y * p.gazePx * 0.7, EYES[0]);
+      var d1 = clampEye(g.x * p.gazePx * 0.92, g.y * p.gazePx * 0.7, EYES[1]);
+      face.iris[0].setAttribute("transform", "translate(" + d0[0].toFixed(2) + " " + d0[1].toFixed(2) + ")");
+      face.iris[1].setAttribute("transform", "translate(" + d1[0].toFixed(2) + " " + d1[1].toFixed(2) + ")");
+      var closes = [blinkAmt(t, blinks, 0), blinkAmt(t, blinks, 1)];
+      var smile = Math.max(0, m.wide - 0.6) * (1 - m.round);
+      applyLids(face, closes, smile * 0.22);
+      applyMouth(face, m);
+      if (!reduce) {
+        var h = sample(t, headKeys);
+        var driftX = Math.sin(t * 0.37 + p.seed) * 1.4;
+        var driftY = Math.sin(t * 0.51 + p.seed * 1.3) * 1.1;
+        var hx = h.x * p.headPx + driftX;
+        var hy = h.y * p.headPx * 0.75 + driftY;
+        var hr = h.r + Math.sin(t * 0.23 + p.seed) * 0.35;
+        face.rig.style.transform = "translate(" + hx.toFixed(2) + "px," + hy.toFixed(2) + "px) rotate(" + hr.toFixed(2) + "deg)";
+      }
+    };
+  }
+
+  var root = document.getElementById("faces");
+  PROFILES.forEach(function (p) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "card";
+    b.setAttribute("data-id", p.id);
+    b.setAttribute("aria-pressed", "false");
+    b.innerHTML = ''
+      + '<span class="stage"><span class="crop"><span class="rig"></span></span></span>'
+      + '<span class="meta"><span class="name"><span class="num" style="background:' + p.color + '">' + p.n + '</span>'
+      + p.name + '<span class="pick">Scelta</span></span><p>' + p.line + '</p></span>';
+    root.appendChild(b);
+  });
+
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
+  var frames = cards.map(function (c, i) { return mount(c, PROFILES[i]); });
+
+  function select(id) {
+    cards.forEach(function (c) {
+      var on = c.getAttribute("data-id") === id;
+      c.classList.toggle("is-on", on);
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    try { sessionStorage.setItem("seedelisa-faccia-2", id); } catch (e) {}
+  }
+  cards.forEach(function (c) {
+    c.addEventListener("click", function () { select(c.getAttribute("data-id")); });
+  });
+
+  if (reduce) {
+    frames.forEach(function (fn) { fn(0.55); });
+    return;
+  }
+  var t0 = performance.now();
+  function loop(now) {
+    var t = (now - t0) / 1000;
+    if (SHOT && t >= SHOT_T) {
+      frames.forEach(function (fn) { fn(SHOT_T); });
+      document.documentElement.setAttribute("data-ready", "1");
+      return;
+    }
+    frames.forEach(function (fn) { fn(t); });
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

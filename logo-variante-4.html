@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo variante 4, dondolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #fff;
+    color: #0f172a;
+    font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+  }
+  h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    margin: 0 0 36px;
+    color: #475569;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .lockup {
+    position: relative;
+    width: 226px;
+    height: 48px;
+    overflow: hidden;
+  }
+  .line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 226px;
+    height: 1px;
+    background: #64748b;
+    transform-origin: left center;
+    transform: scaleX(0);
+    animation: lineGrow 10s cubic-bezier(.4, 0, .2, 1) infinite;
+  }
+  .mark {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    z-index: 1;
+    display: block;
+    overflow: hidden;
+  }
+  .word {
+    position: absolute;
+    left: 110px;
+    top: 7px;
+    z-index: 1;
+    font-size: 30px;
+    font-weight: 600;
+    color: #334155;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .seed {
+    transform-box: view-box;
+    transform-origin: 50% 0;
+  }
+  .s1 { transform-origin: 33.17% 0; animation: rock 7.2s ease-in-out infinite; }
+  .s2 { transform-origin: 71.14% 0; animation: rock 7.2s ease-in-out infinite reverse; }
+  .s3 { transform-origin: 56.39% 0; animation: rock 7.2s ease-in-out infinite .8s; }
+  @keyframes lineGrow {
+    0% { transform: scaleX(0); }
+    36% { transform: scaleX(1); }
+    74% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+  }
+  @keyframes rock {
+    0%, 100% { transform: rotate(-2.5deg); }
+    50% { transform: rotate(2.5deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .line { transform: none; animation: none; }
+    .seed { animation: none !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Variante 4, dondolio</h1>
+  <p class="lead">Anteprima unica. I semi restano appesi alla lineetta. La lineetta cresce da sinistra a destra in 10 secondi. I semi dondolano in 7,2 secondi.</p>
+  <div class="lockup" aria-hidden="true">
+    <span class="line"></span>
+    <svg class="mark" viewBox="69 70 101 45" width="101" height="45">
+          <path class="seed s1" d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/>
+          <path class="seed s2" d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/>
+          <path class="seed s3" d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/>
+        </svg>
+    <span class="word">SeedElio</span>
+  </div>
+</main>
+</body>
+</html>

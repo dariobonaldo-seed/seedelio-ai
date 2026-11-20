@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Libretto v020 · SeedElisa | SeedElio.ai</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+@page { size: A4 portrait; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { margin: 0; padding: 0; background: #d5ddd8; }
+body { font-family: Outfit, system-ui, sans-serif; }
+
+.alt-sheet {
+  width: 210mm; height: 297mm; margin: 14px auto; overflow: hidden;
+  position: relative; background: #fff; color: #1c2b22;
+  page-break-after: always; break-after: page;
+  box-shadow: 0 12px 36px rgba(20,30,20,.16);
+  scroll-margin-top: 8px;
+}
+.alt-sheet:last-child { page-break-after: auto; break-after: auto; margin-bottom: 20px; }
+.inner {
+  height: 100%; display: flex; flex-direction: column;
+  padding: 8mm 9mm 7mm;
+  background: var(--paper); color: var(--ink);
+  font-family: Outfit, "Plus Jakarta Sans", system-ui, sans-serif;
+}
+.inner-head, .inner-foot {
+  display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+}
+.inner-head { padding-bottom: 2.5mm; border-bottom: 1.5px solid var(--accent); }
+.inner-head a { color: inherit; text-decoration: none; }
+.inner-band { height: 2.2mm; margin: 3mm 0 4mm; background: var(--accent); border-radius: 1px; flex-shrink: 0; }
+.inner h2 {
+  margin: 0 0 1.5mm; font-family: var(--display), Georgia, serif;
+  font-size: 26px; font-weight: 700; letter-spacing: -.02em; line-height: 1.05; color: var(--ink);
+}
+.kicker { margin: 0 0 1mm; font-size: 11px; color: var(--accent); font-weight: 700; }
+.lead { margin: 0 0 4mm; font-size: 12px; line-height: 1.4; max-width: 62ch; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm 4mm; }
+.field { background: var(--card); border: 1px solid var(--line); border-radius: 2mm; padding: 2.4mm 3mm 3mm; min-height: 18mm; }
+.field.wide { grid-column: 1 / -1; }
+.field span { display: block; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 2mm; }
+.field b { display: block; border-bottom: 1px solid var(--line); height: 6mm; font-weight: 500; }
+.list { margin: 0 0 4mm; padding: 0; list-style: none; }
+.list li { padding: 1.6mm 0 1.6mm 4mm; border-bottom: 1px solid var(--line); font-size: 12.5px; position: relative; }
+.list li::before { content: ""; position: absolute; left: 0; top: 2.6mm; width: 2mm; height: 2mm; border-radius: 1px; background: var(--accent); }
+.inner-foot { margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--line); color: var(--ink); }
+.years { flex: 1; display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1.3mm; min-height: 0; margin-bottom: 3mm; }
+.year { border: 1px solid var(--line); background: var(--card); border-radius: 1.3mm; padding: 1mm 1.2mm; display: flex; flex-direction: column; min-height: 0; }
+.year strong { font-size: 8px; color: var(--accent); letter-spacing: .02em; }
+.year em { display: block; margin-top: auto; border-bottom: 1px solid var(--line); min-height: 4mm; font-style: normal; font-size: 8px; font-weight: 600; color: var(--ink); }
+.diary-foot { display: grid; grid-template-columns: 1.4fr .8fr .9fr; gap: 2.5mm; flex-shrink: 0; }
+.panel { border: 1px solid var(--line); background: var(--card); border-radius: 2mm; padding: 2.2mm 2.6mm; }
+.panel h3 { margin: 0 0 1mm; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.panel p { margin: 0; font-size: 9.5px; line-height: 1.35; }
+.bars { display: flex; align-items: flex-end; gap: 1px; height: 12mm; margin-top: 1.5mm; }
+.bars i { flex: 1; height: 35%; background: var(--accent); opacity: .35; display: block; border-radius: 1px 1px 0 0; }
+.bars i:nth-child(3n) { height: 55%; } .bars i:nth-child(4n) { height: 72%; } .bars i:nth-child(5n) { height: 48%; }
+@media print {
+  html, body { background: #fff !important; }
+  .alt-sheet { margin: 0 !important; box-shadow: none !important; }
+}
+
+@scope (#lib-page-1) {
+
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    background: #14532d;
+  }
+  body { font-family: "Outfit", system-ui, sans-serif; color: #14532d; }
+  .page {
+    position: relative;
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    background: #f4f7f2;
+  }
+  .stage {
+    display: grid;
+    grid-template-columns: 400px 394px;
+    height: 1077px;
+  }
+
+  .col-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 26px 18px 12px 24px;
+    background:
+      radial-gradient(460px 340px at 88% -8%, rgba(255, 214, 110, .62), rgba(255, 214, 110, 0) 62%),
+      radial-gradient(380px 280px at 0% 100%, rgba(120, 190, 130, .28), rgba(120, 190, 130, 0) 70%),
+      linear-gradient(180deg, #eef9f0 0%, #d9f3de 46%, #c8ebcf 100%);
+  }
+  .kicker {
+    font: 700 11px/1 "JetBrains Mono", monospace;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #166534;
+  }
+  h1 {
+    margin-top: 10px;
+    font: 800 44px/0.9 "Outfit", sans-serif;
+    letter-spacing: -.045em;
+    color: #14532d;
+  }
+  .lisa {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 0;
+  }
+  .lisa img {
+    display: block;
+    width: 360px;
+    height: auto;
+    filter: drop-shadow(0 14px 12px rgba(20, 60, 30, .2));
+  }
+
+  .col-right {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: #f7f8f4;
+  }
+  .voce {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 148px minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 12px 14px 12px 14px;
+    text-decoration: none;
+    color: #14532d;
+    border-bottom: 1px solid rgba(20, 83, 45, .1);
+  }
+  .voce:last-child { border-bottom: 0; }
+  .voce:nth-child(1) { background: #ffffff; }
+  .voce:nth-child(2) { background: #f3faf5; }
+  .voce:nth-child(3) { background: #ffffff; }
+  .voce:nth-child(4) { background: #fff8ec; }
+  .thumb {
+    height: 100%;
+    max-height: 236px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #e7f0ea;
+    box-shadow: 0 10px 18px rgba(22, 55, 30, .14);
+  }
+  .thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .casa { object-position: 10% 62%; }
+  .reception { object-position: 72% 48%; }
+  .grafico { object-position: 96% 40%; }
+  .famiglia { object-position: 40% 50%; }
+  .copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    gap: 3px;
+  }
+  .num {
+    font: 800 44px/.85 "Outfit", sans-serif;
+    letter-spacing: -.05em;
+  }
+  .v2 .num { color: #15803d; }
+  .v3 .num { color: #0e7490; }
+  .v4 .num { color: #166534; }
+  .v5 .num { color: #b45309; }
+  .t {
+    font: 800 18px/1.12 "Outfit", sans-serif;
+    letter-spacing: -.02em;
+  }
+  .d {
+    font: 500 12.5px/1.28 "Outfit", sans-serif;
+    color: #3d6849;
+  }
+  .pag {
+    margin-top: 7px;
+    font: 700 11px/1 "JetBrains Mono", monospace;
+    letter-spacing: .02em;
+    color: #14532d;
+    background: #fbbf24;
+    border-radius: 999px;
+    padding: 5px 9px;
+  }
+
+  footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 794px;
+    height: 46px;
+    background: #14532d;
+    color: #ecfdf5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px 0 24px;
+  }
+  .brand {
+    font: 700 15px/1 "Outfit", sans-serif;
+    letter-spacing: -.01em;
+  }
+  .brand span { color: #fbbf24; }
+  .mid {
+    font: 700 13px/1 "JetBrains Mono", monospace;
+    letter-spacing: .08em;
+    color: #14532d;
+    background: #fbbf24;
+    border-radius: 999px;
+    padding: 6px 14px;
+  }
+  .ver {
+    font: 500 12px/1 "JetBrains Mono", monospace;
+    letter-spacing: .04em;
+    color: #bbf7d0;
+  }
+
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      margin: 0;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+    }
+  }
+
+}
+/* SKIN-PAGES */
+
+.s9 { display:flex; flex-direction:column; height:297mm; background:#f4f7f2; color:#14532d; font-family:Outfit,sans-serif; overflow:hidden; }
+.s9 a { color:inherit; text-decoration:none; }
+.s9-stage { flex:1; min-height:0; display:grid; grid-template-columns:78mm 1fr; }
+.s9-side { display:flex; flex-direction:column; min-height:0; padding:5mm 4mm 2mm 5mm; background:radial-gradient(90mm 70mm at 90% -10%, rgba(255,214,110,.62), transparent 62%), linear-gradient(180deg, #eef9f0 0%, #d9f3de 46%, #c8ebcf 100%); }
+.s9-eye { font:700 10px/1 "JetBrains Mono",monospace; letter-spacing:.18em; text-transform:uppercase; color:#166534; }
+.s9-title { margin-top:2mm; font-weight:800; font-size:30px; line-height:.9; letter-spacing:-.045em; }
+.s9-title em { font-style:normal; color:#15803d; }
+.s9-lead { margin-top:2.5mm; font-size:11.5px; line-height:1.35; font-weight:500; color:#3d6849; }
+.s9-lisa { margin-top:auto; display:flex; justify-content:center; align-items:flex-end; min-height:0; }
+.s9-lisa img { width:62mm; height:auto; max-height:150mm; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 10px 10px rgba(20,60,30,.18)); }
+.s9.is-d .s9-lisa img { max-height:120mm; }
+.s9-col { display:flex; flex-direction:column; min-height:0; background:#f7f8f4; }
+.s9-band { flex:1; min-height:0; display:grid; grid-template-columns:16mm 1fr; gap:2mm; align-items:center; padding:1.4mm 3.5mm; border-bottom:1px solid rgba(20,83,45,.08); }
+.s9-band:nth-child(4n+1) { background:#fff; }
+.s9-band:nth-child(4n+2) { background:#f3faf5; }
+.s9-band:nth-child(4n+3) { background:#fff; }
+.s9-band:nth-child(4n) { background:#fff8ec; }
+.s9-num { font-weight:800; font-size:22px; letter-spacing:-.04em; line-height:.9; }
+.s9-band:nth-child(4n+1) .s9-num { color:#15803d; }
+.s9-band:nth-child(4n+2) .s9-num { color:#0e7490; }
+.s9-band:nth-child(4n+3) .s9-num { color:#166534; }
+.s9-band:nth-child(4n) .s9-num { color:#b45309; }
+.s9-t { font-weight:800; font-size:13px; letter-spacing:-.02em; line-height:1.1; }
+.s9-d { display:block; font-weight:500; font-size:10.5px; color:#3d6849; margin-top:.3mm; }
+.s9-blank { display:block; margin-top:.7mm; height:3mm; border-bottom:1px solid rgba(20,83,45,.25); }
+.s9-tag { display:inline-block; margin-top:.8mm; font:700 9px/1 "JetBrains Mono",monospace; background:#fbbf24; color:#14532d; border-radius:999px; padding:1mm 1.6mm; }
+.s9-foot { height:12mm; background:#14532d; color:#ecfdf5; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:0 5mm; font-weight:700; }
+.s9-foot .m { background:#fbbf24; color:#14532d; border-radius:999px; padding:1mm 3mm; }
+.s9-foot .r { text-align:right; font-weight:500; }
+.s9-years { flex:1; min-height:0; display:grid; grid-template-columns:repeat(3,1fr); gap:1mm; padding:1.5mm; background:#fff; }
+.s9 .yy { border-radius:2mm; background:#f3faf5; padding:.6mm 1mm; display:flex; flex-direction:column; }
+.s9 .yy:nth-child(3n) { background:#fff8ec; }
+.s9 .yy b { font-weight:800; font-size:10px; }
+.s9 .yy span, .s9 .yy i { font-style:normal; font-size:7.5px; color:#3d6849; }
+.s9 .yy i { margin-top:auto; border-bottom:1px solid rgba(20,83,45,.25); min-height:2.2mm; }
+.s9 .ybars { display:flex; align-items:flex-end; gap:1px; height:7mm; margin-top:.6mm; }
+.s9 .ybars i { flex:1; height:100%; background:#15803d; opacity:.35; border-radius:1px 1px 0 0; }
+.s9.is-d .s9-band { flex:0 0 auto; }
+.s9.is-d .s9-years { flex:1; min-height:0; grid-template-columns:repeat(5,1fr); grid-template-rows:repeat(6, minmax(0,1fr)); }
+.s9.is-d .yy { min-height:0; overflow:hidden; }
+
+/* /SKIN-PAGES */
+</style>
+</head>
+<body>
+<section class="alt-sheet" id="lib-page-1" aria-label="Indice, SeedElisa">
+<main class="page" >
+  <div class="stage">
+    <aside class="col-left">
+      <p class="kicker">Indice</p>
+      <h1>Libretto<br>dell’impianto<br>fotovoltaico</h1>
+      <div class="lisa">
+        <img src="img/seedelisa-landing.png" alt="SeedElisa a figura intera" width="523" height="1203">
+      </div>
+    </aside>
+    <nav class="col-right" aria-label="Indice del libretto">
+      <a class="voce v2" href="#lib-page-2">
+        <span class="thumb"><img class="casa" src="img/voice-resa.png" alt="Casa con impianto fotovoltaico al sole"></span>
+        <span class="copy">
+          <span class="num">02</span>
+          <span class="t">Scheda dell’impianto</span>
+          <span class="d">Ubicazione, potenza nominale e parametri chiave</span>
+          <span class="pag">pag. 2</span>
+        </span>
+      </a>
+      <a class="voce v3" href="#lib-page-3">
+        <span class="thumb"><img class="reception" src="img/o2o-targa.png" alt="Reception con targa e banco accoglienza"></span>
+        <span class="copy">
+          <span class="num">03</span>
+          <span class="t">Elementi dell’impianto</span>
+          <span class="d">Moduli, inverter, quadri e protezioni</span>
+          <span class="pag">pag. 3</span>
+        </span>
+      </a>
+      <a class="voce v4" href="#lib-page-4">
+        <span class="thumb"><img class="grafico" src="img/voice-resa.png" alt="Grafico della produzione solare"></span>
+        <span class="copy">
+          <span class="num">04</span>
+          <span class="t">Azienda installatrice</span>
+          <span class="d">Referenti, contatti e certificazioni</span>
+          <span class="pag">pag. 4</span>
+        </span>
+      </a>
+      <a class="voce v5" href="#lib-page-5">
+        <span class="thumb"><img class="famiglia" src="img/inaugurazione-1-1.png" alt="Famiglia in luce diurna"></span>
+        <span class="copy">
+          <span class="num">05</span>
+          <span class="t">Diario FV</span>
+          <span class="d">Produzione, manutenzione e memoria trentennale</span>
+          <span class="pag">pag. 5</span>
+        </span>
+      </a>
+    </nav>
+  </div>
+  <footer>
+    <p class="brand">SeedElio<span>.ai</span></p>
+    <p class="mid">1 / 5</p>
+    <p class="ver">Libretto v020</p>
+  </footer>
+</main>
+</section>
+<section class="alt-sheet s9" id="lib-page-2" aria-label="Scheda dell’impianto"><div class="s9-stage"><aside class="s9-side"><div class="s9-eye"><a class="back" href="#lib-page-1">Indice · SeedElisa</a></div><div class="s9-title">Scheda<br><em>dell’impianto</em></div><p class="s9-lead">Ubicazione, potenza nominale e parametri chiave dell’impianto. Le righe restano vuote per la compilazione a mano o in digitale.</p><div class="s9-lisa"><img src="img/seedelisa-landing.png" alt="SeedElisa"></div></aside><div class="s9-col"><div class="s9-band"><span class="s9-num">01</span><span><span class="s9-t">Proprietario</span><span class="s9-blank"></span><span class="s9-tag">pag. 2</span></span></div><div class="s9-band"><span class="s9-num">02</span><span><span class="s9-t">Indirizzo dell’impianto</span><span class="s9-blank"></span><span class="s9-tag">pag. 2</span></span></div><div class="s9-band"><span class="s9-num">03</span><span><span class="s9-t">Potenza nominale (kWp)</span><span class="s9-blank"></span><span class="s9-tag">pag. 2</span></span></div><div class="s9-band"><span class="s9-num">04</span><span><span class="s9-t">Accumulo</span><span class="s9-blank"></span><span class="s9-tag">pag. 2</span></span></div><div class="s9-band"><span class="s9-num">05</span><span><span class="s9-t">Data di consegna</span><span class="s9-blank"></span><span class="s9-tag">pag. 2</span></span></div><div class="s9-band"><span class="s9-num">06</span><span><span class="s9-t">Pratiche GSE</span><span class="s9-blank"></span><span class="s9-tag">pag. 2</span></span></div><div class="s9-band"><span class="s9-num">07</span><span><span class="s9-t">Profilo di consumo</span><span class="s9-blank"></span><span class="s9-tag">pag. 2</span></span></div><div class="s9-band"><span class="s9-num">08</span><span><span class="s9-t">Note e allegati</span><span class="s9-blank"></span><span class="s9-tag">pag. 2</span></span></div></div></div><div class="s9-foot"><span>SeedElio.ai</span><span class="m">2 / 5</span><span class="r">Libretto v020</span></div></section>
+<section class="alt-sheet s9" id="lib-page-3" aria-label="Elementi dell’impianto"><div class="s9-stage"><aside class="s9-side"><div class="s9-eye"><a class="back" href="#lib-page-1">Indice · SeedElisa</a></div><div class="s9-title">Elementi<br><em>dell’impianto</em></div><p class="s9-lead">Moduli, inverter, quadri e protezioni. Stesso registro del libretto v020, in questa grafica.</p><div class="s9-lisa"><img src="img/seedelisa-landing.png" alt="SeedElisa"></div></aside><div class="s9-col"><div class="s9-band"><span class="s9-num">01</span><span><span class="s9-t">Moduli</span><span class="s9-d">Moduli fotovoltaici: marca, modello, potenza e quantità</span><span class="s9-blank"></span><span class="s9-tag">pag. 3</span></span></div><div class="s9-band"><span class="s9-num">02</span><span><span class="s9-t">Inverter</span><span class="s9-d">Inverter o microinverter</span><span class="s9-blank"></span><span class="s9-tag">pag. 3</span></span></div><div class="s9-band"><span class="s9-num">03</span><span><span class="s9-t">Strutture e cavi</span><span class="s9-d">Strutture, cablaggi e canaline</span><span class="s9-blank"></span><span class="s9-tag">pag. 3</span></span></div><div class="s9-band"><span class="s9-num">04</span><span><span class="s9-t">Quadri e protezioni</span><span class="s9-d">Quadri, protezioni e contatori</span><span class="s9-blank"></span><span class="s9-tag">pag. 3</span></span></div></div></div><div class="s9-foot"><span>SeedElio.ai</span><span class="m">3 / 5</span><span class="r">Libretto v020</span></div></section>
+<section class="alt-sheet s9" id="lib-page-4" aria-label="Azienda installatrice"><div class="s9-stage"><aside class="s9-side"><div class="s9-eye"><a class="back" href="#lib-page-1">Indice · SeedElisa</a></div><div class="s9-title">Azienda<br><em>installatrice</em></div><p class="s9-lead">Referenti, contatti e certificazioni di chi ha posato l’impianto.</p><div class="s9-lisa"><img src="img/seedelisa-landing.png" alt="SeedElisa"></div></aside><div class="s9-col"><div class="s9-band"><span class="s9-num">01</span><span><span class="s9-t">Ragione sociale</span><span class="s9-blank"></span><span class="s9-tag">pag. 4</span></span></div><div class="s9-band"><span class="s9-num">02</span><span><span class="s9-t">P. IVA</span><span class="s9-blank"></span><span class="s9-tag">pag. 4</span></span></div><div class="s9-band"><span class="s9-num">03</span><span><span class="s9-t">Referente tecnico</span><span class="s9-blank"></span><span class="s9-tag">pag. 4</span></span></div><div class="s9-band"><span class="s9-num">04</span><span><span class="s9-t">Telefono ed email</span><span class="s9-blank"></span><span class="s9-tag">pag. 4</span></span></div><div class="s9-band"><span class="s9-num">05</span><span><span class="s9-t">Certificazioni</span><span class="s9-blank"></span><span class="s9-tag">pag. 4</span></span></div><div class="s9-band"><span class="s9-num">06</span><span><span class="s9-t">Garanzie e assistenza</span><span class="s9-blank"></span><span class="s9-tag">pag. 4</span></span></div></div></div><div class="s9-foot"><span>SeedElio.ai</span><span class="m">4 / 5</span><span class="r">Libretto v020</span></div></section>
+<section class="alt-sheet s9 is-d" id="lib-page-5" aria-label="Diario FV"><div class="s9-stage"><aside class="s9-side"><div class="s9-eye"><a class="back" href="#lib-page-1">Indice · SeedElisa</a></div><div class="s9-title">Diario<br><em>FV</em></div><p class="s9-lead">Diario di produzione, memoria familiare e manutenzione (2027–2056), adattato dal libretto v020: trenta anni, curva dei kWh, reminder di Seedelio.ai e ripresa con drone.</p><div class="s9-lisa"><img src="img/seedelisa-landing.png" alt="SeedElisa"></div></aside><div class="s9-col"><div class="s9-band"><span class="s9-num">01</span><span><span class="s9-t">Proprietario / famiglia</span><span class="s9-blank"></span></span></div><div class="s9-band"><span class="s9-num">02</span><span><span class="s9-t">Località</span><span class="s9-blank"></span></span></div><div class="s9-band"><span class="s9-num">03</span><span><span class="s9-t">Potenza (kWp) e accumulo</span><span class="s9-blank"></span></span></div><div class="s9-band"><span class="s9-num">01</span><span><span class="s9-t">Curva di produzione</span><span class="s9-d">kWh/anno, scala 0–12.000. Una barra per ogni anno, da colorare a fine stagione.</span><div class="ybars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></span></div><div class="s9-band"><span class="s9-num">02</span><span><span class="s9-t">Reminder AI</span><span class="s9-d">Ogni anno Seedelio.ai ricorda, via email e voce, di aggiornare il libretto e verificare la resa.</span></span></div><div class="s9-band"><span class="s9-num">03</span><span><span class="s9-t">Drone e termografia</span><span class="s9-d">Ispezione aerea dei moduli, come nel diario del libretto v020.</span></span></div><div class="s9-years"><div class="yy"><b>2027</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2028</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2029</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2030</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2031</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2032</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2033</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2034</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2035</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2036</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2037</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2038</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2039</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2040</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2041</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2042</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2043</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2044</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2045</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2046</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2047</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2048</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2049</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2050</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2051</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2052</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2053</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2054</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2055</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2056</b><span>kWh</span><i>nota</i></div></div></div></div><div class="s9-foot"><span>SeedElio.ai</span><span class="m">5 / 5</span><span class="r">Libretto v020</span></div></section>
+</body>
+</html>

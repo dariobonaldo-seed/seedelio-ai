@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Libretto dell’impianto fotovoltaico — Indice · SeedElio.ai v020</title>
+<meta name="viewport" content="width=794">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    background: #f4efe6;
+  }
+  body { font-family: "Outfit", "Avenir Next", "Segoe UI", sans-serif; color: #1c2a24; }
+  .page {
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #f4efe6;
+  }
+
+  .hero {
+    position: relative;
+    flex: none;
+    height: 528px;
+    overflow: hidden;
+  }
+  .hero img.scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+  }
+  .hero .melt {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 42px;
+    background: linear-gradient(to bottom, rgba(244,239,230,0), #f4efe6 88%);
+  }
+  .glass {
+    position: absolute;
+    z-index: 2;
+    left: 22px;
+    top: 20px;
+    width: 318px;
+    padding: 16px 20px 18px;
+    background: rgba(255, 250, 244, 0.82);
+    border: 1px solid rgba(255,255,255,0.92);
+    border-radius: 26px;
+    box-shadow: 0 16px 36px rgba(70, 48, 18, 0.14), inset 0 1px 0 rgba(255,255,255,0.95);
+    backdrop-filter: blur(16px) saturate(1.15);
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font: 700 11px/1 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #1b7a4a;
+  }
+  .sun {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 32%, #fff4c2, #ffd24a 42%, #f5a60a 78%);
+    box-shadow: 0 0 0 4px rgba(245, 176, 10, 0.28);
+  }
+  h1 {
+    font: 800 36px/0.92 "Outfit", sans-serif;
+    letter-spacing: -0.038em;
+    color: #1a2822;
+  }
+  h1 span { display: block; }
+  h1 .blue { color: #1e4e9a; }
+
+  .body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 6px 22px 14px;
+  }
+  .cards {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  a.card {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr) 64px;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 16px 8px 8px;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0 10px 26px rgba(92, 64, 28, 0.08), 0 1px 2px rgba(92, 64, 28, 0.04);
+  }
+  .shot {
+    position: relative;
+    width: 132px;
+    height: 100%;
+    min-height: 96px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #efe6d8;
+  }
+  .shot img {
+    position: absolute;
+    max-width: none;
+    display: block;
+  }
+  .z-casa { width: 300px; height: 169px; left: 6px; top: -52px; }
+  .z-moduli { width: 620px; height: 349px; left: -36px; top: -152px; }
+  .z-elisa { width: 108px; height: 248px; left: 14px; top: 0; }
+  .z-diario { width: 460px; height: 259px; left: -248px; top: -42px; }
+  .txt { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+  .line { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .num {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(155deg, #4b86e0 0%, #1e4e9a 70%);
+    color: #fff;
+    font: 800 15px/1 "Outfit", sans-serif;
+    letter-spacing: -0.03em;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 5px 10px rgba(30, 78, 154, 0.22);
+  }
+  .t {
+    font: 800 20px/1.05 "Outfit", sans-serif;
+    letter-spacing: -0.03em;
+    color: #1a2822;
+    white-space: nowrap;
+  }
+  .d {
+    font: 500 13.5px/1.3 "Outfit", sans-serif;
+    color: #5d6d64;
+    white-space: nowrap;
+  }
+  .pg {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
+  .pl {
+    font: 700 10px/1 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.01em;
+    color: #7d8c82;
+  }
+  .pn {
+    font: 800 30px/0.85 "Outfit", sans-serif;
+    letter-spacing: -0.04em;
+    color: #1e4e9a;
+  }
+
+  .foot {
+    flex: none;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(92, 64, 28, 0.06);
+  }
+  .brand {
+    font: 700 16px/1 "Outfit", sans-serif;
+    letter-spacing: -0.02em;
+    color: #16382c;
+  }
+  .brand i {
+    font-style: normal;
+    color: #e39b08;
+  }
+  .frac {
+    font: 800 14px/1 "Outfit", sans-serif;
+    letter-spacing: 0.04em;
+    color: #1c2a24;
+    background: #f6c445;
+    border-radius: 999px;
+    padding: 7px 14px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+  }
+  .ver {
+    font: 500 12px/1 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.04em;
+    color: #5f7368;
+  }
+
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      overflow: hidden;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+    }
+  }
+</style>
+</head>
+<body>
+<main class="page" id="lib-page-1">
+  <header class="hero">
+    <img class="scene" src="img/o2o-targa.png" alt="Reception luminosa con archi crema, banco, quadro del sole e piante">
+    <div class="glass">
+      <div class="eyebrow"><i class="sun"></i>Indice</div>
+      <h1>
+        <span>Libretto</span>
+        <span>dell’impianto</span>
+        <span class="blue">fotovoltaico</span>
+      </h1>
+    </div>
+    <div class="melt"></div>
+  </header>
+
+  <section class="body">
+    <nav class="cards" aria-label="Indice del libretto">
+      <a class="card" href="#lib-page-2">
+        <span class="shot"><img class="z-casa" src="img/voice-resa.png" alt=""></span>
+        <span class="txt">
+          <span class="line"><span class="num">02</span><span class="t">Scheda dell’impianto</span></span>
+          <span class="d">Ubicazione, potenza nominale e parametri chiave</span>
+        </span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">2</span></span>
+      </a>
+      <a class="card" href="#lib-page-3">
+        <span class="shot"><img class="z-moduli" src="img/voice-resa.png" alt=""></span>
+        <span class="txt">
+          <span class="line"><span class="num">03</span><span class="t">Elementi dell’impianto</span></span>
+          <span class="d">Moduli, inverter, quadri e protezioni</span>
+        </span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">3</span></span>
+      </a>
+      <a class="card" href="#lib-page-4">
+        <span class="shot"><img class="z-elisa" src="img/seedelisa-landing.png" alt=""></span>
+        <span class="txt">
+          <span class="line"><span class="num">04</span><span class="t">Azienda installatrice</span></span>
+          <span class="d">Referenti, contatti e certificazioni</span>
+        </span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">4</span></span>
+      </a>
+      <a class="card" href="#lib-page-5">
+        <span class="shot"><img class="z-diario" src="img/voice-resa.png" alt=""></span>
+        <span class="txt">
+          <span class="line"><span class="num">05</span><span class="t">Diario FV</span></span>
+          <span class="d">Produzione, manutenzione e memoria trentennale</span>
+        </span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">5</span></span>
+      </a>
+    </nav>
+    <footer class="foot">
+      <span class="brand">SeedElio<i>.ai</i></span>
+      <span class="frac">1 / 5</span>
+      <span class="ver">Libretto v020</span>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

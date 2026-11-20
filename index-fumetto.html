@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fumetto Dario · 5 varianti | SeedElio (prova)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500..800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+    background: #e8edf2;
+    color: #334155;
+    min-height: 100vh;
+  }
+  .lab-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .lab-card {
+    background: #eef2f6; border: 1px solid #b9c6d3; border-radius: 1rem;
+    padding: 16px 18px 20px; box-shadow: 0 6px 18px rgba(15,23,42,.08);
+  }
+  .lab-card h2 { font-size: 13px; font-weight: 800; color: #0f172a; margin: 0 0 14px; }
+  .lab-stage { min-height: 110px; display: flex; align-items: center; }
+
+  .say-row {
+    display: flex; align-items: flex-end; gap: 8px; width: 100%; max-width: 380px; margin: 0 auto;
+  }
+  .say-bubble { position: relative; flex: 1; min-width: 0; }
+  .say-text {
+    margin: 0; font-size: 16px; line-height: 1.45; letter-spacing: -.01em; color: #475569;
+  }
+  .say-text b { font-weight: 700; color: #1e293b; }
+  .say-dario {
+    flex: none; width: 66px; height: 66px; border-radius: 50%; object-fit: cover;
+    object-position: center 18%; border: 2px solid #fff; box-shadow: 0 2px 10px rgba(15,23,42,.12);
+  }
+
+  /* coda triangolare verso Dario (destra) */
+  .tail-r::after {
+    content: ""; position: absolute; right: -8px; bottom: 22px; width: 0; height: 0;
+    border-top: 7px solid transparent; border-bottom: 7px solid transparent;
+  }
+
+  /* 1 — bianco, bordo sottile */
+  .fb-v1 .say-bubble {
+    background: #fff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 11px 13px;
+    box-shadow: 0 2px 8px rgba(15,23,42,.06);
+  }
+  .fb-v1 .say-bubble.tail-r::after { border-left: 9px solid #fff; filter: drop-shadow(1px 0 0 #cbd5e1); }
+
+  /* 2 — solo bordo */
+  .fb-v2 .say-bubble {
+    background: transparent; border: 1.5px solid #64748b; border-radius: 14px; padding: 11px 13px;
+  }
+  .fb-v2 .say-bubble.tail-r::after { border-left: 9px solid #eef2f6; box-shadow: inset 1px 0 0 #64748b; }
+
+  /* 3 — rettangolo, angolo piegato, coda triangolare */
+  .fb-v3 .say-bubble {
+    background: #fff; border: 1.5px solid #94a3b8; border-radius: 4px; padding: 11px 14px 13px;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  }
+  .fb-v3 .say-bubble::before {
+    content: ""; position: absolute; top: 0; right: 0; width: 14px; height: 14px;
+    background: linear-gradient(135deg, #e2e8f0 50%, #fff 50%);
+    border-left: 1px solid #94a3b8; border-bottom: 1px solid #94a3b8;
+  }
+  .fb-v3 .say-bubble.tail-r::after {
+    border-left: 10px solid #fff; bottom: 20px;
+    filter: drop-shadow(1px 0 0 #94a3b8);
+  }
+
+  /* 4 — senza riquadro, lineetta sotto */
+  .fb-v4 .say-bubble { padding: 4px 2px 8px; border-bottom: 2px solid #94a3b8; }
+  .fb-v4 .say-bubble.tail-r::after { display: none; }
+
+  /* 5 — tondo, bordo tratteggiato */
+  .fb-v5 .say-bubble {
+    background: #f8fafc; border: 2px dashed #64748b; border-radius: 999px;
+    padding: 12px 18px; text-align: left;
+  }
+  .fb-v5 .say-bubble.tail-r::after {
+    border-left: 9px solid #f8fafc;
+    filter: drop-shadow(1px 0 0 #64748b);
+  }
+</style>
+</head>
+<body class="antialiased px-4 py-10 sm:px-8 max-w-5xl mx-auto">
+  <header class="mb-8">
+    <p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500 mb-2">Solo prova · non in menu</p>
+    <h1 class="text-2xl font-extrabold text-slate-900">Fumetto Dario — 5 varianti</h1>
+    <p class="mt-2 text-sm text-slate-600">Stesso testo e <code class="text-xs bg-white/80 px-1 rounded">img/dario-bonaldo.jpg</code>. Sfondo freccia (#eef2f6).</p>
+  </header>
+
+  <div class="lab-grid">
+    <article class="lab-card">
+      <h2>1. Bianco, bordo sottile</h2>
+      <div class="lab-stage fb-v1">
+        <div class="say-row">
+          <div class="say-bubble tail-r">
+            <p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p>
+          </div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+
+    <article class="lab-card">
+      <h2>2. Solo bordo</h2>
+      <div class="lab-stage fb-v2">
+        <div class="say-row">
+          <div class="say-bubble tail-r">
+            <p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p>
+          </div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+
+    <article class="lab-card">
+      <h2>3. Angolo piegato</h2>
+      <div class="lab-stage fb-v3">
+        <div class="say-row">
+          <div class="say-bubble tail-r">
+            <p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p>
+          </div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+
+    <article class="lab-card">
+      <h2>4. Lineetta sotto</h2>
+      <div class="lab-stage fb-v4">
+        <div class="say-row">
+          <div class="say-bubble tail-r">
+            <p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p>
+          </div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+
+    <article class="lab-card">
+      <h2>5. Tondo tratteggiato</h2>
+      <div class="lab-stage fb-v5">
+        <div class="say-row">
+          <div class="say-bubble tail-r">
+            <p class="say-text">Nessun impianto vale per ogni tetto.<br><b>SeedElio parte dalla tua casa.</b></p>
+          </div>
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" class="say-dario" width="128" height="128">
+        </div>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orologio Roma · varianti CTA | SeedElio (prova)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500..800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, rgba(34,211,238,.08), transparent),
+      radial-gradient(900px 500px at 100% 0%, rgba(251,191,36,.06), transparent), #020617;
+    color: #e2e8f0;
+    min-height: 100vh;
+  }
+  .lab-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .lab-card {
+    background: #0f172a; border: 1px solid #1e293b; border-radius: 1.25rem;
+    padding: 18px 20px 22px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.55);
+  }
+  .lab-card h2 { font-size: 13px; font-weight: 800; letter-spacing: .02em; color: #fef3c7; margin: 0 0 14px; }
+  .lab-card p { font-size: 11px; color: #94a3b8; margin: 0 0 16px; line-height: 1.45; }
+  .lab-stage { display: flex; align-items: center; justify-content: center; min-height: 120px; }
+
+  .clk {
+    --sz: 88px; --r: 37px; position: relative; width: var(--sz); height: var(--sz);
+    border-radius: 50%; flex: none;
+    background: conic-gradient(from 210deg, #fbbf24 0deg 125deg, #0b1220 125deg 235deg, #22d3ee 235deg 330deg, #fbbf24 330deg);
+    box-shadow: 0 0 22px rgba(251,191,36,.2), 0 0 28px rgba(34,211,238,.12);
+    transition: background 1s ease, box-shadow .9s ease;
+  }
+  .clk::after {
+    content: ""; position: absolute; inset: 9px; border-radius: 50%; background: #020617;
+    border: 1px solid rgba(51,65,85,.9); z-index: 3;
+  }
+  .clk[data-phase="night"] { box-shadow: 0 0 24px rgba(34,211,238,.35), 0 0 30px rgba(15,23,42,.5); }
+  .clk-time {
+    position: absolute; inset: 11px; z-index: 5; display: flex; align-items: center; justify-content: center;
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; font-weight: 800;
+    letter-spacing: -.04em; color: #f8fafc; font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 10px rgba(34,211,238,.35);
+  }
+  .clk svg.layer { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+  .ring-mask {
+    position: absolute; inset: 0; z-index: 2; border-radius: 50%; pointer-events: none;
+    -webkit-mask: radial-gradient(circle, transparent calc(var(--sz) * .37), #000 calc(var(--sz) * .39), #000 calc(var(--sz) * .47), transparent calc(var(--sz) * .485));
+    mask: radial-gradient(circle, transparent calc(var(--sz) * .37), #000 calc(var(--sz) * .39), #000 calc(var(--sz) * .47), transparent calc(var(--sz) * .485));
+  }
+
+  /* 1 — lancetta + scia lunga */
+  .v1-trail { filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px #fbbf24); transition: background .35s linear; }
+  .v1-needle path { filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 10px #fde047); transition: d .35s linear; }
+  .v1-head {
+    position: absolute; z-index: 4; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #fde047 60%, #f59e0b);
+    border: 2px solid #fff; box-shadow: 0 0 8px #fff, 0 0 18px #fbbf24, 0 0 28px rgba(251,191,36,.8);
+    transition: left .35s linear, top .35s linear;
+  }
+  .clk[data-phase="night"] .v1-head {
+    background: radial-gradient(circle at 30% 30%, #fff, #67e8f9 55%, #0891b2);
+    box-shadow: 0 0 8px #fff, 0 0 18px #22d3ee, 0 0 28px rgba(34,211,238,.85);
+  }
+
+  /* 2 — contagiri */
+  .v2-fill { transition: stroke-dashoffset .35s linear, stroke .35s linear; filter: drop-shadow(0 0 6px rgba(251,191,36,.65)); }
+  .clk.v2.tick-pulse { animation: v2pulse .32s ease-out; }
+  @keyframes v2pulse {
+    0% { transform: scale(1); filter: brightness(1); }
+    35% { transform: scale(1.06); filter: brightness(1.25); }
+    100% { transform: scale(1); filter: brightness(1); }
+  }
+  .v2-hub {
+    position: absolute; inset: 0; z-index: 4; display: flex; align-items: center; justify-content: center; pointer-events: none;
+  }
+  .v2-pct {
+    position: absolute; bottom: 20px; font-family: "JetBrains Mono", monospace; font-size: 7px; font-weight: 700;
+    color: #fbbf24; text-shadow: 0 0 8px rgba(251,191,36,.6); z-index: 6;
+  }
+
+  /* 3 — onda multi-punto */
+  .v3-wave path { transition: d .35s linear, opacity .35s linear; }
+  .v3-dot {
+    position: absolute; z-index: 4; border-radius: 50%; transform: translate(-50%, -50%);
+    background: #fff; box-shadow: 0 0 6px #fff, 0 0 14px #22d3ee;
+    transition: left .35s linear, top .35s linear, width .35s, height .35s, opacity .35s;
+  }
+
+  /* 4 — tick a settori */
+  .clk.v4 { transition: transform .15s ease-out, box-shadow .15s ease-out; }
+  .v4-sector {
+    position: absolute; inset: 0; z-index: 2; border-radius: 50%; pointer-events: none;
+    -webkit-mask: radial-gradient(circle, transparent calc(var(--sz) * .37), #000 calc(var(--sz) * .39), #000 calc(var(--sz) * .47), transparent calc(var(--sz) * .485));
+    mask: radial-gradient(circle, transparent calc(var(--sz) * .37), #000 calc(var(--sz) * .39), #000 calc(var(--sz) * .47), transparent calc(var(--sz) * .485));
+    transition: none;
+  }
+  .clk.v4.tick-flash { animation: v4flash .28s ease-out; }
+  @keyframes v4flash {
+    0% { box-shadow: 0 0 0 0 rgba(251,191,36,0), inset 0 0 0 rgba(251,191,36,0); }
+    40% { box-shadow: 0 0 36px 8px rgba(251,191,36,.45), 0 0 0 6px rgba(34,211,238,.2) inset; }
+    100% { box-shadow: 0 0 22px rgba(251,191,36,.2), 0 0 28px rgba(34,211,238,.12); }
+  }
+  .v4-tick-mark {
+    position: absolute; z-index: 6; width: 3px; height: 10px; left: 50%; top: 7px; margin-left: -1.5px;
+    background: linear-gradient(#fff, #fbbf24); border-radius: 2px;
+    transform-origin: 50% calc(var(--sz) / 2 - 7px);
+    box-shadow: 0 0 8px #fde047;
+    transition: transform .08s steps(1);
+  }
+
+  /* 5 — alone rotante + scintille */
+  .v5-halo {
+    position: absolute; inset: -6px; border-radius: 50%; z-index: 1; pointer-events: none;
+    background: conic-gradient(from var(--halo-from, 0deg), transparent, rgba(251,191,36,.55), transparent 35%, rgba(34,211,238,.45), transparent);
+    filter: blur(6px) brightness(1.35);
+    opacity: .85;
+    transition: --halo-from .35s linear;
+  }
+  .v5-head {
+    position: absolute; z-index: 4; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%;
+    background: #fff; box-shadow: 0 0 10px #fff, 0 0 22px #fbbf24, 0 0 34px #22d3ee;
+    transition: left .35s linear, top .35s linear;
+  }
+  .v5-spark {
+    position: absolute; z-index: 3; width: 4px; height: 4px; margin: -2px; border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, #fde047 40%, transparent 70%);
+    pointer-events: none; opacity: 0;
+    transition: left .35s linear, top .35s linear, opacity .35s ease, transform .35s ease;
+  }
+</style>
+</head>
+<body class="antialiased px-4 py-10 sm:px-8 max-w-6xl mx-auto">
+  <header class="mb-10">
+    <p class="text-[11px] font-bold uppercase tracking-[.14em] text-cyan-400/90 mb-2">Solo prova · non in menu</p>
+    <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Orologio Roma — 5 varianti secondi</h1>
+    <p class="mt-2 text-sm text-slate-400 max-w-2xl">Europe/Rome, HH:MM al centro, aggiornamento ogni secondo. Stile oro/teal del box CTA su fondo scuro.</p>
+  </header>
+
+  <div class="lab-grid" id="labGrid">
+    <article class="lab-card">
+      <h2>1. Lancetta spessa, scia lunga</h2>
+      <p>Ago luminoso sul bordo con scia conica ampia (~20 s). Un giro in 60 secondi.</p>
+      <div class="lab-stage">
+        <div class="clk v1" id="clkV1" data-phase="day">
+          <div class="ring-mask v1-trail" id="v1Trail" aria-hidden="true"></div>
+          <svg class="layer v1-needle" viewBox="0 0 88 88" aria-hidden="true"><path id="v1Needle" fill="none" stroke="#fef08a" stroke-width="7" stroke-linecap="round"/></svg>
+          <span class="v1-head" id="v1Head" aria-hidden="true"></span>
+          <time class="clk-time" id="v1Time">--:--</time>
+        </div>
+      </div>
+    </article>
+
+    <article class="lab-card">
+      <h2>2. Contagiri con impulso</h2>
+      <p>Anello che si riempie; il colore si intensa; a ogni secondo un pulse sul cerchio.</p>
+      <div class="lab-stage">
+        <div class="clk v2" id="clkV2" data-phase="day">
+          <svg class="layer" viewBox="0 0 88 88" aria-hidden="true">
+            <circle cx="44" cy="44" r="37" fill="none" stroke="#1e293b" stroke-width="9"/>
+            <circle id="v2Fill" class="v2-fill" cx="44" cy="44" r="37" fill="none" stroke="#fbbf24" stroke-width="9"
+              stroke-linecap="round" transform="rotate(-90 44 44)" stroke-dasharray="232.48" stroke-dashoffset="232.48"/>
+          </svg>
+          <span class="v2-pct" id="v2Pct" aria-hidden="true"></span>
+          <time class="clk-time" id="v2Time">--:--</time>
+        </div>
+      </div>
+    </article>
+
+    <article class="lab-card">
+      <h2>3. Onda sul bordo</h2>
+      <p>Tre punti luminosi in scia + arco largo: onda che corre, più code visibili.</p>
+      <div class="lab-stage">
+        <div class="clk v3" id="clkV3" data-phase="day">
+          <svg class="layer v3-wave" viewBox="0 0 88 88" aria-hidden="true">
+            <defs>
+              <linearGradient id="v3grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(34,211,238,0)"/>
+                <stop offset="55%" stop-color="#22d3ee"/>
+                <stop offset="100%" stop-color="#fde047"/>
+              </linearGradient>
+            </defs>
+            <path id="v3Arc" fill="none" stroke="url(#v3grad)" stroke-width="8" stroke-linecap="round"/>
+          </svg>
+          <span class="v3-dot" id="v3d0" style="width:12px;height:12px;opacity:1"></span>
+          <span class="v3-dot" id="v3d1" style="width:9px;height:9px;opacity:.75"></span>
+          <span class="v3-dot" id="v3d2" style="width:7px;height:7px;opacity:.5"></span>
+          <time class="clk-time" id="v3Time">--:--</time>
+        </div>
+      </div>
+    </article>
+
+    <article class="lab-card">
+      <h2>4. Tick a settore</h2>
+      <p>Il cerchio pulsa; un settore da 6° si accende a scatto ogni secondo, come un tick.</p>
+      <div class="lab-stage">
+        <div class="clk v4" id="clkV4" data-phase="day">
+          <div class="v4-sector" id="v4Sector" aria-hidden="true"></div>
+          <span class="v4-tick-mark" id="v4Mark" aria-hidden="true"></span>
+          <time class="clk-time" id="v4Time">--:--</time>
+        </div>
+      </div>
+    </article>
+
+    <article class="lab-card">
+      <h2>5. Alone e scintille</h2>
+      <p>Bagliore rotante sul bordo; testa brillante che lascia scintille nella scia.</p>
+      <div class="lab-stage">
+        <div class="clk v5" id="clkV5" data-phase="day" style="overflow:visible">
+          <div class="v5-halo" id="v5Halo" aria-hidden="true"></div>
+          <span class="v5-head" id="v5Head" aria-hidden="true"></span>
+          <span class="v5-spark" id="v5s0"></span><span class="v5-spark" id="v5s1"></span><span class="v5-spark" id="v5s2"></span>
+          <span class="v5-spark" id="v5s3"></span><span class="v5-spark" id="v5s4"></span>
+          <time class="clk-time" id="v5Time">--:--</time>
+        </div>
+      </div>
+    </article>
+  </div>
+
+<script>
+(function () {
+  var TZ = 'Europe/Rome';
+  var CX = 44, CY = 44, R = 37, C = 2 * Math.PI * R;
+  var TRAIL1 = 120;
+  var lastSec = -1;
+
+  function romeNow() {
+    var now = new Date();
+    var fmt = new Intl.DateTimeFormat('it-IT', { timeZone: TZ, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+    var h = 0, m = 0, s = 0;
+    fmt.formatToParts(now).forEach(function (p) {
+      if (p.type === 'hour') h = +p.value;
+      if (p.type === 'minute') m = +p.value;
+      if (p.type === 'second') s = +p.value;
+    });
+    var timeStr = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    var dh = h + m / 60;
+  var phase = dh >= 8 && dh < 19 ? 'day' : (dh >= 21 || dh < 6 ? 'night' : (dh >= 6 && dh < 8 ? 'dawn' : 'dusk'));
+    var skyFrom = dh * 15 - 90;
+    var sky = 'conic-gradient(from ' + skyFrom + 'deg, #fbbf24 0deg 115deg, #0b1220 115deg 230deg, #22d3ee 230deg 360deg)';
+    return { timeStr: timeStr, seconds: s, phase: phase, sky: sky };
+  }
+
+  function pt(deg, rad) {
+    var a = (deg - 90) * Math.PI / 180;
+    var rr = rad == null ? R : rad;
+    return { x: CX + rr * Math.cos(a), y: CY + rr * Math.sin(a), deg: deg };
+  }
+  function arcD(a0, a1) {
+    var A = pt(a0), B = pt(a1);
+    var span = ((a1 - a0) % 360 + 360) % 360;
+    var large = span > 180 ? 1 : 0;
+    return 'M ' + A.x.toFixed(2) + ' ' + A.y.toFixed(2) + ' A ' + R + ' ' + R + ' 0 ' + large + ' 1 ' + B.x.toFixed(2) + ' ' + B.y.toFixed(2);
+  }
+  function place(el, deg) {
+    var p = pt(deg);
+    el.style.left = (p.x / 88 * 100) + '%';
+    el.style.top = (p.y / 88 * 100) + '%';
+  }
+  function putClockLabel(id, t) {
+    if (typeof t !== 'string') return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = t;
+    el.setAttribute('datetime', t);
+  }
+  function clockLabel(timeStr) {
+    return typeof timeStr === 'string' ? timeStr : romeNow().timeStr;
+  }
+  function setPhase(id, ph) { var el = document.getElementById(id); if (el) { el.setAttribute('data-phase', ph); el.style.background = romeNow().sky; } }
+
+  function strokeByPhase(ph, a) {
+    if (ph === 'night') return a ? '#22d3ee' : '#67e8f9';
+    return a ? '#f59e0b' : '#fbbf24';
+  }
+
+  function paintV1(s, ph, sky, timeStr) {
+    var root = document.getElementById('clkV1');
+    root.style.background = sky;
+    root.setAttribute('data-phase', ph);
+    var head = s * 6;
+    var trail = document.getElementById('v1Trail');
+    var from = head - TRAIL1;
+    trail.style.background = s <= 0 ? 'transparent' : 'conic-gradient(from ' + (-90 + from) + 'deg, transparent 0deg, rgba(34,211,238,.12) 18deg, rgba(251,191,36,.5) ' + (TRAIL1 * .55) + 'deg, #fde047 ' + (TRAIL1 * .88) + 'deg, #fff ' + TRAIL1 + 'deg, transparent ' + TRAIL1 + 'deg)';
+    document.getElementById('v1Needle').setAttribute('d', s <= 0 ? '' : arcD(head - 16, head));
+    document.getElementById('v1Needle').setAttribute('stroke', ph === 'night' ? '#a5f3fc' : '#fef08a');
+    place(document.getElementById('v1Head'), head);
+    putClockLabel('v1Time', clockLabel(timeStr));
+  }
+
+  function paintV2(s, ph, sky, timeStr, tick) {
+    var label = clockLabel(timeStr);
+    if (typeof timeStr === 'boolean' && tick === undefined) tick = timeStr;
+    var root = document.getElementById('clkV2');
+    root.style.background = sky;
+    root.setAttribute('data-phase', ph);
+    var fill = document.getElementById('v2Fill');
+    var prog = s / 60;
+    var off = C * (1 - prog);
+    fill.setAttribute('stroke-dashoffset', String(off));
+    var sat = Math.min(1, .35 + prog * .65);
+    fill.setAttribute('stroke', ph === 'night'
+      ? 'hsl(187, ' + (55 + sat * 35) + '%, ' + (45 + sat * 25) + '%)'
+      : 'hsl(43, ' + (80 + sat * 20) + '%, ' + (48 + sat * 18) + '%)');
+    document.getElementById('v2Pct').textContent = Math.round(prog * 100) + '%';
+    putClockLabel('v2Time', label);
+    if (tick) {
+      root.classList.remove('tick-pulse');
+      void root.offsetWidth;
+      root.classList.add('tick-pulse');
+    }
+  }
+
+  function paintV3(s, ph, sky, timeStr) {
+    var root = document.getElementById('clkV3');
+    root.style.background = sky;
+    root.setAttribute('data-phase', ph);
+    var head = s * 6;
+    var arc = document.getElementById('v3Arc');
+    arc.setAttribute('d', s <= 0 ? '' : arcD(head - 42, head));
+    arc.setAttribute('opacity', s <= 0 ? '0' : '1');
+    [0, 10, 20].forEach(function (lag, i) {
+      place(document.getElementById('v3d' + i), head - lag);
+    });
+    putClockLabel('v3Time', clockLabel(timeStr));
+  }
+
+  function paintV4(s, ph, sky, timeStr, tick) {
+    var label = clockLabel(timeStr);
+    if (typeof timeStr === 'boolean' && tick === undefined) tick = timeStr;
+    var root = document.getElementById('clkV4');
+    root.style.background = sky;
+    root.setAttribute('data-phase', ph);
+    var head = (s + 1) * 6;
+    var sector = document.getElementById('v4Sector');
+    var tickFrom = head - 6;
+    sector.style.background = 'conic-gradient(from ' + (-90 + tickFrom) + 'deg, rgba(251,191,36,.15) 0deg, ' + (ph === 'night' ? 'rgba(34,211,238,.85)' : 'rgba(253,224,71,.95)') + ' 5deg, rgba(255,255,255,.9) 6deg, transparent 6deg)';
+    document.getElementById('v4Mark').style.transform = 'rotate(' + (s * 6) + 'deg)';
+    putClockLabel('v4Time', label);
+    if (tick) {
+      root.classList.remove('tick-flash');
+      void root.offsetWidth;
+      root.classList.add('tick-flash');
+    }
+  }
+
+  function paintV5(s, ph, sky, timeStr) {
+    var root = document.getElementById('clkV5');
+    root.style.background = sky;
+    root.setAttribute('data-phase', ph);
+    var head = s * 6;
+    document.getElementById('v5Halo').style.setProperty('--halo-from', (head - 40) + 'deg');
+    document.getElementById('v5Halo').style.transform = 'rotate(' + head + 'deg)';
+    place(document.getElementById('v5Head'), head);
+    [4, 9, 14, 19, 24].forEach(function (lag, i) {
+      var sp = document.getElementById('v5s' + i);
+      var d = head - lag;
+      place(sp, d);
+      sp.style.opacity = s <= 0 ? '0' : String(Math.max(.1, .9 - i * .17));
+      sp.style.transform = 'translate(-50%,-50%) scale(' + (1 - i * .12) + ')';
+    });
+    putClockLabel('v5Time', clockLabel(timeStr));
+  }
+
+  function paintAll(opts) {
+    var o = opts || {};
+    var r = romeNow();
+    var s = o.seconds != null ? o.seconds : r.seconds;
+    var tick = o.tick === true && lastSec >= 0 && s !== lastSec;
+    lastSec = s;
+    paintV1(s, r.phase, r.sky, r.timeStr);
+    paintV2(s, r.phase, r.sky, r.timeStr, tick);
+    paintV3(s, r.phase, r.sky, r.timeStr);
+    paintV4(s, r.phase, r.sky, r.timeStr, tick);
+    paintV5(s, r.phase, r.sky, r.timeStr);
+  }
+
+  window.__labPaintSec = function (s) { paintAll({ seconds: s, tick: false }); };
+
+  paintAll({ tick: false });
+  setTimeout(function () {
+    paintAll({ tick: true });
+    setInterval(function () { paintAll({ tick: true }); }, 1000);
+  }, Math.max(0, 1000 - new Date().getMilliseconds() + 20));
+})();
+</script>
+</body>
+</html>

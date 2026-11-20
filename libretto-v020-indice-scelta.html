@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indice del Libretto, varianti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f6f1e7;
+    --cream-deep: #e7e1d6;
+    --paper: #fffaf3;
+    --green: #166534;
+    --green-deep: #14532d;
+    --ink: #1c2b22;
+    --muted: #5c6b62;
+    --line: #e4d9c4;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 420px at 10% -10%, rgba(22,101,52,.08), transparent 60%),
+      var(--cream);
+    color: var(--ink);
+    font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    width: min(1280px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 36px 0 72px;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 28px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mark {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+  h1 {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", Outfit, sans-serif;
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 800;
+    letter-spacing: -.03em;
+    line-height: 1.05;
+    color: var(--green-deep);
+  }
+  .lead {
+    margin: 0;
+    max-width: 36ch;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 26px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    border: 1px solid #eadfcb;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(70, 50, 15, .08);
+  }
+  .preview {
+    position: relative;
+    display: block;
+    aspect-ratio: 210 / 297;
+    background: var(--cream-deep);
+    overflow: hidden;
+  }
+  .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform .28s ease;
+  }
+  .preview:hover img,
+  .preview:focus-visible img { transform: scale(1.025); }
+  .preview:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: -3px;
+  }
+  .num {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 1;
+    min-width: 58px;
+    height: 58px;
+    padding: 0 10px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: var(--green);
+    color: #fff;
+    font-family: "Plus Jakarta Sans", Outfit, sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    box-shadow: 0 10px 22px rgba(22, 101, 52, .32);
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 16px 16px 18px;
+  }
+  h2 {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", Outfit, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.25;
+  }
+  .apri {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .apri:hover { background: var(--green-deep); }
+  .apri:focus-visible {
+    outline: 3px solid #86efac;
+    outline-offset: 2px;
+  }
+  .note {
+    margin: 28px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 720px) {
+    .top { flex-direction: column; align-items: flex-start; }
+    .wrap { width: min(100% - 28px, 1280px); }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <p class="mark">SeedElio · Libretto v020</p>
+        <h1>Indice del Libretto, varianti</h1>
+      </div>
+      <p class="lead">Scegli la grafica dell’indice. L’immagine o il pulsante Apri aprono la variante a tutta pagina.</p>
+    </header>
+
+    <section class="grid" aria-label="Varianti dell’indice">
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v1.html" target="_blank" rel="noopener">
+          <span class="num">1</span>
+          <img src="anteprime-indice/libretto-v020-indice-v1.png" data-alt="../anteprime-indice/libretto-v020-indice-v1.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 1, Editoriale con SeedElisa">
+        </a>
+        <div class="meta">
+          <h2>Editoriale con SeedElisa</h2>
+          <a class="apri" href="libretto-v020-indice-v1.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v2.html" target="_blank" rel="noopener">
+          <span class="num">2</span>
+          <img src="anteprime-indice/libretto-v020-indice-v2.png" data-alt="../anteprime-indice/libretto-v020-indice-v2.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 2, Casa e grafico">
+        </a>
+        <div class="meta">
+          <h2>Casa e grafico</h2>
+          <a class="apri" href="libretto-v020-indice-v2.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v3.html" target="_blank" rel="noopener">
+          <span class="num">3</span>
+          <img src="anteprime-indice/libretto-v020-indice-v3.png" data-alt="../anteprime-indice/libretto-v020-indice-v3.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 3, Casa e famiglia">
+        </a>
+        <div class="meta">
+          <h2>Casa e famiglia</h2>
+          <a class="apri" href="libretto-v020-indice-v3.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v4.html" target="_blank" rel="noopener">
+          <span class="num">4</span>
+          <img src="anteprime-indice/libretto-v020-indice-v4.png" data-alt="../anteprime-indice/libretto-v020-indice-v4.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 4, Percorso">
+        </a>
+        <div class="meta">
+          <h2>Percorso</h2>
+          <a class="apri" href="libretto-v020-indice-v4.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v5.html" target="_blank" rel="noopener">
+          <span class="num">5</span>
+          <img src="anteprime-indice/libretto-v020-indice-v5.png" data-alt="../anteprime-indice/libretto-v020-indice-v5.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 5, Card chiare">
+        </a>
+        <div class="meta">
+          <h2>Card chiare</h2>
+          <a class="apri" href="libretto-v020-indice-v5.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v7.html" target="_blank" rel="noopener">
+          <span class="num">7</span>
+          <img src="anteprime-indice/libretto-v020-indice-v7.png" data-alt="../anteprime-indice/libretto-v020-indice-v7.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 7, Reception">
+        </a>
+        <div class="meta">
+          <h2>Reception</h2>
+          <a class="apri" href="libretto-v020-indice-v7.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v8.html" target="_blank" rel="noopener">
+          <span class="num">8</span>
+          <img src="anteprime-indice/libretto-v020-indice-v8.png" data-alt="../anteprime-indice/libretto-v020-indice-v8.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 8, Famiglia">
+        </a>
+        <div class="meta">
+          <h2>Famiglia</h2>
+          <a class="apri" href="libretto-v020-indice-v8.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v9.html" target="_blank" rel="noopener">
+          <span class="num">9</span>
+          <img src="anteprime-indice/libretto-v020-indice-v9.png" data-alt="../anteprime-indice/libretto-v020-indice-v9.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 9, SeedElisa">
+        </a>
+        <div class="meta">
+          <h2>SeedElisa</h2>
+          <a class="apri" href="libretto-v020-indice-v9.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="preview" href="libretto-v020-indice-v10.html" target="_blank" rel="noopener">
+          <span class="num">10</span>
+          <img src="anteprime-indice/libretto-v020-indice-v10.png" data-alt="../anteprime-indice/libretto-v020-indice-v10.png" onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.dataset.alt}" alt="Anteprima della variante 10, Casa piena">
+        </a>
+        <div class="meta">
+          <h2>Casa piena</h2>
+          <a class="apri" href="libretto-v020-indice-v10.html" target="_blank" rel="noopener">Apri</a>
+        </div>
+      </article>
+
+    </section>
+    <p class="note">SeedElio.ai · nove varianti da confrontare.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="it" data-gg-variant="3">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Games | SeedElio.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="logo-dondolio.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Outfit:wght@300..800&family=Plus+Jakarta+Sans:wght@500..800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['"Source Serif 4"', 'Georgia', 'serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+        },
+        keyframes: {
+          breathe: {
+            '0%, 100%': { boxShadow: '0 0 0 0 rgba(251,191,36,0)' },
+            '50%': { boxShadow: '0 0 26px 5px rgba(251,191,36,.6)' }
+          },
+          blink: {
+            '0%, 100%': { opacity: '1', boxShadow: '0 0 0 0 rgba(52,211,153,0)' },
+            '30%': { opacity: '1', boxShadow: '0 0 6px 2px rgba(52,211,153,.6)' },
+            '65%': { opacity: '.25', boxShadow: '0 0 0 0 rgba(52,211,153,0)' }
+          },
+          aiBlink: {
+            '0%, 100%': { opacity: '1' },
+            '50%': { opacity: '.32' }
+          },
+          ripple: {
+            '0%': { transform: 'scale(.3)', opacity: '0' },
+            '15%': { opacity: '1' },
+            '100%': { transform: 'scale(1.75)', opacity: '0' }
+          }
+        },
+        animation: {
+          breathe: 'breathe 3s ease-in-out infinite',
+          blink: 'blink 2.4s ease-in-out infinite',
+          aiBlink: 'aiBlink 4.4s ease-in-out infinite',
+          ripple: 'ripple 2.4s ease-out infinite'
+        },
+        colors: {
+          ink: '#020617',
+          navy: '#0f172a',
+          sun: '#fbbf24',
+          cyanbrand: '#22d3ee'
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .ico { width: 1em; height: 1em; fill: currentColor; display: inline-block; flex: none; }
+  .grad-a { background: linear-gradient(90deg, #d97706, #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .grad-b { background: linear-gradient(90deg, #da7806 0%, #c59b2d 8%, #a19a47 25%, #6f9769 50%, #3a948e 75%, #0c91af 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(15,23,42,.18), 0 8px 24px -8px rgba(15,23,42,.08); }
+  @keyframes ping2 { 75%, 100% { transform: scale(2); opacity: 0; } }
+  #ggMain { background: #f8fafc; }
+  .gg-face { object-fit: contain; display: block; background: transparent; flex: none; border-radius: 999px; }
+  #familyToggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    padding: 6px 16px 6px 6px;
+    cursor: pointer;
+    max-width: 100%;
+  }
+  #familyToggle:hover { border-color: #f59e0b; }
+  #familyToggle .gg-seed { width: 36px; height: 36px; display: block; }
+  #familyToggle.is-open { border-color: #d97706; background: #fffbeb; }
+  #familyPanel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 0;
+    overflow: hidden;
+    transition: grid-template-rows 260ms ease, opacity 200ms ease, margin-top 260ms ease, visibility 0s linear 260ms;
+  }
+  #familyPanel.is-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+    margin-top: 14px;
+    transition: grid-template-rows 260ms ease, opacity 200ms ease, margin-top 260ms ease, visibility 0s;
+  }
+  .gg-family-clip { overflow: hidden; min-height: 0; }
+  .gg-kin {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-top: 3px solid var(--ink);
+    border-radius: 16px;
+    padding: 14px;
+  }
+  #grid { padding-top: 4px; }
+  .gg-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100%;
+    padding: 14px;
+    text-align: left;
+    background: #fff;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    border-top: 3px solid var(--ink);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  }
+  .gg-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07); }
+  .gg-card.is-on {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.55);
+  }
+  .gg-check {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    border: 2px solid #0f172a;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.22);
+    pointer-events: none;
+  }
+  .gg-card.is-on .gg-check {
+    background: #fbbf24;
+    border-color: #b45309;
+  }
+  .gg-card.is-on .gg-check::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 3px;
+    width: 7px;
+    height: 13px;
+    border: solid #0f172a;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  .gg-ribbon {
+    align-self: flex-start;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ink) 14%, #fff);
+    color: var(--ink);
+    font-family: Outfit, sans-serif;
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .gg-card .gg-art { display: block; overflow: hidden; border-radius: 12px; border: 1px solid #e2e8f0; background: var(--wash); }
+  .gg-card .gg-art svg { width: 100%; height: auto; display: block; }
+  #semiBar {
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid #e2e8f0;
+    backdrop-filter: blur(10px);
+  }
+  .gg-semi { display: flex; align-items: baseline; gap: 6px; flex: none; }
+  #semiCount {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 0.9;
+    color: #b45309;
+  }
+  .gg-semi-label {
+    font-family: Outfit, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: #b45309;
+  }
+  .gg-stages {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .gg-stages li {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: 48px;
+    padding: 0 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    background: #fff;
+    color: #64748b;
+    font-family: Outfit, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .gg-stages li .gg-lab { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gg-stages li.is-now { background: #fbbf24; border-color: #f59e0b; color: #0f172a; }
+  .gg-stages li.is-done { background: #d1fae5; border-color: #059669; color: #065f46; }
+  .gg-stages li.is-done .gg-tick { display: inline; }
+  .gg-tick { display: none; }
+  #playGoal, #beginGame, #commitGame, #nextGame, #startPath, #restartPath, #bandName, #restart, #playTitle { scroll-margin-top: 360px; }
+  .gg-now {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    border-top: 1px solid #e2e8f0;
+    background: #fff;
+  }
+  .gg-now-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-bottom: 12px;
+  }
+  .gg-now p {
+    margin: 0;
+    padding: 12px 16px 0;
+    font-family: Outfit, sans-serif;
+    font-size: 30px;
+    line-height: 1.3;
+    text-align: center;
+    color: #0f172a;
+  }
+  #pickNeed {
+    margin: 0;
+    padding: 4px 16px 0;
+    font-family: Outfit, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    color: #0f172a;
+  }
+  #semiBar .gg-stages-row {
+    align-items: stretch;
+  }
+  #semiBar .gg-start-actions {
+    flex: 0 0 auto;
+    align-self: stretch;
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+  }
+  #semiBar .gg-go-pair {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+  }
+  #semiBar .gg-go-pair.hidden,
+  #semiBar .gg-pick-gap.hidden {
+    display: none !important;
+  }
+  #semiBar .gg-pick-gap {
+    flex: 0 0 auto;
+    align-self: stretch;
+    margin: 0;
+    min-width: 8.5rem;
+    min-height: 48px;
+    border-radius: 999px;
+    padding: 0 1.35rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.1;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0f172a;
+    background: #fde68a;
+    opacity: 0.45;
+    user-select: none;
+    pointer-events: none;
+  }
+  #semiBar #startPath,
+  #semiBar #restartPath {
+    flex: 0 0 auto;
+    align-self: stretch;
+    margin: 0;
+    min-width: 8.5rem;
+    min-height: 48px;
+    height: auto;
+    border-radius: 999px;
+    padding: 0 1.35rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.1;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #semiBar #restartPath {
+    min-width: 7.5rem;
+    background: #fff;
+    border: 2px solid #cbd5e1;
+    color: #0f172a;
+  }
+  #semiBar #restartPath:hover {
+    border-color: #f59e0b;
+    background: #fffbeb;
+  }
+  .gg-now-kicker {
+    margin-right: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b45309;
+  }
+  @media (min-width: 1024px) {
+    .gg-now p { padding: 14px 32px 0; font-size: 32px; }
+    .gg-now-main { padding-bottom: 14px; }
+    #pickNeed { padding: 6px 32px 0; }
+    .gg-now-kicker { font-size: 22px; }
+  }
+  #seedBurst {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    pointer-events: auto;
+  }
+  #seedBurst.is-on { display: flex; }
+  .gg-burst-veil {
+    position: absolute;
+    inset: 0;
+    background: rgba(248, 250, 252, 0.28);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .gg-burst-panel {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    width: min(720px, calc(100vw - 40px));
+    height: 50vh;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 20px 24px 18px;
+    overflow: hidden;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+  }
+  .gg-burst-sun {
+    position: absolute;
+    width: min(420px, 80%);
+    height: min(420px, 90%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(254, 243, 199, 0.9) 0%, rgba(209, 250, 229, 0.45) 48%, rgba(255, 255, 255, 0) 72%);
+    pointer-events: none;
+  }
+  .gg-burst-stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+  .gg-fan { display: flex; align-items: flex-end; justify-content: center; min-height: 0; margin-bottom: 4px; }
+  .gg-fan-seed {
+    width: 72px;
+    margin: 0 -4px;
+    transform-origin: 50% 120%;
+    opacity: 0;
+    animation: ggSeedPop 0.55s cubic-bezier(.2, 1.2, .35, 1) forwards;
+    animation-delay: calc(var(--i) * var(--step));
+  }
+  .gg-fan-seed svg { width: 100%; height: auto; display: block; }
+  .gg-burst-count {
+    margin: 0;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(56px, 8vh, 84px);
+    line-height: 0.9;
+    color: #b45309;
+    animation: ggCountPop 0.45s cubic-bezier(.2, 1.1, .35, 1) both;
+    animation-delay: 0.15s;
+  }
+  .gg-burst-word {
+    margin: 0;
+    font-family: Outfit, sans-serif;
+    font-weight: 700;
+    font-size: clamp(22px, 3.4vh, 32px);
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #047857;
+  }
+  .gg-burst-line {
+    margin: 10px 0 0;
+    max-width: 34rem;
+    font-family: Outfit, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #334155;
+  }
+  .gg-burst-go {
+    display: none;
+    position: relative;
+    z-index: 1;
+    margin-top: 14px;
+    height: 44px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 999px;
+    background: #fbbf24;
+    color: #0f172a;
+    font-family: Outfit, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  #seedBurst.is-ready .gg-burst-go { display: inline-flex; align-items: center; }
+  @keyframes ggSeedPop {
+    0% { opacity: 0; transform: translateY(18px) scale(.86) rotate(0deg); }
+    100% { opacity: 1; transform: translateY(0) scale(1) rotate(var(--rot)); }
+  }
+  @keyframes ggCountPop {
+    0% { opacity: 0; transform: scale(.92); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gg-fan-seed, .gg-burst-count { animation: none; opacity: 1; }
+    .gg-fan-seed { transform: rotate(var(--rot)); }
+    .gg-burst-count { transform: none; }
+    .gg-burst-veil { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  }
+  @media (min-width: 1024px) {
+    #semiCount { font-size: 40px; }
+    .gg-semi-label { font-size: 13px; }
+    .gg-stages { gap: 8px; }
+    .gg-stages li { height: 56px; font-size: 26px; padding: 0 12px; }
+  }
+
+  /* Green Games · tema v3 (tavola CAD) + UI prod */
+#ggHeroTech{position:relative}
+  .gg-hero-spec{display:none;width:220px;height:200px;flex:none;border:1px solid;border-radius:4px;overflow:hidden}
+  html[data-gg-variant] .gg-hero-mascot{display:none!important}
+  html[data-gg-variant] .gg-hero-spec{display:block}
+  html[data-gg-variant] #ggHeroTech{border-bottom-width:1px}
+  html[data-gg-variant] .gg-hero-kicker{font-family:JetBrains Mono,monospace!important}
+  html[data-gg-variant] #ggHeroTech h1{font-family:Outfit,sans-serif!important;font-weight:700!important;letter-spacing:-.02em}
+  html[data-gg-variant] .gg-hero-lead{font-family:Outfit,sans-serif;color:#cbd5e1!important;font-size:15px!important;line-height:1.55!important}
+  html[data-gg-variant] .gg-card{transform:none!important;border-radius:6px!important;box-shadow:none!important}
+  html[data-gg-variant] .gg-card:hover{transform:none!important;box-shadow:0 2px 8px rgba(15,23,42,.08)!important}
+  html[data-gg-variant] .gg-card .gg-art{border-radius:10px!important;background:#fafafa!important;border:1px solid #e4e4e7!important;min-height:156px!important;aspect-ratio:16/9!important;display:flex!important;align-items:stretch!important;overflow:hidden!important}
+  html[data-gg-variant] .gg-card .gg-art svg{width:100%!important;height:100%!important;min-height:156px!important;display:block!important}
+  html[data-gg-variant="5"] .gg-p-bg{fill:#27272a!important}
+  html[data-gg-variant="5"] .gg-p-ink{fill:#fafafa!important;stroke:#fafafa!important}
+  html[data-gg-variant="5"] .gg-p-soft{fill:#3f3f46!important;stroke:#52525b!important}
+  html[data-gg-variant] .gg-ribbon{font-family:JetBrains Mono,monospace!important;font-size:10px!important;font-weight:600!important;letter-spacing:.06em!important;text-transform:uppercase!important;border-radius:2px!important;background:#e2e8f0!important;color:#334155!important;padding:2px 6px!important}
+  html[data-gg-variant] .gg-card .font-display{font-family:Outfit,sans-serif!important}
+  html[data-gg-variant] .gg-card .gg-face{width:32px!important;height:32px!important;border-radius:4px!important;border:1px solid #cbd5e1}
+  html[data-gg-variant] #pickView h2{font-family:Outfit,sans-serif!important;font-weight:700!important;letter-spacing:-.02em}
+  html[data-gg-variant] #familyToggle{border-radius:6px!important}
+  html[data-gg-variant] #familyToggle .gg-seed{display:none}
+  html[data-gg-variant] .gg-kin{border-radius:6px!important;border-top-width:2px!important}
+  html[data-gg-variant] #semiCount{font-family:JetBrains Mono,monospace!important;font-weight:700!important}
+  html[data-gg-variant] .gg-stages li{border-radius:4px!important;font-family:JetBrains Mono,monospace!important;font-size:14px!important;font-weight:600!important;height:44px!important}
+  html[data-gg-variant] .gg-now-kicker{font-family:JetBrains Mono,monospace!important;font-size:11px!important}
+  html[data-gg-variant] .gg-now p{font-size:22px!important;font-weight:600!important}
+  html[data-gg-variant] #pickNeed{font-size:16px!important}
+
+
+  html[data-gg-variant] .gg-kin .gg-face-tech{border-radius:4px!important}
+
+  /* V1 Blueprint */
+  html[data-gg-variant="1"] body{background:#e8eef5}
+  html[data-gg-variant="1"] #ggMain{background:linear-gradient(90deg,rgba(30,64,175,.06) 1px,transparent 1px),linear-gradient(rgba(30,64,175,.06) 1px,transparent 1px),#f0f4fa;background-size:24px 24px}
+  html[data-gg-variant="1"] #ggHeroTech{background:#0c1929;border-color:#1e3a5f;background-image:linear-gradient(90deg,rgba(56,189,248,.08) 1px,transparent 1px),linear-gradient(rgba(56,189,248,.08) 1px,transparent 1px);background-size:20px 20px}
+  html[data-gg-variant="1"] .gg-hero-kicker{color:#38bdf8!important}
+  html[data-gg-variant="1"] .gg-hero-spec{border-color:#38bdf8;background:repeating-linear-gradient(0deg,#0c1929,#0c1929 18px,#132337 18px,#132337 19px)}
+  html[data-gg-variant="1"] .gg-card{border:1px solid #94a3b8!important;border-top:2px solid #1d4ed8!important;background:#fff!important}
+  html[data-gg-variant="1"] #semiBar{background:#fff;border-color:#cbd5e1}
+  html[data-gg-variant="1"] .gg-stages li.is-now{background:#dbeafe;border-color:#1d4ed8;color:#1e3a8a}
+  html[data-gg-variant="1"] #semiCount,.gg-semi-label{color:#1d4ed8!important}
+
+  /* V2 Dashboard */
+  html[data-gg-variant="2"] #ggMain{background:#f1f5f9}
+  html[data-gg-variant="2"] #ggHeroTech{background:#111827;border-color:#374151}
+  html[data-gg-variant="2"] .gg-hero-kicker{color:#34d399!important}
+  html[data-gg-variant="2"] .gg-hero-spec{border-color:#374151;background:#1f2937;display:flex;flex-direction:column;gap:6px;padding:12px;font-family:JetBrains Mono,monospace;font-size:10px;color:#a7f3d0}
+  html[data-gg-variant="2"] .gg-card{border:1px solid #d1d5db!important;border-top:none!important;border-left:3px solid #059669!important;background:#fff!important}
+  html[data-gg-variant="2"] #semiBar{background:#111827;color:#e5e7eb}
+  html[data-gg-variant="2"] #semiBar .gg-semi-label{color:#6ee7b7!important}
+  html[data-gg-variant="2"] #semiCount{color:#34d399!important}
+  html[data-gg-variant="2"] .gg-stages li{background:#1f2937;border-color:#374151;color:#9ca3af}
+  html[data-gg-variant="2"] .gg-stages li.is-now{background:#064e3b;border-color:#10b981;color:#ecfdf5}
+  html[data-gg-variant="2"] .gg-now{background:#f9fafb;border-color:#e5e7eb}
+  html[data-gg-variant="2"] #grid{gap:12px!important}
+
+  /* V3 CAD */
+  html[data-gg-variant="3"] #ggMain{background:#e5e7eb;background-image:linear-gradient(#d1d5db 1px,transparent 1px),linear-gradient(90deg,#d1d5db 1px,transparent 1px);background-size:8px 8px}
+  html[data-gg-variant="3"] #ggHeroTech{background:#f9fafb;border-color:#9ca3af;color:#111827}
+  html[data-gg-variant="3"] #ggHeroTech h1{color:#0f172a!important}
+  html[data-gg-variant="3"] .gg-hero-kicker{color:#b45309!important}
+  html[data-gg-variant="3"] .gg-hero-lead{color:#475569!important}
+  html[data-gg-variant="3"] .gg-hero-spec{border:2px solid #0f172a;border-radius:0;background:#fff}
+  html[data-gg-variant="3"] .gg-card{border:2px solid #0f172a!important;border-radius:0!important;background:#fff!important}
+  html[data-gg-variant="3"] .gg-card .gg-art{border-radius:0!important}
+  html[data-gg-variant="3"] .gg-ribbon{border:1px solid #0f172a!important;background:#fff!important}
+  html[data-gg-variant="3"] .gg-stages li{border-radius:0!important;border:2px solid #0f172a}
+  html[data-gg-variant="3"] .gg-stages li.is-now{background:#fbbf24;border-color:#0f172a}
+  a.logo-sig {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 4px;
+    margin-left: 1px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: #065f46;
+    text-decoration: none;
+  }
+  @media (min-width: 1024px) {
+    a.logo-sig { font-size: 14px; }
+  }
+  a.logo-sig .logo-sig-go {
+    display: inline-block;
+    width: 0;
+    margin-left: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-3px);
+    transition: width 160ms ease, margin 160ms ease, opacity 160ms ease, transform 160ms ease;
+  }
+  a.logo-sig:hover,
+  a.logo-sig:focus-visible {
+    color: #064e3b;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  a.logo-sig:hover .logo-sig-go,
+  a.logo-sig:focus-visible .logo-sig-go {
+    width: 14px;
+    margin-left: 4px;
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body class="bg-[#f4f7fb] text-slate-800 antialiased">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-bolt" viewBox="0 0 448 512"><path d="M338.8-9.9c11.9 8.6 16.3 24.2 10.9 37.8L271.3 224 416 224c13.5 0 25.5 8.4 30.1 21.1s.7 26.9-9.6 35.5l-288 240c-11.3 9.4-27.4 9.9-39.3 1.3s-16.3-24.2-10.9-37.8L176.7 288 32 288c-13.5 0-25.5-8.4-30.1-21.1s-.7-26.9 9.6-35.5l288-240c11.3-9.4 27.4-9.9 39.3-1.3z"/></symbol>
+<symbol id="i-gamepad" viewBox="0 0 640 512"><path d="M448 64c106 0 192 86 192 192S554 448 448 448l-256 0C86 448 0 362 0 256S86 64 192 64l256 0zM192 176c-13.3 0-24 10.7-24 24l0 32-32 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l32 0 0 32c0 13.3 10.7 24 24 24s24-10.7 24-24l0-32 32 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-32 0 0-32c0-13.3-10.7-24-24-24zm240 96a32 32 0 1 0 0 64 32 32 0 1 0 0-64zm64-96a32 32 0 1 0 0 64 32 32 0 1 0 0-64z"/></symbol>
+<symbol id="i-headset" viewBox="0 0 448 512"><path d="M224 64c-79 0-144.7 57.3-157.7 132.7 9.3-3 19.3-4.7 29.7-4.7l16 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0c-53 0-96-43-96-96l0-64C0 100.3 100.3 0 224 0S448 100.3 448 224l0 168.1c0 66.3-53.8 120-120.1 120l-87.9-.1-32 0c-26.5 0-48-21.5-48-48s21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 0 40 0c39.8 0 72-32.2 72-72l0-20.9c-14.1 8.2-30.5 12.8-48 12.8l-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48l16 0c10.4 0 20.3 1.6 29.7 4.7-13-75.3-78.6-132.7-157.7-132.7z"/></symbol>
+<symbol id="i-tower-broadcast" viewBox="0 0 576 512"><path d="M87.9 11.5c-11.3-6.9-26.1-3.2-33 8.1-24.8 41-39 89.1-39 140.4s14.2 99.4 39 140.4c6.9 11.3 21.6 15 33 8.1s15-21.6 8.1-33C75.7 241.9 64 202.3 64 160S75.7 78.1 96.1 44.4c6.9-11.3 3.2-26.1-8.1-33zm400.1 0c-11.3 6.9-15 21.6-8.1 33 20.4 33.7 32.1 73.3 32.1 115.6s-11.7 81.9-32.1 115.6c-6.9 11.3-3.2 26.1 8.1 33s26.1 3.2 33-8.1c24.8-41 39-89.1 39-140.4S545.8 60.6 521 19.6c-6.9-11.3-21.6-15-33-8.1zM320 215.4c19.1-11.1 32-31.7 32-55.4 0-35.3-28.7-64-64-64s-64 28.7-64 64c0 23.7 12.9 44.4 32 55.4L256 480c0 17.7 14.3 32 32 32s32-14.3 32-32l0-264.6zM180.2 91c7.2-11.2 3.9-26-7.2-33.2s-26-3.9-33.2 7.2c-17.6 27.4-27.8 60-27.8 95s10.2 67.6 27.8 95c7.2 11.2 22 14.4 33.2 7.2s14.4-22 7.2-33.2c-12.8-19.9-20.2-43.6-20.2-69s7.4-49.1 20.2-69zM436.2 65c-7.2-11.2-22-14.4-33.2-7.2s-14.4 22-7.2 33.2c12.8 19.9 20.2 43.6 20.2 69s-7.4 49.1-20.2 69c-7.2 11.2-3.9 26 7.2 33.2s26 3.9 33.2-7.2c17.6-27.4 27.8-60 27.8-95s-10.2-67.6-27.8-95z"/></symbol>
+<symbol id="i-phone-volume" viewBox="0 0 576 512"><path d="M344-32c128.1 0 232 103.9 232 232 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184-13.3 0-24-10.7-24-24s10.7-24 24-24zm8 192a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM320 88c0-13.3 10.7-24 24-24 75.1 0 136 60.9 136 136 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88-13.3 0-24-10.7-24-24zM144.1 1.4c19.7-5.4 40.3 4.7 48.1 23.5l40.5 97.3c6.9 16.5 2.1 35.6-11.8 47l-44.1 36.1c32.5 71.6 89 130 159.3 164.9L374.7 323c11.3-13.9 30.4-18.6 47-11.8L519 351.8c18.8 7.8 28.9 28.4 23.5 48.1l-1.5 5.5C523.4 470.1 460.9 525.3 384.6 509.2 209.6 472.1 71.9 334.4 34.8 159.4 18.7 83.1 73.9 20.6 138.5 2.9l5.5-1.5z"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 512 512"><path d="M32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 224zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384z"/></symbol>
+<symbol id="i-house-laptop" viewBox="0 0 640 512"><path d="M448 240l19.9 0c15.5 0 28.1-12.6 28.1-28.1 0-7.6-3.1-14.9-8.6-20.2L283.5-4.9C276.1-12 266.3-16 256-16s-20.1 4-27.5 11.1L24.6 191.7C19.1 197 16 204.3 16 211.9 16 227.4 28.6 240 44.1 240l19.9 0 0 144c0 35.3 28.7 64 64 64l85.7 0c7.4-6.6 16.4-11.4 26.3-14l0-130c0-5.5 .7-10.9 2-16l-10 0c-13.3 0-24-10.7-24-24l0-48c0-13.3 10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 24 144 0zM352 352l160 0 0 128-160 0 0-128zm-64-32l0 160-32 0c-8.8 0-16 7.2-16 16 0 26.5 21.5 48 48 48l288 0c26.5 0 48-21.5 48-48 0-8.8-7.2-16-16-16l-32 0 0-160c0-17.7-14.3-32-32-32l-224 0c-17.7 0-32 14.3-32 32z"/></symbol>
+<symbol id="i-face-smile" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM165.4 321.9c20.4 28 53.4 46.1 90.6 46.1s70.2-18.1 90.6-46.1c7.8-10.7 22.8-13.1 33.5-5.3s13.1 22.8 5.3 33.5C356.3 390 309.2 416 256 416s-100.3-26-129.4-65.9c-7.8-10.7-5.4-25.7 5.3-33.5s25.7-5.4 33.5 5.3zM144 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></symbol>
+<symbol id="i-gift" viewBox="0 0 512 512"><path d="M321.5 68.8C329.1 55.9 342.9 48 357.8 48l2.2 0c22.1 0 40 17.9 40 40s-17.9 40-40 40l-73.3 0 34.8-59.2zm-131 0l34.8 59.2-73.3 0c-22.1 0-40-17.9-40-40s17.9-40 40-40l2.2 0c14.9 0 28.8 7.9 36.3 20.8zm89.6-24.3l-24.1 41-24.1-41C215.7 16.9 186.1 0 154.2 0L152 0c-48.6 0-88 39.4-88 88 0 14.4 3.5 28 9.6 40L32 128c-17.7 0-32 14.3-32 32l0 32c0 17.7 14.3 32 32 32l448 0c17.7 0 32-14.3 32-32l0-32c0-17.7-14.3-32-32-32l-41.6 0c6.1-12 9.6-25.6 9.6-40 0-48.6-39.4-88-88-88l-2.2 0c-31.9 0-61.5 16.9-77.7 44.4zM480 272l-200 0 0 208 136 0c35.3 0 64-28.7 64-64l0-144zm-248 0l-200 0 0 144c0 35.3 28.7 64 64 64l136 0 0-208z"/></symbol>
+<symbol id="i-solar-panel" viewBox="0 0 576 512"><path d="M121.8 32c-30 0-56 20.8-62.5 50.1L9.6 306.1C.7 346.1 31.1 384 72 384l184.1 0 0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l192 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64 184.1 0c40.9 0 71.4-37.9 62.5-77.9l-49.8-224C510.4 52.8 484.5 32 454.5 32L121.8 32zM245.6 96l85.2 0 7.3 88-99.8 0 7.3-88zm-55.5 88l-87.8 0 19.6-88 75.6 0-7.3 88zM91.6 232l94.5 0-7.3 88-106.7 0 19.6-88zm142.6 0l107.8 0 7.3 88-122.5 0 7.3-88zm156 0l94.5 0 19.6 88-106.7 0-7.3-88zM474 184l-87.8 0-7.3-88 75.6 0 19.6 88z"/></symbol>
+<symbol id="i-helicopter" viewBox="0 0 576 512"><path d="M176 32c-13.3 0-24 10.7-24 24s10.7 24 24 24l152 0 0 48-220.8 0-32.8-39.4C69.9 83.2 63.1 80 56 80L24 80C15.7 80 8 84.3 3.6 91.4s-4.8 15.9-1.1 23.4l48 96C54.6 218.9 62.9 224 72 224l107.8 0 104 143.1c15.1 20.7 39.1 32.9 64.7 32.9l75.5 0c75.1 0 136-60.9 136-136S499.1 128 424 128l-48 0 0-48 152 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L176 32zM376 192l48 0c39.8 0 72 32.2 72 72s-32.2 72-72 72l-48 0 0-144zM552 416c-13.3 0-24 10.7-24 24 0 4.4-3.6 8-8 8l-272 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l272 0c30.9 0 56-25.1 56-56 0-13.3-10.7-24-24-24z"/></symbol>
+<symbol id="i-champagne-glasses" viewBox="0 0 640 512"><path d="M155.6 17.3C163 3 179.9-3.6 195 1.9l125 45.6 125-45.6c15.1-5.5 32 1.1 39.4 15.4l78.8 152.9c28.8 55.8 10.3 122.3-38.5 156.6l31.3 86.2 41-15c16.6-6 35 2.5 41 19.1s-2.5 35-19.1 41c-47.4 17.3-94.8 34.5-142.2 51.8-16.6 6.1-35-2.5-41-19.1s2.5-35 19.1-41l41-15-31.3-86.2c-59.4 5.2-116.2-33.9-130-95.2l-14.6-64.7-14.6 64.7c-13.8 61.3-70.6 100.4-130 95.2l-31.3 86.2 41 15c16.6 6.1 25.2 24.4 19.1 41s-24.4 25.2-41 19.1c-47.4-17.3-94.8-34.6-142.2-51.8-16.6-6.1-25.2-24.4-19.1-41S26.3 392 42.9 398l41 15 31.3-86.2C66.5 292.5 48.1 226 76.9 170.2L155.6 17.3zm44 54.4l-27.2 52.8 89.2 32.5 13.1-57.9-75.1-27.4zm240.9 0l-75.1 27.4 13.1 57.9 89.2-32.5-27.2-52.8z"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 512 512"><path d="M471.3 6.7C477.7 .6 487-1.6 495.6 1.2 505.4 4.5 512 13.7 512 24l0 186.9c0 131.2-108.1 237.1-238.8 237.1-77 0-143.4-49.5-167.5-118.7-35.4 30.8-57.7 76.1-57.7 126.7 0 13.3-10.7 24-24 24S0 469.3 0 456C0 381.1 38.2 315.1 96.1 276.3 131.4 252.7 173.5 240 216 240l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0c-39.7 0-77.3 8.8-111 24.5 23.3-70 89.2-120.5 167-120.5 66.4 0 115.8-22.1 148.7-44 19.2-12.8 35.5-28.1 50.7-45.3z"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 448 512"><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></symbol>
+<symbol id="i-scale-balanced" viewBox="0 0 640 512"><path d="M384 32l128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L398.4 96c-5.2 25.8-22.9 47.1-46.4 57.3l0 294.7 160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-384 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l160 0 0-294.7c-23.5-10.3-41.2-31.6-46.4-57.3L128 96c-17.7 0-32-14.3-32-32s14.3-32 32-32l128 0c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288L584.4 320 512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9zM126.8 195.8L54.4 320 199.3 320 126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9S11.7 382 .9 337.1z"/></symbol>
+<symbol id="i-building" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L64 0zM176 352l32 0c17.7 0 32 14.3 32 32l0 80-96 0 0-80c0-17.7 14.3-32 32-32zM96 112c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM240 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zM96 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm144-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></symbol>
+<symbol id="i-user-tie" viewBox="0 0 448 512"><path d="M224 248a120 120 0 1 1 0-240 120 120 0 1 1 0 240zm-30.5 56l61 0c9.7 0 17.5 7.8 17.5 17.5 0 4.2-1.5 8.2-4.2 11.4l-27.4 32 31 115.1 .6 0 34.6-138.5c2.2-8.7 11.1-14 19.5-10.8 61.9 23.6 105.9 83.6 105.9 153.8 0 15.1-12.3 27.4-27.4 27.4L43.4 512c-15.1 0-27.4-12.3-27.4-27.4 0-70.2 44-130.2 105.9-153.8 8.4-3.2 17.3 2.1 19.5 10.8l34.6 138.5 .6 0 31-115.1-27.4-32c-2.7-3.2-4.2-7.2-4.2-11.4 0-9.7 7.8-17.5 17.5-17.5z"/></symbol>
+<symbol id="i-shield-halved" viewBox="0 0 512 512"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.8 82.8c22 9.3 38.4 31 38.3 57.2-.5 99.2-41.3 280.7-213.6 363.2-16.7 8-36.1 8-52.8 0-172.4-82.5-213.1-264-213.6-363.2-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.9 1 251.4 0 256 0zm0 66.8l0 378.1c138-66.8 175.1-214.8 176-303.4l-176-74.6 0 0z"/></symbol>
+<symbol id="i-arrow-up-right-from-square" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0-201.4 201.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3 448 192c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 96C35.8 96 0 131.8 0 176L0 432c0 44.2 35.8 80 80 80l256 0c44.2 0 80-35.8 80-80l0-80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 80c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l80 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 96z"/></symbol>
+<symbol id="i-check" viewBox="0 0 448 512"><path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 512 512"><path d="M160.2 25C152.3 6.1 131.7-3.9 112.1 1.4l-5.5 1.5c-64.6 17.6-119.8 80.2-103.7 156.4 37.1 175 174.8 312.7 349.8 349.8 76.3 16.2 138.8-39.1 156.4-103.7l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2C233.9 335.4 177.3 277 144.8 205.3L189 169.3c13.9-11.3 18.6-30.4 11.8-47L160.2 25z"/></symbol>
+<symbol id="i-envelope" viewBox="0 0 512 512"><path d="M48 64c-26.5 0-48 21.5-48 48 0 15.1 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48L48 64zM0 196L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-188-198.4 148.8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"/></symbol>
+<symbol id="i-house" viewBox="0 0 512 512"><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272l16 0 0 176c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-176 16 0c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1l-224-208zM240 320l32 0c26.5 0 48 21.5 48 48l0 96-128 0 0-96c0-26.5 21.5-48 48-48z"/></symbol>
+<symbol id="i-square-root-variable" viewBox="0 0 576 512"><path d="M282.6 78.1c8-27.3 33-46.1 61.4-46.1l200 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L344 96 238.7 457c-3.6 12.3-14.1 21.2-26.8 22.8s-25.1-4.6-31.5-15.6L77.6 288 32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l45.6 0c22.8 0 43.8 12.1 55.3 31.8l65.2 111.8 84.4-289.5zM393.4 233.4c12.5-12.5 32.8-12.5 45.3 0l41.4 41.4 41.4-41.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-41.4 41.4 41.4 41.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-41.4-41.4-41.4 41.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l41.4-41.4-41.4-41.4c-12.5-12.5-12.5-32.8 0-45.3z"/></symbol>
+<symbol id="i-user" viewBox="0 0 448 512"><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 512 512"><path d="M351.9 280l-190.9 0c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zM160.9 232l190.9 0C349 167.5 334.7 108.1 314.4 64.6 303 40.2 290.7 22.8 279.3 12.2 268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4zm-48 0C116.4 146.4 138.5 66.9 170.8 14.7 78.7 47.3 10.9 131.2 1.5 232l111.4 0zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3L1.5 280zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3l-111.4 0zm111.4-48C501.9 131.2 434.1 47.3 342 14.7 374.3 66.9 396.4 146.4 399.9 232l111.4 0z"/></symbol>
+<symbol id="i-linkedin-in" viewBox="0 0 448 512"><path d="M100.3 448l-92.9 0 0-299.1 92.9 0 0 299.1zM53.8 108.1C24.1 108.1 0 83.5 0 53.8 0 39.5 5.7 25.9 15.8 15.8s23.8-15.8 38-15.8 27.9 5.7 38 15.8 15.8 23.8 15.8 38c0 29.7-24.1 54.3-53.8 54.3zM447.9 448l-92.7 0 0-145.6c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7l0 148.1-92.8 0 0-299.1 89.1 0 0 40.8 1.3 0c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3l0 164.3-.1 0z"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 448 512"><path d="M416 32L31.9 32C14.3 32 0 46.5 0 64.3L0 447.7C0 465.5 14.3 480 31.9 480L416 480c17.6 0 32-14.5 32-32.3l0-383.4C448 46.5 433.6 32 416 32zM135.4 416l-66.4 0 0-213.8 66.5 0 0 213.8-.1 0zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77zM384.3 416l-66.4 0 0-104c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9l0 105.8-66.4 0 0-213.8 63.7 0 0 29.2 .9 0c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9l0 117.2z"/></symbol>
+<symbol id="i-seedling" viewBox="0 0 512 512"><path d="M512 32C512 140.1 435.4 230.3 333.6 251.4 325.7 193.3 299.6 141 261.1 100.5 301.2 40 369.9 0 448 0l32 0c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64l32 0c123.7 0 224 100.3 224 224l0 192c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160C100.3 320 0 219.7 0 96z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 576 512"><path d="M288-32c8.4 0 16.3 4.4 20.6 11.7L364.1 72.3 468.9 46c8.2-2 16.9 .4 22.8 6.3S500 67 498 75.1l-26.3 104.7 92.7 55.5c7.2 4.3 11.7 12.2 11.7 20.6s-4.4 16.3-11.7 20.6L471.7 332.1 498 436.8c2 8.2-.4 16.9-6.3 22.8S477 468 468.9 466l-104.7-26.3-55.5 92.7c-4.3 7.2-12.2 11.7-20.6 11.7s-16.3-4.4-20.6-11.7L211.9 439.7 107.2 466c-8.2 2-16.8-.4-22.8-6.3S76 445 78 436.8l26.2-104.7-92.6-55.5C4.4 272.2 0 264.4 0 256s4.4-16.3 11.7-20.6L104.3 179.9 78 75.1c-2-8.2 .3-16.8 6.3-22.8S99 44 107.2 46l104.7 26.2 55.5-92.6 1.8-2.6c4.5-5.7 11.4-9.1 18.8-9.1zm0 144a144 144 0 1 0 0 288 144 144 0 1 0 0-288zm0 240a96 96 0 1 1 0-192 96 96 0 1 1 0 192z"/></symbol>
+<symbol id="i-microchip" viewBox="0 0 512 512"><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40c-35.3 0-64 28.7-64 64l-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0 0 56-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0 0 56-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0c0 35.3 28.7 64 64 64l0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40 56 0 0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40 56 0 0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40c35.3 0 64-28.7 64-64l40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0 0-56 40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0 0-56 40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0c0-35.3-28.7-64-64-64l0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40-56 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40-56 0 0-40zM160 128l192 0c17.7 0 32 14.3 32 32l0 192c0 17.7-14.3 32-32 32l-192 0c-17.7 0-32-14.3-32-32l0-192c0-17.7 14.3-32 32-32zm16 48l0 160 160 0 0-160-160 0z"/></symbol>
+<symbol id="i-signature" viewBox="0 0 640 512"><path d="M192 128c0-17.7 14.3-32 32-32s32 14.3 32 32l0 7.8c0 27.7-2.4 55.3-7.1 82.5l-84.4 25.3c-40.6 12.2-68.4 49.6-68.4 92l0 32.4-72 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l72.5 0c4.2 36 34.8 64 72 64 26 0 50-13.9 62.9-36.5l13.9-24.3c26.8-47 46.5-97.7 58.4-150.5l94.4-28.3-12.5 37.5c-3.3 9.8-1.6 20.5 4.4 28.8S405.7 320 416 320l128 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-83.6 0 18-53.9c3.8-11.3 .9-23.8-7.4-32.4s-20.7-11.8-32.2-8.4L316.4 198.1c2.4-20.7 3.6-41.4 3.6-62.3l0-7.8c0-53-43-96-96-96s-96 43-96 96l0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32zm-9.2 177l49-14.7c-10.4 33.8-24.5 66.4-42.1 97.2l-13.9 24.3c-1.5 2.6-4.3 4.3-7.4 4.3-4.7 0-8.5-3.8-8.5-8.5l0-71.9c0-14.1 9.3-26.6 22.8-30.7zM616 416c13.3 0 24-10.7 24-24s-10.7-24-24-24l-292.9 0c-6.5 16.3-13.7 32.3-21.6 48L616 416z"/></symbol>
+<symbol id="i-link" viewBox="0 0 576 512"><path d="M419.5 96c-16.6 0-32.7 4.5-46.8 12.7-15.8-16-34.2-29.4-54.5-39.5 28.2-24 64.1-37.2 101.3-37.2 86.4 0 156.5 70 156.5 156.5 0 41.5-16.5 81.3-45.8 110.6l-71.1 71.1c-29.3 29.3-69.1 45.8-110.6 45.8-86.4 0-156.5-70-156.5-156.5 0-1.5 0-3 .1-4.5 .5-17.7 15.2-31.6 32.9-31.1s31.6 15.2 31.1 32.9c0 .9 0 1.8 0 2.6 0 51.1 41.4 92.5 92.5 92.5 24.5 0 48-9.7 65.4-27.1l71.1-71.1c17.3-17.3 27.1-40.9 27.1-65.4 0-51.1-41.4-92.5-92.5-92.5zM275.2 173.3c-1.9-.8-3.8-1.9-5.5-3.1-12.6-6.5-27-10.2-42.1-10.2-24.5 0-48 9.7-65.4 27.1L91.1 258.2c-17.3 17.3-27.1 40.9-27.1 65.4 0 51.1 41.4 92.5 92.5 92.5 16.5 0 32.6-4.4 46.7-12.6 15.8 16 34.2 29.4 54.6 39.5-28.2 23.9-64 37.2-101.3 37.2-86.4 0-156.5-70-156.5-156.5 0-41.5 16.5-81.3 45.8-110.6l71.1-71.1c29.3-29.3 69.1-45.8 110.6-45.8 86.6 0 156.5 70.6 156.5 156.9 0 1.3 0 2.6 0 3.9-.4 17.7-15.1 31.6-32.8 31.2s-31.6-15.1-31.2-32.8c0-.8 0-1.5 0-2.3 0-33.7-18-63.3-44.8-79.6z"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 512 512"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></symbol>
+<symbol id="i-award" viewBox="0 0 448 512"><path d="M245.9-25.9c-13.4-8.2-30.3-8.2-43.7 0-24.4 14.9-39.5 18.9-68.1 18.3-15.7-.4-30.3 8.1-37.9 21.9-13.7 25.1-24.8 36.2-49.9 49.9-13.8 7.5-22.2 22.2-21.9 37.9 .7 28.6-3.4 43.7-18.3 68.1-8.2 13.4-8.2 30.3 0 43.7 14.9 24.4 18.9 39.5 18.3 68.1-.4 15.7 8.1 30.3 21.9 37.9 22.1 12.1 33.3 22.1 45.1 41.5L42.7 458.5c-5.9 11.9-1.1 26.3 10.7 32.2l86 43c11.5 5.7 25.5 1.4 31.7-9.8l52.8-95.1 52.8 95.1c6.2 11.2 20.2 15.6 31.7 9.8l86-43c11.9-5.9 16.7-20.3 10.7-32.2l-48.6-97.2c11.7-19.4 23-29.4 45.1-41.5 13.8-7.5 22.2-22.2 21.9-37.9-.7-28.6 3.4-43.7 18.3-68.1 8.2-13.4 8.2-30.3 0-43.7-14.9-24.4-18.9-39.5-18.3-68.1 .4-15.7-8.1-30.3-21.9-37.9-25.1-13.7-36.2-24.8-49.9-49.9-7.5-13.8-22.2-22.2-37.9-21.9-28.6 .7-43.7-3.4-68.1-18.3zM224 96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></symbol>
+<symbol id="i-people-group" viewBox="0 0 512 512"><path d="M256 0a64 64 0 1 1 0 128 64 64 0 1 1 0-128zm96 312c0 25-12.7 47-32 59.9l0 92.1c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-92.1C172.7 359 160 337 160 312l0-40c0-53 43-96 96-96s96 43 96 96l0 40zM96 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112zm16 240l0 32c0 32.5 12.1 62.1 32 84.7l0 75.3c0 1.2 0 2.5 .1 3.7-8.5 7.6-19.7 12.3-32.1 12.3l-32 0c-26.5 0-48-21.5-48-48l0-56.6C12.9 364.4 0 343.7 0 320l0-32c0-53 43-96 96-96 12.7 0 24.8 2.5 35.9 6.9-12.6 21.4-19.9 46.4-19.9 73.1zM368 464l0-75.3c19.9-22.5 32-52.2 32-84.7l0-32c0-26.7-7.3-51.6-19.9-73.1 11.1-4.5 23.2-6.9 35.9-6.9 53 0 96 43 96 96l0 32c0 23.7-12.9 44.4-32 55.4l0 56.6c0 26.5-21.5 48-48 48l-32 0c-12.3 0-23.6-4.6-32.1-12.3 0-1.2 .1-2.5 .1-3.7zM416 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></symbol>
+<symbol id="i-users" viewBox="0 0 640 512"><path d="M320 16a104 104 0 1 1 0 208 104 104 0 1 1 0-208zM96 88a72 72 0 1 1 0 144 72 72 0 1 1 0-144zM0 416c0-70.7 57.3-128 128-128 12.8 0 25.2 1.9 36.9 5.4-32.9 36.8-52.9 85.4-52.9 138.6l0 16c0 11.4 2.4 22.2 6.7 32L32 480c-17.7 0-32-14.3-32-32l0-32zm521.3 64c4.3-9.8 6.7-20.6 6.7-32l0-16c0-53.2-20-101.8-52.9-138.6 11.7-3.5 24.1-5.4 36.9-5.4 70.7 0 128 57.3 128 128l0 32c0 17.7-14.3 32-32 32l-86.7 0zM472 160a72 72 0 1 1 144 0 72 72 0 1 1 -144 0zM160 432c0-88.4 71.6-160 160-160s160 71.6 160 160l0 16c0 17.7-14.3 32-32 32l-256 0c-17.7 0-32-14.3-32-32l0-16z"/></symbol>
+<symbol id="i-handshake" viewBox="0 0 576 512"><path d="M268.9 85.2L152.3 214.8c-4.6 5.1-4.4 13 .5 17.9 30.5 30.5 80 30.5 110.5 0l31.8-31.8c4.2-4.2 9.5-6.5 14.9-6.9 6.8-.6 13.8 1.7 19 6.9L505.6 376 576 320 576 32 464 96 440.2 80.1C424.4 69.6 405.9 64 386.9 64l-70.4 0c-1.1 0-2.3 0-3.4 .1-16.9 .9-32.8 8.5-44.2 21.1zM116.6 182.7L223.4 64 183.8 64c-25.5 0-49.9 10.1-67.9 28.1L112 96 0 32 0 320 156.4 450.3c23 19.2 52 29.7 81.9 29.7l15.7 0-7-7c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l41 41 9 0c19.1 0 37.8-4.3 54.8-12.3L359 441c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l32 32 17.5-17.5c8.9-8.9 11.5-21.8 7.6-33.1l-137.9-136.8-14.9 14.9c-49.3 49.3-129.1 49.3-178.4 0-23-23-23.9-59.9-2.2-84z"/></symbol>
+<symbol id="i-calendar-check" viewBox="0 0 448 512"><path d="M320 0c17.7 0 32 14.3 32 32l0 32 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32zm22 161.7c-10.7-7.8-25.7-5.4-33.5 5.3L189.1 331.2 137 279.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.9 7.5 18.8 7s13.4-4.1 17.5-9.8L347.3 195.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></symbol>
+<symbol id="logo" viewBox="69 70 101 45"><path d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></symbol>
+</svg>
+
+<div class="sticky top-0 z-50 overflow-visible bg-white shadow-md">
+<!-- TOP BAR -->
+<div class="h-[45px] bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-between" style="padding-left:max(48.5px,calc((100% - 80rem) / 2 + 48.5px));padding-right:max(32px,calc((100% - 80rem) / 2 + 32px))">
+  <div class="flex items-center gap-[9px] min-w-0 overflow-hidden">
+    <p class="text-[16px] font-normal text-slate-300 whitespace-nowrap">SeedElisa è l'AI di SeedElio: ti risponde a domande sul modo del Fotovoltaico e ti prenota una web-conf gratuita con Dario Bonaldo !</p>
+  </div>
+  <div class="hidden lg:flex items-center shrink-0">
+    <svg class="ico text-amber-400 text-[12px] mr-[3px]" style="width:0.875em"><use href="#i-headset"/></svg>
+    <span class="text-[11px] font-medium text-white">Risposta Istantanea 24/7</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="bg-white border-b border-slate-200 h-[97px] relative z-10">
+  <div class="seedelio-header-bar max-w-7xl mx-auto px-8 h-[96px]">
+    <div class="flex items-center gap-[11px] ml-[2px] shrink-0">
+      <div class="block">
+        <a href="index.html" class="logo-line block w-[226px] border-t border-slate-500 h-[48px] overflow-hidden relative flex items-center">
+          <svg class="logo-mark absolute left-0 top-0" viewBox="69 70 101 45" width="101" height="45"><path class="seed s1" d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path class="seed s2" d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path class="seed s3" d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></svg>
+          <span class="absolute left-[110px] top-[6px] text-[26.5px] lg:text-[30px] font-semibold text-slate-700 tracking-tight leading-none">SeedElio</span>
+        </a>
+        <a href="significato-del-logo.html" class="logo-sig">Significato del Logo<span class="logo-sig-go" aria-hidden="true">→</span></a>
+      </div>
+      <span class="font-mono font-semibold text-[22px] text-cyan-700 bg-cyan-50 border-2 border-cyan-300 rounded-xl w-[63px] h-[44px] flex items-center justify-center mt-[-4px]">.AI</span>
+    </div>
+
+    <nav class="seedelio-header-tools hidden lg:flex">
+      <div class="flex items-center gap-7">
+        <div id="svcMenu" class="svc group relative -mx-4 px-4 h-[42px] rounded-xl flex items-center transition-colors duration-200 hover:bg-slate-100/70 [&.is-open]:bg-slate-100/70">
+          <button type="button" id="svcBtn" aria-haspopup="true" aria-expanded="false" aria-controls="svcPanel" class="text-slate-700 group-hover:text-amber-600 group-[.is-open]:text-amber-600 transition-colors duration-200 font-bold uppercase tracking-wider flex items-center gap-2 whitespace-nowrap text-[16px] focus-visible:outline-none">I 4 Servizi
+            <svg class="ico text-slate-400 group-hover:text-amber-600 group-[.is-open]:text-amber-600 text-[10px] transition-[transform,color] duration-200 group-hover:rotate-180 group-[.is-open]:rotate-180" style="width:0.875em"><use href="#i-chevron-down"/></svg></button>
+          <div id="svcPanel" class="absolute left-0 top-full z-50 w-96 pt-2 invisible opacity-0 -translate-y-1 scale-[.98] origin-top-left pointer-events-none transition-[opacity,transform,visibility] duration-200 ease-out group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto group-[.is-open]:visible group-[.is-open]:opacity-100 group-[.is-open]:translate-y-0 group-[.is-open]:scale-100 group-[.is-open]:pointer-events-auto motion-reduce:transition-none motion-reduce:transform-none">
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl px-6 pt-5 pb-2" role="menu" aria-label="I 4 Servizi">
+              <p class="font-bold text-[13px] leading-4 uppercase tracking-[0.12em] text-slate-400 mb-3">Seleziona un servizio</p>
+            <a href="consulenza-impianto-fv.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-amber-50 text-amber-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.2em" aria-hidden="true"><use href="#i-solar-panel"/></svg><span class="text-[20px] leading-none">1</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Consulenza Impianto FV</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Perizia scientifica e simulazione</span>
+              </span>
+            </a>
+            <a href="riprese-drone-professionali.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-blue-50 text-blue-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.2em" aria-hidden="true"><use href="#i-helicopter"/></svg><span class="text-[20px] leading-none">2</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Riprese con Droni Professionali</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Video 4K e ispezione coperture</span>
+              </span>
+            </a>
+            <a href="landing-page-ai-seedelisa.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-cyan-50 text-cyan-700 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.05em" aria-hidden="true"><use href="#i-headset"/></svg><span class="text-[20px] leading-none">3</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Landing Page &amp; AI SeedElisa</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Online-to-Offline &amp; Voice Care</span>
+              </span>
+            </a>
+            <a href="inaugurazione-green.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-emerald-50 text-emerald-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.25em" aria-hidden="true"><use href="#i-people-group"/></svg><span class="text-[20px] leading-none">4</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Inaugurazione Green</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Eventi &amp; educazione ambientale</span>
+              </span>
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+            <div class="tool-rail flex items-center bg-slate-50 border border-slate-200 rounded-2xl h-[54px] w-auto px-2.5 xl:px-3 gap-0 shadow-[0_1px_2px_rgba(15,23,42,0.04)] shrink min-w-0">
+        <a href="simulatore-2.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-amber-500/15 text-amber-500 flex items-center justify-center text-[13px]"><svg class="ico" style="width:0.875em"><use href="#i-bolt"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-amber-700 tracking-wider">TOOL 1</span><span class="block text-[16px] font-semibold text-slate-900">Simulatore</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="glossario-tecnico-fotovoltaico.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-cyan-500/15 text-cyan-600 flex items-center justify-center text-[13px]"><svg class="ico" style="width:0.875em" viewBox="0 0 448 512" aria-hidden="true"><path d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l288 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0 0-32 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l32 0 0-320c0-53-43-96-96-96L96 0zM64 96c0-17.7 14.3-32 32-32l256 0c17.7 0 32 14.3 32 32l0 224-32 0c-35.3 0-64 28.7-64 64l-224 0 0-288z"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-cyan-700 tracking-wider">TOOL 2</span><span class="block text-[16px] font-semibold text-slate-900">Glossario</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="libretto_impianto_fotovoltaico_a3_seedelio_ai_v002.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-violet-500/15 text-violet-600 flex items-center justify-center text-[13px]"><svg class="ico tool-diario-menu-glyph" style="width:1.25em;height:1.25em" viewBox="6 2 17 21" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M8 4h6v4h4v12H8V4z"/><path d="M14 4v4h4"/><path d="M10 10h5M10 13h5M10 16h3"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-violet-700 tracking-wider">TOOL 3</span><span class="block text-[16px] font-semibold text-slate-900">Diario FV</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="green-games.html" class="tool-link flex items-center gap-2" aria-current="page">
+          <span class="w-[26px] h-7 rounded-lg bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-[13px]"><svg class="ico" style="width:1.25em"><use href="#i-gamepad"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-emerald-600 tracking-wider">TOOL 4</span><span class="block text-[16px] font-semibold text-slate-900">Green Games</span></span>
+        </a>
+      </div>
+    </nav>
+
+    <a href="#" class="group relative flex items-center gap-2 rounded-2xl border-2 border-amber-300 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-300 pl-[11px] pr-[13px] h-[60px] w-[208px] shrink-0 shadow-lg shadow-amber-400/30 transition-[transform,box-shadow] duration-300 ease-out hover:scale-[1.03] hover:shadow-xl hover:shadow-amber-400/50 active:scale-[.98] active:duration-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:active:scale-100">
+      <span aria-hidden="true" class="pointer-events-none absolute -inset-[2px] rounded-2xl opacity-60 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 animate-breathe motion-reduce:animate-none"></span>
+      <span class="relative w-[37px] h-[37px] rounded-xl bg-slate-950 text-amber-400 flex items-center justify-center text-[17px] shrink-0">
+        <svg class="ico" style="width:0.875em"><use href="#i-headset"/></svg>
+        <span class="absolute -top-[4px] -right-[4px] w-[9px] h-[9px] rounded-full bg-emerald-400 border-[1.5px] border-white animate-blink motion-reduce:animate-none"></span>
+      </span>
+      <span class="leading-[16px] whitespace-nowrap"><span class="block font-mono text-[10px] font-bold text-slate-800 tracking-wide">VOCE AI 24/7</span><span class="block text-[15px] font-bold text-slate-950">Chiama SeedElisa</span></span>
+      <span class="relative overflow-hidden ml-auto shrink-0 w-[30px] h-[30px] rounded-xl bg-[#c8c27a] text-slate-900 flex items-center justify-center text-[12px]"><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:0s"></span><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:0.8s"></span><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:1.6s"></span><svg class="ico relative z-10" style="width:1.125em"><use href="#i-tower-broadcast"/></svg></span>
+    </a>
+  </div>
+  <script>
+    (function () {
+      var m = document.getElementById('svcMenu'), b = document.getElementById('svcBtn');
+      if (!m || !b) return;
+      function set(o) { m.classList.toggle('is-open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+      b.addEventListener('click', function () { set(!m.classList.contains('is-open')); });
+      b.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown') { e.preventDefault(); set(true); setTimeout(function () { var f = m.querySelector('[role=menuitem]'); if (f) f.focus(); }, 90); }
+      });
+      m.addEventListener('mouseleave', function () { set(false); });
+      m.addEventListener('keydown', function (e) {
+        var it = Array.prototype.slice.call(m.querySelectorAll('[role=menuitem]')), i = it.indexOf(document.activeElement);
+        if (e.key === 'Escape') { set(false); b.focus(); }
+        else if (e.key === 'ArrowDown' && i >= 0) { e.preventDefault(); it[(i + 1) % it.length].focus(); }
+        else if (e.key === 'ArrowUp' && i >= 0) { e.preventDefault(); (i === 0 ? b : it[i - 1]).focus(); }
+      });
+      m.addEventListener('focusout', function (e) { if (!m.contains(e.relatedTarget)) set(false); });
+      document.addEventListener('click', function (e) { if (!m.contains(e.target)) set(false); });
+    })();
+  </script>
+</header>
+</div>
+
+<main id="ggMain" class="text-slate-800 pb-16">
+  <section id="ggHeroTech" class="bg-[#070b14] border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8 pt-8 pb-6 flex flex-col items-center lg:flex-row lg:items-center lg:gap-6">
+      <img src="img/seedelisa-giochi.png" alt="" width="692" height="1236" class="gg-hero-mascot mx-auto mb-4 h-52 w-auto shrink-0 object-contain lg:mx-0 lg:mb-0 lg:h-64" aria-hidden="true">
+      <div class="gg-hero-spec" aria-hidden="true">
+        <svg viewBox="0 0 220 200" width="220" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="200" fill="#0f172a"/><path d="M20 40h180M20 160h180M20 40v120M200 40v120" stroke="#334155" stroke-width="1"/><rect x="48" y="68" width="72" height="52" fill="none" stroke="#38bdf8" stroke-width="1.5"/><path d="M130 90h42v30h-42z" fill="none" stroke="#22c55e" stroke-width="1.5"/><text x="24" y="32" fill="#64748b" font-family="monospace" font-size="9">GG-TOOL-04 · SCHEMA</text><text x="24" y="178" fill="#64748b" font-family="monospace" font-size="8">4 moduli · 20 scenari · metrica semi</text></svg>
+      </div>
+      <div class="w-full min-w-0">
+        <p class="gg-hero-kicker font-mono text-[12px] font-bold tracking-[0.14em] text-emerald-300">TOOL 4 · MODULO FORMATIVO 1 vs 1</p>
+        <h1 class="mt-2 font-display text-[38px] leading-10 lg:text-[52px] font-semibold text-white">Green Games</h1>
+        <p class="gg-hero-lead mt-2 max-w-2xl text-[16px] leading-7 text-slate-300">Percorso a quattro moduli interattivi sulla sostenibilità domestica. Scegli esattamente 4 scenari; i semi (punteggio) si ottengono solo con le scelte coerenti con i dati di campo.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="semiBar" class="sticky top-[142px] z-40">
+    <div class="gg-stages-row max-w-6xl mx-auto px-3 lg:px-8 py-1.5 lg:py-2 flex items-center gap-2 lg:gap-4">
+      <p class="gg-semi" aria-live="polite">
+        <span id="semiCount">0</span>
+        <span class="gg-semi-label">SEMI</span>
+      </p>
+      <ol id="stageList" class="gg-stages" aria-label="Tappe del percorso">
+        <li class="is-now" data-stage="0" aria-current="step" title="Scelta iniziale: si scelgono 4 giochetti"><span class="gg-tick" aria-hidden="true">✓ </span><span class="gg-lab">Scelta</span></li>
+        <li data-stage="1" title="Primo giochetto"><span class="gg-tick" aria-hidden="true">✓ </span><span class="gg-lab">1</span></li>
+        <li data-stage="2" title="Secondo giochetto"><span class="gg-tick" aria-hidden="true">✓ </span><span class="gg-lab">2</span></li>
+        <li data-stage="3" title="Terzo giochetto"><span class="gg-tick" aria-hidden="true">✓ </span><span class="gg-lab">3</span></li>
+        <li data-stage="4" title="Quarto giochetto"><span class="gg-tick" aria-hidden="true">✓ </span><span class="gg-lab">4</span></li>
+        <li data-stage="5" title="Riepilogo e report finale"><span class="gg-tick" aria-hidden="true">✓ </span><span class="gg-lab">Fine</span></li>
+      </ol>
+      <div class="gg-start-actions">
+        <span id="pickGap" class="gg-pick-gap" aria-live="polite">Mancano 4</span>
+        <div id="goPair" class="gg-go-pair hidden">
+          <button type="button" id="startPath" class="shrink-0 bg-amber-400 text-slate-950">Parti</button>
+          <button type="button" id="restartPath" class="shrink-0">Ricomincia</button>
+        </div>
+      </div>
+    </div>
+    <div id="nowCue" class="gg-now">
+      <div class="gg-now-main">
+        <p><span class="gg-now-kicker">Ora tocca a te</span><span id="nowLine">Scegli 4 giochetti, poi premi Parti.</span></p>
+        <p id="pickNeed" role="status">Mancano 4 giochi per arrivare a 4</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="pickView" class="max-w-6xl mx-auto px-5 lg:px-8 py-8">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <h2 class="font-display text-[30px] font-semibold text-slate-950">I 20 giochetti</h2>
+      <p id="pickCount" class="font-display text-[16px] font-semibold text-slate-700">0 / 4 scelti</p>
+    </div>
+    <div id="grid" class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-8"></div>
+    <p id="pickMsg" class="mt-3 text-[14px] text-rose-600 hidden" role="status"></p>
+  </div>
+
+  <div id="playView" class="max-w-3xl mx-auto px-5 lg:px-8 py-8 hidden">
+    <p id="playStep" class="font-mono text-[12px] font-bold text-emerald-700"></p>
+    <h2 id="playTitle" class="mt-2 font-display text-[32px] leading-9 font-semibold text-slate-950"></h2>
+    <p id="playGoal" class="mt-2 text-[18px] leading-7 font-semibold text-slate-950"></p>
+    <div id="playWho" class="mt-3 flex gap-3 items-start"></div>
+    <div id="board" class="mt-5"></div>
+    <button type="button" id="beginGame" class="hidden">Inizia</button>
+    <button type="button" id="commitGame" class="mt-4 h-11 px-5 rounded-full bg-slate-950 text-white font-bold">Raccogli i semi</button>
+    <div id="gameResult" class="mt-4 hidden rounded-2xl bg-white border border-amber-200 p-4"></div>
+    <button type="button" id="nextGame" class="mt-3 hidden h-11 px-5 rounded-full bg-emerald-600 text-white font-bold">Prossimo giochetto</button>
+  </div>
+
+  <div id="endView" class="max-w-3xl mx-auto px-5 lg:px-8 py-8 hidden">
+    <p class="font-mono text-[12px] font-bold text-amber-700">FINE PERCORSO</p>
+    <h2 id="bandName" class="mt-2 font-display text-[36px] font-semibold text-slate-950"></h2>
+    <p id="bandLine" class="mt-2 text-[16px] leading-7 text-slate-700"></p>
+    <p id="bandScore" class="mt-2 font-mono font-bold text-amber-700"></p>
+    <div id="tips" class="mt-6 space-y-4"></div>
+    <section class="mt-8 rounded-3xl bg-white border border-slate-200 p-5">
+      <h3 class="font-display text-[20px] font-semibold text-slate-950">Diploma e report, se vuoi</h3>
+      <p class="mt-1 text-[14px] text-slate-600">Nome e nickname restano in questo report, su questo dispositivo. Non vengono inviati e non si apre un account.</p>
+      <form id="pdfForm" class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3" novalidate>
+        <label class="text-[13px] font-semibold">Nome<input id="pdfName" required class="mt-1 w-full h-11 rounded-xl border border-slate-300 px-3 font-normal"></label>
+        <label class="text-[13px] font-semibold">Nickname<input id="pdfNick" required class="mt-1 w-full h-11 rounded-xl border border-slate-300 px-3 font-normal"></label>
+        <button type="submit" class="sm:col-span-2 min-h-12 rounded-full bg-amber-400 px-5 py-3 text-center text-[16px] font-bold leading-5 text-slate-950">Scarica il tuo DIPLOMA e il REPORT FINALE</button>
+      </form>
+      <p id="pdfMsg" class="mt-3 text-[14px] hidden" role="status"></p>
+    </section>
+    <button type="button" id="restart" class="mt-4 h-11 px-5 rounded-full border border-slate-300 font-bold">Ricomincia e scegline altri 4</button>
+  </div>
+
+  <section id="familyWrap" class="max-w-6xl mx-auto px-5 lg:px-8 pt-2 pb-12">
+    <button type="button" id="familyToggle" aria-expanded="false" aria-controls="familyPanel">
+      <svg class="gg-seed" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="38" rx="13" ry="18" fill="#fbbf24"/><path d="M32 22c7 7 14 9 18 6" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="44" cy="24" rx="8" ry="4.5" fill="#34d399" transform="rotate(24 44 24)"/></svg>
+      <span class="font-display text-[22px] font-semibold leading-none text-slate-950">La famiglia SEED</span>
+    </button>
+    <div id="familyPanel">
+      <div class="gg-family-clip">
+        <p class="mb-3 text-[14px] text-slate-600">Otto facce, un grembiule bianco. Il click la tiene aperta: clicca di nuovo per richiudere.</p>
+        <div id="family" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="seedBurst" aria-hidden="true">
+  <div class="gg-burst-veil" aria-hidden="true"></div>
+  <div class="gg-burst-panel">
+    <div class="gg-burst-sun" aria-hidden="true"></div>
+    <div class="gg-burst-stage" role="status" aria-live="polite">
+      <div id="seedFan" class="gg-fan" aria-hidden="true"></div>
+      <p id="seedBurstCount" class="gg-burst-count">+0</p>
+      <p id="seedBurstWord" class="gg-burst-word">semi</p>
+      <p id="seedBurstLine" class="gg-burst-line"></p>
+    </div>
+    <button type="button" id="seedBurstGo" class="gg-burst-go">Prosegui la raccolta dei semi</button>
+  </div>
+</div>
+<script>
+(function () {
+  var FAMILY = [
+    { id: "artea", suffix: "artea", color: "#d946a6", edge: "#ec4899", a: "Sono esperta di Arte nella green economy.", b: "Pubblico contenuti relativi alle forme artistiche ecosostenibili." },
+    { id: "barret", suffix: "barret", color: "#0e7490", edge: "#0284c7", a: "Sono esperto di Musica nelle sue declinazioni green.", b: "Pubblico contenuti relativi alle forme musicali, ai concerti e agli artisti impegnati a promuovere le tematiche ambientali." },
+    { id: "eco", suffix: "eco", color: "#0f766e", edge: "#0284c7", a: "Sono esperto di Ecologia.", b: "Pubblico contenuti relativi a biodiversità ed ecologia in generale." },
+    { id: "elio", suffix: "elio", color: "#0284c7", edge: "#0284c7", a: "Sono esperto di Energia, Web e Responsabilità Sociale d'Impresa.", b: "Pubblico contenuti relativi all'iniziativa Seedelio, di cui sono l'ideatore e fondatore." },
+    { id: "elisa", suffix: "elisa", color: "#db2777", edge: "#ec4899", a: "Sono esperta di eco-living (sono l'assistente del prof. Seedelio, mio papà).", b: "Pubblico contenuti relativi all'eco-living, stili di vita consapevole e consumo critico." },
+    { id: "ergia", suffix: "ergia", color: "#c026d3", edge: "#ec4899", a: "Sono esperta di tecnologie green.", b: "Pubblico contenuti relativi alle forme di energia pulita, best practices, iniziative politiche in Italia e nel mondo." },
+    { id: "gaia", suffix: "gaia", color: "#be185d", edge: "#ec4899", a: "Sono esperta di eco-living (sono la moglie del prof. Seedelio e mamma di tutto il network Seedelio).", b: "Pubblico contenuti relativi alle problematiche familiari e alle sfide della biogenetica." },
+    { id: "harta", suffix: "harta", color: "#1d4ed8", edge: "#0284c7", a: "Sono esperto di self improving e spiritualità.", b: "Pubblico contenuti relativi alla spiritualità e alla dimensione introspettiva dell'eco living, di religione e di self improving." }
+  ];
+  function who(id) { return FAMILY.filter(function (f) { return f.id === id; })[0]; }
+  function face(c, px) {
+    var w = px || 76;
+    if (document.documentElement.dataset.ggVariant) {
+      var init = (c.suffix || c.id).slice(0, 2).toUpperCase();
+      var fs = Math.max(10, Math.round(w * 0.36));
+      return '<span class="gg-face gg-face-tech" role="img" aria-label="seed' + c.suffix + '" style="width:' + w + 'px;height:' + w + 'px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;font-family:JetBrains Mono,ui-monospace,monospace;font-size:' + fs + 'px;font-weight:700;line-height:1;color:' + c.color + ';background:#f8fafc;border:1px solid #94a3b8;border-radius:3px">' + init + '</span>';
+    }
+    return '<img class="gg-face" src="img/seed-facce/' + c.id + '.png" alt="" width="' + w + '" height="' + w + '" style="width:' + w + 'px;height:' + w + 'px">';
+  }
+  function nameHtml(c) { return '<span class="font-display text-[18px] leading-none"><span class="font-semibold text-slate-500">seed</span><span class="font-semibold" style="color:' + c.color + '">' + c.suffix + '</span></span>'; }
+  var SKINS = [
+    { rot: "-1.6deg", radius: "36px 16px 42px 14px", wash: "#fff7ed", ink: "#c2410c", edge: "dashed", ribbon: "sole" },
+    { rot: "1.3deg", radius: "12px 40px 16px 34px", wash: "#fdf2f8", ink: "#be185d", edge: "solid", ribbon: "kWh" },
+    { rot: "-0.8deg", radius: "8px 8px 28px 28px", wash: "#f0fdf4", ink: "#15803d", edge: "dotted", ribbon: "4 sacchi" },
+    { rot: "1.8deg", radius: "40px 40px 12px 40px", wash: "#ecfeff", ink: "#0e7490", edge: "double", ribbon: "acqua" },
+    { rot: "-1.2deg", radius: "18px 46px 18px 46px", wash: "#f8fafc", ink: "#1e3a8a", edge: "solid", ribbon: "via" },
+    { rot: "0.7deg", radius: "48px 18px 48px 18px", wash: "#ecfdf5", ink: "#166534", edge: "dashed", ribbon: "radici" },
+    { rot: "-1.7deg", radius: "14px 14px 40px 14px", wash: "#eff6ff", ink: "#1d4ed8", edge: "solid", ribbon: "vicini" },
+    { rot: "1.1deg", radius: "30px 8px 30px 8px", wash: "#f8fafc", ink: "#334155", edge: "dashed", ribbon: "ombra" },
+    { rot: "-0.6deg", radius: "22px 44px 10px 28px", wash: "#fff7ed", ink: "#9a3412", edge: "double", ribbon: "attrezzi" },
+    { rot: "1.5deg", radius: "10px 28px 10px 28px", wash: "#fdf4ff", ink: "#7e22ce", edge: "solid", ribbon: "live" },
+    { rot: "-1.4deg", radius: "36px 36px 8px 36px", wash: "#faf5ff", ink: "#a21caf", edge: "dotted", ribbon: "scarti" },
+    { rot: "0.9deg", radius: "8px 32px 24px 8px", wash: "#f0fdf4", ink: "#3f6212", edge: "dashed", ribbon: "mese" },
+    { rot: "-1.1deg", radius: "44px 12px 20px 44px", wash: "#f0fdfa", ink: "#0f766e", edge: "solid", ribbon: "passi" },
+    { rot: "1.6deg", radius: "16px 16px 36px 16px", wash: "#fffbeb", ink: "#b45309", edge: "double", ribbon: "quiz" },
+    { rot: "-1.8deg", radius: "28px 48px 28px 12px", wash: "#ecfeff", ink: "#0369a1", edge: "dashed", ribbon: "gocce" },
+    { rot: "0.6deg", radius: "50px 18px 18px 50px", wash: "#f0fdfa", ink: "#115e59", edge: "solid", ribbon: "pedali" },
+    { rot: "-0.9deg", radius: "12px 40px 40px 12px", wash: "#ecfdf5", ink: "#14532d", edge: "dotted", ribbon: "bosco" },
+    { rot: "1.4deg", radius: "32px 12px 32px 12px", wash: "#fff1f2", ink: "#be123c", edge: "solid", ribbon: "piatti" },
+    { rot: "-1.3deg", radius: "18px 18px 18px 42px", wash: "#f8fafc", ink: "#9d174d", edge: "dashed", ribbon: "spesa" },
+    { rot: "0.8deg", radius: "42px 8px 42px 8px", wash: "#faf5ff", ink: "#6b21a8", edge: "double", ribbon: "muro" }
+  ];
+  function svgProd(tag, body) {
+    var t = tag ? '<text class="gg-p-tag" x="18" y="24" font-family="JetBrains Mono,ui-monospace,monospace" font-size="11" font-weight="600" letter-spacing=".04em">' + tag + '</text>' : "";
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200" class="gg-prod-art" aria-hidden="true">' +
+      '<rect class="gg-p-bg" width="320" height="200" rx="0" fill="#fafafa"/>' + t + body + '</svg>';
+  }
+  function svgTech(code, inner) { return svgProd(code, inner); }
+  function svgWrap(bg, inner) { return svgProd("", inner); }
+  var ART = {
+    sun: svgProd("12h", '<g transform="translate(160 108)"><path class="gg-p-accent" fill="#f97316" d="M-72 28 A72 72 0 0 1 72 28 L0 -52 Z"/><g class="gg-p-ink" stroke="#18181b" stroke-width="5" stroke-linecap="round"><path d="M0 -78 v-22"/><path d="M44 -62 l16-16"/><path d="M66 -16 h22"/><path d="M-66 -16 h-22"/><path d="M-44 -62 l-16-16"/></g><path class="gg-p-muted" fill="none" stroke="#d4d4d8" stroke-width="3" d="M-95 38 Q0 -8 95 38"/></g>'),
+    bill: svgProd("kWh", '<rect class="gg-p-ink" x="44" y="52" width="52" height="108" rx="8" fill="#18181b"/><rect class="gg-p-accent" x="112" y="72" width="52" height="88" rx="8" fill="#6366f1"/><rect class="gg-p-muted" x="180" y="96" width="52" height="64" rx="8" fill="#e4e4e7" stroke="#a1a1aa" stroke-width="2"/><rect class="gg-p-muted" x="248" y="112" width="52" height="48" rx="8" fill="#e4e4e7" stroke="#a1a1aa" stroke-width="2"/>'),
+    bins: svgProd("RSU", '<rect x="36" y="58" width="52" height="102" rx="14" fill="#22c55e"/><rect x="100" y="58" width="52" height="102" rx="14" fill="#3b82f6"/><rect x="164" y="58" width="52" height="102" rx="14" fill="#f59e0b"/><rect x="228" y="58" width="52" height="102" rx="14" fill="#a855f7"/>'),
+    drop: svgProd("H2O", '<path fill="#06b6d4" d="M160 48 C118 98 108 118 108 136 a52 52 0 0 0 104 0 c0-18-10-38-52-88z"/><path class="gg-p-ink" fill="none" stroke="#18181b" stroke-width="4" stroke-linecap="round" d="M160 88 v32"/><circle cx="160" cy="128" r="6" fill="#0891b2"/>'),
+    trip: svgProd("3.2km", '<path class="gg-p-soft" fill="#e0e7ff" stroke="#6366f1" stroke-width="3" d="M72 132 L160 92 L248 132 L248 152 L72 152 Z"/><path class="gg-p-accent" fill="none" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" d="M88 132 C120 108 148 108 160 92"/><circle class="gg-p-ink" cx="88" cy="132" r="9" fill="#18181b"/><circle class="gg-p-ink" cx="232" cy="118" r="9" fill="#18181b"/>'),
+    tree: svgProd("LAI", '<rect x="56" y="132" width="56" height="36" rx="10" fill="#bbf7d0"/><rect x="120" y="104" width="56" height="64" rx="10" fill="#4ade80"/><rect x="184" y="68" width="56" height="100" rx="10" fill="#16a34a"/><text class="gg-p-ink" x="250" y="92" font-family="JetBrains Mono,monospace" font-size="20" font-weight="700" fill="#18181b">↑</text>'),
+    cer: svgProd("CER", '<circle class="gg-p-soft" cx="88" cy="108" r="34" fill="#fef9c3" stroke="#eab308" stroke-width="4"/><circle class="gg-p-accent" cx="160" cy="92" r="42" fill="#facc15" stroke="#ca8a04" stroke-width="4"/><circle class="gg-p-soft" cx="232" cy="108" r="34" fill="#fef9c3" stroke="#eab308" stroke-width="4"/><path class="gg-p-ink" stroke="#18181b" stroke-width="5" d="M122 108 H126 M194 100 H198"/>'),
+    shade: svgProd("28%", '<path fill="#52525b" d="M70 138 L160 62 L250 138 Z"/><path fill="#f59e0b" opacity=".85" d="M160 62 L250 138 L160 138 Z"/><g fill="#0ea5e9"><rect x="118" y="98" width="22" height="16" rx="3"/><rect x="146" y="98" width="22" height="16" rx="3"/><rect x="174" y="98" width="22" height="16" rx="3"/></g>'),
+    repair: svgProd("FIX", '<circle class="gg-p-soft" cx="160" cy="104" r="58" fill="#ffedd5" stroke="#fdba74" stroke-width="3"/><path class="gg-p-accent" fill="none" stroke="#f97316" stroke-width="8" stroke-linecap="round" d="M160 46 v24 M134 72 h52 M160 98 v24 M134 72 v52 h52"/><circle class="gg-p-ink" cx="160" cy="104" r="14" fill="#18181b"/>'),
+    stage: svgProd("LIVE", '<rect x="52" y="88" width="28" height="68" rx="6" fill="#f9a8d4"/><rect x="92" y="56" width="28" height="100" rx="6" fill="#ec4899"/><rect x="132" y="104" width="28" height="52" rx="6" fill="#db2777"/><rect x="172" y="72" width="28" height="84" rx="6" fill="#ec4899"/><rect x="212" y="48" width="28" height="108" rx="6" fill="#f472b6"/><rect class="gg-p-ink" x="48" y="164" width="200" height="8" rx="4" fill="#18181b"/>'),
+    palette: svgProd("MAT", '<circle cx="110" cy="102" r="48" fill="#c4b5fd"/><circle cx="170" cy="88" r="40" fill="#a78bfa"/><circle cx="210" cy="118" r="44" fill="#8b5cf6"/>'),
+    market: svgProd("km0", '<path fill="none" stroke="#10b981" stroke-width="14" stroke-linecap="round" d="M88 132 A72 72 0 0 1 232 132"/><circle class="gg-p-ink" cx="160" cy="132" r="10" fill="#18181b"/><line class="gg-p-accent" x1="160" y1="132" x2="160" y2="68" stroke="#10b981" stroke-width="5"/>'),
+    walk: svgProd("7.4k", '<path class="gg-p-accent" fill="none" stroke="#14b8a6" stroke-width="6" stroke-linecap="round" d="M56 130 C96 92 132 118 160 78 C188 118 224 94 264 66"/><circle class="gg-p-ink" cx="56" cy="130" r="11" fill="#18181b"/><circle class="gg-p-ink" cx="160" cy="78" r="11" fill="#18181b"/><circle class="gg-p-ink" cx="264" cy="66" r="11" fill="#18181b"/>'),
+    bolt: svgProd("QUIZ", '<text x="56" y="138" font-family="JetBrains Mono,ui-monospace,monospace" font-size="56" font-weight="800" fill="#facc15">kWh</text>'),
+    taps: svgProd("ON", '<rect x="58" y="62" width="56" height="88" rx="12" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="3"/><circle cx="86" cy="86" r="12" fill="#0ea5e9"/><path stroke="#0284c7" stroke-width="7" stroke-linecap="round" d="M86 104 v48"/><rect x="132" y="62" width="56" height="88" rx="12" fill="#bae6fd" stroke="#0369a1" stroke-width="4"/><circle cx="160" cy="86" r="12" fill="#0369a1"/><path stroke="#0ea5e9" stroke-width="9" stroke-linecap="round" d="M160 104 v40"/><rect x="206" y="62" width="56" height="88" rx="12" fill="#f4f4f5" stroke="#a1a1aa" stroke-width="3"/><circle cx="234" cy="86" r="12" fill="#71717a"/><path stroke="#a1a1aa" stroke-width="7" stroke-linecap="round" d="M234 104 v28"/>'),
+    bike: svgProd("3km", '<circle cx="160" cy="104" r="62" fill="none" stroke="#e4e4e7" stroke-width="10"/><path fill="none" stroke="#2dd4bf" stroke-width="10" stroke-linecap="round" d="M160 42 A62 62 0 0 1 212 104"/><line class="gg-p-ink" x1="160" y1="104" x2="202" y2="72" stroke="#18181b" stroke-width="5" stroke-linecap="round"/>'),
+    forest: svgProd("H′1.8", '<rect x="48" y="128" width="40" height="32" rx="8" fill="#86efac"/><rect x="100" y="104" width="40" height="56" rx="8" fill="#4ade80"/><rect x="152" y="76" width="40" height="84" rx="8" fill="#22c55e"/><rect x="204" y="96" width="40" height="64" rx="8" fill="#16a34a"/>'),
+    table: svgProd("HOME", '<path fill="#fecdd3" stroke="#f43f5e" stroke-width="3" d="M64 132 L256 132 L228 108 L92 108 Z"/><circle cx="120" cy="96" r="18" fill="#fff" stroke="#f43f5e" stroke-width="3"/><circle cx="160" cy="84" r="18" fill="#fff" stroke="#f43f5e" stroke-width="3"/><circle cx="200" cy="96" r="18" fill="#fff" stroke="#f43f5e" stroke-width="3"/>'),
+    bag: svgProd("CSR", '<path class="gg-p-accent" fill="none" stroke="#d946ef" stroke-width="10" stroke-linecap="round" d="M96 120 A48 48 0 1 1 224 120"/><polygon class="gg-p-ink" fill="#18181b" points="224,120 208,108 208,132"/><circle cx="96" cy="120" r="36" fill="#fae8ff" stroke="#d946ef" stroke-width="4"/><text font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" x="74" y="126" fill="#a21caf">1</text><text font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" x="206" y="126" fill="#a21caf">2</text>'),
+    mural: svgProd("REC", '<path fill="#818cf8" d="M72 148 L160 68 L248 148 Z"/><path fill="#6366f1" d="M160 68 L248 148 L160 148 Z"/><rect x="200" y="76" width="14" height="14" fill="#c7d2fe"/><rect x="220" y="96" width="14" height="14" fill="#e0e7ff"/><rect x="200" y="116" width="14" height="14" fill="#c7d2fe"/>')
+  };
+
+  var GAMES = [
+    { id: "sole", title: "Ore di sole", who: "elio", max: 4, art: "sun", goal: "Accendi solo le ore in cui il sole è alto sul tetto.", type: "toggle",
+      items: [{ t: "Ore 6", ok: false }, { t: "Ore 9", ok: true }, { t: "Ore 12", ok: true }, { t: "Ore 15", ok: true }, { t: "Ore 18", ok: false }, { t: "Ore 21", ok: false }],
+      tips: ["Guarda il tetto a mezzogiorno: è l'ora in cui i moduli rendono di più.", "Non contare la sera come se fosse pieno sole: dopo le 18 la resa cade.", "Se un'ora è accesa e il cielo è coperto fisso, segna l'ombra, non il meteo di un minuto."] },
+    { id: "bolletta", title: "Bolletta in fila", who: "elisa", max: 5, art: "bill", goal: "Metti in ordine i quattro gesti, dal primo da fare all'ultimo.", type: "order",
+      items: ["Leggi kilowattora ed euro, non solo il totale", "Spegni gli stand-by della notte", "Sposta i consumi nelle ore di sole", "Confronta questo mese con il precedente"],
+      tips: ["Apri la bolletta dalla riga dei kWh, non dal numero più grande in fondo.", "Stacca le ciabatte la sera: lo stand-by è un consumo che non vedi.", "Tieni due bollette vicine e segna solo cosa è cambiato in casa."] },
+    { id: "cestini", title: "Cestini separati", who: "eco", max: 6, art: "bins", goal: "Manda ogni oggetto nel cestino che gli spetta.", type: "bins",
+      bins: [{ id: "org", t: "Organico", c: "#86efac" }, { id: "vet", t: "Vetro", c: "#93c5fd" }, { id: "car", t: "Carta", c: "#fde68a" }, { id: "pla", t: "Plastica", c: "#c4b5fd" }],
+      items: [{ t: "Buccia di mela", bin: "org" }, { t: "Bottiglia di vetro", bin: "vet" }, { t: "Foglio di quaderno", bin: "car" }, { t: "Flacone vuoto", bin: "pla" }],
+      tips: ["Svuota e schiaccia il flacone: la plastica si riconosce dal contenitore, non dal profumo.", "La carta sporca di cibo non è carta: finisce nell'organico.", "Il vetro si lava in un attimo e non va nel sacco della plastica."] },
+    { id: "goccia", title: "Goccia giusta", who: "eco", max: 4, art: "drop", goal: "In ogni scena scegli l'oggetto che spreca meno acqua.", type: "pick",
+      rounds: [
+        { q: "Mentre ti lavi i denti", opts: [["Un bicchiere", true], ["Il rubinetto lasciato aperto", false]] },
+        { q: "Per lavarti", opts: [["Una doccia di cinque minuti", true], ["La vasca colma", false]] },
+        { q: "Per le piante in balcone", opts: [["Acqua di cottura ormai fredda", true], ["Il tubo al massimo sotto il sole", false]] }
+      ],
+      tips: ["Chiudi l'acqua mentre insaponi: riaprila solo per sciacquare.", "Metti un bicchiere sul lavandino, così i denti non bevono il fiume.", "Raccogli l'acqua fredda in attesa della calda e usala per le piante."] },
+    { id: "tragitto", title: "Tragitto corto", who: "ergia", max: 5, art: "trip", goal: "Scegli il mezzo che ha senso per quel tragitto.", type: "pick",
+      rounds: [
+        { q: "Un chilometro, senza salite", opts: [["Bici", true], ["Auto da sola", false]] },
+        { q: "Otto chilometri, pioggia e zaino pesante", opts: [["Bus", true], ["Monopattino in strada veloce", false]] },
+        { q: "Quattrocento metri", opts: [["A piedi", true], ["Auto lasciata accesa fuori", false]] }
+      ],
+      tips: ["Sotto i due chilometri parti a piedi o in bici, non a cercare parcheggio.", "Se piove e il carico è pesante, il bus batte il mezzo piccolo in una strada veloce.", "Non lasciare il motore acceso fermo: quei minuti sono benzina senza strada."] },
+    { id: "albero", title: "Nasce un albero", who: "eco", max: 4, art: "tree", goal: "Rimetti in ordine i quattro passi per piantare un albero.", type: "order",
+      items: ["Scegli una specie adatta a quel posto", "Scava una buca più larga del vaso", "Sistema il pane di terra senza piegare le radici", "Annaffia e copri il suolo"],
+      tips: ["Prima del buco, guarda sole, vento e tubi: l'albero resta lì per anni.", "La buca deve essere larga, non una fessura che strozza le radici.", "Dopo l'acqua, copri la terra con foglie secche così non si secca in un giorno."] },
+    { id: "cer", title: "Vicini in CER", who: "elio", max: 7, art: "cer", goal: "Metti nella comunità energetica solo chi sta sotto la stessa cabina.", type: "bins",
+      bins: [{ id: "in", t: "Nella CER", c: "#fde68a" }, { id: "out", t: "Fuori", c: "#e2e8f0" }],
+      items: [{ t: "Vicino di fronte, stessa cabina", bin: "in" }, { t: "Scuola del quartiere, stessa cabina", bin: "in" }, { t: "Cugino in un'altra regione", bin: "out" }, { t: "Negozio sotto casa, stessa cabina", bin: "in" }],
+      tips: ["Chiedi la cabina primaria, non solo se la casa è simpatica.", "Una scuola o un negozio dello stesso tratto di rete possono entrare.", "Un parente lontano non condivide i tuoi kilowattora: la rete locale ha un confine."] },
+    { id: "ombre", title: "Ombre sul tetto", who: "ergia", max: 6, art: "shade", goal: "Accendi solo gli ostacoli fissi che vale la pena togliere.", type: "toggle",
+      items: [{ t: "Albero che copre i moduli ogni pomeriggio", ok: true }, { t: "Camino davanti a due pannelli", ok: true }, { t: "Nuvola che passa e se ne va", ok: false }, { t: "Foglie secche ferme sul vetro", ok: true }],
+      tips: ["Un'ombra fissa, anche piccola, può frenare un'intera fila di moduli.", "La nuvola di passaggio non si pota: guarda cosa resta uguale ogni giorno.", "Togli foglie e polvere: un vetro sporco si comporta come un'ombra."] },
+    { id: "ripara", title: "Si ripara", who: "elisa", max: 4, art: "repair", goal: "Scegli il gesto che allunga la vita dell'oggetto.", type: "pick",
+      rounds: [
+        { q: "Una maglia con un buco", opts: [["Ago e filo", true], ["Cestino, e una maglia nuova", false]] },
+        { q: "Un telefono con la batteria stanca", opts: [["Sostituire la batteria", true], ["Cambiare telefono ogni anno", false]] },
+        { q: "Una sedia che balla", opts: [["Stringere le viti", true], ["Lasciarla in strada", false]] }
+      ],
+      tips: ["Prima di comprare, chiedi se esiste il pezzo di ricambio.", "Tieni ago, viti e colla in un cassetto: la riparazione piccola si fa subito.", "Se non sai aggiustarlo, portalo a chi lo sa fare, non nel mucchio dei rifiuti."] },
+    { id: "palco", title: "Palco green", who: "barret", max: 5, art: "stage", goal: "Ordina i gesti del concerto dal più utile al meno utile per l'ambiente.", type: "order",
+      items: ["Palco alimentato dal sole", "Band in treno, non in aereo", "Bicchieri che si lavano", "Gadget di plastica nuovo per tutti"],
+      tips: ["Chiedi da dove arriva la corrente del palco, non solo chi suona.", "Un tour in treno pesa meno di quattro voli per la stessa serata.", "Il bicchiere che torna al bancone batte il gadget che finisce in tasca e poi nel sacco."] },
+    { id: "scarti", title: "Tavolozza di scarti", who: "artea", max: 4, art: "palette", goal: "Tieni solo i materiali che possono entrare in un'opera, senza diventare subito rifiuto.", type: "multi",
+      items: [{ t: "Ritagli di stoffa", ok: true }, { t: "Vasetti di vetro", ok: true }, { t: "Bomboletta usata per un solo tratto e buttata", ok: false }, { t: "Foglie secche", ok: true }, { t: "Carta già scritta", ok: true }, { t: "Glitter di plastica", ok: false }],
+      tips: ["Parti da ciò che hai già in casa: stoffa, carta, vetro.", "Se un materiale si rompe in mille pezzi che non si raccolgono, non è un colore, è un rifiuto.", "Firma l'opera raccontando da dove arriva ogni pezzo."] },
+    { id: "stagione", title: "Spesa di stagione", who: "gaia", max: 5, art: "market", goal: "Dividi la spesa: vicino a casa, oppure arrivato da lontano.", type: "bins",
+      bins: [{ id: "qui", t: "Vicino", c: "#86efac" }, { id: "la", t: "Lontano", c: "#fecaca" }],
+      items: [{ t: "Mela del frutteto qui", bin: "qui" }, { t: "Insalata della serra del paese", bin: "qui" }, { t: "Mirtilli arrivati in aereo", bin: "la" }, { t: "Fragole d'inverno da un altro continente", bin: "la" }],
+      tips: ["Guarda il paese di origine, non solo la foto bella sulla cassetta.", "La serra vicina batte il frutto che ha preso l'aereo.", "Se è fuori stagione e viene da molto lontano, può aspettare il suo mese."] },
+    { id: "passi", title: "Passi all'aria", who: "harta", max: 3, art: "walk", goal: "Porta ogni cursore sulla misura che fa bene a te e non chiede energia in più.", type: "sliders",
+      items: [
+        { t: "Minuti di cammino senza auto", min: 0, max: 60, target: 25, tol: 5, unit: "min" },
+        { t: "Ore di schermo spento prima di dormire", min: 0, max: 3, target: 1, tol: 0, unit: "h" },
+        { t: "Luci accese in una stanza vuota", min: 0, max: 5, target: 0, tol: 0, unit: "" }
+      ],
+      tips: ["Venticinque minuti a piedi sostituiscono un giro in auto brevissimo.", "Spegni gli schermi circa un'ora prima di dormire: il sonno non ha bisogno di un caricatore.", "Esci da una stanza e guarda l'interruttore. Vuota vuol dire buio."] },
+    { id: "quizkwh", title: "Quiz del kilowattora", who: "elio", max: 8, art: "bolt", goal: "Rispondi alle quattro domande sull'energia di casa.", type: "quiz",
+      rounds: [
+        { q: "A tetto libero, i pannelli producono di più…", opts: [["A mezzogiorno", true], ["A mezzanotte", false], ["Con la luna piena", false]] },
+        { q: "Una comunità energetica unisce chi…", opts: [["Sta sotto la stessa cabina", true], ["Ha la stessa automobile", false], ["Abita in un'altra regione", false]] },
+        { q: "Un'ombra fissa su un modulo…", opts: [["Può frenare tutta la fila", true], ["Aumenta i kilowattora", false], ["Non cambia nulla", false]] },
+        { q: "Il kilowattora misura…", opts: [["Energia", true], ["Solo la velocità del vento", false], ["Il peso del pannello", false]] }
+      ],
+      tips: ["Alle 12, se non c'è un'ombra, è il momento migliore per i consumi spostabili.", "Prima di parlare di comunità, chiedi la cabina, non l'amicizia.", "Impara l'unità: il kilowattora è energia, non un peso e non un colore."] },
+    { id: "rubinetti", title: "Rubinetti di casa", who: "elisa", max: 3, art: "taps", goal: "Lascia aperto solo il flusso che serve davvero in quel momento.", type: "toggle",
+      items: [{ t: "Mentre ti insaponi", ok: false }, { t: "Per riempire un bicchiere", ok: true }, { t: "Mentre lavi i denti", ok: false }, { t: "Una perdita che gocciola di notte", ok: false }, { t: "Insalata sotto il getto continuo", ok: false }],
+      tips: ["Apri, riempi, chiudi. Il getto continuo è quasi sempre di troppo.", "Una goccia di notte è una bolletta che non dorme: va chiusa o segnalata.", "Lava frutta e verdura in una bacinella, non sotto il fiume del rubinetto."] },
+    { id: "bici", title: "Chilometri in bici", who: "ergia", max: 6, art: "bike", goal: "Regola i tre cursori sulla misura di un tragitto corto fatto in bici.", type: "sliders",
+      items: [
+        { t: "Chilometri di un tragitto breve casa-scuola", min: 0, max: 15, target: 3, tol: 1, unit: "km" },
+        { t: "Giorni a settimana in cui quel tragitto sta in bici", min: 0, max: 7, target: 4, tol: 1, unit: "giorni" },
+        { t: "Minuti di auto evitati su quel tragitto", min: 0, max: 40, target: 10, tol: 3, unit: "min" }
+      ],
+      tips: ["Tre chilometri sono il tragitto in cui la bici vince senza diventare un viaggio.", "Quattro giorni su sette bastano a far vedere la differenza in un mese.", "Dieci minuti di auto evitata, ripetuti, pesano più di un solo gesto eroico."] },
+    { id: "quizbosco", title: "Quiz del bosco", who: "eco", max: 7, art: "forest", goal: "Rispondi alle tre domande su alberi e specie.", type: "quiz",
+      rounds: [
+        { q: "Un albero in città serve soprattutto a…", opts: [["Ombra, aria e suolo", true], ["Sostituire il cestino", false], ["Fare rumore", false]] },
+        { q: "La biodiversità è…", opts: [["Tante specie che convivono", true], ["Un solo albero ripetuto", false], ["Solo gli animali di uno zoo", false]] },
+        { q: "Le foglie secche in giardino…", opts: [["Possono diventare suolo", true], ["Vanno sempre bruciate", false], ["Sono plastica", false]] }
+      ],
+      tips: ["Prima di tagliare un albero, conta ombra e suolo, non solo le foglie sul marciapiede.", "Un giardino con una specie sola è povero: mescola altezze e fioriture.", "Lascia un angolo di foglie secche: è cibo per il suolo, non sporcizia."] },
+    { id: "tavola", title: "Tavola in famiglia", who: "gaia", max: 4, art: "table", goal: "Scegli il gesto che tiene insieme la tavola e riduce gli scarti.", type: "pick",
+      rounds: [
+        { q: "Da bere a tavola", opts: [["La borraccia che si riempie", true], ["Una bottiglietta nuova a ogni pasto", false]] },
+        { q: "Il cibo che avanza", opts: [["Un contenitore per domani", true], ["Il sacco, ancora pieno", false]] },
+        { q: "Chi sparecchia", opts: [["Tutti, a turno", true], ["Una persona sola, gli altri a schermo", false]] }
+      ],
+      tips: ["Una borraccia in tavola toglie il giro di bottigliette della settimana.", "Gli avanzi hanno un contenitore con il nome del giorno, non il cestino di default.", "Il turno per sparecchiare è già educazione ambientale: nessuno è ospite a casa propria."] },
+    { id: "quizconsumo", title: "Quiz del consumo", who: "elisa", max: 5, art: "bag", goal: "Rispondi alle tre domande su come si compra e si tiene un oggetto.", type: "quiz",
+      rounds: [
+        { q: "Consumo critico vuol dire…", opts: [["Chiedersi se serve, da dove arriva e quanto dura", true], ["Comprare tutto ciò che è verde in etichetta", false], ["Cambiare telefono ogni mese", false]] },
+        { q: "Riparare un oggetto…", opts: [["Allunga la vita e riduce i rifiuti", true], ["È sempre vietato", false], ["Consuma per forza più di uno nuovo", false]] },
+        { q: "L'eco-living in casa parte da…", opts: [["Gesti quotidiani che puoi misurare", true], ["Solo da un manifesto appeso", false], ["Spegner il frigorifero per sempre", false]] }
+      ],
+      tips: ["Prima dell'acquisto fai tre domande: mi serve, da dove arriva, quanto dura.", "Diffida dell'etichetta verde se non sai dire il gesto concreto.", "Misura un gesto a settimana, per esempio le bottigliette non comprate."] },
+    { id: "muro", title: "Muro di recupero", who: "artea", max: 6, art: "mural", goal: "Ordina i quattro passi di un murale fatto con materiali di recupero.", type: "order",
+      items: ["Chiedi il muro e il permesso", "Disegna usando ciò che hai già", "Dipingi con colori a base d'acqua", "Lascia il secchio pulito, non i rifiuti"],
+      tips: ["Senza permesso il murale dura un pomeriggio e diventa un rifiuto da grattare.", "Disegna prima con carta e stoffa che hai, poi pensa al colore.", "A fine lavoro il secchio torna pulito: l'opera non include la sporcizia intorno."] }
+  ];
+
+  var picked = [];
+  var cursor = 0;
+  var scores = {};
+  var play = null;
+  var bursting = false;
+  var praiseRecent = [];
+  var PRAISE = [
+    function (n, word) { return n === 0 ? "Zero semi: il campo ha fatto il timido e si è rimesso il cappello." : n + " " + word + " appena raccolti. Il grembiule fa una riverenza."; },
+    function (n, word) { return n === 0 ? "Nessun seme in tasca. Si sono nascosti dietro la bolletta, i furbetti." : "Che manciata: " + n + " " + word + " gialli, e il sole ha già firmato la ricevuta."; },
+    function (n, word) { return n === 0 ? "Il cesto torna vuoto. I semi hanno preso un giorno di ferie sul tetto." : n + " " + word + " in un colpo. La pianta sta prendendo appunti sul quaderno."; },
+    function (n, word) { return n === 0 ? "Zero semi, ma la zappa è ancora calda. Il prossimo giochetto ha già fame." : "Il tetto ha visto il gesto e lascia " + n + " " + word + " di mancia."; },
+    function (n, word) { return n === 0 ? "Nemmeno un seme. Il campo ha starnutito nel fazzoletto verde." : (n === 1 ? "Se questo seme fosse una moneta, la bolletta si metterebbe a dieta." : "Se questi " + n + " semi fossero monete, la bolletta si metterebbe a dieta."); },
+    function (n, word) { return n === 0 ? "Raccolto muto: zero semi. Il grembiule scrolla le spalle e riprova." : "Semi freschi di giornata: " + n + ". Il grembiule è più fiero di un diploma."; },
+    function (n, word) { return n === 0 ? "L'albero ha tenuto tutto per sé. Zero semi, e un sorriso di scuse." : "Hai scrollato l'albero giusto: sono caduti " + n + " " + word + "."; },
+    function (n, word) { return n === 0 ? "Tasca vuota, terra in ordine. I semi si fanno desiderare." : n + " " + word + " in tasca. La tappa dopo li trova già un po' germogliati."; },
+    function (n, word) { return n === 0 ? "Niente da contare, solo il vento. I semi hanno scelto un altro grembiule." : "Raccolto spiritoso: " + n + " " + word + ", e nessuno è rimasto nel cassetto."; },
+    function (n, word) { return n === 0 ? "Il contadino dei kilowattora segna zero e offre lo stesso l'acqua." : "Il contadino dei kilowattora segna " + n + " " + word + " e offre l'acqua."; }
+  ];
+  function pickPraise(n) {
+    var word = n === 1 ? "seme" : "semi";
+    var free = [];
+    for (var i = 0; i < PRAISE.length; i++) {
+      if (praiseRecent.indexOf(i) === -1) free.push(i);
+    }
+    if (!free.length) {
+      var last = praiseRecent[praiseRecent.length - 1];
+      praiseRecent = [];
+      for (var j = 0; j < PRAISE.length; j++) if (j !== last) free.push(j);
+    }
+    var pick = free[Math.floor(Math.random() * free.length)];
+    praiseRecent.push(pick);
+    return PRAISE[pick](n, word);
+  }
+  var SEED_SVG = '<svg viewBox="0 0 64 80" aria-hidden="true"><ellipse cx="32" cy="48" rx="14" ry="20" fill="#fbbf24"/><path d="M32 30c8 8 16 10 20 7" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="46" cy="32" rx="9" ry="5" fill="#34d399" transform="rotate(22 46 32)"/></svg>';
+
+  function semiTotal() {
+    return picked.reduce(function (s, id) { return s + (scores[id] || 0); }, 0);
+  }
+  function maxSum() {
+    return picked.reduce(function (s, id) { return s + game(id).max; }, 0);
+  }
+  function game(id) { return GAMES.filter(function (g) { return g.id === id; })[0]; }
+  function stageIndex() {
+    if (!document.getElementById("endView").classList.contains("hidden")) return 5;
+    if (!document.getElementById("playView").classList.contains("hidden")) return cursor + 1;
+    return 0;
+  }
+  function paintStages() {
+    var cur = stageIndex();
+    var items = document.querySelectorAll("#stageList li");
+    items.forEach(function (li, i) {
+      li.classList.toggle("is-now", i === cur);
+      li.classList.toggle("is-done", i < cur);
+      if (i === cur) li.setAttribute("aria-current", "step");
+      else li.removeAttribute("aria-current");
+      if (i >= 1 && i <= 4 && picked[i - 1]) li.title = game(picked[i - 1]).title;
+    });
+  }
+  function paintSemi(phase) {
+    var n = semiTotal();
+    var el = document.getElementById("semiCount");
+    el.textContent = String(n);
+    el.parentElement.setAttribute("aria-label", n + " semi. " + (phase || ""));
+    paintStages();
+    paintCue();
+  }
+  function paintCue() {
+    var line = document.getElementById("nowLine");
+    if (!line) return;
+    var burst = document.getElementById("seedBurst");
+    var text;
+    if (burst.classList.contains("is-on")) {
+      text = burst.classList.contains("is-ready")
+        ? "Premi Prosegui la raccolta dei semi."
+        : "Guarda i semi appena raccolti.";
+    } else if (!document.getElementById("endView").classList.contains("hidden")) {
+      var n = semiTotal();
+      text = "Hai finito. " + n + (n === 1 ? " seme" : " semi") + ". Scarica il report finale.";
+    } else if (!document.getElementById("playView").classList.contains("hidden")) {
+      text = "Gioca questo, poi premi Raccogli i semi.";
+    } else {
+      text = "Scegli 4 giochetti, poi premi Parti.";
+    }
+    line.textContent = text;
+    var need = document.getElementById("pickNeed");
+    var picking = document.getElementById("pickView").classList.contains("hidden");
+    if (need) need.hidden = picking;
+    paintStartActions();
+  }
+  function paintStartActions() {
+    var missing = 4 - picked.length;
+    var inPickView = !document.getElementById("pickView").classList.contains("hidden");
+    var gap = document.getElementById("pickGap");
+    var goPair = document.getElementById("goPair");
+    var start = document.getElementById("startPath");
+    if (!gap || !goPair || !start) return;
+    if (inPickView && missing > 0) {
+      gap.classList.remove("hidden");
+      goPair.classList.add("hidden");
+      gap.textContent = missing === 1 ? "Manca 1" : "Mancano " + missing;
+    } else {
+      gap.classList.add("hidden");
+      goPair.classList.remove("hidden");
+      start.hidden = !inPickView;
+      start.disabled = false;
+      start.textContent = "Parti";
+    }
+  }
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function award(correct, steps, max) {
+    if (steps <= 0) return 0;
+    if (correct >= steps) return max;
+    if (correct <= 0) return 0;
+    return Math.round(max * correct / steps);
+  }
+
+  function renderFamily() {
+    document.getElementById("family").innerHTML = FAMILY.map(function (c, i) {
+      var rot = (i % 2 ? 1 : -1) * (0.5 + (i % 3) * 0.25);
+      return '<article class="gg-kin" style="--rot:' + rot + 'deg;--ink:' + c.color + '"><div class="flex items-center gap-2">' + face(c, 72) + '<p class="leading-tight">' + nameHtml(c) + '</p></div><p class="mt-2 text-[13px] leading-5 font-semibold text-slate-900">' + c.a + '</p><p class="mt-1 text-[12px] leading-5 text-slate-600">' + c.b + '</p></article>';
+    }).join("");
+  }
+  function renderGrid() {
+    document.getElementById("grid").innerHTML = GAMES.map(function (g, n) {
+      var c = who(g.who);
+      var on = picked.indexOf(g.id) >= 0;
+      var s = SKINS[n % SKINS.length];
+      var tech = document.documentElement.dataset.ggVariant;
+      var ribbon = tech ? ("MOD-" + String(n + 1).padStart(2, "0") + " · max " + g.max) : s.ribbon;
+      var seeds = "";
+      for (var i = 0; i < g.max; i++) seeds += tech
+        ? '<span style="display:inline-block;width:7px;height:7px;margin-right:2px;background:#64748b;border-radius:1px" aria-hidden="true"></span>'
+        : '<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><ellipse cx="8" cy="10" rx="3.2" ry="4.2" fill="#fbbf24"/><ellipse cx="11" cy="6" rx="2.2" ry="1.3" fill="#34d399" transform="rotate(28 11 6)"/></svg>';
+      return '<button type="button" data-pick="' + g.id + '" aria-pressed="' + (on ? "true" : "false") + '" class="gg-card' + (on ? " is-on" : "") + '" style="--rot:' + (tech ? "0deg" : s.rot) + ';--radius:' + (tech ? "0px" : s.radius) + ';--wash:#f1f5f9;--ink:#334155;--edge:solid"><span class="gg-check" aria-hidden="true"></span><span class="gg-ribbon">' + ribbon + '</span><span class="gg-art">' + ART[g.art] + '</span><span class="font-display text-[18px] font-semibold leading-6 text-slate-950">' + g.title + '</span><span class="text-[13px] leading-5 text-slate-700">' + g.goal + '</span><span class="mt-auto flex items-center justify-between gap-2"><span class="inline-flex gap-0.5" title="Massimo ' + g.max + ' semi">' + seeds + '</span><span class="inline-flex items-center gap-1">' + face(c, 40) + '<span class="font-display text-[13px] font-semibold" style="color:' + c.color + '">' + c.suffix + '</span></span></span></button>';
+    }).join("");
+    document.getElementById("pickCount").textContent = picked.length + " / 4 scelti";
+    var missing = 4 - picked.length;
+    var need = document.getElementById("pickNeed");
+    if (missing === 0) need.textContent = "Hai scelto 4 giochi";
+    else if (missing === 1) need.textContent = "Manca 1 gioco per arrivare a 4";
+    else need.textContent = "Mancano " + missing + " giochi per arrivare a 4";
+    need.hidden = document.getElementById("pickView").classList.contains("hidden");
+    paintCue();
+  }
+
+  function show(id) {
+    ["pickView", "playView", "endView"].forEach(function (v) {
+      document.getElementById(v).classList.toggle("hidden", v !== id);
+    });
+  }
+
+  function openGame() {
+    var g = game(picked[cursor]);
+    var c = who(g.who);
+    play = { g: g, state: null };
+    document.getElementById("playStep").textContent = "GIOCHETTO " + (cursor + 1) + " DI 4";
+    document.getElementById("playTitle").textContent = g.title;
+    document.getElementById("playWho").innerHTML = face(c, 84) + '<div><p>' + nameHtml(c) + '</p><p class="mt-1 text-[14px] leading-5 text-slate-700">' + c.a + '</p></div>';
+    document.getElementById("playGoal").textContent = g.goal;
+    document.getElementById("gameResult").classList.add("hidden");
+    document.getElementById("nextGame").classList.add("hidden");
+    show("playView");
+    begin();
+    paintSemi("Giochetto " + (cursor + 1) + " di 4");
+    document.getElementById("playTitle").scrollIntoView({ behavior: "instant", block: "start" });
+  }
+
+  function begin() {
+    var g = play.g;
+    document.getElementById("beginGame").classList.add("hidden");
+    document.getElementById("board").classList.remove("hidden");
+    if (g.type === "toggle") {
+      play.state = g.items.map(function () { return false; });
+      drawToggle();
+      document.getElementById("commitGame").classList.remove("hidden");
+    } else if (g.type === "order") {
+      var ids = g.items.map(function (_, i) { return i; });
+      var sh = shuffle(ids);
+      if (sh.every(function (n, i) { return n === i; })) sh = shuffle(ids);
+      play.state = sh;
+      drawOrder();
+      document.getElementById("commitGame").classList.remove("hidden");
+    } else if (g.type === "bins") {
+      play.state = { sel: 0, assign: g.items.map(function () { return null; }) };
+      drawBins();
+      document.getElementById("commitGame").classList.remove("hidden");
+    } else if (g.type === "multi") {
+      play.state = g.items.map(function () { return false; });
+      drawMulti();
+      document.getElementById("commitGame").classList.remove("hidden");
+    } else if (g.type === "sliders") {
+      play.state = g.items.map(function (it) { return it.min; });
+      drawSliders();
+      document.getElementById("commitGame").classList.remove("hidden");
+    } else {
+      play.state = { i: 0, answers: [] };
+      drawRound();
+      document.getElementById("commitGame").classList.add("hidden");
+    }
+  }
+
+  function board(html) { document.getElementById("board").innerHTML = html; }
+
+  function drawToggle() {
+    var g = play.g;
+    board('<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">' + g.items.map(function (it, i) {
+      var on = play.state[i];
+      return '<button type="button" data-tog="' + i + '" class="h-14 rounded-2xl border-2 font-semibold ' + (on ? "bg-amber-300 border-amber-500" : "bg-white border-slate-200") + '">' + it.t + (on ? " · acceso" : " · spento") + '</button>';
+    }).join("") + '</div>');
+  }
+  function drawOrder() {
+    board('<ol class="space-y-2">' + play.state.map(function (idx, pos) {
+      return '<li class="flex items-center gap-2 rounded-2xl bg-white border border-slate-200 p-2"><span class="w-7 text-center font-mono text-slate-400">' + (pos + 1) + '</span><span class="flex-1 text-[14px]">' + play.g.items[idx] + '</span><button type="button" data-up="' + pos + '" class="h-9 w-9 rounded-full bg-slate-100" aria-label="Sposta su">↑</button><button type="button" data-dn="' + pos + '" class="h-9 w-9 rounded-full bg-slate-100" aria-label="Sposta giù">↓</button><span data-drag="' + pos + '" class="h-9 px-2 rounded-full bg-emerald-50 text-[12px] font-bold cursor-grab">trascina</span></li>';
+    }).join("") + '</ol>');
+  }
+  function drawBins() {
+    var g = play.g;
+    var items = g.items.map(function (it, i) {
+      var dest = play.state.assign[i];
+      var label = dest ? g.bins.filter(function (b) { return b.id === dest; })[0].t : "non assegnato";
+      return '<button type="button" data-item="' + i + '" class="text-left rounded-2xl border-2 p-3 ' + (play.state.sel === i ? "border-amber-400 bg-amber-50" : "border-slate-200 bg-white") + '"><span class="block font-semibold">' + it.t + '</span><span class="text-[12px] text-slate-500">' + label + '</span></button>';
+    }).join("");
+    var bins = g.bins.map(function (b) {
+      return '<button type="button" data-bin="' + b.id + '" class="h-16 rounded-2xl font-bold" style="background:' + b.c + '">' + b.t + '</button>';
+    }).join("");
+    board('<p class="text-[13px] text-slate-500 mb-2">Tocca un oggetto, poi il cestino. Puoi anche trascinare l\'oggetto sul cestino.</p><div class="grid grid-cols-2 gap-2">' + items + '</div><div class="mt-3 grid grid-cols-2 gap-2">' + bins + '</div>');
+  }
+  function drawMulti() {
+    board('<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">' + play.g.items.map(function (it, i) {
+      var on = play.state[i];
+      return '<button type="button" data-multi="' + i + '" class="h-14 rounded-2xl border-2 font-semibold ' + (on ? "bg-emerald-200 border-emerald-500" : "bg-white border-slate-200") + '">' + it.t + '</button>';
+    }).join("") + '</div>');
+  }
+  function drawSliders() {
+    board(play.g.items.map(function (it, i) {
+      return '<label class="block mt-3 text-[14px] font-semibold">' + it.t + '<input data-sl="' + i + '" class="mt-1 w-full" type="range" min="' + it.min + '" max="' + it.max + '" step="1" value="' + play.state[i] + '"><span class="block font-mono text-amber-700" data-slv="' + i + '">' + play.state[i] + (it.unit ? " " + it.unit : "") + '</span></label>';
+    }).join(""));
+  }
+  function drawRound() {
+    var g = play.g;
+    var r = g.rounds[play.state.i];
+    var opts = r.opts.map(function (o, i) {
+      return '<button type="button" data-opt="' + i + '" class="w-full text-left rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 font-semibold hover:border-amber-400">' + o[0] + '</button>';
+    }).join("");
+    board('<p class="text-[13px] text-slate-500">Domanda ' + (play.state.i + 1) + ' di ' + g.rounds.length + '</p><p class="mt-1 text-[16px] font-bold">' + r.q + '</p><div class="mt-3 space-y-2">' + opts + '</div>');
+  }
+
+  function moveItem(from, to) {
+    if (to < 0 || to >= play.state.length) return;
+    var next = play.state.slice();
+    var it = next.splice(from, 1)[0];
+    next.splice(to, 0, it);
+    play.state = next;
+    drawOrder();
+  }
+
+  document.getElementById("board").addEventListener("click", function (e) {
+    var t = e.target.closest("button");
+    if (!t || !play) return;
+    if (t.hasAttribute("data-tog")) {
+      var i = Number(t.getAttribute("data-tog"));
+      play.state[i] = !play.state[i];
+      drawToggle();
+    } else if (t.hasAttribute("data-up")) {
+      moveItem(Number(t.getAttribute("data-up")), Number(t.getAttribute("data-up")) - 1);
+    } else if (t.hasAttribute("data-dn")) {
+      moveItem(Number(t.getAttribute("data-dn")), Number(t.getAttribute("data-dn")) + 1);
+    } else if (t.hasAttribute("data-item")) {
+      play.state.sel = Number(t.getAttribute("data-item"));
+      drawBins();
+    } else if (t.hasAttribute("data-bin")) {
+      play.state.assign[play.state.sel] = t.getAttribute("data-bin");
+      drawBins();
+    } else if (t.hasAttribute("data-multi")) {
+      var m = Number(t.getAttribute("data-multi"));
+      play.state[m] = !play.state[m];
+      drawMulti();
+    } else if (t.hasAttribute("data-opt")) {
+      var r = play.g.rounds[play.state.i];
+      play.state.answers.push(!!r.opts[Number(t.getAttribute("data-opt"))][1]);
+      play.state.i += 1;
+      if (play.state.i >= play.g.rounds.length) {
+        board('<p class="text-[15px] font-semibold">Hai risposto a tutte. Raccogli i semi.</p>');
+        document.getElementById("commitGame").classList.remove("hidden");
+      } else drawRound();
+    }
+  });
+  document.getElementById("board").addEventListener("input", function (e) {
+    if (!e.target.hasAttribute("data-sl")) return;
+    var i = Number(e.target.getAttribute("data-sl"));
+    play.state[i] = Number(e.target.value);
+    var lab = document.querySelector('[data-slv="' + i + '"]');
+    var unit = play.g.items[i].unit;
+    lab.textContent = play.state[i] + (unit ? " " + unit : "");
+  });
+
+  var dragFrom = null;
+  document.getElementById("board").addEventListener("pointerdown", function (e) {
+    var h = e.target.closest("[data-drag]");
+    if (!h) return;
+    dragFrom = Number(h.getAttribute("data-drag"));
+    h.setPointerCapture(e.pointerId);
+  });
+  document.getElementById("board").addEventListener("pointerup", function (e) {
+    if (dragFrom === null) return;
+    var rows = [].slice.call(document.querySelectorAll("[data-drag]"));
+    var to = dragFrom;
+    rows.forEach(function (row, idx) {
+      var box = row.getBoundingClientRect();
+      if (e.clientY >= box.top && e.clientY <= box.bottom) to = idx;
+    });
+    var bin = e.target.closest("[data-bin]");
+    if (bin && play.g.type === "bins") {
+      play.state.assign[play.state.sel] = bin.getAttribute("data-bin");
+      drawBins();
+    } else if (play.g.type === "order") {
+      moveItem(dragFrom, to);
+    }
+    dragFrom = null;
+  });
+
+  function showBurst(got, done) {
+    var root = document.getElementById("seedBurst");
+    var fan = document.getElementById("seedFan");
+    var btn = document.getElementById("seedBurstGo");
+    var n = Math.max(0, got);
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var step = n <= 1 ? 0 : Math.min(0.26, 1.3 / (n - 1));
+    var html = "";
+    for (var i = 0; i < n; i++) {
+      var rot = n === 1 ? -6 : (-22 + (44 * i) / (n - 1));
+      var wide = n > 5 ? 64 : 86;
+      html += '<span class="gg-fan-seed" style="width:' + wide + 'px;--i:' + i + ';--step:' + step + 's;--rot:' + rot.toFixed(1) + 'deg">' + SEED_SVG + '</span>';
+    }
+    fan.innerHTML = html;
+    document.getElementById("seedBurstCount").textContent = "+" + n;
+    document.getElementById("seedBurstWord").textContent = n === 1 ? "seme" : "semi";
+    document.getElementById("seedBurstLine").textContent = pickPraise(n);
+    root.classList.remove("is-ready");
+    root.classList.add("is-on");
+    root.setAttribute("aria-hidden", "false");
+    var timer = null;
+    function hold(e) {
+      if (e.target === btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    function go(e) {
+      e.preventDefault();
+      if (!root.classList.contains("is-ready")) return;
+      if (timer) clearTimeout(timer);
+      btn.removeEventListener("click", go);
+      root.removeEventListener("click", hold);
+      root.classList.remove("is-on", "is-ready");
+      root.setAttribute("aria-hidden", "true");
+      done();
+    }
+    root.addEventListener("click", hold);
+    btn.addEventListener("click", go);
+    paintCue();
+    if (reduce) {
+      root.classList.add("is-ready");
+      paintCue();
+    } else {
+      timer = setTimeout(function () {
+        root.classList.add("is-ready");
+        paintCue();
+      }, 6000);
+    }
+  }
+
+  function commit() {
+    if (bursting || !play) return;
+    var g = play.g;
+    var correct = 0, steps = 0;
+    if (g.type === "toggle" || g.type === "multi") {
+      steps = g.items.length;
+      g.items.forEach(function (it, i) { if (!!play.state[i] === !!it.ok) correct++; });
+    } else if (g.type === "order") {
+      steps = play.state.length;
+      play.state.forEach(function (id, pos) { if (id === pos) correct++; });
+    } else if (g.type === "bins") {
+      steps = g.items.length;
+      g.items.forEach(function (it, i) { if (play.state.assign[i] === it.bin) correct++; });
+    } else if (g.type === "sliders") {
+      steps = g.items.length;
+      g.items.forEach(function (it, i) { if (Math.abs(play.state[i] - it.target) <= it.tol) correct++; });
+    } else {
+      steps = g.rounds.length;
+      correct = play.state.answers.filter(Boolean).length;
+    }
+    var got = award(correct, steps, g.max);
+    var id = g.id;
+    var last = cursor === picked.length - 1;
+    bursting = true;
+    document.getElementById("commitGame").classList.add("hidden");
+    document.getElementById("nextGame").classList.add("hidden");
+    showBurst(got, function () {
+      scores[id] = got;
+      bursting = false;
+      if (last) finish();
+      else {
+        cursor += 1;
+        openGame();
+      }
+    });
+  }
+
+  function bandOf(ratio) {
+    if (ratio >= 0.75) return ["Sole", "Sole: la conoscenza energetica e ambientale è alta. Leggi insieme casa, energia e ambiente e sai spiegare il perché del gesto, non solo il gesto."];
+    if (ratio >= 0.4) return ["Pianta", "Pianta: la conoscenza sta in piedi. Sai già scegliere diversi gesti giusti e inizi a collegare l'energia di casa con l'ambiente intorno."];
+    return ["Germoglio", "Germoglio: la conoscenza energetica e ambientale è appena nata. I gesti singoli ci sono, il collegamento tra casa, energia e ambiente è ancora da costruire."];
+  }
+
+  function finish() {
+    var ratio = maxSum() ? semiTotal() / maxSum() : 0;
+    var band = bandOf(ratio);
+    document.getElementById("bandName").textContent = band[0];
+    document.getElementById("bandLine").textContent = band[1];
+    document.getElementById("bandScore").textContent = semiTotal() + " semi su " + maxSum();
+    document.getElementById("tips").innerHTML = picked.map(function (id) {
+      var g = game(id);
+      var c = who(g.who);
+      var lis = g.tips.map(function (t) { return "<li>" + t + "</li>"; }).join("");
+      return '<article class="rounded-3xl bg-white border p-4" style="border-color:' + c.edge + '"><div class="flex gap-3 items-center">' + face(c, 64) + '<div><p>' + nameHtml(c) + '</p><p class="font-bold">' + g.title + ' · ' + (scores[id] || 0) + ' / ' + g.max + ' semi</p></div></div><p class="mt-2 text-[14px] text-slate-700">' + c.a + '</p><ol class="mt-2 list-decimal pl-5 text-[14px] leading-6 text-slate-700">' + lis + '</ol></article>';
+    }).join("");
+    show("endView");
+    paintSemi(band[0]);
+  }
+
+  document.getElementById("grid").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-pick]");
+    if (!b) return;
+    var id = b.getAttribute("data-pick");
+    var i = picked.indexOf(id);
+    var msg = document.getElementById("pickMsg");
+    if (i >= 0) picked.splice(i, 1);
+    else if (picked.length >= 4) {
+      msg.textContent = "Sono già 4. Togline uno se vuoi cambiarlo.";
+      msg.classList.remove("hidden");
+      return;
+    } else picked.push(id);
+    msg.classList.add("hidden");
+    renderGrid();
+    paintSemi(picked.length + " / 4 scelti");
+  });
+  document.getElementById("startPath").addEventListener("click", function () {
+    if (picked.length !== 4) return;
+    cursor = 0;
+    scores = {};
+    openGame();
+  });
+  document.getElementById("beginGame").addEventListener("click", begin);
+  document.getElementById("commitGame").addEventListener("click", commit);
+  document.getElementById("nextGame").addEventListener("click", function () {
+    cursor += 1;
+    if (cursor >= picked.length) finish();
+    else openGame();
+  });
+  function resetGreenGames() {
+    picked = [];
+    scores = {};
+    cursor = 0;
+    play = null;
+    bursting = false;
+    var burst = document.getElementById("seedBurst");
+    burst.classList.remove("is-on", "is-ready");
+    burst.setAttribute("aria-hidden", "true");
+    document.getElementById("pickMsg").classList.add("hidden");
+    document.getElementById("pdfMsg").classList.add("hidden");
+    renderGrid();
+    show("pickView");
+    paintSemi("Scegli 4 giochetti");
+  }
+
+  document.getElementById("restartPath").addEventListener("click", function () {
+    if (!window.confirm("Vuoi ricominciare da zero? Si azzerano semi, giochi scelti e tappe del percorso.")) return;
+    resetGreenGames();
+  });
+
+  document.getElementById("restart").addEventListener("click", function () {
+    resetGreenGames();
+  });
+
+  document.getElementById("pdfForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var nome = document.getElementById("pdfName").value.trim();
+    var nick = document.getElementById("pdfNick").value.trim();
+    var msg = document.getElementById("pdfMsg");
+    msg.classList.remove("hidden");
+    if (!nome || !nick) {
+      msg.className = "mt-3 text-[14px] text-rose-700";
+      msg.textContent = "Servono nome e nickname. Il report non è stato aperto.";
+      return;
+    }
+    var ratio = maxSum() ? semiTotal() / maxSum() : 0;
+    var band = bandOf(ratio);
+    var payload = {
+      nome: nome,
+      nick: nick,
+      semi: semiTotal(),
+      max: maxSum(),
+      band: band[0],
+      bandLine: band[1],
+      games: picked.map(function (id) {
+        var g = game(id);
+        var c = who(g.who);
+        return { title: g.title, goal: g.goal, tips: g.tips, score: scores[id] || 0, max: g.max, who: "seed" + c.suffix, face: "img/seed-facce/" + c.id + ".png" };
+      }),
+      family: FAMILY.map(function (c) {
+        return { suffix: c.suffix, face: "img/seed-facce/" + c.id + ".png", a: c.a, b: c.b };
+      }),
+      released: new Date().toISOString()
+    };
+    try { sessionStorage.setItem("seedelioGamesReport", JSON.stringify(payload)); } catch (err) {}
+    location.href = "report-green-games.html";
+  });
+
+  renderGrid();
+  paintSemi("Scegli 4 giochetti");
+  (function () {
+    var btn = document.getElementById("familyToggle");
+    var panel = document.getElementById("familyPanel");
+    var latched = false;
+    var drawn = false;
+    btn.classList.remove("is-open");
+    panel.classList.remove("is-open");
+    panel.removeAttribute("open");
+    btn.setAttribute("aria-expanded", "false");
+    function paintFamily() {
+      if (latched && !drawn) {
+        renderFamily();
+        drawn = true;
+      }
+      btn.classList.toggle("is-open", latched);
+      btn.setAttribute("aria-expanded", latched ? "true" : "false");
+      panel.classList.toggle("is-open", latched);
+    }
+    btn.addEventListener("click", function () {
+      latched = !latched;
+      paintFamily();
+    });
+  })();
+})();
+</script>
+
+<!-- FOOTER -->
+<style>
+  footer .text-\[16px\] { font-size: 19.2px; }
+  footer .text-\[12px\] { font-size: 14.4px; }
+  footer .text-\[11px\] { font-size: 13.2px; line-height: 16px; }
+  footer .text-\[10px\] { font-size: 12px; line-height: 16px; }
+  footer .text-\[9\.5px\] { font-size: 11.4px; line-height: 14px; }
+  footer .text-\[9px\] { font-size: 10.8px; line-height: 16px; }
+  footer .leading-\[18\.3px\] { line-height: 21.96px; }
+  footer .leading-\[18\.4px\] { line-height: 22.08px; }
+  footer .leading-\[15px\] { line-height: 18px; }
+  footer .leading-4 { line-height: 19.2px; }
+  footer [class~="w-[132px]"] { width: 146px; }
+  footer [class~="w-[37px]"] { width: 44px; }
+  footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+<footer class="bg-slate-950 border-t border-slate-800 text-slate-400">
+  <div class="max-w-7xl mx-auto px-8 pt-16 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="relative mt-[7px] h-[26px] flex items-start">
+          <div class="logo-line w-[132px] border-t border-slate-400/70 h-[26px] overflow-hidden relative">
+            <svg class="logo-mark absolute left-[8px] top-0" viewBox="69 70 101 45" width="47.5" height="21.2"><path class="seed s1" d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path class="seed s2" d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path class="seed s3" d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></svg>
+            <span class="absolute left-[64px] top-[4px] text-[16px] font-semibold text-white leading-none tracking-tight">SeedElio</span>
+          </div>
+          <span class="ml-[11px] mt-px font-mono text-[12px] font-bold text-cyan-400 bg-cyan-500/20 border border-cyan-500/30 rounded-md w-[37px] h-[23px] flex items-center justify-center">.AI</span>
+        </div>
+        <p class="mt-[17px] text-[11px] leading-[18.3px] text-slate-400">Piattaforma etica e indipendente di consulenza scientifica sul fotovoltaico residenziale e commerciale. Dal 2010 al fianco di famiglie e imprese.</p>
+        <div class="mt-auto border-t border-slate-800 pt-[11px] space-y-2 text-[11px] font-bold">
+          <a href="chi-siamo.html" class="flex items-center gap-[7px] h-4 text-amber-400"><svg class="ico text-[11px]" style="width:0.875em"><use href="#i-user-tie"/></svg>Chi Siamo (Dario Bonaldo)</a>
+          <a href="significato-del-logo.html" class="flex items-center gap-[7px] h-4 text-emerald-400"><svg class="ico text-[11px]"><use href="#i-leaf"/></svg>Significato Marchio &amp; Logo</a>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[14px] box-content pb-[9px] border-b border-slate-800"><span class="font-mono text-[10px] font-bold tracking-[0.1em] text-amber-400">SERVIZI E TOOL</span><span class="font-mono text-[9.5px] text-slate-500">SeedElio</span></div>
+        <ul class="mt-[12px] space-y-[6px] text-[11px] text-slate-400">
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-amber-500/20 border border-amber-500/25 text-amber-400 text-[10px] font-bold flex items-center justify-center">1</span>Consulenza Impianto FV</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-blue-500/20 border border-blue-500/25 text-blue-300 text-[10px] font-bold flex items-center justify-center">2</span>Riprese Drone 4K</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-cyan-500/20 border border-cyan-500/25 text-cyan-300 text-[10px] font-bold flex items-center justify-center">3</span>Landing Page &amp; AI</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-emerald-500/20 border border-emerald-500/25 text-emerald-300 text-[10px] font-bold flex items-center justify-center">4</span>Inaugurazione Green</li>
+        </ul>
+        <div class="mt-[10px] border-t border-slate-800"></div>
+        <ul class="mt-[10px] space-y-[6px] text-[11px] font-bold text-slate-200">
+                    <li><a href="simulatore-2.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-amber-400 text-[11px]" style="width:0.875em"><use href="#i-bolt"/></svg></span>Tool 1: Simulatore Energetico</a></li>
+          <li><a href="glossario-tecnico-fotovoltaico.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-cyan-400 text-[11px]" style="width:0.875em" viewBox="0 0 448 512" aria-hidden="true"><path d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l288 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0 0-32 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l32 0 0-320c0-53-43-96-96-96L96 0zM64 96c0-17.7 14.3-32 32-32l256 0c17.7 0 32 14.3 32 32l0 224-32 0c-35.3 0-64 28.7-64 64l-224 0 0-288z"/></svg></span>Tool 2: Glossario</a></li>
+          <li><a href="libretto_impianto_fotovoltaico_a3_seedelio_ai_v002.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-violet-400 text-[11px]" style="width:0.875em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true"><path d="M8 4h6v4h4v12H8V4z"/><path d="M14 4v4h4"/><path d="M10 10h5M10 13h5M10 16h3"/></svg></span>Tool 3: Diario FV</a></li>
+          <li><a href="green-games.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-emerald-400 text-[11px]" style="width:1.25em"><use href="#i-gamepad"/></svg></span>Tool 4: Green Games (1 vs 1)</a></li>
+        </ul>
+        <div class="mt-auto border-t border-slate-800 pt-[13px] flex gap-[4px] font-mono text-[9px] leading-[15px] text-slate-500"><svg class="ico text-amber-400 text-[11px] mt-[2px]"><use href="#i-shield-halved"/></svg><span>Metodo Preliminare Senza Vincoli</span></div>
+      </div>
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[14px] box-content pb-[9px] border-b border-slate-800"><span class="font-mono text-[10px] font-bold tracking-[0.1em] text-cyan-400 whitespace-nowrap">PAGINE</span><span class="font-mono text-[9.5px] text-slate-500">Mappa</span></div>
+        <ul class="mt-[10px] space-y-[6px] text-[11px] text-slate-400">
+          <li><a href="index.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]"><use href="#i-house"/></svg></span>Home</a></li>
+          <li><a href="#" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.125em"><use href="#i-solar-panel"/></svg></span>Consulenza Impianto FV</a></li>
+          <li><a href="#" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.125em"><use href="#i-helicopter"/></svg></span>Riprese Drone</a></li>
+          <li><a href="landing-page-ai-seedelisa.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:0.875em"><use href="#i-headset"/></svg></span>Landing Page &amp; AI</a></li>
+          <li><a href="inaugurazione-green.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.25em"><use href="#i-champagne-glasses"/></svg></span>Inaugurazione Green</a></li>
+          <li><a href="significato-del-logo.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]"><use href="#i-leaf"/></svg></span>Significato del Logo</a></li>
+          <li><a href="chi-siamo.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:0.875em"><use href="#i-user"/></svg></span>Chi Siamo (Dario Bonaldo)</a></li>
+        </ul>
+        <div class="mt-auto border-t border-slate-800 pt-2 font-mono text-[9.5px] font-bold text-cyan-400 flex items-center gap-1.5 h-[17px] box-content"><svg class="ico text-[10px]" style="width:0.875em"><use href="#i-check"/></svg>Navigazione Istantanea</div>
+      </div>
+
+      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[22px] box-content pb-px border-b border-slate-800">
+          <span class="font-mono text-[10px] font-bold tracking-[0.1em] text-amber-400 flex items-center gap-1.5"><svg class="ico text-[11px]" style="width:0.875em"><use href="#i-headset"/></svg>SEEDELISA AI</span>
+          <span class="font-mono text-[9px] font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-600/40 rounded-full px-2.5 h-[22px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>24/7</span>
+        </div>
+        <h4 class="mt-3 text-[12px] font-bold text-white leading-4">SeedElisa, assistente AI</h4>
+        <p class="mt-2 text-[11px] leading-[18.4px] text-slate-400">Assistente ufficiale di <b class="font-bold text-slate-300">SeedElio.AI</b>, 24/7.</p>
+        <div class="mt-3 space-y-2 text-[11px] leading-4 text-slate-300">
+          <div class="flex gap-2"><span class="w-[20px] h-[20px] rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-400 text-[10px] font-bold flex items-center justify-center shrink-0">1</span><p><b class="font-bold text-white">Risponde</b> su servizi e fotovoltaico.</p></div>
+          <div class="flex gap-2"><span class="w-[20px] h-[20px] rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold flex items-center justify-center shrink-0">2</span><p><b class="font-bold text-white">Web conference gratuita</b> con <b class="font-bold text-white">Dario.</b></p></div>
+        </div>
+        <div class="mt-auto border-t border-slate-800 pt-3 font-mono text-[9px] text-emerald-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-800 inline-block"></span>Risposta Telefonica Immediata</div>
+      </div>
+
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var DESIGN_W = 1620;
+    function fit() {
+      var w = window.innerWidth;
+      document.documentElement.style.zoom = (w >= 1024 && w < DESIGN_W) ? (w / DESIGN_W) : 1;
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+</script>
+<div id="callModal" class="fixed inset-0 z-[80] hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="callTitle">
+  <div class="absolute inset-0 bg-[#020617]/75 backdrop-blur-sm" data-call-overlay></div>
+  <div class="relative z-10 flex min-h-full items-center justify-center p-4" data-call-overlay>
+    <div data-call-card class="w-full max-w-[540px] rounded-[24px] bg-white shadow-2xl px-5 pt-3.5 pb-3.5">
+      <div class="flex items-start gap-2">
+        <span class="w-9 h-9 shrink-0 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center" aria-hidden="true"><svg class="ico" style="width:1.05em"><use href="#i-headset"/></svg></span>
+        <div class="min-w-0 flex-1 pt-px">
+          <div class="flex items-center gap-2">
+            <h2 id="callTitle" class="text-[16px] leading-5 font-bold text-slate-900">Parla con SeedElisa AI</h2>
+            <span class="ml-auto inline-flex h-6 shrink-0 items-center gap-1 rounded-full bg-[#0d3d34] pl-1.5 pr-2 text-[12px] font-semibold leading-none text-white"><span class="h-[7px] w-[7px] rounded-full bg-emerald-400 animate-blink motion-reduce:animate-none" aria-hidden="true"></span>Live &amp; Attivo 24/7</span>
+          </div>
+          <p class="mt-px text-[12px] leading-4 font-semibold text-[#159c73]">Attiva e pronta 24/7</p>
+        </div>
+        <button type="button" id="callClose" aria-label="Chiudi" class="-mr-1 shrink-0 w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
+          <svg class="ico" viewBox="0 0 384 512" style="width:0.85em" aria-hidden="true"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </button>
+      </div>
+      <div class="mt-2 border-t border-slate-200"></div>
+      <figure class="mt-2 flex justify-center rounded-2xl bg-[#e7eef6] px-2 pb-2 pt-4">
+        <div class="flex w-full items-center justify-center gap-4">
+          <div class="relative shrink-0">
+            <img src="img/famiglia-v5-famiglia.png" alt="Famiglia con la bolletta da 486 euro: Che cifra, Il fotovoltaico ci può aiutare" width="1244" height="704" class="h-[137px] w-auto">
+          </div>
+          <span class="flex h-14 w-[4.25rem] shrink-0 items-center justify-center gap-0.5 rounded-2xl bg-amber-400 text-slate-950 shadow-md" aria-label="Telefono"><svg class="ico" style="width:1.15em" aria-hidden="true"><use href="#i-phone"/></svg><svg class="ico" viewBox="0 0 24 24" style="width:0.9em" aria-hidden="true"><path d="M5 11h11.2l-3.6-3.6L14 6l6 6-6 6-1.4-1.4 3.6-3.6H5z"/></svg></span>
+          <div class="relative shrink-0">
+            <img src="img/famiglia-v5-seedelisa.png" alt="SeedElisa con la spilla" width="502" height="706" class="h-[186px] w-auto object-contain">
+            <span class="absolute top-[22%] -right-1.5 inline-flex h-6 items-center rounded-[5px] border border-cyan-300 bg-white px-1.5 font-mono text-[12px] font-bold leading-none text-cyan-700 animate-aiBlink motion-reduce:animate-none">AI</span>
+          </div>
+        </div>
+      </figure>
+      <div class="mt-2">
+        <p class="text-[13.5px] leading-5 font-semibold text-slate-800">Con la chiamata succede questo:</p>
+        <div class="mt-1 space-y-1 text-[13px] leading-5 text-slate-600">
+          <div class="flex items-start gap-2"><span class="w-[18px] h-[18px] rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-700 text-[10px] font-bold flex items-center justify-center shrink-0">1</span><p><b class="font-bold text-slate-800">Risponde alle domande</b> sul mondo del fotovoltaico.</p></div>
+          <div class="flex items-start gap-2"><span class="w-[18px] h-[18px] rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-700 text-[10px] font-bold flex items-center justify-center shrink-0">2</span><p><b class="font-bold text-slate-800">Prenota la web conference gratuita</b> con Dario Bonaldo.</p></div>
+        </div>
+      </div>
+      <div class="mt-2 rounded-2xl border border-[#f6e6c4] bg-[#fff8eb] px-3 pt-2 pb-2">
+        <p class="text-center text-[11px] leading-4 font-bold tracking-[0.14em] text-[#9a5b32]">CHIAMATA IMMEDIATA</p>
+        <a href="tel:+39029991481" class="mt-1.5 h-[104px] rounded-xl bg-amber-400 text-slate-950 font-bold text-[16px] flex items-center justify-center gap-2 hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"><svg class="ico" style="width:0.9em" aria-hidden="true"><use href="#i-phone"/></svg>Chiama SeedElisa</a>
+      </div>
+      <p class="mt-2.5 text-[14px] leading-5 font-semibold text-slate-800">Oppure inserisci il numero per farti richiamare adesso:</p>
+      <form id="callBackForm" class="mt-2">
+        <div class="grid grid-cols-2 gap-2">
+          <input name="nome" type="text" autocomplete="name" placeholder="Il tuo nome" aria-label="Il tuo nome" class="w-full h-10 rounded-full border border-slate-200 bg-white px-4 text-[14px] text-slate-800 placeholder:text-slate-400 outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+          <input name="cellulare" type="tel" autocomplete="tel" placeholder="Cellulare" aria-label="Cellulare" class="w-full h-10 rounded-full border border-slate-200 bg-white px-4 text-[14px] text-slate-800 placeholder:text-slate-400 outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+        </div>
+        <button type="submit" class="mt-2 w-full h-10 rounded-xl bg-slate-950 text-white font-bold text-[14px] hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">Fatti Richiamare da SeedElisa AI</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var modal = document.getElementById('callModal');
+    var openBtn = document.querySelector('header a.group');
+    var closeBtn = document.getElementById('callClose');
+    var form = document.getElementById('callBackForm');
+    if (!modal || !openBtn || !closeBtn || !form) return;
+    var last = null, prevOverflow = '';
+    function nodes() {
+      return Array.prototype.filter.call(modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])'), function (el) {
+        return el.offsetWidth || el.offsetHeight || el.getClientRects().length;
+      });
+    }
+    function open() {
+      last = document.activeElement;
+      prevOverflow = document.body.style.overflow;
+      modal.classList.remove('hidden');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function close() {
+      if (modal.classList.contains('hidden')) return;
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = prevOverflow;
+      if (last && last.focus) last.focus();
+    }
+    openBtn.addEventListener('click', function (e) { e.preventDefault(); open(); });
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (!e.target.closest('[data-call-card]')) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;
+      var list = nodes();
+      if (!list.length) return;
+      var first = list[0], lastEl = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastEl.focus(); }
+      else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); first.focus(); }
+    });
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+  })();
+</script>
+</body>
+</html>

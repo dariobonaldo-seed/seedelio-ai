@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Libretto v020 · Editoriale con SeedElisa | SeedElio.ai</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+@page { size: A4 portrait; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { margin: 0; padding: 0; background: #d5ddd8; }
+body { font-family: Outfit, system-ui, sans-serif; }
+
+.alt-sheet {
+  width: 210mm; height: 297mm; margin: 14px auto; overflow: hidden;
+  position: relative; background: #fff; color: #1c2b22;
+  page-break-after: always; break-after: page;
+  box-shadow: 0 12px 36px rgba(20,30,20,.16);
+  scroll-margin-top: 8px;
+}
+#lib-page-5 { page-break-after: auto; break-after: auto; margin-bottom: 20px; }
+.inner {
+  height: 100%; display: flex; flex-direction: column;
+  padding: 8mm 9mm 7mm;
+  background: var(--paper); color: var(--ink);
+  font-family: Outfit, "Plus Jakarta Sans", system-ui, sans-serif;
+}
+.inner-head, .inner-foot {
+  display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+}
+.inner-head { padding-bottom: 2.5mm; border-bottom: 1.5px solid var(--accent); }
+.inner-head a { color: inherit; text-decoration: none; }
+.inner-band { height: 2.2mm; margin: 3mm 0 4mm; background: var(--accent); border-radius: 1px; flex-shrink: 0; }
+.inner h2 {
+  margin: 0 0 1.5mm; font-family: var(--display), Georgia, serif;
+  font-size: 26px; font-weight: 700; letter-spacing: -.02em; line-height: 1.05; color: var(--ink);
+}
+.kicker { margin: 0 0 1mm; font-size: 11px; color: var(--accent); font-weight: 700; }
+.lead { margin: 0 0 4mm; font-size: 12px; line-height: 1.4; max-width: 62ch; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm 4mm; }
+.field { background: var(--card); border: 1px solid var(--line); border-radius: 2mm; padding: 2.4mm 3mm 3mm; min-height: 18mm; }
+.field.wide { grid-column: 1 / -1; }
+.field span { display: block; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 2mm; }
+.field b { display: block; border-bottom: 1px solid var(--line); height: 6mm; font-weight: 500; }
+.list { margin: 0 0 4mm; padding: 0; list-style: none; }
+.list li { padding: 1.6mm 0 1.6mm 4mm; border-bottom: 1px solid var(--line); font-size: 12.5px; position: relative; }
+.list li::before { content: ""; position: absolute; left: 0; top: 2.6mm; width: 2mm; height: 2mm; border-radius: 1px; background: var(--accent); }
+.inner-foot { margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--line); color: var(--ink); }
+.years { flex: 1; display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1.3mm; min-height: 0; margin-bottom: 3mm; }
+.year { border: 1px solid var(--line); background: var(--card); border-radius: 1.3mm; padding: 1mm 1.2mm; display: flex; flex-direction: column; min-height: 0; }
+.year strong { font-size: 8px; color: var(--accent); letter-spacing: .02em; }
+.year em { display: block; margin-top: auto; border-bottom: 1px solid var(--line); min-height: 4mm; font-style: normal; font-size: 8px; font-weight: 600; color: var(--ink); }
+.diary-foot { display: grid; grid-template-columns: 1.4fr .8fr .9fr; gap: 2.5mm; flex-shrink: 0; }
+.panel { border: 1px solid var(--line); background: var(--card); border-radius: 2mm; padding: 2.2mm 2.6mm; }
+.panel h3 { margin: 0 0 1mm; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.panel p { margin: 0; font-size: 9.5px; line-height: 1.35; }
+.bars { display: flex; align-items: flex-end; gap: 1px; height: 12mm; margin-top: 1.5mm; }
+.bars i { flex: 1; height: 35%; background: var(--accent); opacity: .35; display: block; border-radius: 1px 1px 0 0; }
+.bars i:nth-child(3n) { height: 55%; } .bars i:nth-child(4n) { height: 72%; } .bars i:nth-child(5n) { height: 48%; }
+@media print {
+  html, body { background: #fff !important; }
+  .alt-sheet { margin: 0 !important; box-shadow: none !important; }
+}
+
+@scope (#lib-page-1) {
+
+  
+  *, *::before, *::after { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; background: #e7e1d6; }
+  body { display: flex; justify-content: center; }
+  .sheet {
+    position: relative; width: 210mm; height: 297mm; overflow: hidden;
+    background: #f6f1e7; color: #1c2b22;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  @media screen { body { padding: 24px 0; } .sheet { box-shadow: 0 12px 40px rgba(40,30,10,.18); } }
+  @media print { html, body { background: #fff; } body { display: block; padding: 0; } .sheet { box-shadow: none; } }
+
+  .hero {
+    position: absolute; left: 0; top: 0; width: 100%; height: 430px;
+    object-fit: cover; object-position: 46% 58%;
+  }
+  .hero-fade {
+    position: absolute; left: 0; top: 340px; width: 100%; height: 90px; z-index: 1;
+    background: linear-gradient(to bottom, rgba(246,241,231,0) 0%, #f6f1e7 92%);
+  }
+
+  .glass {
+    position: absolute; z-index: 3; left: 26px; top: 26px; width: 456px;
+    padding: 16px 24px 18px;
+    background: rgba(255,250,243,.9);
+    border: 1px solid rgba(255,255,255,.95);
+    border-radius: 26px;
+    box-shadow: 0 16px 36px rgba(70,50,15,.14), inset 0 1px 0 #fff;
+  }
+  .glass-top {
+    display: flex; justify-content: space-between; align-items: center;
+    font: 700 9.5px/1 'JetBrains Mono', monospace; letter-spacing: .16em;
+    text-transform: uppercase; color: #166534;
+    padding-bottom: 8px; border-bottom: 1px solid #14532d; margin-bottom: 12px;
+  }
+  .glass-top::after { content: none; }
+  .kicker {
+    display: flex; align-items: center; gap: 8px;
+    font: 700 10px/1 'JetBrains Mono', monospace; letter-spacing: .18em;
+    text-transform: uppercase; color: #16a34a; margin-bottom: 8px;
+  }
+  .sun {
+    width: 13px; height: 13px; border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, #fde68a, #fbbf24 60%, #f59e0b);
+    box-shadow: 0 0 0 3px rgba(251,191,36,.25);
+  }
+  h1 {
+    margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 46px; line-height: .9; letter-spacing: -.02em; color: #14301f;
+  }
+  h1 em { font-style: italic; font-weight: 500; color: #16a34a; }
+  h1 span { display: block; }
+  .lead { margin: 10px 0 0; font-size: 13px; line-height: 1.4; font-weight: 500; color: #3d5346; max-width: 38ch; }
+
+  .elisa {
+    position: absolute; z-index: 4; right: 14px; top: 108px; height: 300px; width: auto;
+    filter: drop-shadow(0 14px 16px rgba(50,35,10,.25));
+  }
+
+  .toc { position: absolute; z-index: 2; left: 32px; right: 32px; top: 448px; }
+  .toc-h {
+    display: flex; justify-content: space-between; align-items: center;
+    font: 700 9.5px/1 'JetBrains Mono', monospace; letter-spacing: .2em;
+    text-transform: uppercase; color: #166534; padding-bottom: 8px;
+  }
+  .toc-h span:first-child { display: flex; align-items: center; gap: 9px; }
+  .gem { width: 8px; height: 8px; background: #fbbf24; border-radius: 2px; transform: rotate(45deg); }
+  .rows { border-top: 1.6px solid #14532d; }
+  .row {
+    display: grid; grid-template-columns: 100px 1fr 62px; align-items: center; column-gap: 8px;
+    height: 78px; text-decoration: none; color: inherit; border-bottom: 1px solid #d7e8d4;
+  }
+  .row:last-child { border-bottom: 1.6px solid #14532d; }
+  .num {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+    font-size: 46px; line-height: .8; color: #14532d;
+  }
+  .num i { font-style: normal; color: transparent; -webkit-text-stroke: 1.25px #22c55e; }
+  .txt { display: flex; flex-direction: column; gap: 5px; }
+  .t { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 20px; line-height: 1; color: #14301f; }
+  .d { font-size: 13.2px; line-height: 1.3; font-weight: 500; color: #3d5346; }
+  .pg { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+  .pl { font: 700 9px/1 'JetBrains Mono', monospace; letter-spacing: .16em; text-transform: uppercase; color: #16a34a; }
+  .pn { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; font-size: 26px; line-height: .85; color: #166534; }
+
+  .foot {
+    position: absolute; z-index: 2; left: 32px; right: 32px; bottom: 178px;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding-top: 9px; border-top: 1px solid #14532d;
+    font: 700 9.5px/1 'JetBrains Mono', monospace; letter-spacing: .16em;
+    text-transform: uppercase; color: #166534;
+  }
+  .foot .c { font: italic 600 22px/1 'Cormorant Garamond', Georgia, serif; letter-spacing: .02em; text-transform: none; color: #14532d; }
+  .foot .c u { text-decoration: none; color: #16a34a; margin: 0 .22em; }
+  .foot .r { text-align: right; }
+  .foot b { color: #14532d; }
+
+}
+/* SKIN-PAGES */
+
+.s1 { display:flex; flex-direction:column; height:297mm; background:#f6f1e7; color:#1c2b22; font-family:"Plus Jakarta Sans",sans-serif; overflow:hidden; }
+.s1 * { box-sizing:border-box; }
+.s1 a { color:inherit; text-decoration:none; }
+.s1-mast { position:relative; height:48mm; flex:none; }
+.s1.is-d .s1-mast { height:32mm; }
+.s1-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:46% 58%; }
+.s1-fade { position:absolute; left:0; right:0; bottom:0; height:22mm; z-index:1; background:linear-gradient(to bottom, rgba(246,241,231,0), #f6f1e7 90%); }
+.s1-glass { position:absolute; z-index:3; left:5mm; top:4mm; width:108mm; padding:3.2mm 4.5mm 3.6mm; background:rgba(255,250,243,.92); border:1px solid rgba(255,255,255,.95); border-radius:6mm; box-shadow:0 16px 36px rgba(70,50,15,.14), inset 0 1px 0 #fff; }
+.s1-top { display:flex; justify-content:space-between; gap:3mm; font:700 8px/1 "JetBrains Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:#166534; padding-bottom:1.6mm; border-bottom:1px solid #14532d; margin-bottom:2mm; }
+.s1-eye { display:flex; align-items:center; gap:2mm; font:700 8.5px/1 "JetBrains Mono",monospace; letter-spacing:.16em; text-transform:uppercase; color:#16a34a; margin-bottom:1.4mm; }
+.s1-sun { width:3.2mm; height:3.2mm; border-radius:50%; background:radial-gradient(circle at 38% 38%, #fde68a, #fbbf24 60%, #f59e0b); box-shadow:0 0 0 1mm rgba(251,191,36,.25); display:inline-block; }
+.s1-title { font-family:"Cormorant Garamond",Georgia,serif; font-weight:600; font-size:30px; line-height:.9; letter-spacing:-.02em; color:#14301f; }
+.s1-title em { font-style:italic; font-weight:500; color:#16a34a; }
+.s1-lead { margin-top:1.6mm; font-size:11px; line-height:1.35; font-weight:500; color:#3d5346; }
+.s1-elisa { position:absolute; z-index:4; right:1mm; bottom:0; height:46mm; width:auto; filter:drop-shadow(0 10px 12px rgba(50,35,10,.25)); }
+.s1.is-d .s1-elisa { height:30mm; }
+.s1-body { flex:1; min-height:0; display:flex; flex-direction:column; padding:0 7mm 4mm; }
+.s1-h { display:flex; justify-content:space-between; align-items:center; font:700 8px/1 "JetBrains Mono",monospace; letter-spacing:.18em; text-transform:uppercase; color:#166534; padding-bottom:1.4mm; }
+.s1-gem { width:2mm; height:2mm; background:#fbbf24; border-radius:.4mm; transform:rotate(45deg); display:inline-block; margin-right:2mm; }
+.s1-rows { flex:1; min-height:0; display:flex; flex-direction:column; border-top:1.6px solid #14532d; }
+.s1-row { flex:1; min-height:0; display:grid; grid-template-columns:16mm 1fr; align-items:center; column-gap:2mm; border-bottom:1px solid #d7e8d4; }
+.s1-rows .s1-row:last-child { border-bottom:1.6px solid #14532d; }
+.s1-num { font-family:"Cormorant Garamond",Georgia,serif; font-weight:600; font-size:28px; line-height:.8; color:#14532d; }
+.s1-num i { font-style:normal; color:transparent; -webkit-text-stroke:1.15px #22c55e; }
+.s1-t { display:block; font-family:"Cormorant Garamond",Georgia,serif; font-weight:600; font-size:18px; line-height:1; color:#14301f; }
+.s1-d { display:block; margin-top:.6mm; font-size:11px; line-height:1.25; font-weight:500; color:#3d5346; }
+.s1-blank { display:block; margin-top:1mm; min-height:4.5mm; border-bottom:1px solid #c9d9c4; outline:none; font-size:13px; line-height:1.25; color:#14301f; white-space:nowrap; overflow:hidden; }
+.s1-blank:focus, .s1-kwh:focus, .s1 .yy i:focus { background:rgba(187,247,208,.45); }
+.s1 .yy .yy-tag { font-size:7px; letter-spacing:.04em; text-transform:uppercase; color:#166534; border:0; min-height:0; line-height:1.1; }
+.s1 .yy .s1-kwh { display:block; min-height:3.2mm; border-bottom:1px solid #d7e8d4; outline:none; font-size:8px; color:#14301f; white-space:nowrap; overflow:hidden; }
+@media print {
+  .s1-blank:focus, .s1-kwh:focus, .s1 .yy i:focus { background:transparent !important; }
+}
+.s1-foot { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:2mm 7mm 3mm; font:700 8px/1 "JetBrains Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:#166534; }
+.s1-foot b { color:#14532d; font-weight:700; }
+.s1-mid { text-align:center; font:italic 600 18px/1 "Cormorant Garamond",Georgia,serif; letter-spacing:.02em; text-transform:none; color:#14532d; }
+.s1-mid u { text-decoration:none; color:#16a34a; margin:0 .15em; }
+.s1-foot .r { text-align:right; }
+.s1-below { padding:0 0 1.5mm; font-size:11.5px; line-height:1.35; color:#3d5346; }
+.s1-years { flex:1; min-height:0; display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:1fr; gap:1.2mm; margin:1.5mm 0; }
+.s1 .yy { border-top:1px solid #14532d; padding:.8mm 1mm 0; display:flex; flex-direction:column; min-height:0; }
+.s1 .yy b { font-family:"Cormorant Garamond",Georgia,serif; font-size:13px; font-weight:600; color:#14532d; line-height:1; }
+.s1 .yy span, .s1 .yy i { font-style:normal; font-size:8px; color:#3d5346; }
+.s1 .yy i { margin-top:auto; border-bottom:1px solid #d7e8d4; min-height:3mm; }
+.s1-notes { display:grid; grid-template-columns:1.3fr .9fr .9fr; gap:2mm; flex:none; }
+.s1-note { border-top:1.6px solid #14532d; padding-top:1.2mm; }
+.s1-note strong { display:block; font-family:"Cormorant Garamond",Georgia,serif; font-size:14px; font-weight:600; color:#14301f; }
+.s1-note p { margin-top:.6mm; font-size:9.5px; line-height:1.3; color:#3d5346; }
+.s1 .ybars { display:flex; align-items:flex-end; gap:1px; height:12mm; margin-top:1mm; border-bottom:1px solid #14532d; }
+.s1 .ybars i { flex:1; height:100%; border:1px solid #16a34a; border-bottom:0; opacity:.55; }
+
+/* CAST */
+
+.cast { flex: none; box-sizing: border-box; height: 46mm; padding: 1.5mm 3.2mm 1.8mm; display: flex; flex-direction: column; justify-content: center; }
+.sheet > .cast { position: absolute; left: 0; right: 0; bottom: 0; z-index: 6; height: 46mm; }
+.cast-k { margin: 0 0 1mm; font-weight: 700; font-size: 8px; letter-spacing: .16em; text-transform: uppercase; }
+.cast-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 1.1mm; align-items: start; }
+.cast-row li { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+.cast img { width: 12mm; height: 12mm; object-fit: cover; display: block; flex: none; }
+.cast-photo { object-position: center 18%; }
+.cast-face { object-position: center 8%; }
+.cast-nm { display: block; margin-top: .5mm; font-weight: 700; font-size: 8.5px; line-height: 1.05; }
+.cast-fn { display: block; margin-top: .35mm; font-size: 7px; line-height: 1.2; font-weight: 500; }
+.cast-s1 { background: #f6f1e7; border-top: 1.6px solid #14532d; color: #14301f; font-family: "Plus Jakarta Sans", sans-serif; }
+.cast-s1 .cast-k { font-family: "JetBrains Mono", monospace; color: #166534; }
+.cast-s1 .cast-nm { font-family: "Cormorant Garamond", Georgia, serif; font-size: 12px; font-weight: 600; color: #14301f; }
+.cast-s1 .cast-fn { color: #3d5346; }
+.cast-s1 img { border-radius: 50%; box-shadow: 0 0 0 1.25px #14532d; background: #fffaf3; }
+.cast-s2 { background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,250,242,.9)); border-top: 1px solid rgba(255,255,255,.95); color: #143d2c; font-family: "Plus Jakarta Sans", sans-serif; box-shadow: 0 -10px 22px rgba(80,60,30,.06); }
+.cast-s2 .cast-k { font-family: Outfit, sans-serif; letter-spacing: .18em; color: #1d6b4f; }
+.cast-s2 .cast-nm { font-family: Outfit, sans-serif; font-weight: 800; font-size: 9px; letter-spacing: -.02em; color: #143d2c; }
+.cast-s2 .cast-fn { color: #3f5c4a; }
+.cast-s2 img { border-radius: 3.2mm; background: #fff; box-shadow: 0 4px 10px rgba(80,60,30,.12), inset 0 0 0 1px #fff; }
+.s1 .cast, .s2 .cast { margin: 0; }
+.s1 .cast-k, .s1 .cast-nm, .s1 .cast-fn, .s2 .cast-k, .s2 .cast-nm, .s2 .cast-fn { margin-left: 0; margin-right: 0; }
+
+/* /SKIN-PAGES */
+</style>
+
+</head>
+<body>
+<section class="alt-sheet" id="lib-page-1" aria-label="Indice, Editoriale con SeedElisa">
+<section class="sheet"  aria-label="Indice">
+  <img class="hero" src="img/voice-resa.png" alt="Casa con pannelli fotovoltaici, sole e card di vetro con la produzione">
+  <div class="hero-fade"></div>
+
+  <div class="glass">
+    <div class="glass-top"><span>01 · Indice generale</span><span>Documentazione tecnica</span></div>
+    <div class="kicker"><i class="sun"></i>SeedElio.ai</div>
+    <h1><span>Libretto</span><span><em>dell’impianto</em></span><span>fotovoltaico</span></h1>
+    <p class="lead">Il registro completo dell’impianto: dai parametri tecnici alla memoria trentennale della produzione.</p>
+  </div>
+
+  <img class="elisa" src="img/seedelisa-landing.png" alt="SeedElisa presenta il libretto">
+
+  <nav class="toc" aria-label="Indice del libretto">
+    <div class="toc-h"><span><i class="gem"></i>Contenuti</span><span>Pagina</span></div>
+    <div class="rows">
+      <a class="row" href="#lib-page-2">
+        <span class="num"><i>0</i>2</span>
+        <span class="txt"><span class="t">Scheda dell’impianto</span><span class="d">Ubicazione, potenza nominale e parametri chiave</span></span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">2</span></span>
+      </a>
+      <a class="row" href="#lib-page-3">
+        <span class="num"><i>0</i>3</span>
+        <span class="txt"><span class="t">Elementi dell’impianto</span><span class="d">Moduli, inverter, quadri e protezioni</span></span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">3</span></span>
+      </a>
+      <a class="row" href="#lib-page-4">
+        <span class="num"><i>0</i>4</span>
+        <span class="txt"><span class="t">Azienda installatrice</span><span class="d">Referenti, contatti e certificazioni</span></span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">4</span></span>
+      </a>
+      <a class="row" href="#lib-page-5">
+        <span class="num"><i>0</i>5</span>
+        <span class="txt"><span class="t">Diario FV</span><span class="d">Produzione, manutenzione e memoria trentennale</span></span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">5</span></span>
+      </a>
+    </div>
+  </nav>
+
+  <footer class="foot"><span><b>SeedElio.ai</b></span><span class="c">1<u>/</u>5</span><span class="r">Libretto v020</span></footer>
+<aside class="cast cast-s1" aria-label="Genealogia Seed"><p class="cast-k">Genealogia Seed</p><ul class="cast-row"><li><img class="cast-photo" src="img/dario-bonaldo.jpg" alt="Dario Bonaldo"><span class="cast-nm">Dario Bonaldo</span><span class="cast-fn">Consulente energetico e pilota UAS.</span></li><li><img class="cast-face" src="img/seed-facce/elio.png" alt="seedelio"><span class="cast-nm">seedelio</span><span class="cast-fn">Esperto di energia, web e responsabilità sociale d’impresa.</span></li><li><img class="cast-face" src="img/seed-facce/elisa.png" alt="seedelisa"><span class="cast-nm">seedelisa</span><span class="cast-fn">Esperta di eco-living e assistente del prof. Seedelio.</span></li><li><img class="cast-face" src="img/seed-facce/artea.png" alt="seedartea"><span class="cast-nm">seedartea</span><span class="cast-fn">Esperta di arte nella green economy.</span></li><li><img class="cast-face" src="img/seed-facce/barret.png" alt="seedbarret"><span class="cast-nm">seedbarret</span><span class="cast-fn">Esperto di musica nelle sue declinazioni green.</span></li><li><img class="cast-face" src="img/seed-facce/eco.png" alt="seedeco"><span class="cast-nm">seedeco</span><span class="cast-fn">Esperto di ecologia.</span></li><li><img class="cast-face" src="img/seed-facce/ergia.png" alt="seedergia"><span class="cast-nm">seedergia</span><span class="cast-fn">Esperta di tecnologie green.</span></li><li><img class="cast-face" src="img/seed-facce/harta.png" alt="seedharta"><span class="cast-nm">seedharta</span><span class="cast-fn">Esperto di self improving e spiritualità.</span></li><li><img class="cast-face" src="img/seed-facce/gaia.png" alt="seedgaia"><span class="cast-nm">seedgaia</span><span class="cast-fn">Esperta di eco-living, moglie del prof. Seedelio e mamma di tutto il network Seedelio.</span></li></ul></aside>
+</section>
+</section>
+<section class="alt-sheet s1" id="lib-page-2" aria-label="Scheda dell’impianto"><div class="s1-mast"><img class="s1-photo" src="img/voice-resa.png" alt=""><div class="s1-fade"></div><div class="s1-glass"><div class="s1-top"><span>Foglio 02</span><a class="back" href="#lib-page-1">Indice · Editoriale con SeedElisa</a></div><div class="s1-eye"><i class="s1-sun"></i>SeedElio.ai</div><div class="s1-title">Scheda<br><em>dell’impianto</em></div><p class="s1-lead">Ubicazione, potenza nominale e parametri chiave dell’impianto. Le righe restano vuote per la compilazione a mano o in digitale.</p></div><img class="s1-elisa" src="img/seedelisa-landing.png" alt="SeedElisa"></div><div class="s1-body"><div class="s1-h"><span><i class="s1-gem"></i>Da compilare</span><span>Libretto v020</span></div><div class="s1-rows"><div class="s1-row"><span class="s1-num"><i>0</i>1</span><span class="s1-txt"><span class="s1-t">Proprietario</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>2</span><span class="s1-txt"><span class="s1-t">Indirizzo dell’impianto</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>3</span><span class="s1-txt"><span class="s1-t">Potenza nominale (kWp)</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>4</span><span class="s1-txt"><span class="s1-t">Accumulo</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>5</span><span class="s1-txt"><span class="s1-t">Data di consegna</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>6</span><span class="s1-txt"><span class="s1-t">Pratiche GSE</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>7</span><span class="s1-txt"><span class="s1-t">Profilo di consumo</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>8</span><span class="s1-txt"><span class="s1-t">Note e allegati</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div></div></div><aside class="cast cast-s1" aria-label="Genealogia Seed"><p class="cast-k">Genealogia Seed</p><ul class="cast-row"><li><img class="cast-photo" src="img/dario-bonaldo.jpg" alt="Dario Bonaldo"><span class="cast-nm">Dario Bonaldo</span><span class="cast-fn">Consulente energetico e pilota UAS.</span></li><li><img class="cast-face" src="img/seed-facce/elio.png" alt="seedelio"><span class="cast-nm">seedelio</span><span class="cast-fn">Esperto di energia, web e responsabilità sociale d’impresa.</span></li><li><img class="cast-face" src="img/seed-facce/elisa.png" alt="seedelisa"><span class="cast-nm">seedelisa</span><span class="cast-fn">Esperta di eco-living e assistente del prof. Seedelio.</span></li><li><img class="cast-face" src="img/seed-facce/artea.png" alt="seedartea"><span class="cast-nm">seedartea</span><span class="cast-fn">Esperta di arte nella green economy.</span></li><li><img class="cast-face" src="img/seed-facce/barret.png" alt="seedbarret"><span class="cast-nm">seedbarret</span><span class="cast-fn">Esperto di musica nelle sue declinazioni green.</span></li><li><img class="cast-face" src="img/seed-facce/eco.png" alt="seedeco"><span class="cast-nm">seedeco</span><span class="cast-fn">Esperto di ecologia.</span></li><li><img class="cast-face" src="img/seed-facce/ergia.png" alt="seedergia"><span class="cast-nm">seedergia</span><span class="cast-fn">Esperta di tecnologie green.</span></li><li><img class="cast-face" src="img/seed-facce/harta.png" alt="seedharta"><span class="cast-nm">seedharta</span><span class="cast-fn">Esperto di self improving e spiritualità.</span></li><li><img class="cast-face" src="img/seed-facce/gaia.png" alt="seedgaia"><span class="cast-nm">seedgaia</span><span class="cast-fn">Esperta di eco-living, moglie del prof. Seedelio e mamma di tutto il network Seedelio.</span></li></ul></aside><div class="s1-foot"><span><b>SeedElio.ai</b></span><span class="s1-mid">2<u>/</u>5</span><span class="r">Scheda dell’impianto</span></div></section>
+<section class="alt-sheet s1" id="lib-page-3" aria-label="Elementi dell’impianto"><div class="s1-mast"><img class="s1-photo" src="img/voice-resa.png" alt=""><div class="s1-fade"></div><div class="s1-glass"><div class="s1-top"><span>Foglio 03</span><a class="back" href="#lib-page-1">Indice · Editoriale con SeedElisa</a></div><div class="s1-eye"><i class="s1-sun"></i>SeedElio.ai</div><div class="s1-title">Elementi<br><em>dell’impianto</em></div><p class="s1-lead">Moduli, inverter, quadri e protezioni. Stesso registro del libretto v020, in questa grafica.</p></div><img class="s1-elisa" src="img/seedelisa-landing.png" alt="SeedElisa"></div><div class="s1-body"><div class="s1-h"><span><i class="s1-gem"></i>Da compilare</span><span>Libretto v020</span></div><div class="s1-rows"><div class="s1-row"><span class="s1-num"><i>0</i>1</span><span class="s1-txt"><span class="s1-t">Moduli</span><span class="s1-d">Moduli fotovoltaici: marca, modello, potenza e quantità</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>2</span><span class="s1-txt"><span class="s1-t">Inverter</span><span class="s1-d">Inverter o microinverter</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>3</span><span class="s1-txt"><span class="s1-t">Strutture e cavi</span><span class="s1-d">Strutture, cablaggi e canaline</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>4</span><span class="s1-txt"><span class="s1-t">Quadri e protezioni</span><span class="s1-d">Quadri, protezioni e contatori</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div></div></div><aside class="cast cast-s1" aria-label="Genealogia Seed"><p class="cast-k">Genealogia Seed</p><ul class="cast-row"><li><img class="cast-photo" src="img/dario-bonaldo.jpg" alt="Dario Bonaldo"><span class="cast-nm">Dario Bonaldo</span><span class="cast-fn">Consulente energetico e pilota UAS.</span></li><li><img class="cast-face" src="img/seed-facce/elio.png" alt="seedelio"><span class="cast-nm">seedelio</span><span class="cast-fn">Esperto di energia, web e responsabilità sociale d’impresa.</span></li><li><img class="cast-face" src="img/seed-facce/elisa.png" alt="seedelisa"><span class="cast-nm">seedelisa</span><span class="cast-fn">Esperta di eco-living e assistente del prof. Seedelio.</span></li><li><img class="cast-face" src="img/seed-facce/artea.png" alt="seedartea"><span class="cast-nm">seedartea</span><span class="cast-fn">Esperta di arte nella green economy.</span></li><li><img class="cast-face" src="img/seed-facce/barret.png" alt="seedbarret"><span class="cast-nm">seedbarret</span><span class="cast-fn">Esperto di musica nelle sue declinazioni green.</span></li><li><img class="cast-face" src="img/seed-facce/eco.png" alt="seedeco"><span class="cast-nm">seedeco</span><span class="cast-fn">Esperto di ecologia.</span></li><li><img class="cast-face" src="img/seed-facce/ergia.png" alt="seedergia"><span class="cast-nm">seedergia</span><span class="cast-fn">Esperta di tecnologie green.</span></li><li><img class="cast-face" src="img/seed-facce/harta.png" alt="seedharta"><span class="cast-nm">seedharta</span><span class="cast-fn">Esperto di self improving e spiritualità.</span></li><li><img class="cast-face" src="img/seed-facce/gaia.png" alt="seedgaia"><span class="cast-nm">seedgaia</span><span class="cast-fn">Esperta di eco-living, moglie del prof. Seedelio e mamma di tutto il network Seedelio.</span></li></ul></aside><div class="s1-foot"><span><b>SeedElio.ai</b></span><span class="s1-mid">3<u>/</u>5</span><span class="r">Elementi dell’impianto</span></div></section>
+<section class="alt-sheet s1" id="lib-page-4" aria-label="Azienda installatrice"><div class="s1-mast"><img class="s1-photo" src="img/voice-resa.png" alt=""><div class="s1-fade"></div><div class="s1-glass"><div class="s1-top"><span>Foglio 04</span><a class="back" href="#lib-page-1">Indice · Editoriale con SeedElisa</a></div><div class="s1-eye"><i class="s1-sun"></i>SeedElio.ai</div><div class="s1-title">Azienda<br><em>installatrice</em></div><p class="s1-lead">Referenti, contatti e certificazioni di chi ha posato l’impianto.</p></div><img class="s1-elisa" src="img/seedelisa-landing.png" alt="SeedElisa"></div><div class="s1-body"><div class="s1-h"><span><i class="s1-gem"></i>Da compilare</span><span>Libretto v020</span></div><div class="s1-rows"><div class="s1-row"><span class="s1-num"><i>0</i>1</span><span class="s1-txt"><span class="s1-t">Ragione sociale</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>2</span><span class="s1-txt"><span class="s1-t">P. IVA</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>3</span><span class="s1-txt"><span class="s1-t">Referente tecnico</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>4</span><span class="s1-txt"><span class="s1-t">Telefono ed email</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>5</span><span class="s1-txt"><span class="s1-t">Certificazioni</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>6</span><span class="s1-txt"><span class="s1-t">Garanzie e assistenza</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div></div></div><aside class="cast cast-s1" aria-label="Genealogia Seed"><p class="cast-k">Genealogia Seed</p><ul class="cast-row"><li><img class="cast-photo" src="img/dario-bonaldo.jpg" alt="Dario Bonaldo"><span class="cast-nm">Dario Bonaldo</span><span class="cast-fn">Consulente energetico e pilota UAS.</span></li><li><img class="cast-face" src="img/seed-facce/elio.png" alt="seedelio"><span class="cast-nm">seedelio</span><span class="cast-fn">Esperto di energia, web e responsabilità sociale d’impresa.</span></li><li><img class="cast-face" src="img/seed-facce/elisa.png" alt="seedelisa"><span class="cast-nm">seedelisa</span><span class="cast-fn">Esperta di eco-living e assistente del prof. Seedelio.</span></li><li><img class="cast-face" src="img/seed-facce/artea.png" alt="seedartea"><span class="cast-nm">seedartea</span><span class="cast-fn">Esperta di arte nella green economy.</span></li><li><img class="cast-face" src="img/seed-facce/barret.png" alt="seedbarret"><span class="cast-nm">seedbarret</span><span class="cast-fn">Esperto di musica nelle sue declinazioni green.</span></li><li><img class="cast-face" src="img/seed-facce/eco.png" alt="seedeco"><span class="cast-nm">seedeco</span><span class="cast-fn">Esperto di ecologia.</span></li><li><img class="cast-face" src="img/seed-facce/ergia.png" alt="seedergia"><span class="cast-nm">seedergia</span><span class="cast-fn">Esperta di tecnologie green.</span></li><li><img class="cast-face" src="img/seed-facce/harta.png" alt="seedharta"><span class="cast-nm">seedharta</span><span class="cast-fn">Esperto di self improving e spiritualità.</span></li><li><img class="cast-face" src="img/seed-facce/gaia.png" alt="seedgaia"><span class="cast-nm">seedgaia</span><span class="cast-fn">Esperta di eco-living, moglie del prof. Seedelio e mamma di tutto il network Seedelio.</span></li></ul></aside><div class="s1-foot"><span><b>SeedElio.ai</b></span><span class="s1-mid">4<u>/</u>5</span><span class="r">Azienda installatrice</span></div></section>
+<section class="alt-sheet s1 is-d" id="lib-page-5" aria-label="Diario FV"><div class="s1-mast"><img class="s1-photo" src="img/voice-resa.png" alt=""><div class="s1-fade"></div><div class="s1-glass"><div class="s1-top"><span>Foglio 05</span><a class="back" href="#lib-page-1">Indice · Editoriale con SeedElisa</a></div><div class="s1-eye"><i class="s1-sun"></i>SeedElio.ai</div><div class="s1-title">Diario<br><em>FV</em></div></div><img class="s1-elisa" src="img/seedelisa-landing.png" alt="SeedElisa"></div><div class="s1-body"><div class="s1-h"><span><i class="s1-gem"></i>Da compilare</span><span>Libretto v020</span></div><p class="s1-below">Diario di produzione, memoria familiare e manutenzione (2027–2056), adattato dal libretto v020: trenta anni, curva dei kWh, reminder di Seedelio.ai e ripresa con drone.</p><div class="s1-rows"><div class="s1-row"><span class="s1-num"><i>0</i>1</span><span class="s1-txt"><span class="s1-t">Proprietario / famiglia</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>2</span><span class="s1-txt"><span class="s1-t">Località</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div><div class="s1-row"><span class="s1-num"><i>0</i>3</span><span class="s1-txt"><span class="s1-t">Potenza (kWp) e accumulo</span><span class="s1-blank" contenteditable="true" spellcheck="false"></span></span></div></div><div class="s1-years"><div class="yy"><b>2027</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2027"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2027"></i></div><div class="yy"><b>2028</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2028"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2028"></i></div><div class="yy"><b>2029</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2029"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2029"></i></div><div class="yy"><b>2030</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2030"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2030"></i></div><div class="yy"><b>2031</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2031"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2031"></i></div><div class="yy"><b>2032</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2032"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2032"></i></div><div class="yy"><b>2033</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2033"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2033"></i></div><div class="yy"><b>2034</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2034"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2034"></i></div><div class="yy"><b>2035</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2035"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2035"></i></div><div class="yy"><b>2036</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2036"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2036"></i></div><div class="yy"><b>2037</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2037"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2037"></i></div><div class="yy"><b>2038</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2038"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2038"></i></div><div class="yy"><b>2039</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2039"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2039"></i></div><div class="yy"><b>2040</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2040"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2040"></i></div><div class="yy"><b>2041</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2041"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2041"></i></div><div class="yy"><b>2042</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2042"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2042"></i></div><div class="yy"><b>2043</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2043"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2043"></i></div><div class="yy"><b>2044</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2044"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2044"></i></div><div class="yy"><b>2045</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2045"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2045"></i></div><div class="yy"><b>2046</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2046"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2046"></i></div><div class="yy"><b>2047</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2047"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2047"></i></div><div class="yy"><b>2048</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2048"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2048"></i></div><div class="yy"><b>2049</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2049"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2049"></i></div><div class="yy"><b>2050</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2050"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2050"></i></div><div class="yy"><b>2051</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2051"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2051"></i></div><div class="yy"><b>2052</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2052"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2052"></i></div><div class="yy"><b>2053</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2053"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2053"></i></div><div class="yy"><b>2054</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2054"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2054"></i></div><div class="yy"><b>2055</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2055"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2055"></i></div><div class="yy"><b>2056</b><span class="yy-tag">kWh</span><span class="s1-kwh" contenteditable="true" spellcheck="false" aria-label="kWh 2056"></span><span class="yy-tag">nota</span><i contenteditable="true" spellcheck="false" aria-label="Nota 2056"></i></div></div><div class="s1-notes"><div class="s1-note"><strong>Curva di produzione</strong><p>kWh/anno, scala 0–12.000. Una barra per ogni anno, da colorare a fine stagione.</p><div class="ybars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="s1-note"><strong>Reminder AI</strong><p>Ogni anno Seedelio.ai ricorda, via email e voce, di aggiornare il libretto e verificare la resa.</p></div><div class="s1-note"><strong>Drone e termografia</strong><p>Ispezione aerea dei moduli, come nel diario del libretto v020.</p></div></div></div><aside class="cast cast-s1" aria-label="Genealogia Seed"><p class="cast-k">Genealogia Seed</p><ul class="cast-row"><li><img class="cast-photo" src="img/dario-bonaldo.jpg" alt="Dario Bonaldo"><span class="cast-nm">Dario Bonaldo</span><span class="cast-fn">Consulente energetico e pilota UAS.</span></li><li><img class="cast-face" src="img/seed-facce/elio.png" alt="seedelio"><span class="cast-nm">seedelio</span><span class="cast-fn">Esperto di energia, web e responsabilità sociale d’impresa.</span></li><li><img class="cast-face" src="img/seed-facce/elisa.png" alt="seedelisa"><span class="cast-nm">seedelisa</span><span class="cast-fn">Esperta di eco-living e assistente del prof. Seedelio.</span></li><li><img class="cast-face" src="img/seed-facce/artea.png" alt="seedartea"><span class="cast-nm">seedartea</span><span class="cast-fn">Esperta di arte nella green economy.</span></li><li><img class="cast-face" src="img/seed-facce/barret.png" alt="seedbarret"><span class="cast-nm">seedbarret</span><span class="cast-fn">Esperto di musica nelle sue declinazioni green.</span></li><li><img class="cast-face" src="img/seed-facce/eco.png" alt="seedeco"><span class="cast-nm">seedeco</span><span class="cast-fn">Esperto di ecologia.</span></li><li><img class="cast-face" src="img/seed-facce/ergia.png" alt="seedergia"><span class="cast-nm">seedergia</span><span class="cast-fn">Esperta di tecnologie green.</span></li><li><img class="cast-face" src="img/seed-facce/harta.png" alt="seedharta"><span class="cast-nm">seedharta</span><span class="cast-fn">Esperto di self improving e spiritualità.</span></li><li><img class="cast-face" src="img/seed-facce/gaia.png" alt="seedgaia"><span class="cast-nm">seedgaia</span><span class="cast-fn">Esperta di eco-living, moglie del prof. Seedelio e mamma di tutto il network Seedelio.</span></li></ul></aside><div class="s1-foot"><span><b>SeedElio.ai</b></span><span class="s1-mid">5<u>/</u>5</span><span class="r">Libretto v020</span></div></section>
+<script>
+document.querySelectorAll("[contenteditable=true]").forEach(function (el) {
+  el.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") e.preventDefault();
+  });
+});
+</script>
+</body>
+</html>

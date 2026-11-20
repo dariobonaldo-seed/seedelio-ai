@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Libretto dell’impianto fotovoltaico — Indice · SeedElio.ai v020</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { background: #f6f1e6; }
+body { font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: #1e293b; }
+.page {
+  position: relative; width: 210mm; height: 297mm; margin: 0 auto; overflow: hidden;
+  background:
+    radial-gradient(540px 260px at 6% 52%, rgba(255, 206, 120, .34), transparent 70%),
+    radial-gradient(460px 340px at 102% 78%, rgba(186, 224, 255, .55), transparent 72%),
+    linear-gradient(180deg, #d9eeff 0%, #fff4dc 22%, #f7f2e8 40%, #f6f1e6 100%);
+}
+.hero { position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block; }
+
+.header { position: absolute; left: 40px; right: 40px; top: 404px; }
+.eyebrow {
+  display: flex; align-items: center; gap: 8px;
+  font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 12.5px;
+  letter-spacing: .22em; text-transform: uppercase; color: #b7791f; margin-bottom: 6px;
+}
+.eyebrow .dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff6c9, #f5b400 55%, #f59e0b);
+  box-shadow: 0 0 0 4px rgba(245, 180, 40, .18);
+}
+h1 {
+  font-family: "Outfit", sans-serif; font-weight: 650; font-size: 46px; line-height: 1.02;
+  letter-spacing: -.02em; color: #1a2332;
+}
+h1 em { font-style: normal; font-weight: 650; color: #147a45; }
+.lede {
+  margin-top: 8px; font-size: 13.5px; line-height: 1.35; font-weight: 600; color: #526277;
+  max-width: 700px;
+}
+.lede b { color: #1a2332; font-weight: 700; }
+
+.list {
+  position: absolute; left: 32px; right: 32px; top: 572px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.card {
+  position: relative; display: grid;
+  grid-template-columns: 48px 52px minmax(0, 1fr) 116px 58px;
+  align-items: center; column-gap: 12px;
+  height: 106px; padding: 0 16px 0 14px; text-decoration: none; color: inherit;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.80) 100%);
+  border: 1.5px solid rgba(255,255,255,.96);
+  box-shadow:
+    0 14px 32px rgba(120, 145, 175, .16),
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 0 0 1px rgba(214, 196, 164, .28);
+  overflow: hidden;
+}
+.card::before {
+  content: ""; position: absolute; left: 22px; right: 30%; top: 0; height: 1.5px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+}
+.card::after {
+  content: ""; position: absolute; right: -20px; top: -30px; width: 140px; height: 140px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.7), transparent 68%); pointer-events: none;
+}
+.chip {
+  width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center;
+  position: relative; z-index: 1;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 4px 10px rgba(120,100,60,.06);
+}
+.chip svg { width: 26px; height: 26px; }
+.card.c2 .chip { background: #fff4d4; border: 1px solid #f6e2a6; color: #c2760a; }
+.card.c3 .chip { background: #e7f1ff; border: 1px solid #c9dffb; color: #1d4ed8; }
+.card.c4 .chip { background: #e7f8ee; border: 1px solid #bfe8cc; color: #15803d; }
+.card.c5 .chip { background: #fff0e6; border: 1px solid #f6d2b6; color: #c2410c; }
+.num {
+  position: relative; z-index: 1;
+  font-family: "Outfit", sans-serif; font-weight: 650; font-size: 36px; line-height: 1;
+  letter-spacing: -.03em; color: #e09412;
+}
+.txt { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.t {
+  font-family: "Outfit", sans-serif; font-weight: 650; font-size: 20px; line-height: 1.1;
+  color: #172033; letter-spacing: -.01em; white-space: nowrap;
+}
+.d { font-size: 13.5px; line-height: 1.3; font-weight: 600; color: #526277; white-space: nowrap; }
+.deco { position: relative; z-index: 1; width: 116px; height: 70px; }
+.deco svg { width: 100%; height: 100%; display: block; }
+.go { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.pg {
+  font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 12.5px;
+  letter-spacing: .01em; color: #0369a1; white-space: nowrap;
+}
+.arr {
+  width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: #fff;
+  background: radial-gradient(circle at 35% 30%, #7dd3fc, #0284c7 62%, #0369a1);
+  box-shadow: 0 6px 12px rgba(2, 132, 199, .32), inset 0 1px 0 rgba(255,255,255,.65);
+}
+.arr svg { width: 16px; height: 16px; }
+
+.foot {
+  position: absolute; left: 40px; right: 40px; bottom: 22px; height: 48px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  border-top: 1.5px solid rgba(214, 186, 130, .45); padding-top: 12px;
+}
+.brand { display: flex; align-items: center; gap: 8px; font-family: "Outfit", sans-serif; font-weight: 650; font-size: 16px; color: #1a2332; }
+.brand svg { width: 22px; height: 22px; }
+.brand em { font-style: normal; color: #147a45; }
+.pager {
+  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  padding: 5px 14px; border-radius: 999px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: 0 6px 16px rgba(120,145,175,.12), 0 0 0 1px rgba(214,196,164,.3);
+  font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 13px; color: #64748b; letter-spacing: .06em;
+}
+.pager b { color: #e09412; font-weight: 600; }
+.ver { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 12.5px; letter-spacing: .04em; color: #64748b; }
+.ver b { color: #c2760a; font-weight: 600; }
+
+@media print {
+  html, body { background: #f6f1e6; width: 210mm; height: 297mm; overflow: hidden; }
+  .page { margin: 0; break-after: avoid; page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<section class="page" id="lib-page-1" aria-label="Indice">
+  <svg class="hero" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 794 400" width="794" height="400" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c5e6ff"/>
+        <stop offset=".42" stop-color="#e7f5ff"/>
+        <stop offset=".70" stop-color="#fff1d2"/>
+        <stop offset="1" stop-color="#f7f2e8"/>
+      </linearGradient>
+      <radialGradient id="sun" cx=".42" cy=".40" r=".6">
+        <stop offset="0" stop-color="#fffceb"/>
+        <stop offset=".45" stop-color="#ffe38a"/>
+        <stop offset="1" stop-color="#ffb703"/>
+      </radialGradient>
+      <radialGradient id="sunGlow" cx="118" cy="78" r="150" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#fff4c2" stop-opacity=".95"/>
+        <stop offset=".35" stop-color="#ffe08a" stop-opacity=".45"/>
+        <stop offset="1" stop-color="#ffe08a" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="bushA" cx=".35" cy=".30" r=".7">
+        <stop offset="0" stop-color="#c6f0b4"/>
+        <stop offset=".55" stop-color="#6fbf6a"/>
+        <stop offset="1" stop-color="#3d9a4e"/>
+      </radialGradient>
+      <radialGradient id="bushB" cx=".4" cy=".3" r=".75">
+        <stop offset="0" stop-color="#d8f5c4"/>
+        <stop offset=".6" stop-color="#8ed18a"/>
+        <stop offset="1" stop-color="#4eaa62"/>
+      </radialGradient>
+      <radialGradient id="bushC" cx=".35" cy=".35" r=".7">
+        <stop offset="0" stop-color="#b7e7a4"/>
+        <stop offset="1" stop-color="#2f8a48"/>
+      </radialGradient>
+      <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset="1" stop-color="#f4eee4"/>
+      </linearGradient>
+      <linearGradient id="wallSide" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#f3ece2"/>
+        <stop offset="1" stop-color="#e4d9c8"/>
+      </linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".96"/>
+        <stop offset="1" stop-color="#f3f8ff" stop-opacity=".82"/>
+      </linearGradient>
+      <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#f59e0b"/>
+        <stop offset="1" stop-color="#fde68a"/>
+      </linearGradient>
+      <linearGradient id="waveA" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7dd3fc" stop-opacity=".95"/>
+        <stop offset="1" stop-color="#e0f2fe" stop-opacity=".15"/>
+      </linearGradient>
+      <linearGradient id="waveB" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#38bdf8" stop-opacity=".75"/>
+        <stop offset="1" stop-color="#e0f2fe" stop-opacity=".05"/>
+      </linearGradient>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="150%">
+        <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#8a7348" flood-opacity=".18"/>
+      </filter>
+      <filter id="cardSh" x="-25%" y="-25%" width="160%" height="170%">
+        <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#7f9bb8" flood-opacity=".32"/>
+      </filter>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="10"/>
+      </filter>
+      <filter id="cloudB" x="-20%" y="-40%" width="140%" height="200%">
+        <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#8fb4d4" flood-opacity=".25"/>
+      </filter>
+    </defs>
+
+    <rect width="794" height="400" fill="url(#sky)"/>
+    <circle cx="118" cy="78" r="120" fill="url(#sunGlow)"/>
+    <g stroke="#ffd56a" stroke-width="3" stroke-linecap="round" opacity=".75">
+      <line x1="118" y1="22" x2="118" y2="38"/>
+      <line x1="118" y1="118" x2="118" y2="134"/>
+      <line x1="62" y1="78" x2="46" y2="78"/>
+      <line x1="174" y1="78" x2="190" y2="78"/>
+      <line x1="78" y1="38" x2="68" y2="28"/>
+      <line x1="158" y1="38" x2="168" y2="28"/>
+      <line x1="78" y1="118" x2="68" y2="128"/>
+      <line x1="158" y1="118" x2="168" y2="128"/>
+      <line x1="48" y1="56" x2="36" y2="48"/>
+      <line x1="188" y1="56" x2="200" y2="48"/>
+    </g>
+    <circle cx="118" cy="78" r="34" fill="url(#sun)"/>
+    <circle cx="106" cy="68" r="10" fill="#fff" fill-opacity=".55"/>
+
+    <g fill="#ffffff" filter="url(#cloudB)">
+      <ellipse cx="250" cy="62" rx="46" ry="18"/>
+      <ellipse cx="226" cy="70" rx="26" ry="16"/>
+      <ellipse cx="278" cy="70" rx="30" ry="15"/>
+      <ellipse cx="560" cy="46" rx="38" ry="14"/>
+      <ellipse cx="538" cy="52" rx="20" ry="12"/>
+      <ellipse cx="586" cy="54" rx="24" ry="12"/>
+      <ellipse cx="430" cy="34" rx="22" ry="9" fill-opacity=".85"/>
+    </g>
+
+    <path d="M0 214 C90 186 150 206 230 188 C310 170 360 198 450 184 C540 170 600 196 690 176 C740 166 770 180 794 174 L794 250 L0 250 Z" fill="#d7efc8" opacity=".85"/>
+    <path d="M0 228 C120 210 200 226 300 214 C420 200 500 226 620 210 C700 200 750 216 794 208 L794 270 L0 270 Z" fill="#c6e6b4" opacity=".55"/>
+
+    <!-- chimney, behind the roof -->
+    <g>
+      <polygon points="168,108 188,104 188,132 168,136" fill="#e7dccb"/>
+      <polygon points="166,100 192,96 192,108 166,112" fill="#fffdf8"/>
+      <polygon points="166,100 192,96 190,100 168,104" fill="#f0e2c4"/>
+    </g>
+
+    <g filter="url(#soft)">
+      <!-- side wall -->
+      <polygon points="262,214 372,190 372,322 262,346" fill="url(#wallSide)"/>
+      <!-- front wall -->
+      <polygon points="78,236 262,214 262,346 86,368" fill="url(#wall)"/>
+      <!-- plinth -->
+      <polygon points="86,356 262,338 262,346 86,368" fill="#e7dcc8"/>
+      <polygon points="262,330 372,310 372,322 262,346" fill="#ddd0ba"/>
+    </g>
+
+    <!-- windows -->
+    <g>
+      <rect x="118" y="258" width="78" height="62" rx="8" fill="#ffffff"/>
+      <rect x="122" y="262" width="70" height="54" rx="5" fill="#d7ecff"/>
+      <path d="M122 262 L156 289 L122 316 Z" fill="#ffffff" fill-opacity=".45"/>
+      <path d="M157 262 h35 v54 h-35 z" fill="#b9daf6" fill-opacity=".35"/>
+      <path d="M122 289 h70 M157 262 v54" stroke="#ffffff" stroke-width="3"/>
+      <rect x="300" y="246" width="36" height="48" rx="6" fill="#fffdf8"/>
+      <rect x="304" y="250" width="28" height="40" rx="4" fill="#c5e4fb"/>
+      <path d="M304 270 h28 M318 250 v40" stroke="#fff" stroke-width="2"/>
+    </g>
+
+    <!-- roof with modules -->
+    <polygon points="124,126 312,108 392,198 46,232" fill="#3a4962"/>
+<polygon points="46,232 392,198 394,206 46,241" fill="#2a364c"/>
+<polygon points="124,126 312,108 310,115 128,134" fill="#61708a"/>
+<polygon points="128.9,130 187.5,124.4 176.9,169.3 97,177.1" fill="#eef3f8"/>
+<polygon points="130.5,130.8 184.9,125.6 173.9,168.9 100.7,176" fill="#1d4ed8"/>
+<path d="M144.1 129.5L119 174.2M157.7 128.2L137.3 172.4M171.3 126.9L155.6 170.6M120.6 145.9L181.3 140M110.7 160.9L177.6 154.4" stroke="#dbeafe" stroke-opacity=".72" stroke-width=".8" fill="none"/>
+<path d="M135.2 130.3L106.9 175.4M139.5 129.9L112.8 174.8M148.8 129L125.3 173.6M153.1 128.6L131.1 173M162.4 127.7L143.6 171.8M166.7 127.3L149.4 171.3M176 126.4L161.9 170M180.3 126L167.7 169.5" stroke="#ffffff" stroke-opacity=".28" stroke-width=".45" fill="none"/>
+<polygon points="130.5,130.8 184.9,125.6 182.5,135.1 124,140.7" fill="#ffffff" fill-opacity=".30"/>
+<polygon points="188.7,124.3 247.4,118.6 258.4,161.3 178.5,169.1" fill="#eef3f8"/>
+<polygon points="190.8,125 245.3,119.8 255.1,161 181.9,168.1" fill="#2563eb"/>
+<path d="M204.5 123.7L200.2 166.3M218.1 122.4L218.5 164.5M231.7 121.1L236.8 162.7M187.9 139.4L248.5 133.5M184.9 153.7L251.8 147.2" stroke="#dbeafe" stroke-opacity=".72" stroke-width=".8" fill="none"/>
+<path d="M195.5 124.6L188.1 167.5M199.8 124.1L194 166.9M209.1 123.3L206.4 165.7M213.4 122.8L212.3 165.1M222.7 121.9L224.7 163.9M227 121.5L230.6 163.4M236.3 120.6L243 162.1M240.6 120.2L248.9 161.6" stroke="#ffffff" stroke-opacity=".28" stroke-width=".45" fill="none"/>
+<polygon points="190.8,125 245.3,119.8 247.4,128.8 188.9,134.5" fill="#ffffff" fill-opacity=".30"/>
+<polygon points="248.6,118.5 307.2,112.9 339.9,153.4 260,161.2" fill="#eef3f8"/>
+<polygon points="251.2,119.2 305.6,114 336.2,153.1 263,160.2" fill="#1e40af"/>
+<path d="M264.8 117.9L281.3 158.4M278.4 116.6L299.6 156.6M292 115.3L317.9 154.8M255.1 132.9L315.8 127M259.1 146.5L326 140" stroke="#dbeafe" stroke-opacity=".72" stroke-width=".8" fill="none"/>
+<path d="M255.8 118.8L269.3 159.6M260.1 118.3L275.1 159M269.4 117.5L287.6 157.8M273.7 117L293.4 157.2M283 116.2L305.9 156M287.4 115.7L311.7 155.5M296.6 114.9L324.2 154.2M301 114.4L330 153.7" stroke="#ffffff" stroke-opacity=".28" stroke-width=".45" fill="none"/>
+<polygon points="251.2,119.2 305.6,114 312.3,122.6 253.8,128.2" fill="#ffffff" fill-opacity=".30"/>
+<polygon points="96.1,178.5 176.6,170.6 166,215.5 64.3,225.5" fill="#eef3f8"/>
+<polygon points="98.6,179.1 173.2,171.9 162.2,215.2 68.8,224.3" fill="#1d4ed8"/>
+<path d="M117.3 177.3L92.2 222.1M135.9 175.5L115.5 219.8M154.5 173.7L138.8 217.5M88.7 194.2L169.5 186.3M78.8 209.3L165.8 200.8" stroke="#dbeafe" stroke-opacity=".72" stroke-width=".8" fill="none"/>
+<path d="M105 178.5L76.8 223.6M110.9 177.9L84.2 222.8M123.6 176.7L100.1 221.3M129.6 176.1L107.6 220.5M142.2 174.9L123.4 219M148.2 174.3L130.9 218.3M160.9 173.1L146.8 216.7M166.8 172.5L154.2 216" stroke="#ffffff" stroke-opacity=".28" stroke-width=".45" fill="none"/>
+<polygon points="98.6,179.1 173.2,171.9 170.7,181.4 92.1,189.1" fill="#ffffff" fill-opacity=".30"/>
+<polygon points="178.2,170.5 258.8,162.6 269.8,205.3 168.1,215.3" fill="#eef3f8"/>
+<polygon points="181.3,171.1 255.8,163.8 265.6,205 172.3,214.2" fill="#2b5fe0"/>
+<path d="M199.9 169.3L195.6 211.9M218.5 167.5L218.9 209.6M237.1 165.7L242.3 207.3M178.3 185.5L259.1 177.6M175.3 199.8L262.3 191.3" stroke="#dbeafe" stroke-opacity=".72" stroke-width=".8" fill="none"/>
+<path d="M187.6 170.5L180.2 213.4M193.5 169.9L187.7 212.7M206.2 168.7L203.5 211.1M212.2 168.1L211 210.4M224.8 166.9L226.9 208.8M230.8 166.3L234.3 208.1M243.5 165L250.2 206.5M249.4 164.5L257.7 205.8" stroke="#ffffff" stroke-opacity=".28" stroke-width=".45" fill="none"/>
+<polygon points="181.3,171.1 255.8,163.8 257.9,172.9 179.3,180.6" fill="#ffffff" fill-opacity=".30"/>
+<polygon points="260.4,162.5 340.9,154.6 373.6,195.1 271.9,205.1" fill="#eef3f8"/>
+<polygon points="263.9,163.1 338.4,155.8 369,194.9 275.7,204" fill="#1e3a8a"/>
+<path d="M282.5 161.2L299.1 201.7M301.1 159.4L322.4 199.5M319.8 157.6L345.7 197.2M267.8 176.7L348.6 168.8M271.8 190.4L358.8 181.8" stroke="#dbeafe" stroke-opacity=".72" stroke-width=".8" fill="none"/>
+<path d="M270.2 162.4L283.7 203.3M276.2 161.9L291.1 202.5M288.8 160.6L307 201M294.8 160L314.5 200.2M307.5 158.8L330.3 198.7M313.4 158.2L337.8 197.9M326.1 157L353.6 196.4M332 156.4L361.1 195.7" stroke="#ffffff" stroke-opacity=".28" stroke-width=".45" fill="none"/>
+<polygon points="263.9,163.1 338.4,155.8 345.1,164.4 266.5,172.1" fill="#ffffff" fill-opacity=".30"/>
+<circle cx="157.6" cy="140.5" r="2.2" fill="#fff" fill-opacity=".85"/>
+<circle cx="228.8" cy="131.7" r="1.6" fill="#fff" fill-opacity=".7"/>
+
+    <!-- lawn and shadows -->
+    <ellipse cx="230" cy="372" rx="210" ry="16" fill="#8a7355" fill-opacity=".10"/>
+    <ellipse cx="250" cy="392" rx="360" ry="36" fill="#e4f3d4"/>
+    <ellipse cx="560" cy="396" rx="220" ry="28" fill="#f7f2e8"/>
+
+    <line x1="52.8" y1="351.4" x2="52.8" y2="376" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+<line x1="79.8" y1="344.8" x2="79.8" y2="376" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+<line x1="112.2" y1="336.8" x2="112.2" y2="376" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+<line x1="36" y1="376" x2="128" y2="376" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+<polygon points="30.5,312.3 72.8,302.9 86.3,342.3 44,352.6" fill="#e8eef5"/>
+<polygon points="32.7,314.6 72.3,305.7 84.1,340.2 44.5,349.8" fill="#1d4ed8"/>
+<path d="M42.6 312.3L54.4 347.4M52.5 310.1L64.3 345M62.4 307.9L74.2 342.6M36.6 326.3L76.2 317.2M40.6 338L80.2 328.7" stroke="#dbeafe" stroke-opacity=".75" stroke-width=".7" fill="none"/>
+<polygon points="32.7,314.6 72.3,305.7 75.1,313.9 35.5,322.9" fill="#fff" fill-opacity=".28"/>
+<polygon points="73.7,302.7 116,293.3 129.5,331.7 87.2,342.1" fill="#e8eef5"/>
+<polygon points="75.9,304.9 115.5,296 127.3,329.7 87.7,339.3" fill="#2563eb"/>
+<path d="M85.8 302.7L97.6 336.9M95.7 300.4L107.5 334.5M105.6 298.2L117.4 332.1M79.8 316.3L119.4 307.2M83.8 327.8L123.4 318.5" stroke="#dbeafe" stroke-opacity=".75" stroke-width=".7" fill="none"/>
+<polygon points="75.9,304.9 115.5,296 118.3,304 78.7,313.1" fill="#fff" fill-opacity=".28"/>
+
+    <!-- bushes and flowers, in front of the house -->
+    <g>
+      <ellipse cx="168" cy="352" rx="52" ry="30" fill="url(#bushA)"/>
+      <ellipse cx="128" cy="344" rx="34" ry="24" fill="url(#bushB)"/>
+      <ellipse cx="210" cy="340" rx="32" ry="22" fill="url(#bushC)"/>
+      <ellipse cx="150" cy="332" rx="16" ry="10" fill="#ffffff" fill-opacity=".28"/>
+      <ellipse cx="250" cy="356" rx="28" ry="18" fill="url(#bushB)"/>
+      <ellipse cx="96" cy="358" rx="26" ry="16" fill="url(#bushC)"/>
+      <!-- flowers -->
+      <g fill="#fff">
+        <circle cx="112" cy="336" r="4.2"/><circle cx="124" cy="328" r="3.4"/><circle cx="136" cy="338" r="3.6"/>
+        <circle cx="188" cy="324" r="4"/><circle cx="200" cy="332" r="3.2"/><circle cx="176" cy="334" r="3"/>
+        <circle cx="236" cy="346" r="3.4"/><circle cx="248" cy="340" r="2.8"/>
+      </g>
+      <g fill="#f6c945">
+        <circle cx="112" cy="336" r="1.5"/><circle cx="124" cy="328" r="1.3"/><circle cx="136" cy="338" r="1.4"/>
+        <circle cx="188" cy="324" r="1.5"/><circle cx="200" cy="332" r="1.2"/><circle cx="176" cy="334" r="1.2"/>
+        <circle cx="236" cy="346" r="1.3"/><circle cx="248" cy="340" r="1.1"/>
+      </g>
+      <!-- leaves accents -->
+      <ellipse cx="104" cy="348" rx="10" ry="4" fill="#3d9a4e" transform="rotate(-30 104 348)"/>
+      <ellipse cx="220" cy="348" rx="12" ry="4.5" fill="#2f8a48" transform="rotate(20 220 348)"/>
+    </g>
+
+    <!-- pot plant, right of the house, clay style -->
+    <g>
+      <ellipse cx="430" cy="300" rx="26" ry="16" fill="#5aaa62"/>
+      <ellipse cx="414" cy="292" rx="16" ry="18" fill="#7dce7a" transform="rotate(-20 414 292)"/>
+      <ellipse cx="446" cy="288" rx="15" ry="20" fill="#3e9a52" transform="rotate(18 446 288)"/>
+      <ellipse cx="430" cy="278" rx="12" ry="16" fill="#8ed18a"/>
+      <ellipse cx="424" cy="274" rx="5" ry="3" fill="#fff" fill-opacity=".35"/>
+      <path d="M412 308 h36 l-5 26 h-26 z" fill="#f0d7be"/>
+      <ellipse cx="430" cy="308" rx="18" ry="5.5" fill="#f7e6d2"/>
+      <path d="M416 322 h28" stroke="#e2c4a4" stroke-width="1.4"/>
+    </g>
+
+    <!-- floating glass dashboard, same language as voice-resa -->
+    <g filter="url(#cardSh)" transform="rotate(-3.2 612 168)">
+      <rect x="454" y="36" width="308" height="262" rx="32" fill="url(#glass)" stroke="#ffffff" stroke-width="2.5"/>
+      <path d="M486 38 H730" stroke="#ffffff" stroke-width="2" stroke-opacity=".9"/>
+      <!-- dashed plot frame -->
+      <rect x="478" y="58" width="150" height="112" rx="8" fill="none" stroke="#d5e4f2" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <!-- bars -->
+      <g>
+        <rect x="492" y="128" width="18" height="36" rx="6" fill="url(#bar)"/>
+        <rect x="518" y="112" width="18" height="52" rx="6" fill="url(#bar)"/>
+        <rect x="544" y="96" width="18" height="68" rx="6" fill="url(#bar)"/>
+        <rect x="570" y="78" width="18" height="86" rx="6" fill="url(#bar)"/>
+        <rect x="596" y="64" width="18" height="100" rx="6" fill="url(#bar)"/>
+      </g>
+      <!-- sun badge -->
+      <circle cx="706" cy="92" r="30" fill="none" stroke="#f6c453" stroke-width="1.4" stroke-dasharray="2.5 3"/>
+      <circle cx="706" cy="92" r="18" fill="url(#sun)"/>
+      <g stroke="#f5b942" stroke-width="1.6" stroke-linecap="round">
+        <line x1="706" y1="66" x2="706" y2="70"/>
+        <line x1="706" y1="114" x2="706" y2="118"/>
+        <line x1="680" y1="92" x2="684" y2="92"/>
+        <line x1="728" y1="92" x2="732" y2="92"/>
+        <line x1="688" y1="74" x2="691" y2="77"/>
+        <line x1="721" y1="107" x2="724" y2="110"/>
+        <line x1="688" y1="110" x2="691" y2="107"/>
+        <line x1="721" y1="77" x2="724" y2="74"/>
+      </g>
+      <g fill="#f6c453">
+        <path d="M640 58 l1.6 3.4 3.6.4 -2.7 2.4.8 3.5 -3.3-1.9 -3.3 1.9.8-3.5 -2.7-2.4 3.6-.4 z"/>
+        <path d="M478 52 l1.2 2.4 2.6.3 -2 1.8.6 2.6 -2.4-1.4 -2.4 1.4.6-2.6 -2-1.8 2.6-.3 z"/>
+      </g>
+      <!-- blue area chart -->
+      <path d="M478 196 C514 186 546 194 576 188 C610 180 640 186 672 180 C700 176 716 182 734 178 L734 216 L478 216 Z" fill="url(#waveB)"/>
+      <path d="M478 206 C516 196 548 204 580 198 C614 190 644 196 676 190 C704 186 718 190 734 188 L734 216 L478 216 Z" fill="url(#waveA)"/>
+      <path d="M478 196 C514 186 546 194 576 188 C610 180 640 186 672 180 C700 176 716 182 734 178" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- icon tiles -->
+      <g>
+        <rect x="478" y="226" width="48" height="48" rx="14" fill="#ffffff" stroke="#e6eef6"/>
+        <circle cx="502" cy="250" r="12" fill="none" stroke="#38bdf8" stroke-width="4"/>
+        <circle cx="502" cy="250" r="4" fill="#f5b942"/>
+        <rect x="538" y="226" width="48" height="48" rx="14" fill="#fff6df" stroke="#f6e2a8"/>
+        <path d="M554 258c2-14 18-20 24-16-6 12-16 18-24 16z" fill="#22c55e"/>
+        <path d="M560 254c6 1 10 5 14 11" stroke="#166534" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <rect x="598" y="226" width="48" height="48" rx="14" fill="#fff6df" stroke="#f6e2a8"/>
+        <rect x="610" y="244" width="24" height="12" rx="3" fill="none" stroke="#f59e0b" stroke-width="2"/>
+        <rect x="614" y="247" width="10" height="6" rx="1" fill="#f59e0b"/>
+        <path d="M634 247 v6" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+        <rect x="658" y="226" width="48" height="48" rx="14" fill="#ffffff" stroke="#e6eef6"/>
+        <path d="M682 240 l10 8 h-20 z" fill="#38bdf8"/>
+        <rect x="674" y="250" width="16" height="12" rx="1.5" fill="none" stroke="#38bdf8" stroke-width="2"/>
+      </g>
+    </g>
+
+  </svg>
+
+  <header class="header">
+    <p class="eyebrow"><span class="dot"></span>Indice</p>
+    <h1>Libretto dell’impianto<br><em>fotovoltaico</em></h1>
+    <p class="lede"><b>Il registro tecnico dell’impianto:</b> dati, componenti, referenti e produzione in un unico documento.</p>
+  </header>
+
+  <nav class="list" aria-label="Indice del libretto">
+    <a class="card c2" href="#lib-page-2">
+      <span class="chip" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="5" width="18" height="23" rx="3"/><rect x="11" y="3" width="10" height="5" rx="1.5"/><path d="M11 14h10M11 19h10M11 24h6"/></svg></span>
+      <span class="num">02</span>
+      <span class="txt"><span class="t">Scheda dell’impianto</span><span class="d">Ubicazione, potenza nominale e parametri chiave</span></span>
+      <span class="deco" aria-hidden="true"><svg viewBox="0 0 116 70" fill="none">
+        <rect x="8" y="10" width="62" height="50" rx="8" fill="#fff" stroke="#f3d48a"/>
+        <path d="M16 24h28M16 32h22M16 40h18" stroke="#e7c98a" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="58" cy="46" r="3" fill="#f5b942"/>
+        <circle cx="86" cy="30" r="16" fill="none" stroke="#f6c453" stroke-width="1.4"/>
+        <circle cx="86" cy="30" r="8" fill="none" stroke="#f6c453" stroke-width="1.4"/>
+        <circle cx="86" cy="30" r="3" fill="#f5b942"/>
+        <path d="M86 8 v6 M86 46 v6 M64 30 h6 M102 30 h6" stroke="#f5b942" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M78 18 l2.2 1.2" stroke="#f6c453" stroke-width="1.4" stroke-linecap="round"/>
+      </svg></span>
+      <span class="go"><span class="pg">pag. 2</span><span class="arr"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h11M11 5.5L15.5 10 11 14.5"/></svg></span></span>
+    </a>
+    <a class="card c3" href="#lib-page-3">
+      <span class="chip" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13 L16 6 L26 13 V26 H6 Z"/><path d="M6 16h20M10.5 13v3M16 10.5V16M21.5 13v3"/><path d="M12 26v-6h8v6"/></svg></span>
+      <span class="num">03</span>
+      <span class="txt"><span class="t">Elementi dell’impianto</span><span class="d">Moduli, inverter, quadri e protezioni</span></span>
+      <span class="deco" aria-hidden="true"><svg viewBox="0 0 116 70" fill="none">
+        <polygon points="2,26 58,12 68,50 12,64" fill="#e8eef5"/>
+        <polygon points="8,28 54,16 62,46 16,58" fill="#1d4ed8"/>
+        <path d="M16 32 L22 56 M26 29 L31 54 M36 26 L40 51 M46 23 L49 48 M14 40 H56 M16 48 H58" stroke="#dbeafe" stroke-width=".9"/>
+        <polygon points="8,28 54,16 52,22 10,33" fill="#fff" fill-opacity=".38"/>
+        <path d="M62 44 C70 40 74 36 80 34" stroke="#94a3b8" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <rect x="80" y="18" width="28" height="38" rx="5" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+        <rect x="85" y="24" width="18" height="11" rx="2" fill="#dbeafe"/>
+        <path d="M88 27 h4 M88 30 h8 M88 33 h6" stroke="#3b82f6" stroke-width=".8" stroke-linecap="round"/>
+        <circle cx="89" cy="46" r="2.2" fill="#22c55e"/>
+        <circle cx="97" cy="46" r="2.2" fill="#f59e0b"/>
+      </svg></span>
+      <span class="go"><span class="pg">pag. 3</span><span class="arr"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h11M11 5.5L15.5 10 11 14.5"/></svg></span></span>
+    </a>
+    <a class="card c4" href="#lib-page-4">
+      <span class="chip" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4 l9 3.5 v8.2 c0 6.2-4 10.2-9 12.3 C11 25.9 7 21.9 7 15.7 V7.5 Z"/><path d="M12 16.2 l2.8 2.8 5.4-5.6"/></svg></span>
+      <span class="num">04</span>
+      <span class="txt"><span class="t">Azienda installatrice</span><span class="d">Referenti, contatti e certificazioni</span></span>
+      <span class="deco" aria-hidden="true"><svg viewBox="0 0 116 70" fill="none">
+        <rect x="28" y="8" width="60" height="50" rx="8" fill="#fff" stroke="#d7c4a2"/>
+        <path d="M36 20 h28 M36 28 h22 M36 36 h16" stroke="#e4d3b4" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="74" cy="40" r="12" fill="#fff6df" stroke="#f0c14d" stroke-width="1.6"/>
+        <path d="M69 40.2 l3.2 3.2 6.2-6.4" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M46 58 h24 l-3 6 h-18 z" fill="#7ec8e3"/>
+        <circle cx="16" cy="24" r="8" fill="#e7f1ff" stroke="#b9d4f5"/>
+        <circle cx="16" cy="22" r="2.4" fill="#1d4ed8"/>
+        <path d="M11 30 c1.5-2 8.5-2 10 0" stroke="#1d4ed8" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="100" cy="22" r="8" fill="#e7f8ee" stroke="#b7e0c4"/>
+        <path d="M96.5 22.2 l2.2 2.2 4.2-4.4" stroke="#15803d" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M24 24 H36 M92 24 H84" stroke="#d7c4a2" stroke-width="1.2" stroke-dasharray="2 2"/>
+      </svg></span>
+      <span class="go"><span class="pg">pag. 4</span><span class="arr"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h11M11 5.5L15.5 10 11 14.5"/></svg></span></span>
+    </a>
+    <a class="card c5" href="#lib-page-5">
+      <span class="chip" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 6.5 h8.5 a8 8 0 0 1 8 8 V26 H15 a8 8 0 0 1-8-8 Z"/><path d="M15.5 6.5 V26"/><path d="M18.5 20 l2.4-3 2.2 1.6 2.4-3.4"/></svg></span>
+      <span class="num">05</span>
+      <span class="txt"><span class="t">Diario FV</span><span class="d">Produzione, manutenzione e memoria trentennale</span></span>
+      <span class="deco" aria-hidden="true"><svg viewBox="0 0 116 70" fill="none">
+        <rect x="4" y="8" width="78" height="40" rx="4" fill="none" stroke="#d5e4f2" stroke-dasharray="2.5 2.5"/>
+        <rect x="12" y="30" width="8" height="14" rx="2" fill="url(#b5)"/>
+        <rect x="24" y="24" width="8" height="20" rx="2" fill="url(#b5)"/>
+        <rect x="36" y="18" width="8" height="26" rx="2" fill="url(#b5)"/>
+        <rect x="48" y="12" width="8" height="32" rx="2" fill="url(#b5)"/>
+        <rect x="60" y="16" width="8" height="28" rx="2" fill="url(#b5)"/>
+        <path d="M8 52 C28 44 40 50 56 42 C72 34 88 30 112 26 L112 62 L8 62 Z" fill="#bae6fd" fill-opacity=".85"/>
+        <path d="M8 52 C28 44 40 50 56 42 C72 34 88 30 112 26" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="104" cy="16" r="7" fill="#ffe38a" stroke="#f5b942"/>
+        <defs><linearGradient id="b5" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#fde68a"/></linearGradient></defs>
+      </svg></span>
+      <span class="go"><span class="pg">pag. 5</span><span class="arr"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h11M11 5.5L15.5 10 11 14.5"/></svg></span></span>
+    </a>
+  </nav>
+
+  <footer class="foot">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="5" fill="#ffd45a" stroke="#f5b400" stroke-width="1"/>
+        <g stroke="#f5b400" stroke-width="1.6" stroke-linecap="round">
+          <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/>
+        </g>
+      </svg>
+      <span>SeedElio<em>.ai</em></span>
+    </div>
+    <div class="pager"><b>1</b> / 5</div>
+    <div class="ver">Libretto <b>v020</b></div>
+  </footer>
+</section>
+</body>
+</html>

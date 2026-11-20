@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variante 4 · Rivista | SeedElio.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&family=Plus+Jakarta+Sans:wght@500..800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Outfit', 'ui-sans-serif', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+      }
+    }
+  }
+}
+</script>
+<style>
+  body { font-family: Outfit, ui-sans-serif, system-ui, sans-serif; }
+  .font-display { font-family: "Plus Jakarta Sans", Outfit, sans-serif; }
+  .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+</style>
+</head>
+<body class="bg-white text-slate-800">
+<header class="sticky top-0 z-50 bg-white border-b border-slate-200">
+  <div class="max-w-6xl mx-auto h-16 px-5 flex items-center justify-between gap-3">
+    <a href="../index.html" class="flex items-center gap-2 min-w-0">
+      <span class="relative h-7 w-10 shrink-0" aria-hidden="true">
+        <span class="absolute left-0 top-0.5 h-6 w-6 rounded-full bg-amber-400"></span>
+        <span class="absolute left-3.5 top-0.5 h-6 w-6 rounded-full bg-cyan-400"></span>
+      </span>
+      <span class="font-display text-[20px] font-semibold tracking-tight text-slate-700">SeedElio</span>
+      <span class="font-mono text-[12px] font-bold text-cyan-700 bg-cyan-50 border border-cyan-300 rounded-md px-1.5 py-0.5">.AI</span>
+    </a>
+    <nav class="flex items-center gap-1 text-[13px] font-bold text-slate-600">
+      <a href="../simulatore-2.html" class="rounded-xl px-3 py-2 hover:bg-slate-100">Simulatore</a>
+      <a href="../chi-siamo.html" class="rounded-xl px-3 py-2 hover:bg-slate-100">Chi Siamo</a>
+    </nav>
+  </div>
+</header>
+<main class="bg-white text-slate-800">
+      <article class="max-w-3xl mx-auto px-6 pt-20 pb-24">
+        <p class="font-mono text-[12px] font-bold tracking-[0.22em] text-emerald-700">VARIANTE 4 · RIVISTA</p>
+        <h1 class="mt-8 font-display text-[68px] leading-[0.92] font-extrabold text-slate-950">Le formule, dette piano.</h1>
+        <p class="mt-10 text-[20px] leading-9 text-slate-600">Prima la Home, poi i numeri di questa simulazione, poi variabili, relazioni e passi. Il metodo è di SeedElio, firmato da Dario Bonaldo.</p>
+        <p class="mt-6 text-[14px]"><span id="simBadge" class="rounded-full bg-amber-100 px-3 py-1 font-bold text-amber-900">Valori di esempio</span></p>
+        <p id="simNote" class="mt-3 text-[15px] text-slate-500">Questi sono i valori di esempio, quelli di partenza del simulatore.</p>
+        <figure class="mt-16">
+          <img src="../img/home-anteprima.png" alt="Schermata della Home di SeedElio a circa 1440 pixel" class="w-full">
+          <figcaption class="mt-4 text-[14px] leading-6 text-slate-500">Home di SeedElio.AI aperta a circa 1440 px. È la porta del sito: da qui si arriva al simulatore e a queste formule.</figcaption>
+        </figure>
+        <div class="mt-20 grid grid-cols-2 gap-x-10 gap-y-12">
+          <p><span class="block font-display text-[42px] leading-none font-extrabold" data-k="kwp">12,8 kWp</span><span class="mt-2 block text-[13px] text-slate-500">taglia</span></p>
+          <p><span class="block font-display text-[42px] leading-none font-extrabold text-cyan-700" data-k="produzione">13357 kWh</span><span class="mt-2 block text-[13px] text-slate-500">produzione</span></p>
+          <p><span class="block font-display text-[42px] leading-none font-extrabold text-emerald-700" data-k="autoconsumo">76%</span><span class="mt-2 block text-[13px] text-slate-500">autoconsumo</span></p>
+          <p><span class="block font-display text-[42px] leading-none font-extrabold text-amber-600" data-k="risparmio">3845 €</span><span class="mt-2 block text-[13px] text-slate-500">risparmio · <span data-k="payback">4,6 anni</span></span></p>
+        </div>
+        <p class="mt-16 text-[15px] leading-7 text-slate-500">Zona <b class="text-slate-800" data-k="zona">Nord Italia (1.150 kWh/kWp)</b>. Spesa <b class="text-slate-800" data-k="spesa">140 €/mese</b>. Profilo <b class="text-slate-800" data-k="profilo">Famiglia Fuori Casa / Pendolari</b>. Orientamento <b class="text-slate-800" data-k="orientamento">Sud-Est / Sud-Ovest (90%)</b>, ombre <b class="text-slate-800" data-k="ombre">0% · Piano sole</b>, falda <b class="text-slate-800" data-k="inclinazione">22°</b>, modulo <b class="text-slate-800" data-k="modulo">0,48 kWp</b>, accumulo <b class="text-slate-800" data-k="accumulo">25,0 kWh</b>.</p>
+        <p class="mt-6 text-[15px] leading-7 text-slate-500">p non è i 0,35 € della bolletta. È il prezzo con cui il metodo valorizza ogni kWh autoconsumato. Costo semplificato c = 1.380 €/kWp. Prezzo p = 0,378 €/kWh.</p>
+        <article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">Y · Producibilità</p>
+          <h3 data-fname class="sr-only">Producibilità</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«Y = G × Fo × Fs × Fi»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">Quanti kWh rende un kWp su questo tetto.</p>
+        </article><article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">kWp · Taglia</p>
+          <h3 data-fname class="sr-only">Taglia</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«kWp = C / Y»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">L'impianto che copre il fabbisogno.</p>
+        </article><article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">E · Produzione</p>
+          <h3 data-fname class="sr-only">Produzione</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«E = kWp × Y»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">Energia annua stimata.</p>
+        </article><article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">auto · Autoconsumo</p>
+          <h3 data-fname class="sr-only">Autoconsumo</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«kWh auto = min(E, C) × Qa»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">Dipende da quando sei in casa.</p>
+        </article><article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">R · Risparmio</p>
+          <h3 data-fname class="sr-only">Risparmio</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«R = kWh auto × p»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">Euro all'anno, a quel prezzo.</p>
+        </article><article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">anni · Payback</p>
+          <h3 data-fname class="sr-only">Payback</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«anni = (kWp × c) / R»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">Anni per riprendere il costo.</p>
+        </article><article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">km · Auto elettrica</p>
+          <h3 data-fname class="sr-only">Auto elettrica</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«kWh = km × 0,16»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">12.000 km → 1.920 kWh/anno. Coefficiente 0,16 kWh per chilometro.</p>
+        </article><article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">kW · Pompa di calore</p>
+          <h3 data-fname class="sr-only">Pompa di calore</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«kWh = kW × 1.600 h»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">4 kW → 6.400 kWh/anno. Coefficiente 1.600 ore equivalenti.</p>
+        </article><article data-formula class="mt-24">
+          <p class="font-mono text-[12px] tracking-[0.2em] text-emerald-700">pasti · Piano a induzione</p>
+          <h3 data-fname class="sr-only">Piano a induzione</h3>
+          <blockquote data-fexpr class="mt-4 font-display text-[40px] leading-[1.15] font-extrabold text-slate-950">«kWh = pasti × 52 × 0,7»</blockquote>
+          <p data-fwhy class="mt-4 max-w-md text-[16px] leading-7 text-slate-500">7 pasti/settimana → 255 kWh/anno. Coefficiente 0,7 kWh a pasto, per 52 settimane.</p>
+        </article>
+        <section class="mt-28 grid sm:grid-cols-3 gap-10">
+          <p><span class="block font-display text-[36px] font-extrabold text-amber-600">0,16</span><span class="mt-2 block text-[14px] leading-6 text-slate-500">kWh/km. <span data-k="autoKm">12.000 km</span> diventano <span data-k="autoKwh">1.920 kWh/anno</span>.</span></p>
+          <p><span class="block font-display text-[36px] font-extrabold text-cyan-700">1.600</span><span class="mt-2 block text-[14px] leading-6 text-slate-500">ore della pompa. <span data-k="pompaKw">4 kW</span> diventano <span data-k="pompaKwh">6.400 kWh/anno</span>.</span></p>
+          <p><span class="block font-display text-[36px] font-extrabold text-emerald-700">0,7</span><span class="mt-2 block text-[14px] leading-6 text-slate-500">kWh a pasto, per 52 settimane. <span data-k="pasti">7 pasti/settimana</span> → <span data-k="indKwh">255 kWh/anno</span>.</span></p>
+        </section>
+        <section class="mt-28">
+          <h2 class="font-display text-[32px] font-extrabold">Documento</h2>
+          <p class="mt-3 max-w-md text-[16px] leading-7 text-slate-500">L'anteprima resta in questa pagina. Il PDF si scarica solo dopo nome ed email: resta sul dispositivo e non viene inviato.</p>
+          <form id="pdfForm" class="mt-6 space-y-3 max-w-md">
+            <label class="block text-[13px] font-semibold">Nome<input id="pdfName" required class="mt-1 w-full border-b border-slate-300 bg-transparent py-2 font-normal outline-none"></label>
+            <label class="block text-[13px] font-semibold">Email<input id="pdfMail" type="email" required class="mt-1 w-full border-b border-slate-300 bg-transparent py-2 font-normal outline-none"></label>
+            <button type="submit" class="mt-2 h-11 rounded-full bg-slate-950 px-6 font-bold text-white">Scarica il PDF</button>
+          </form>
+          <p id="pdfMsg" class="mt-3 hidden text-[14px] font-semibold text-emerald-700" role="status"></p>
+        </section>
+      </article>
+    </main>
+<footer class="bg-slate-950 text-slate-400">
+  <div class="max-w-6xl mx-auto px-5 py-6 flex flex-wrap items-center justify-between gap-3 text-[13px]">
+    <p>SeedElio · metodo di <b class="text-white">Dario Bonaldo</b></p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function () {
+  var EXAMPLE = {
+    zona: "Nord Italia (1.150 kWh/kWp)", spesa: "140 €/mese", kwh: "400 kWh/mese · 13375 kWh/anno",
+    profilo: "Famiglia Fuori Casa / Pendolari",
+    carichi: "Auto 12.000 km (1.920 kWh), Pompa 4 kW (6.400 kWh), Induzione 7 pasti (255 kWh)",
+    autoKm: "12.000 km", autoKwh: "1.920 kWh/anno", pompaKw: "4 kW", pompaKwh: "6.400 kWh/anno",
+    pasti: "7 pasti/settimana", indKwh: "255 kWh/anno", orientamento: "Sud-Est / Sud-Ovest (90%)",
+    ombre: "0% · Piano sole", ottimizzatori: "Auto · Analisi suggerita", inclinazione: "22°",
+    modulo: "0,48 kWp", kwp: "12,8 kWp", accumulo: "25,0 kWh", produzione: "13357 kWh",
+    autoconsumo: "76%", risparmio: "3845 €", payback: "4,6 anni"
+  };
+  try {
+    var raw = sessionStorage.getItem("seedelioSim");
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (parsed && parsed.spesa && parsed.kwp) {
+        document.querySelectorAll("[data-k]").forEach(function (el) {
+          var k = el.getAttribute("data-k");
+          if (parsed[k]) el.textContent = parsed[k];
+        });
+        var badge = document.getElementById("simBadge");
+        if (badge) {
+          badge.textContent = "Dalla tua simulazione";
+          badge.classList.remove("bg-amber-100", "text-amber-900", "bg-amber-400/15", "text-amber-200");
+          badge.classList.add("bg-emerald-100", "text-emerald-800");
+        }
+        var note = document.getElementById("simNote");
+        if (note) note.textContent = "Numeri portati dal simulatore in questa sessione del browser.";
+      }
+    }
+  } catch (err) {}
+
+  function plain(s) {
+    return String(s).replace(/•/g, "-").replace(/–|—/g, "-").replace(/[‘’]/g, "'").replace(/[“”]/g, '"');
+  }
+  document.getElementById("pdfForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var msg = document.getElementById("pdfMsg");
+    var nome = document.getElementById("pdfName").value.trim();
+    var mail = document.getElementById("pdfMail").value.trim();
+    msg.classList.remove("hidden");
+    if (!window.jspdf) {
+      msg.textContent = "Il PDF non è disponibile in questo momento. Riprova tra poco.";
+      return;
+    }
+    msg.textContent = "Preparo il PDF…";
+    var doc = new window.jspdf.jsPDF({ unit: "mm", format: "a4" });
+    var pageH = doc.internal.pageSize.getHeight();
+    function header() {
+      doc.setFillColor(11, 18, 32);
+      doc.rect(0, 0, 210, 16, "F");
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(11);
+      doc.text("SeedElio  ·  formule del simulatore", 14, 10);
+    }
+    function need(h) {
+      if (y + h > pageH - 16) { doc.addPage(); header(); y = 24; }
+    }
+    header();
+    var y = 24;
+    doc.setTextColor(15, 23, 42);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.text(plain("Formule  ·  " + nome), 14, y); y += 6;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(71, 85, 105);
+    doc.text(plain(mail + "  ·  resta sul dispositivo, non viene inviata"), 14, y); y += 8;
+    var keys = ["zona","spesa","kwh","profilo","carichi","orientamento","ombre","ottimizzatori","inclinazione","modulo","kwp","accumulo","produzione","autoconsumo","risparmio","payback","autoKm","autoKwh","pompaKw","pompaKwh","pasti","indKwh"];
+    var labels = { zona:"Zona", spesa:"Spesa", kwh:"kWh", profilo:"Profilo", carichi:"Carichi", orientamento:"Orientamento", ombre:"Ombre", ottimizzatori:"Ottimizzatori", inclinazione:"Inclinazione", modulo:"Modulo", kwp:"kWp", accumulo:"Accumulo", produzione:"Produzione", autoconsumo:"Autoconsumo", risparmio:"Risparmio", payback:"Payback", autoKm:"Auto km", autoKwh:"Auto kWh", pompaKw:"Pompa kW", pompaKwh:"Pompa kWh", pasti:"Pasti", indKwh:"Induzione" };
+    var live = {};
+    document.querySelectorAll("[data-k]").forEach(function (el) { live[el.getAttribute("data-k")] = el.textContent.trim(); });
+    keys.forEach(function (k) {
+      need(6);
+      doc.setFontSize(9);
+      doc.setTextColor(100, 116, 139);
+      doc.text(labels[k], 14, y);
+      doc.setTextColor(15, 23, 42);
+      var val = doc.splitTextToSize(plain(live[k] || EXAMPLE[k] || ""), 120);
+      doc.text(val, 55, y);
+      y += 5 * val.length;
+    });
+    y += 4;
+    need(10);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(15, 23, 42);
+    doc.text("Formule e coefficienti", 14, y); y += 7;
+    document.querySelectorAll("[data-formula]").forEach(function (art) {
+      var name = art.querySelector("[data-fname]").textContent.trim();
+      var expr = art.querySelector("[data-fexpr]").textContent.trim();
+      var why = art.querySelector("[data-fwhy]").textContent.trim();
+      need(16);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.setTextColor(15, 23, 42);
+      doc.text(plain(name), 14, y);
+      doc.setFont("courier", "bold");
+      doc.setTextColor(146, 64, 14);
+      doc.text(plain(expr), 70, y);
+      y += 5;
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.setTextColor(71, 85, 105);
+      var lines = doc.splitTextToSize(plain(why), 180);
+      doc.text(lines, 14, y);
+      y += 5 * lines.length + 3;
+    });
+    var n = doc.internal.getNumberOfPages();
+    for (var i = 1; i <= n; i++) {
+      doc.setPage(i);
+      doc.setFontSize(8);
+      doc.setTextColor(100, 116, 139);
+      doc.text("SeedElio  ·  Dario Bonaldo  ·  " + i + " / " + n, 14, pageH - 8);
+    }
+    doc.save("formule-simulatore-seedelio.pdf");
+    msg.textContent = "PDF scaricato su questo dispositivo. L'email non è stata inviata.";
+  });
+})();
+</script>
+
+</body>
+</html>

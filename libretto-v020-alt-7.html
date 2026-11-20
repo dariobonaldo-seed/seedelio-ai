@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Libretto v020 · Reception | SeedElio.ai</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+@page { size: A4 portrait; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { margin: 0; padding: 0; background: #d5ddd8; }
+body { font-family: Outfit, system-ui, sans-serif; }
+
+.alt-sheet {
+  width: 210mm; height: 297mm; margin: 14px auto; overflow: hidden;
+  position: relative; background: #fff; color: #1c2b22;
+  page-break-after: always; break-after: page;
+  box-shadow: 0 12px 36px rgba(20,30,20,.16);
+  scroll-margin-top: 8px;
+}
+.alt-sheet:last-child { page-break-after: auto; break-after: auto; margin-bottom: 20px; }
+.inner {
+  height: 100%; display: flex; flex-direction: column;
+  padding: 8mm 9mm 7mm;
+  background: var(--paper); color: var(--ink);
+  font-family: Outfit, "Plus Jakarta Sans", system-ui, sans-serif;
+}
+.inner-head, .inner-foot {
+  display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+}
+.inner-head { padding-bottom: 2.5mm; border-bottom: 1.5px solid var(--accent); }
+.inner-head a { color: inherit; text-decoration: none; }
+.inner-band { height: 2.2mm; margin: 3mm 0 4mm; background: var(--accent); border-radius: 1px; flex-shrink: 0; }
+.inner h2 {
+  margin: 0 0 1.5mm; font-family: var(--display), Georgia, serif;
+  font-size: 26px; font-weight: 700; letter-spacing: -.02em; line-height: 1.05; color: var(--ink);
+}
+.kicker { margin: 0 0 1mm; font-size: 11px; color: var(--accent); font-weight: 700; }
+.lead { margin: 0 0 4mm; font-size: 12px; line-height: 1.4; max-width: 62ch; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm 4mm; }
+.field { background: var(--card); border: 1px solid var(--line); border-radius: 2mm; padding: 2.4mm 3mm 3mm; min-height: 18mm; }
+.field.wide { grid-column: 1 / -1; }
+.field span { display: block; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 2mm; }
+.field b { display: block; border-bottom: 1px solid var(--line); height: 6mm; font-weight: 500; }
+.list { margin: 0 0 4mm; padding: 0; list-style: none; }
+.list li { padding: 1.6mm 0 1.6mm 4mm; border-bottom: 1px solid var(--line); font-size: 12.5px; position: relative; }
+.list li::before { content: ""; position: absolute; left: 0; top: 2.6mm; width: 2mm; height: 2mm; border-radius: 1px; background: var(--accent); }
+.inner-foot { margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--line); color: var(--ink); }
+.years { flex: 1; display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1.3mm; min-height: 0; margin-bottom: 3mm; }
+.year { border: 1px solid var(--line); background: var(--card); border-radius: 1.3mm; padding: 1mm 1.2mm; display: flex; flex-direction: column; min-height: 0; }
+.year strong { font-size: 8px; color: var(--accent); letter-spacing: .02em; }
+.year em { display: block; margin-top: auto; border-bottom: 1px solid var(--line); min-height: 4mm; font-style: normal; font-size: 8px; font-weight: 600; color: var(--ink); }
+.diary-foot { display: grid; grid-template-columns: 1.4fr .8fr .9fr; gap: 2.5mm; flex-shrink: 0; }
+.panel { border: 1px solid var(--line); background: var(--card); border-radius: 2mm; padding: 2.2mm 2.6mm; }
+.panel h3 { margin: 0 0 1mm; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.panel p { margin: 0; font-size: 9.5px; line-height: 1.35; }
+.bars { display: flex; align-items: flex-end; gap: 1px; height: 12mm; margin-top: 1.5mm; }
+.bars i { flex: 1; height: 35%; background: var(--accent); opacity: .35; display: block; border-radius: 1px 1px 0 0; }
+.bars i:nth-child(3n) { height: 55%; } .bars i:nth-child(4n) { height: 72%; } .bars i:nth-child(5n) { height: 48%; }
+@media print {
+  html, body { background: #fff !important; }
+  .alt-sheet { margin: 0 !important; box-shadow: none !important; }
+}
+
+@scope (#lib-page-1) {
+
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    background: #f4efe6;
+  }
+  body { font-family: "Outfit", "Avenir Next", "Segoe UI", sans-serif; color: #1c2a24; }
+  .page {
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #f4efe6;
+  }
+
+  .hero {
+    position: relative;
+    flex: none;
+    height: 528px;
+    overflow: hidden;
+  }
+  .hero img.scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+  }
+  .hero .melt {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 42px;
+    background: linear-gradient(to bottom, rgba(244,239,230,0), #f4efe6 88%);
+  }
+  .glass {
+    position: absolute;
+    z-index: 2;
+    left: 22px;
+    top: 20px;
+    width: 318px;
+    padding: 16px 20px 18px;
+    background: rgba(255, 250, 244, 0.82);
+    border: 1px solid rgba(255,255,255,0.92);
+    border-radius: 26px;
+    box-shadow: 0 16px 36px rgba(70, 48, 18, 0.14), inset 0 1px 0 rgba(255,255,255,0.95);
+    backdrop-filter: blur(16px) saturate(1.15);
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font: 700 11px/1 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #1b7a4a;
+  }
+  .sun {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 32%, #fff4c2, #ffd24a 42%, #f5a60a 78%);
+    box-shadow: 0 0 0 4px rgba(245, 176, 10, 0.28);
+  }
+  h1 {
+    font: 800 36px/0.92 "Outfit", sans-serif;
+    letter-spacing: -0.038em;
+    color: #1a2822;
+  }
+  h1 span { display: block; }
+  h1 .blue { color: #1e4e9a; }
+
+  .body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 6px 22px 14px;
+  }
+  .cards {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  a.card {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr) 64px;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 16px 8px 8px;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0 10px 26px rgba(92, 64, 28, 0.08), 0 1px 2px rgba(92, 64, 28, 0.04);
+  }
+  .shot {
+    position: relative;
+    width: 132px;
+    height: 100%;
+    min-height: 96px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #efe6d8;
+  }
+  .shot img {
+    position: absolute;
+    max-width: none;
+    display: block;
+  }
+  .z-casa { width: 300px; height: 169px; left: 6px; top: -52px; }
+  .z-moduli { width: 620px; height: 349px; left: -36px; top: -152px; }
+  .z-elisa { width: 108px; height: 248px; left: 14px; top: 0; }
+  .z-diario { width: 460px; height: 259px; left: -248px; top: -42px; }
+  .txt { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+  .line { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .num {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(155deg, #4b86e0 0%, #1e4e9a 70%);
+    color: #fff;
+    font: 800 15px/1 "Outfit", sans-serif;
+    letter-spacing: -0.03em;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 5px 10px rgba(30, 78, 154, 0.22);
+  }
+  .t {
+    font: 800 20px/1.05 "Outfit", sans-serif;
+    letter-spacing: -0.03em;
+    color: #1a2822;
+    white-space: nowrap;
+  }
+  .d {
+    font: 500 13.5px/1.3 "Outfit", sans-serif;
+    color: #5d6d64;
+    white-space: nowrap;
+  }
+  .pg {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
+  .pl {
+    font: 700 10px/1 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.01em;
+    color: #7d8c82;
+  }
+  .pn {
+    font: 800 30px/0.85 "Outfit", sans-serif;
+    letter-spacing: -0.04em;
+    color: #1e4e9a;
+  }
+
+  .foot {
+    flex: none;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(92, 64, 28, 0.06);
+  }
+  .brand {
+    font: 700 16px/1 "Outfit", sans-serif;
+    letter-spacing: -0.02em;
+    color: #16382c;
+  }
+  .brand i {
+    font-style: normal;
+    color: #e39b08;
+  }
+  .frac {
+    font: 800 14px/1 "Outfit", sans-serif;
+    letter-spacing: 0.04em;
+    color: #1c2a24;
+    background: #f6c445;
+    border-radius: 999px;
+    padding: 7px 14px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+  }
+  .ver {
+    font: 500 12px/1 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.04em;
+    color: #5f7368;
+  }
+
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      overflow: hidden;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+    }
+  }
+
+}
+/* SKIN-PAGES */
+
+.s7 { display:flex; flex-direction:column; height:297mm; background:#f4efe6; color:#1c2a24; font-family:Outfit,sans-serif; overflow:hidden; }
+.s7 a { color:inherit; text-decoration:none; }
+.s7-hero { position:relative; height:70mm; flex:none; }
+.s7.is-d .s7-hero { height:42mm; }
+.s7-scene { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 42%; }
+.s7-melt { position:absolute; left:0; right:0; bottom:0; height:10mm; background:linear-gradient(to bottom, rgba(244,239,230,0), #f4efe6 88%); }
+.s7-glass { position:absolute; z-index:2; left:5mm; top:4mm; width:78mm; padding:3mm 4mm; background:rgba(255,250,244,.84); border:1px solid rgba(255,255,255,.92); border-radius:6mm; box-shadow:0 14px 30px rgba(70,48,18,.14), inset 0 1px 0 #fff; }
+.s7-eye { display:flex; align-items:center; gap:2mm; margin-bottom:1.4mm; font:700 9px/1 "JetBrains Mono",monospace; letter-spacing:.16em; text-transform:uppercase; color:#1b7a4a; }
+.s7-sun { width:3.4mm; height:3.4mm; border-radius:50%; background:radial-gradient(circle at 35% 32%, #fff4c2, #ffd24a 42%, #f5a60a); box-shadow:0 0 0 1mm rgba(245,176,10,.28); }
+.s7-title { font-weight:800; font-size:24px; line-height:.92; letter-spacing:-.04em; color:#1a2822; }
+.s7-title em { font-style:normal; color:#1e4e9a; }
+.s7-lead { padding:1.5mm 5mm 1mm; font-size:12px; line-height:1.35; color:#3c4a42; }
+.s7-list { flex:1; min-height:0; display:flex; flex-direction:column; gap:1.6mm; padding:0 4.5mm 2mm; }
+.s7-card { flex:1; min-height:0; display:grid; grid-template-columns:22mm 1fr auto; align-items:center; gap:3mm; padding:1.4mm 3mm 1.4mm 1.4mm; background:#fff; border-radius:5mm; border:1px solid rgba(255,255,255,.9); box-shadow:0 8px 18px rgba(92,64,28,.08); }
+.s7-shot { height:100%; min-height:12mm; border-radius:3.5mm; overflow:hidden; background:#efe6d8; }
+.s7-shot img { width:100%; height:100%; object-fit:cover; display:block; }
+.s7-num { display:inline-grid; place-items:center; min-width:8mm; height:6mm; padding:0 1.4mm; border-radius:2mm; background:#1e4e9a; color:#fff; font-weight:800; font-size:11px; margin-right:1.5mm; }
+.s7-t { font-weight:800; font-size:13.5px; letter-spacing:-.02em; }
+.s7-d { display:block; margin-top:.4mm; font-size:11px; font-weight:500; color:#5c6b62; }
+.s7-blank { display:block; margin-top:.8mm; height:3.2mm; border-bottom:1px solid #e6dccb; }
+.s7-pg { font:700 8px/1 "JetBrains Mono",monospace; letter-spacing:.08em; text-transform:uppercase; color:#8a8174; text-align:right; }
+.s7-pg b { display:block; margin-top:.6mm; font-family:Outfit,sans-serif; font-size:16px; letter-spacing:-.03em; color:#1a2822; }
+.s7-foot { margin:0 4.5mm 3.5mm; height:11mm; border-radius:99px; background:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 4mm; box-shadow:0 6px 16px rgba(92,64,28,.06); font-size:12px; }
+.s7-pill { background:#f5c542; color:#1a2822; border-radius:999px; padding:1mm 3mm; font-weight:800; }
+.s7-years { flex:1; min-height:0; display:grid; grid-template-columns:repeat(6,1fr); gap:1.1mm; }
+.s7 .yy { background:#fff; border-radius:2.5mm; padding:1mm; display:flex; flex-direction:column; box-shadow:0 3px 8px rgba(92,64,28,.06); }
+.s7 .yy b { font-weight:800; font-size:10px; color:#1e4e9a; }
+.s7 .yy span, .s7 .yy i { font-style:normal; font-size:8px; color:#5c6b62; }
+.s7 .yy i { margin-top:auto; border-bottom:1px solid #e6dccb; min-height:2.4mm; }
+.s7-notes { display:grid; grid-template-columns:1.2fr .9fr .9fr; gap:1.6mm; }
+.s7-note { background:#fff; border-radius:4mm; padding:2mm; box-shadow:0 6px 14px rgba(92,64,28,.06); }
+.s7-note strong { font-size:12px; }
+.s7-note p { margin-top:.4mm; font-size:9.5px; line-height:1.3; color:#3c4a42; }
+.s7 .ybars { display:flex; align-items:flex-end; gap:1px; height:8mm; margin-top:1mm; }
+.s7 .ybars i { flex:1; height:100%; background:#1e4e9a; opacity:.35; border-radius:1px 1px 0 0; }
+.s7.is-d .s7-card { flex:0 0 auto; min-height:14mm; }
+.s7.is-d .s7-years { flex:1; min-height:0; grid-template-rows:repeat(5, minmax(0,1fr)); }
+.s7.is-d .yy { min-height:0; overflow:hidden; }
+.s7.is-d .s7-notes { flex:none; }
+
+/* /SKIN-PAGES */
+</style>
+</head>
+<body>
+<section class="alt-sheet" id="lib-page-1" aria-label="Indice, Reception">
+<main class="page" >
+  <header class="hero">
+    <img class="scene" src="img/o2o-targa.png" alt="Reception luminosa con archi crema, banco, quadro del sole e piante">
+    <div class="glass">
+      <div class="eyebrow"><i class="sun"></i>Indice</div>
+      <h1>
+        <span>Libretto</span>
+        <span>dell’impianto</span>
+        <span class="blue">fotovoltaico</span>
+      </h1>
+    </div>
+    <div class="melt"></div>
+  </header>
+
+  <section class="body">
+    <nav class="cards" aria-label="Indice del libretto">
+      <a class="card" href="#lib-page-2">
+        <span class="shot"><img class="z-casa" src="img/voice-resa.png" alt=""></span>
+        <span class="txt">
+          <span class="line"><span class="num">02</span><span class="t">Scheda dell’impianto</span></span>
+          <span class="d">Ubicazione, potenza nominale e parametri chiave</span>
+        </span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">2</span></span>
+      </a>
+      <a class="card" href="#lib-page-3">
+        <span class="shot"><img class="z-moduli" src="img/voice-resa.png" alt=""></span>
+        <span class="txt">
+          <span class="line"><span class="num">03</span><span class="t">Elementi dell’impianto</span></span>
+          <span class="d">Moduli, inverter, quadri e protezioni</span>
+        </span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">3</span></span>
+      </a>
+      <a class="card" href="#lib-page-4">
+        <span class="shot"><img class="z-elisa" src="img/seedelisa-landing.png" alt=""></span>
+        <span class="txt">
+          <span class="line"><span class="num">04</span><span class="t">Azienda installatrice</span></span>
+          <span class="d">Referenti, contatti e certificazioni</span>
+        </span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">4</span></span>
+      </a>
+      <a class="card" href="#lib-page-5">
+        <span class="shot"><img class="z-diario" src="img/voice-resa.png" alt=""></span>
+        <span class="txt">
+          <span class="line"><span class="num">05</span><span class="t">Diario FV</span></span>
+          <span class="d">Produzione, manutenzione e memoria trentennale</span>
+        </span>
+        <span class="pg"><span class="pl">pag.</span><span class="pn">5</span></span>
+      </a>
+    </nav>
+    <footer class="foot">
+      <span class="brand">SeedElio<i>.ai</i></span>
+      <span class="frac">1 / 5</span>
+      <span class="ver">Libretto v020</span>
+    </footer>
+  </section>
+</main>
+</section>
+<section class="alt-sheet s7" id="lib-page-2" aria-label="Scheda dell’impianto"><div class="s7-hero"><img class="s7-scene" src="img/o2o-targa.png" alt="Reception con targa e banco"><div class="s7-glass"><div class="s7-eye"><i class="s7-sun"></i><a class="back" href="#lib-page-1">Indice · Reception</a></div><div class="s7-title">Scheda<br><em>dell’impianto</em></div></div><div class="s7-melt"></div></div><p class="s7-lead">Ubicazione, potenza nominale e parametri chiave dell’impianto. Le righe restano vuote per la compilazione a mano o in digitale.</p><div class="s7-list"><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:10% 60%"></span><span><span class="s7-num">01</span><span class="s7-t">Proprietario</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>2</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:80% 30%"></span><span><span class="s7-num">02</span><span class="s7-t">Indirizzo dell’impianto</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>2</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/o2o-targa.png" alt="" style="object-position:center 42%"></span><span><span class="s7-num">03</span><span class="s7-t">Potenza nominale (kWp)</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>2</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/seedelisa-landing.png" alt="" style="object-position:center top"></span><span><span class="s7-num">04</span><span class="s7-t">Accumulo</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>2</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/famiglia-v5-famiglia.png" alt="" style="object-position:center"></span><span><span class="s7-num">05</span><span class="s7-t">Data di consegna</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>2</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/seedelisa-drone.png" alt="" style="object-position:center"></span><span><span class="s7-num">06</span><span class="s7-t">Pratiche GSE</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>2</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/inaugurazione-1-1.png" alt="" style="object-position:center"></span><span><span class="s7-num">07</span><span class="s7-t">Profilo di consumo</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>2</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:50% 70%"></span><span><span class="s7-num">08</span><span class="s7-t">Note e allegati</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>2</b></span></div></div><div class="s7-foot"><span>SeedElio.ai</span><span class="s7-pill">2 / 5</span><span>Libretto v020</span></div></section>
+<section class="alt-sheet s7" id="lib-page-3" aria-label="Elementi dell’impianto"><div class="s7-hero"><img class="s7-scene" src="img/o2o-targa.png" alt="Reception con targa e banco"><div class="s7-glass"><div class="s7-eye"><i class="s7-sun"></i><a class="back" href="#lib-page-1">Indice · Reception</a></div><div class="s7-title">Elementi<br><em>dell’impianto</em></div></div><div class="s7-melt"></div></div><p class="s7-lead">Moduli, inverter, quadri e protezioni. Stesso registro del libretto v020, in questa grafica.</p><div class="s7-list"><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:10% 60%"></span><span><span class="s7-num">01</span><span class="s7-t">Moduli</span><span class="s7-d">Moduli fotovoltaici: marca, modello, potenza e quantità</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>3</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:80% 30%"></span><span><span class="s7-num">02</span><span class="s7-t">Inverter</span><span class="s7-d">Inverter o microinverter</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>3</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/o2o-targa.png" alt="" style="object-position:center 42%"></span><span><span class="s7-num">03</span><span class="s7-t">Strutture e cavi</span><span class="s7-d">Strutture, cablaggi e canaline</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>3</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/seedelisa-landing.png" alt="" style="object-position:center top"></span><span><span class="s7-num">04</span><span class="s7-t">Quadri e protezioni</span><span class="s7-d">Quadri, protezioni e contatori</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>3</b></span></div></div><div class="s7-foot"><span>SeedElio.ai</span><span class="s7-pill">3 / 5</span><span>Libretto v020</span></div></section>
+<section class="alt-sheet s7" id="lib-page-4" aria-label="Azienda installatrice"><div class="s7-hero"><img class="s7-scene" src="img/o2o-targa.png" alt="Reception con targa e banco"><div class="s7-glass"><div class="s7-eye"><i class="s7-sun"></i><a class="back" href="#lib-page-1">Indice · Reception</a></div><div class="s7-title">Azienda<br><em>installatrice</em></div></div><div class="s7-melt"></div></div><p class="s7-lead">Referenti, contatti e certificazioni di chi ha posato l’impianto.</p><div class="s7-list"><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:10% 60%"></span><span><span class="s7-num">01</span><span class="s7-t">Ragione sociale</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>4</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:80% 30%"></span><span><span class="s7-num">02</span><span class="s7-t">P. IVA</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>4</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/o2o-targa.png" alt="" style="object-position:center 42%"></span><span><span class="s7-num">03</span><span class="s7-t">Referente tecnico</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>4</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/seedelisa-landing.png" alt="" style="object-position:center top"></span><span><span class="s7-num">04</span><span class="s7-t">Telefono ed email</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>4</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/famiglia-v5-famiglia.png" alt="" style="object-position:center"></span><span><span class="s7-num">05</span><span class="s7-t">Certificazioni</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>4</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/seedelisa-drone.png" alt="" style="object-position:center"></span><span><span class="s7-num">06</span><span class="s7-t">Garanzie e assistenza</span><span class="s7-blank"></span></span><span class="s7-pg">pag.<b>4</b></span></div></div><div class="s7-foot"><span>SeedElio.ai</span><span class="s7-pill">4 / 5</span><span>Libretto v020</span></div></section>
+<section class="alt-sheet s7 is-d" id="lib-page-5" aria-label="Diario FV"><div class="s7-hero"><img class="s7-scene" src="img/o2o-targa.png" alt="Reception con targa e banco"><div class="s7-glass"><div class="s7-eye"><i class="s7-sun"></i><a class="back" href="#lib-page-1">Indice · Reception</a></div><div class="s7-title">Diario<br><em>FV</em></div></div><div class="s7-melt"></div></div><p class="s7-lead">Diario di produzione, memoria familiare e manutenzione (2027–2056), adattato dal libretto v020: trenta anni, curva dei kWh, reminder di Seedelio.ai e ripresa con drone.</p><div class="s7-list"><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:10% 60%"></span><span><span class="s7-num">01</span><span class="s7-t">Proprietario / famiglia</span><span class="s7-blank"></span></span><span class="s7-pg">anno<b>2027</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/voice-resa.png" alt="" style="object-position:80% 30%"></span><span><span class="s7-num">02</span><span class="s7-t">Località</span><span class="s7-blank"></span></span><span class="s7-pg">anno<b>2028</b></span></div><div class="s7-card"><span class="s7-shot"><img src="img/o2o-targa.png" alt="" style="object-position:center 42%"></span><span><span class="s7-num">03</span><span class="s7-t">Potenza (kWp) e accumulo</span><span class="s7-blank"></span></span><span class="s7-pg">anno<b>2029</b></span></div><div class="s7-years"><div class="yy"><b>2027</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2028</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2029</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2030</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2031</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2032</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2033</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2034</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2035</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2036</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2037</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2038</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2039</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2040</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2041</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2042</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2043</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2044</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2045</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2046</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2047</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2048</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2049</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2050</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2051</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2052</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2053</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2054</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2055</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2056</b><span>kWh</span><i>nota</i></div></div><div class="s7-notes"><div class="s7-note"><strong>Curva di produzione</strong><p>kWh/anno, scala 0–12.000. Una barra per ogni anno, da colorare a fine stagione.</p><div class="ybars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="s7-note"><strong>Reminder AI</strong><p>Ogni anno Seedelio.ai ricorda, via email e voce, di aggiornare il libretto e verificare la resa.</p></div><div class="s7-note"><strong>Drone e termografia</strong><p>Ispezione aerea dei moduli, come nel diario del libretto v020.</p></div></div></div><div class="s7-foot"><span>SeedElio.ai</span><span class="s7-pill">5 / 5</span><span>Libretto v020</span></div></section>
+</body>
+</html>

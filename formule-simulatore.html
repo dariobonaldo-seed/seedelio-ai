@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VERDETTO e REPORT | SeedElio.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="logo-dondolio.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&family=Plus+Jakarta+Sans:wght@500..800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['"Plus Jakarta Sans"', 'Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+        },
+        keyframes: {
+          breathe: {
+            '0%, 100%': { boxShadow: '0 0 0 0 rgba(251,191,36,0)' },
+            '50%': { boxShadow: '0 0 26px 5px rgba(251,191,36,.6)' }
+          },
+          blink: {
+            '0%, 100%': { opacity: '1', boxShadow: '0 0 0 0 rgba(52,211,153,0)' },
+            '30%': { opacity: '1', boxShadow: '0 0 6px 2px rgba(52,211,153,.6)' },
+            '65%': { opacity: '.25', boxShadow: '0 0 0 0 rgba(52,211,153,0)' }
+          },
+          aiBlink: {
+            '0%, 100%': { opacity: '1' },
+            '50%': { opacity: '.32' }
+          },
+          ripple: {
+            '0%': { transform: 'scale(.3)', opacity: '0' },
+            '15%': { opacity: '1' },
+            '100%': { transform: 'scale(1.75)', opacity: '0' }
+          }
+        },
+        animation: {
+          breathe: 'breathe 3s ease-in-out infinite',
+          blink: 'blink 2.4s ease-in-out infinite',
+          aiBlink: 'aiBlink 4.4s ease-in-out infinite',
+          ripple: 'ripple 2.4s ease-out infinite'
+        },
+        colors: {
+          ink: '#020617',
+          navy: '#0f172a',
+          sun: '#fbbf24',
+          cyanbrand: '#22d3ee'
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .ico { width: 1em; height: 1em; fill: currentColor; display: inline-block; flex: none; }
+  .grad-a { background: linear-gradient(90deg, #d97706, #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .grad-b { background: linear-gradient(90deg, #da7806 0%, #c59b2d 8%, #a19a47 25%, #6f9769 50%, #3a948e 75%, #0c91af 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(15,23,42,.18), 0 8px 24px -8px rgba(15,23,42,.08); }
+  @keyframes ping2 { 75%, 100% { transform: scale(2); opacity: 0; } }
+
+  a.logo-sig {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 4px;
+    margin-left: 1px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: #065f46;
+    text-decoration: none;
+  }
+  @media (min-width: 1024px) {
+    a.logo-sig { font-size: 14px; }
+  }
+  a.logo-sig .logo-sig-go {
+    display: inline-block;
+    width: 0;
+    margin-left: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-3px);
+    transition: width 160ms ease, margin 160ms ease, opacity 160ms ease, transform 160ms ease;
+  }
+  a.logo-sig:hover,
+  a.logo-sig:focus-visible {
+    color: #064e3b;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  a.logo-sig:hover .logo-sig-go,
+  a.logo-sig:focus-visible .logo-sig-go {
+    width: 14px;
+    margin-left: 4px;
+    opacity: 1;
+    transform: none;
+  }
+  .vpage {
+    min-height: 1540px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .vmark {
+    margin: 0;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: #b45309;
+  }
+  .cost-note { display: flex; align-items: center; gap: 6px; margin: 0; }
+  .cost-note::before {
+    content: "";
+    flex: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background-color: #fbbf24;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.2 6.5 11.2 12.6 4.5' fill='none' stroke='%23020617' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px 12px;
+  }
+  .cost-note.is-off::before {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: inset 0 0 0 1.5px #64748b;
+  }
+  html.report-locked #reportBody { display: none; }
+  html:not(.report-locked) #reportGate { display: none; }
+</style>
+<script>
+(function () {
+  var ok = false;
+  try {
+    var raw = sessionStorage.getItem("seedelioVerdictLead");
+    var d = raw ? JSON.parse(raw) : null;
+    ok = !!(d && d.nome && d.cognome && d.cellulare && d.email && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email));
+  } catch (e) {}
+  if (!ok) document.documentElement.classList.add("report-locked");
+})();
+</script>
+</head>
+<body class="bg-[#eef2f6] text-slate-800 antialiased">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-bolt" viewBox="0 0 448 512"><path d="M338.8-9.9c11.9 8.6 16.3 24.2 10.9 37.8L271.3 224 416 224c13.5 0 25.5 8.4 30.1 21.1s.7 26.9-9.6 35.5l-288 240c-11.3 9.4-27.4 9.9-39.3 1.3s-16.3-24.2-10.9-37.8L176.7 288 32 288c-13.5 0-25.5-8.4-30.1-21.1s-.7-26.9 9.6-35.5l288-240c11.3-9.4 27.4-9.9 39.3-1.3z"/></symbol>
+<symbol id="i-gamepad" viewBox="0 0 640 512"><path d="M448 64c106 0 192 86 192 192S554 448 448 448l-256 0C86 448 0 362 0 256S86 64 192 64l256 0zM192 176c-13.3 0-24 10.7-24 24l0 32-32 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l32 0 0 32c0 13.3 10.7 24 24 24s24-10.7 24-24l0-32 32 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-32 0 0-32c0-13.3-10.7-24-24-24zm240 96a32 32 0 1 0 0 64 32 32 0 1 0 0-64zm64-96a32 32 0 1 0 0 64 32 32 0 1 0 0-64z"/></symbol>
+<symbol id="i-headset" viewBox="0 0 448 512"><path d="M224 64c-79 0-144.7 57.3-157.7 132.7 9.3-3 19.3-4.7 29.7-4.7l16 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0c-53 0-96-43-96-96l0-64C0 100.3 100.3 0 224 0S448 100.3 448 224l0 168.1c0 66.3-53.8 120-120.1 120l-87.9-.1-32 0c-26.5 0-48-21.5-48-48s21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 0 40 0c39.8 0 72-32.2 72-72l0-20.9c-14.1 8.2-30.5 12.8-48 12.8l-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48l16 0c10.4 0 20.3 1.6 29.7 4.7-13-75.3-78.6-132.7-157.7-132.7z"/></symbol>
+<symbol id="i-tower-broadcast" viewBox="0 0 576 512"><path d="M87.9 11.5c-11.3-6.9-26.1-3.2-33 8.1-24.8 41-39 89.1-39 140.4s14.2 99.4 39 140.4c6.9 11.3 21.6 15 33 8.1s15-21.6 8.1-33C75.7 241.9 64 202.3 64 160S75.7 78.1 96.1 44.4c6.9-11.3 3.2-26.1-8.1-33zm400.1 0c-11.3 6.9-15 21.6-8.1 33 20.4 33.7 32.1 73.3 32.1 115.6s-11.7 81.9-32.1 115.6c-6.9 11.3-3.2 26.1 8.1 33s26.1 3.2 33-8.1c24.8-41 39-89.1 39-140.4S545.8 60.6 521 19.6c-6.9-11.3-21.6-15-33-8.1zM320 215.4c19.1-11.1 32-31.7 32-55.4 0-35.3-28.7-64-64-64s-64 28.7-64 64c0 23.7 12.9 44.4 32 55.4L256 480c0 17.7 14.3 32 32 32s32-14.3 32-32l0-264.6zM180.2 91c7.2-11.2 3.9-26-7.2-33.2s-26-3.9-33.2 7.2c-17.6 27.4-27.8 60-27.8 95s10.2 67.6 27.8 95c7.2 11.2 22 14.4 33.2 7.2s14.4-22 7.2-33.2c-12.8-19.9-20.2-43.6-20.2-69s7.4-49.1 20.2-69zM436.2 65c-7.2-11.2-22-14.4-33.2-7.2s-14.4 22-7.2 33.2c12.8 19.9 20.2 43.6 20.2 69s-7.4 49.1-20.2 69c-7.2 11.2-3.9 26 7.2 33.2s26 3.9 33.2-7.2c17.6-27.4 27.8-60 27.8-95s-10.2-67.6-27.8-95z"/></symbol>
+<symbol id="i-phone-volume" viewBox="0 0 576 512"><path d="M344-32c128.1 0 232 103.9 232 232 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-101.6-82.4-184-184-184-13.3 0-24-10.7-24-24s10.7-24 24-24zm8 192a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM320 88c0-13.3 10.7-24 24-24 75.1 0 136 60.9 136 136 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6-39.4-88-88-88-13.3 0-24-10.7-24-24zM144.1 1.4c19.7-5.4 40.3 4.7 48.1 23.5l40.5 97.3c6.9 16.5 2.1 35.6-11.8 47l-44.1 36.1c32.5 71.6 89 130 159.3 164.9L374.7 323c11.3-13.9 30.4-18.6 47-11.8L519 351.8c18.8 7.8 28.9 28.4 23.5 48.1l-1.5 5.5C523.4 470.1 460.9 525.3 384.6 509.2 209.6 472.1 71.9 334.4 34.8 159.4 18.7 83.1 73.9 20.6 138.5 2.9l5.5-1.5z"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 512 512"><path d="M32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 224zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384z"/></symbol>
+<symbol id="i-house-laptop" viewBox="0 0 640 512"><path d="M448 240l19.9 0c15.5 0 28.1-12.6 28.1-28.1 0-7.6-3.1-14.9-8.6-20.2L283.5-4.9C276.1-12 266.3-16 256-16s-20.1 4-27.5 11.1L24.6 191.7C19.1 197 16 204.3 16 211.9 16 227.4 28.6 240 44.1 240l19.9 0 0 144c0 35.3 28.7 64 64 64l85.7 0c7.4-6.6 16.4-11.4 26.3-14l0-130c0-5.5 .7-10.9 2-16l-10 0c-13.3 0-24-10.7-24-24l0-48c0-13.3 10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 24 144 0zM352 352l160 0 0 128-160 0 0-128zm-64-32l0 160-32 0c-8.8 0-16 7.2-16 16 0 26.5 21.5 48 48 48l288 0c26.5 0 48-21.5 48-48 0-8.8-7.2-16-16-16l-32 0 0-160c0-17.7-14.3-32-32-32l-224 0c-17.7 0-32 14.3-32 32z"/></symbol>
+<symbol id="i-face-smile" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM165.4 321.9c20.4 28 53.4 46.1 90.6 46.1s70.2-18.1 90.6-46.1c7.8-10.7 22.8-13.1 33.5-5.3s13.1 22.8 5.3 33.5C356.3 390 309.2 416 256 416s-100.3-26-129.4-65.9c-7.8-10.7-5.4-25.7 5.3-33.5s25.7-5.4 33.5 5.3zM144 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></symbol>
+<symbol id="i-gift" viewBox="0 0 512 512"><path d="M321.5 68.8C329.1 55.9 342.9 48 357.8 48l2.2 0c22.1 0 40 17.9 40 40s-17.9 40-40 40l-73.3 0 34.8-59.2zm-131 0l34.8 59.2-73.3 0c-22.1 0-40-17.9-40-40s17.9-40 40-40l2.2 0c14.9 0 28.8 7.9 36.3 20.8zm89.6-24.3l-24.1 41-24.1-41C215.7 16.9 186.1 0 154.2 0L152 0c-48.6 0-88 39.4-88 88 0 14.4 3.5 28 9.6 40L32 128c-17.7 0-32 14.3-32 32l0 32c0 17.7 14.3 32 32 32l448 0c17.7 0 32-14.3 32-32l0-32c0-17.7-14.3-32-32-32l-41.6 0c6.1-12 9.6-25.6 9.6-40 0-48.6-39.4-88-88-88l-2.2 0c-31.9 0-61.5 16.9-77.7 44.4zM480 272l-200 0 0 208 136 0c35.3 0 64-28.7 64-64l0-144zm-248 0l-200 0 0 144c0 35.3 28.7 64 64 64l136 0 0-208z"/></symbol>
+<symbol id="i-solar-panel" viewBox="0 0 576 512"><path d="M121.8 32c-30 0-56 20.8-62.5 50.1L9.6 306.1C.7 346.1 31.1 384 72 384l184.1 0 0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l192 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64 184.1 0c40.9 0 71.4-37.9 62.5-77.9l-49.8-224C510.4 52.8 484.5 32 454.5 32L121.8 32zM245.6 96l85.2 0 7.3 88-99.8 0 7.3-88zm-55.5 88l-87.8 0 19.6-88 75.6 0-7.3 88zM91.6 232l94.5 0-7.3 88-106.7 0 19.6-88zm142.6 0l107.8 0 7.3 88-122.5 0 7.3-88zm156 0l94.5 0 19.6 88-106.7 0-7.3-88zM474 184l-87.8 0-7.3-88 75.6 0 19.6 88z"/></symbol>
+<symbol id="i-helicopter" viewBox="0 0 576 512"><path d="M176 32c-13.3 0-24 10.7-24 24s10.7 24 24 24l152 0 0 48-220.8 0-32.8-39.4C69.9 83.2 63.1 80 56 80L24 80C15.7 80 8 84.3 3.6 91.4s-4.8 15.9-1.1 23.4l48 96C54.6 218.9 62.9 224 72 224l107.8 0 104 143.1c15.1 20.7 39.1 32.9 64.7 32.9l75.5 0c75.1 0 136-60.9 136-136S499.1 128 424 128l-48 0 0-48 152 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L176 32zM376 192l48 0c39.8 0 72 32.2 72 72s-32.2 72-72 72l-48 0 0-144zM552 416c-13.3 0-24 10.7-24 24 0 4.4-3.6 8-8 8l-272 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l272 0c30.9 0 56-25.1 56-56 0-13.3-10.7-24-24-24z"/></symbol>
+<symbol id="i-champagne-glasses" viewBox="0 0 640 512"><path d="M155.6 17.3C163 3 179.9-3.6 195 1.9l125 45.6 125-45.6c15.1-5.5 32 1.1 39.4 15.4l78.8 152.9c28.8 55.8 10.3 122.3-38.5 156.6l31.3 86.2 41-15c16.6-6 35 2.5 41 19.1s-2.5 35-19.1 41c-47.4 17.3-94.8 34.5-142.2 51.8-16.6 6.1-35-2.5-41-19.1s2.5-35 19.1-41l41-15-31.3-86.2c-59.4 5.2-116.2-33.9-130-95.2l-14.6-64.7-14.6 64.7c-13.8 61.3-70.6 100.4-130 95.2l-31.3 86.2 41 15c16.6 6.1 25.2 24.4 19.1 41s-24.4 25.2-41 19.1c-47.4-17.3-94.8-34.6-142.2-51.8-16.6-6.1-25.2-24.4-19.1-41S26.3 392 42.9 398l41 15 31.3-86.2C66.5 292.5 48.1 226 76.9 170.2L155.6 17.3zm44 54.4l-27.2 52.8 89.2 32.5 13.1-57.9-75.1-27.4zm240.9 0l-75.1 27.4 13.1 57.9 89.2-32.5-27.2-52.8z"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 512 512"><path d="M471.3 6.7C477.7 .6 487-1.6 495.6 1.2 505.4 4.5 512 13.7 512 24l0 186.9c0 131.2-108.1 237.1-238.8 237.1-77 0-143.4-49.5-167.5-118.7-35.4 30.8-57.7 76.1-57.7 126.7 0 13.3-10.7 24-24 24S0 469.3 0 456C0 381.1 38.2 315.1 96.1 276.3 131.4 252.7 173.5 240 216 240l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0c-39.7 0-77.3 8.8-111 24.5 23.3-70 89.2-120.5 167-120.5 66.4 0 115.8-22.1 148.7-44 19.2-12.8 35.5-28.1 50.7-45.3z"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 448 512"><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></symbol>
+<symbol id="i-scale-balanced" viewBox="0 0 640 512"><path d="M384 32l128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L398.4 96c-5.2 25.8-22.9 47.1-46.4 57.3l0 294.7 160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-384 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l160 0 0-294.7c-23.5-10.3-41.2-31.6-46.4-57.3L128 96c-17.7 0-32-14.3-32-32s14.3-32 32-32l128 0c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288L584.4 320 512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9zM126.8 195.8L54.4 320 199.3 320 126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9S11.7 382 .9 337.1z"/></symbol>
+<symbol id="i-building" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L64 0zM176 352l32 0c17.7 0 32 14.3 32 32l0 80-96 0 0-80c0-17.7 14.3-32 32-32zM96 112c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM240 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zM96 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm144-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></symbol>
+<symbol id="i-user-tie" viewBox="0 0 448 512"><path d="M224 248a120 120 0 1 1 0-240 120 120 0 1 1 0 240zm-30.5 56l61 0c9.7 0 17.5 7.8 17.5 17.5 0 4.2-1.5 8.2-4.2 11.4l-27.4 32 31 115.1 .6 0 34.6-138.5c2.2-8.7 11.1-14 19.5-10.8 61.9 23.6 105.9 83.6 105.9 153.8 0 15.1-12.3 27.4-27.4 27.4L43.4 512c-15.1 0-27.4-12.3-27.4-27.4 0-70.2 44-130.2 105.9-153.8 8.4-3.2 17.3 2.1 19.5 10.8l34.6 138.5 .6 0 31-115.1-27.4-32c-2.7-3.2-4.2-7.2-4.2-11.4 0-9.7 7.8-17.5 17.5-17.5z"/></symbol>
+<symbol id="i-shield-halved" viewBox="0 0 512 512"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.8 82.8c22 9.3 38.4 31 38.3 57.2-.5 99.2-41.3 280.7-213.6 363.2-16.7 8-36.1 8-52.8 0-172.4-82.5-213.1-264-213.6-363.2-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.9 1 251.4 0 256 0zm0 66.8l0 378.1c138-66.8 175.1-214.8 176-303.4l-176-74.6 0 0z"/></symbol>
+<symbol id="i-arrow-up-right-from-square" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0-201.4 201.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3 448 192c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 96C35.8 96 0 131.8 0 176L0 432c0 44.2 35.8 80 80 80l256 0c44.2 0 80-35.8 80-80l0-80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 80c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l80 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 96z"/></symbol>
+<symbol id="i-check" viewBox="0 0 448 512"><path d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 512 512"><path d="M160.2 25C152.3 6.1 131.7-3.9 112.1 1.4l-5.5 1.5c-64.6 17.6-119.8 80.2-103.7 156.4 37.1 175 174.8 312.7 349.8 349.8 76.3 16.2 138.8-39.1 156.4-103.7l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2C233.9 335.4 177.3 277 144.8 205.3L189 169.3c13.9-11.3 18.6-30.4 11.8-47L160.2 25z"/></symbol>
+<symbol id="i-envelope" viewBox="0 0 512 512"><path d="M48 64c-26.5 0-48 21.5-48 48 0 15.1 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48L48 64zM0 196L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-188-198.4 148.8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"/></symbol>
+<symbol id="i-house" viewBox="0 0 512 512"><path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272l16 0 0 176c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-176 16 0c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1l-224-208zM240 320l32 0c26.5 0 48 21.5 48 48l0 96-128 0 0-96c0-26.5 21.5-48 48-48z"/></symbol>
+<symbol id="i-square-root-variable" viewBox="0 0 576 512"><path d="M282.6 78.1c8-27.3 33-46.1 61.4-46.1l200 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L344 96 238.7 457c-3.6 12.3-14.1 21.2-26.8 22.8s-25.1-4.6-31.5-15.6L77.6 288 32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l45.6 0c22.8 0 43.8 12.1 55.3 31.8l65.2 111.8 84.4-289.5zM393.4 233.4c12.5-12.5 32.8-12.5 45.3 0l41.4 41.4 41.4-41.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-41.4 41.4 41.4 41.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-41.4-41.4-41.4 41.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l41.4-41.4-41.4-41.4c-12.5-12.5-12.5-32.8 0-45.3z"/></symbol>
+<symbol id="i-user" viewBox="0 0 448 512"><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 512 512"><path d="M351.9 280l-190.9 0c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zM160.9 232l190.9 0C349 167.5 334.7 108.1 314.4 64.6 303 40.2 290.7 22.8 279.3 12.2 268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4zm-48 0C116.4 146.4 138.5 66.9 170.8 14.7 78.7 47.3 10.9 131.2 1.5 232l111.4 0zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3L1.5 280zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3l-111.4 0zm111.4-48C501.9 131.2 434.1 47.3 342 14.7 374.3 66.9 396.4 146.4 399.9 232l111.4 0z"/></symbol>
+<symbol id="i-linkedin-in" viewBox="0 0 448 512"><path d="M100.3 448l-92.9 0 0-299.1 92.9 0 0 299.1zM53.8 108.1C24.1 108.1 0 83.5 0 53.8 0 39.5 5.7 25.9 15.8 15.8s23.8-15.8 38-15.8 27.9 5.7 38 15.8 15.8 23.8 15.8 38c0 29.7-24.1 54.3-53.8 54.3zM447.9 448l-92.7 0 0-145.6c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7l0 148.1-92.8 0 0-299.1 89.1 0 0 40.8 1.3 0c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3l0 164.3-.1 0z"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 448 512"><path d="M416 32L31.9 32C14.3 32 0 46.5 0 64.3L0 447.7C0 465.5 14.3 480 31.9 480L416 480c17.6 0 32-14.5 32-32.3l0-383.4C448 46.5 433.6 32 416 32zM135.4 416l-66.4 0 0-213.8 66.5 0 0 213.8-.1 0zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77zM384.3 416l-66.4 0 0-104c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9l0 105.8-66.4 0 0-213.8 63.7 0 0 29.2 .9 0c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9l0 117.2z"/></symbol>
+<symbol id="i-seedling" viewBox="0 0 512 512"><path d="M512 32C512 140.1 435.4 230.3 333.6 251.4 325.7 193.3 299.6 141 261.1 100.5 301.2 40 369.9 0 448 0l32 0c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64l32 0c123.7 0 224 100.3 224 224l0 192c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160C100.3 320 0 219.7 0 96z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 576 512"><path d="M288-32c8.4 0 16.3 4.4 20.6 11.7L364.1 72.3 468.9 46c8.2-2 16.9 .4 22.8 6.3S500 67 498 75.1l-26.3 104.7 92.7 55.5c7.2 4.3 11.7 12.2 11.7 20.6s-4.4 16.3-11.7 20.6L471.7 332.1 498 436.8c2 8.2-.4 16.9-6.3 22.8S477 468 468.9 466l-104.7-26.3-55.5 92.7c-4.3 7.2-12.2 11.7-20.6 11.7s-16.3-4.4-20.6-11.7L211.9 439.7 107.2 466c-8.2 2-16.8-.4-22.8-6.3S76 445 78 436.8l26.2-104.7-92.6-55.5C4.4 272.2 0 264.4 0 256s4.4-16.3 11.7-20.6L104.3 179.9 78 75.1c-2-8.2 .3-16.8 6.3-22.8S99 44 107.2 46l104.7 26.2 55.5-92.6 1.8-2.6c4.5-5.7 11.4-9.1 18.8-9.1zm0 144a144 144 0 1 0 0 288 144 144 0 1 0 0-288zm0 240a96 96 0 1 1 0-192 96 96 0 1 1 0 192z"/></symbol>
+<symbol id="i-microchip" viewBox="0 0 512 512"><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40c-35.3 0-64 28.7-64 64l-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0 0 56-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0 0 56-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0c0 35.3 28.7 64 64 64l0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40 56 0 0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40 56 0 0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40c35.3 0 64-28.7 64-64l40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0 0-56 40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0 0-56 40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0c0-35.3-28.7-64-64-64l0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40-56 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40-56 0 0-40zM160 128l192 0c17.7 0 32 14.3 32 32l0 192c0 17.7-14.3 32-32 32l-192 0c-17.7 0-32-14.3-32-32l0-192c0-17.7 14.3-32 32-32zm16 48l0 160 160 0 0-160-160 0z"/></symbol>
+<symbol id="i-signature" viewBox="0 0 640 512"><path d="M192 128c0-17.7 14.3-32 32-32s32 14.3 32 32l0 7.8c0 27.7-2.4 55.3-7.1 82.5l-84.4 25.3c-40.6 12.2-68.4 49.6-68.4 92l0 32.4-72 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l72.5 0c4.2 36 34.8 64 72 64 26 0 50-13.9 62.9-36.5l13.9-24.3c26.8-47 46.5-97.7 58.4-150.5l94.4-28.3-12.5 37.5c-3.3 9.8-1.6 20.5 4.4 28.8S405.7 320 416 320l128 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-83.6 0 18-53.9c3.8-11.3 .9-23.8-7.4-32.4s-20.7-11.8-32.2-8.4L316.4 198.1c2.4-20.7 3.6-41.4 3.6-62.3l0-7.8c0-53-43-96-96-96s-96 43-96 96l0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32zm-9.2 177l49-14.7c-10.4 33.8-24.5 66.4-42.1 97.2l-13.9 24.3c-1.5 2.6-4.3 4.3-7.4 4.3-4.7 0-8.5-3.8-8.5-8.5l0-71.9c0-14.1 9.3-26.6 22.8-30.7zM616 416c13.3 0 24-10.7 24-24s-10.7-24-24-24l-292.9 0c-6.5 16.3-13.7 32.3-21.6 48L616 416z"/></symbol>
+<symbol id="i-link" viewBox="0 0 576 512"><path d="M419.5 96c-16.6 0-32.7 4.5-46.8 12.7-15.8-16-34.2-29.4-54.5-39.5 28.2-24 64.1-37.2 101.3-37.2 86.4 0 156.5 70 156.5 156.5 0 41.5-16.5 81.3-45.8 110.6l-71.1 71.1c-29.3 29.3-69.1 45.8-110.6 45.8-86.4 0-156.5-70-156.5-156.5 0-1.5 0-3 .1-4.5 .5-17.7 15.2-31.6 32.9-31.1s31.6 15.2 31.1 32.9c0 .9 0 1.8 0 2.6 0 51.1 41.4 92.5 92.5 92.5 24.5 0 48-9.7 65.4-27.1l71.1-71.1c17.3-17.3 27.1-40.9 27.1-65.4 0-51.1-41.4-92.5-92.5-92.5zM275.2 173.3c-1.9-.8-3.8-1.9-5.5-3.1-12.6-6.5-27-10.2-42.1-10.2-24.5 0-48 9.7-65.4 27.1L91.1 258.2c-17.3 17.3-27.1 40.9-27.1 65.4 0 51.1 41.4 92.5 92.5 92.5 16.5 0 32.6-4.4 46.7-12.6 15.8 16 34.2 29.4 54.6 39.5-28.2 23.9-64 37.2-101.3 37.2-86.4 0-156.5-70-156.5-156.5 0-41.5 16.5-81.3 45.8-110.6l71.1-71.1c29.3-29.3 69.1-45.8 110.6-45.8 86.6 0 156.5 70.6 156.5 156.9 0 1.3 0 2.6 0 3.9-.4 17.7-15.1 31.6-32.8 31.2s-31.6-15.1-31.2-32.8c0-.8 0-1.5 0-2.3 0-33.7-18-63.3-44.8-79.6z"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 512 512"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></symbol>
+<symbol id="i-award" viewBox="0 0 448 512"><path d="M245.9-25.9c-13.4-8.2-30.3-8.2-43.7 0-24.4 14.9-39.5 18.9-68.1 18.3-15.7-.4-30.3 8.1-37.9 21.9-13.7 25.1-24.8 36.2-49.9 49.9-13.8 7.5-22.2 22.2-21.9 37.9 .7 28.6-3.4 43.7-18.3 68.1-8.2 13.4-8.2 30.3 0 43.7 14.9 24.4 18.9 39.5 18.3 68.1-.4 15.7 8.1 30.3 21.9 37.9 22.1 12.1 33.3 22.1 45.1 41.5L42.7 458.5c-5.9 11.9-1.1 26.3 10.7 32.2l86 43c11.5 5.7 25.5 1.4 31.7-9.8l52.8-95.1 52.8 95.1c6.2 11.2 20.2 15.6 31.7 9.8l86-43c11.9-5.9 16.7-20.3 10.7-32.2l-48.6-97.2c11.7-19.4 23-29.4 45.1-41.5 13.8-7.5 22.2-22.2 21.9-37.9-.7-28.6 3.4-43.7 18.3-68.1 8.2-13.4 8.2-30.3 0-43.7-14.9-24.4-18.9-39.5-18.3-68.1 .4-15.7-8.1-30.3-21.9-37.9-25.1-13.7-36.2-24.8-49.9-49.9-7.5-13.8-22.2-22.2-37.9-21.9-28.6 .7-43.7-3.4-68.1-18.3zM224 96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/></symbol>
+<symbol id="i-people-group" viewBox="0 0 512 512"><path d="M256 0a64 64 0 1 1 0 128 64 64 0 1 1 0-128zm96 312c0 25-12.7 47-32 59.9l0 92.1c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-92.1C172.7 359 160 337 160 312l0-40c0-53 43-96 96-96s96 43 96 96l0 40zM96 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112zm16 240l0 32c0 32.5 12.1 62.1 32 84.7l0 75.3c0 1.2 0 2.5 .1 3.7-8.5 7.6-19.7 12.3-32.1 12.3l-32 0c-26.5 0-48-21.5-48-48l0-56.6C12.9 364.4 0 343.7 0 320l0-32c0-53 43-96 96-96 12.7 0 24.8 2.5 35.9 6.9-12.6 21.4-19.9 46.4-19.9 73.1zM368 464l0-75.3c19.9-22.5 32-52.2 32-84.7l0-32c0-26.7-7.3-51.6-19.9-73.1 11.1-4.5 23.2-6.9 35.9-6.9 53 0 96 43 96 96l0 32c0 23.7-12.9 44.4-32 55.4l0 56.6c0 26.5-21.5 48-48 48l-32 0c-12.3 0-23.6-4.6-32.1-12.3 0-1.2 .1-2.5 .1-3.7zM416 32a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></symbol>
+<symbol id="i-users" viewBox="0 0 640 512"><path d="M320 16a104 104 0 1 1 0 208 104 104 0 1 1 0-208zM96 88a72 72 0 1 1 0 144 72 72 0 1 1 0-144zM0 416c0-70.7 57.3-128 128-128 12.8 0 25.2 1.9 36.9 5.4-32.9 36.8-52.9 85.4-52.9 138.6l0 16c0 11.4 2.4 22.2 6.7 32L32 480c-17.7 0-32-14.3-32-32l0-32zm521.3 64c4.3-9.8 6.7-20.6 6.7-32l0-16c0-53.2-20-101.8-52.9-138.6 11.7-3.5 24.1-5.4 36.9-5.4 70.7 0 128 57.3 128 128l0 32c0 17.7-14.3 32-32 32l-86.7 0zM472 160a72 72 0 1 1 144 0 72 72 0 1 1 -144 0zM160 432c0-88.4 71.6-160 160-160s160 71.6 160 160l0 16c0 17.7-14.3 32-32 32l-256 0c-17.7 0-32-14.3-32-32l0-16z"/></symbol>
+<symbol id="i-handshake" viewBox="0 0 576 512"><path d="M268.9 85.2L152.3 214.8c-4.6 5.1-4.4 13 .5 17.9 30.5 30.5 80 30.5 110.5 0l31.8-31.8c4.2-4.2 9.5-6.5 14.9-6.9 6.8-.6 13.8 1.7 19 6.9L505.6 376 576 320 576 32 464 96 440.2 80.1C424.4 69.6 405.9 64 386.9 64l-70.4 0c-1.1 0-2.3 0-3.4 .1-16.9 .9-32.8 8.5-44.2 21.1zM116.6 182.7L223.4 64 183.8 64c-25.5 0-49.9 10.1-67.9 28.1L112 96 0 32 0 320 156.4 450.3c23 19.2 52 29.7 81.9 29.7l15.7 0-7-7c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l41 41 9 0c19.1 0 37.8-4.3 54.8-12.3L359 441c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l32 32 17.5-17.5c8.9-8.9 11.5-21.8 7.6-33.1l-137.9-136.8-14.9 14.9c-49.3 49.3-129.1 49.3-178.4 0-23-23-23.9-59.9-2.2-84z"/></symbol>
+<symbol id="i-calendar-check" viewBox="0 0 448 512"><path d="M320 0c17.7 0 32 14.3 32 32l0 32 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32zm22 161.7c-10.7-7.8-25.7-5.4-33.5 5.3L189.1 331.2 137 279.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.9 7.5 18.8 7s13.4-4.1 17.5-9.8L347.3 195.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></symbol>
+<symbol id="logo" viewBox="69 70 101 45"><path d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></symbol>
+</svg>
+
+<div class="sticky top-0 z-50 overflow-visible bg-white shadow-md">
+<!-- TOP BAR -->
+<div class="h-[45px] bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-between" style="padding-left:max(48.5px,calc((100% - 80rem) / 2 + 48.5px));padding-right:max(32px,calc((100% - 80rem) / 2 + 32px))">
+  <div class="flex items-center gap-[9px] min-w-0 overflow-hidden">
+    <p class="text-[16px] font-normal text-slate-300 whitespace-nowrap">SeedElisa è l'AI di SeedElio: ti risponde a domande sul modo del Fotovoltaico e ti prenota una web-conf gratuita con Dario Bonaldo !</p>
+  </div>
+  <div class="hidden lg:flex items-center shrink-0">
+    <svg class="ico text-amber-400 text-[12px] mr-[3px]" style="width:0.875em"><use href="#i-headset"/></svg>
+    <span class="text-[11px] font-medium text-white">Risposta Istantanea 24/7</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="bg-white border-b border-slate-200 h-[97px] relative z-10">
+  <div class="seedelio-header-bar max-w-7xl mx-auto px-8 h-[96px]">
+    <div class="flex items-center gap-[11px] ml-[2px] shrink-0">
+      <div class="block">
+        <a href="index.html" class="logo-line block w-[226px] border-t border-slate-500 h-[48px] overflow-hidden relative flex items-center">
+          <svg class="logo-mark absolute left-0 top-0" viewBox="69 70 101 45" width="101" height="45"><path class="seed s1" d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path class="seed s2" d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path class="seed s3" d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></svg>
+          <span class="absolute left-[110px] top-[6px] text-[26.5px] lg:text-[30px] font-semibold text-slate-700 tracking-tight leading-none">SeedElio</span>
+        </a>
+        <a href="significato-del-logo.html" class="logo-sig">Significato del Logo<span class="logo-sig-go" aria-hidden="true">→</span></a>
+      </div>
+      <span class="font-mono font-semibold text-[22px] text-cyan-700 bg-cyan-50 border-2 border-cyan-300 rounded-xl w-[63px] h-[44px] flex items-center justify-center mt-[-4px]">.AI</span>
+    </div>
+
+    <nav class="seedelio-header-tools hidden lg:flex">
+      <div class="flex items-center gap-7">
+        <div id="svcMenu" class="svc group relative -mx-4 px-4 h-[42px] rounded-xl flex items-center transition-colors duration-200 hover:bg-slate-100/70 [&.is-open]:bg-slate-100/70">
+          <button type="button" id="svcBtn" aria-haspopup="true" aria-expanded="false" aria-controls="svcPanel" class="text-slate-700 group-hover:text-amber-600 group-[.is-open]:text-amber-600 transition-colors duration-200 font-bold uppercase tracking-wider flex items-center gap-2 whitespace-nowrap text-[16px] focus-visible:outline-none">I 4 Servizi
+            <svg class="ico text-slate-400 group-hover:text-amber-600 group-[.is-open]:text-amber-600 text-[10px] transition-[transform,color] duration-200 group-hover:rotate-180 group-[.is-open]:rotate-180" style="width:0.875em"><use href="#i-chevron-down"/></svg></button>
+          <div id="svcPanel" class="absolute left-0 top-full z-50 w-96 pt-2 invisible opacity-0 -translate-y-1 scale-[.98] origin-top-left pointer-events-none transition-[opacity,transform,visibility] duration-200 ease-out group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto group-[.is-open]:visible group-[.is-open]:opacity-100 group-[.is-open]:translate-y-0 group-[.is-open]:scale-100 group-[.is-open]:pointer-events-auto motion-reduce:transition-none motion-reduce:transform-none">
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl px-6 pt-5 pb-2" role="menu" aria-label="I 4 Servizi">
+              <p class="font-bold text-[13px] leading-4 uppercase tracking-[0.12em] text-slate-400 mb-3">Seleziona un servizio</p>
+            <a href="consulenza-impianto-fv.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-amber-50 text-amber-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.2em" aria-hidden="true"><use href="#i-solar-panel"/></svg><span class="text-[20px] leading-none">1</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Consulenza Impianto FV</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Perizia scientifica e simulazione</span>
+              </span>
+            </a>
+            <a href="riprese-drone-professionali.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-blue-50 text-blue-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.2em" aria-hidden="true"><use href="#i-helicopter"/></svg><span class="text-[20px] leading-none">2</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Riprese con Droni Professionali</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Video 4K e ispezione coperture</span>
+              </span>
+            </a>
+            <a href="landing-page-ai-seedelisa.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-cyan-50 text-cyan-700 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.05em" aria-hidden="true"><use href="#i-headset"/></svg><span class="text-[20px] leading-none">3</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Landing Page &amp; AI SeedElisa</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Online-to-Offline &amp; Voice Care</span>
+              </span>
+            </a>
+            <a href="inaugurazione-green.html" role="menuitem" class="svc-item group/item -mx-2 px-2 py-[19px] rounded-xl flex items-center gap-[14px] transition-colors duration-150 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+              <span class="h-[60px] w-[60px] shrink-0 rounded-xl bg-emerald-50 text-emerald-600 flex flex-col items-center justify-center gap-0.5 font-display font-bold transition-transform duration-150 group-hover/item:scale-105"><svg class="ico text-[20px]" style="width:1.25em" aria-hidden="true"><use href="#i-people-group"/></svg><span class="text-[20px] leading-none">4</span></span>
+              <span class="min-w-0">
+                <span class="block text-[16px] leading-5 font-bold text-slate-900">Inaugurazione Green</span>
+                <span class="block mt-[3px] text-[14px] leading-5 text-slate-500">Eventi &amp; educazione ambientale</span>
+              </span>
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+            <div class="tool-rail flex items-center bg-slate-50 border border-slate-200 rounded-2xl h-[54px] w-auto px-2.5 xl:px-3 gap-0 shadow-[0_1px_2px_rgba(15,23,42,0.04)] shrink min-w-0">
+        <a href="simulatore-2.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-amber-500/15 text-amber-500 flex items-center justify-center text-[13px]"><svg class="ico" style="width:0.875em"><use href="#i-bolt"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-amber-700 tracking-wider">TOOL 1</span><span class="block text-[16px] font-semibold text-slate-900">Simulatore</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="glossario-tecnico-fotovoltaico.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-cyan-500/15 text-cyan-600 flex items-center justify-center text-[13px]"><svg class="ico" style="width:0.875em" viewBox="0 0 448 512" aria-hidden="true"><path d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l288 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0 0-32 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l32 0 0-320c0-53-43-96-96-96L96 0zM64 96c0-17.7 14.3-32 32-32l256 0c17.7 0 32 14.3 32 32l0 224-32 0c-35.3 0-64 28.7-64 64l-224 0 0-288z"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-cyan-700 tracking-wider">TOOL 2</span><span class="block text-[16px] font-semibold text-slate-900">Glossario</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="libretto_impianto_fotovoltaico_a3_seedelio_ai_v002.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-violet-500/15 text-violet-600 flex items-center justify-center text-[13px]"><svg class="ico tool-diario-menu-glyph" style="width:1.25em;height:1.25em" viewBox="6 2 17 21" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M8 4h6v4h4v12H8V4z"/><path d="M14 4v4h4"/><path d="M10 10h5M10 13h5M10 16h3"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-violet-700 tracking-wider">TOOL 3</span><span class="block text-[16px] font-semibold text-slate-900">Diario FV</span></span>
+        </a>
+        <span class="tool-sep w-px h-7 bg-slate-300 shrink-0"></span>
+        <a href="green-games.html" class="tool-link flex items-center gap-2">
+          <span class="w-[26px] h-7 rounded-lg bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-[13px]"><svg class="ico" style="width:1.25em"><use href="#i-gamepad"/></svg></span>
+          <span class="leading-[18px]"><span class="block font-mono text-[11px] font-bold text-emerald-600 tracking-wider">TOOL 4</span><span class="block text-[16px] font-semibold text-slate-900">Green Games</span></span>
+        </a>
+      </div>
+    </nav>
+
+    <a href="#" class="group relative flex items-center gap-2 rounded-2xl border-2 border-amber-300 bg-gradient-to-r from-amber-400 via-amber-400 to-amber-300 pl-[11px] pr-[13px] h-[60px] w-[208px] shrink-0 shadow-lg shadow-amber-400/30 transition-[transform,box-shadow] duration-300 ease-out hover:scale-[1.03] hover:shadow-xl hover:shadow-amber-400/50 active:scale-[.98] active:duration-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:active:scale-100">
+      <span aria-hidden="true" class="pointer-events-none absolute -inset-[2px] rounded-2xl opacity-60 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 animate-breathe motion-reduce:animate-none"></span>
+      <span class="relative w-[37px] h-[37px] rounded-xl bg-slate-950 text-amber-400 flex items-center justify-center text-[17px] shrink-0">
+        <svg class="ico" style="width:0.875em"><use href="#i-headset"/></svg>
+        <span class="absolute -top-[4px] -right-[4px] w-[9px] h-[9px] rounded-full bg-emerald-400 border-[1.5px] border-white animate-blink motion-reduce:animate-none"></span>
+      </span>
+      <span class="leading-[16px] whitespace-nowrap"><span class="block font-mono text-[10px] font-bold text-slate-800 tracking-wide">VOCE AI 24/7</span><span class="block text-[15px] font-bold text-slate-950">Chiama SeedElisa</span></span>
+      <span class="relative overflow-hidden ml-auto shrink-0 w-[30px] h-[30px] rounded-xl bg-[#c8c27a] text-slate-900 flex items-center justify-center text-[12px]"><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:0s"></span><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:0.8s"></span><span aria-hidden="true" class="absolute inset-0 rounded-full border-[1.5px] border-emerald-500 bg-emerald-400/30 opacity-0 animate-ripple motion-reduce:animate-none" style="animation-delay:1.6s"></span><svg class="ico relative z-10" style="width:1.125em"><use href="#i-tower-broadcast"/></svg></span>
+    </a>
+  </div>
+  <script>
+    (function () {
+      var m = document.getElementById('svcMenu'), b = document.getElementById('svcBtn');
+      if (!m || !b) return;
+      function set(o) { m.classList.toggle('is-open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+      b.addEventListener('click', function () { set(!m.classList.contains('is-open')); });
+      b.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown') { e.preventDefault(); set(true); setTimeout(function () { var f = m.querySelector('[role=menuitem]'); if (f) f.focus(); }, 90); }
+      });
+      m.addEventListener('mouseleave', function () { set(false); });
+      m.addEventListener('keydown', function (e) {
+        var it = Array.prototype.slice.call(m.querySelectorAll('[role=menuitem]')), i = it.indexOf(document.activeElement);
+        if (e.key === 'Escape') { set(false); b.focus(); }
+        else if (e.key === 'ArrowDown' && i >= 0) { e.preventDefault(); it[(i + 1) % it.length].focus(); }
+        else if (e.key === 'ArrowUp' && i >= 0) { e.preventDefault(); (i === 0 ? b : it[i - 1]).focus(); }
+      });
+      m.addEventListener('focusout', function (e) { if (!m.contains(e.relatedTarget)) set(false); });
+      document.addEventListener('click', function (e) { if (!m.contains(e.target)) set(false); });
+    })();
+  </script>
+</header>
+</div>
+
+<main class="bg-[#eef2f6] text-slate-800 pb-16">
+  <div id="reportGate" class="max-w-6xl mx-auto px-5 lg:px-8 py-16">
+    <div class="max-w-xl rounded-3xl border border-slate-200 bg-white p-8">
+      <p class="font-mono text-[12px] font-bold tracking-[0.16em] text-cyan-700">VERDETTO e REPORT</p>
+      <h1 class="mt-2 font-display text-[32px] font-extrabold leading-none text-slate-950">Prima i dati</h1>
+      <p class="mt-3 text-[16px] leading-6 text-slate-600">Per leggere il verdetto completo torna al simulatore e lascia nome, cognome, cellulare, email e la somma.</p>
+      <a href="simulatore-energetico.html" class="mt-6 inline-flex h-11 items-center rounded-full bg-slate-950 px-5 text-[14px] font-bold text-white">Torna al simulatore</a>
+    </div>
+  </div>
+  <div id="reportBody">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8 py-8">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="font-mono text-[12px] font-bold tracking-[0.18em] text-cyan-700">SEEDELIO · METODO</p>
+        <h1 class="mt-1 font-display text-[36px] lg:text-[44px] font-extrabold leading-none text-slate-950">VERDETTO e REPORT</h1>
+      </div>
+      <span id="simBadge" class="rounded-full bg-amber-100 px-3 py-1 text-[12px] font-bold text-amber-900">Valori di esempio</span>
+    </div>
+    <p id="simNote" class="mt-3 max-w-3xl text-[15px] leading-6 text-slate-600">Prima il verdetto, in tre pagine schematiche. Il metodo è di <b class="text-slate-950">SeedElio</b>, firmato da <b class="text-slate-950">Dario Bonaldo</b>. Questi sono i valori di esempio, quelli di partenza del simulatore.</p>
+
+    <section id="verdictFull" class="mt-8 space-y-10" aria-label="Verdetto completo di Dario Bonaldo">
+      <div class="vpage">
+        <p class="vmark">PAGINA 1 DI 3 · IL CONTO</p>
+        <div class="rounded-3xl bg-slate-950 px-6 py-6 text-white lg:px-8 lg:py-8">
+          <div class="flex items-center gap-4">
+            <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" width="128" height="128" class="h-28 w-28 shrink-0 rounded-full object-cover object-[center_18%]">
+            <div>
+              <p class="font-mono text-[12px] font-bold tracking-[0.16em] text-amber-300">VERDETTO COMPLETO · 3 PAGINE</p>
+              <h2 class="mt-1 font-display text-[36px] font-extrabold leading-none">Dario Bonaldo</h2>
+              <p class="mt-2 max-w-xl text-[15px] leading-6 text-slate-300">Ogni blocco è un passaggio. La freccia dice che cosa entra nel numero dopo.</p>
+            </div>
+          </div>
+          <ol class="mt-6 flex flex-wrap items-center gap-2 text-[13px] font-bold">
+            <li class="rounded-full bg-white px-3 py-1 text-slate-950">Spesa</li>
+            <li class="text-amber-300" aria-hidden="true">→</li>
+            <li class="rounded-full bg-amber-400 px-3 py-1 text-slate-950">C fabbisogno</li>
+            <li class="text-amber-300" aria-hidden="true">→</li>
+            <li class="rounded-full bg-white px-3 py-1 text-slate-950">Carichi</li>
+            <li class="text-amber-300" aria-hidden="true">→</li>
+            <li class="rounded-full bg-cyan-300 px-3 py-1 text-slate-950">Y tetto</li>
+            <li class="text-amber-300" aria-hidden="true">→</li>
+            <li class="rounded-full bg-amber-400 px-3 py-1 text-slate-950">kWp</li>
+            <li class="text-amber-300" aria-hidden="true">→</li>
+            <li class="rounded-full bg-white px-3 py-1 text-slate-950">Produzione</li>
+            <li class="text-amber-300" aria-hidden="true">→</li>
+            <li class="rounded-full bg-emerald-300 px-3 py-1 text-slate-950">Casa</li>
+            <li class="text-amber-300" aria-hidden="true">→</li>
+            <li class="rounded-full bg-amber-400 px-3 py-1 text-slate-950">Euro</li>
+          </ol>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Catena del conto</h3>
+          <p class="mt-1 text-[14px] text-slate-600">Dall’alto in basso. Nessun salto.</p>
+          <div class="mt-4 space-y-2">
+            <div class="flex items-center gap-3"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-slate-950 font-display text-[18px] font-extrabold text-amber-300">1</span><div class="min-w-0 flex-1 rounded-2xl bg-slate-50 px-4 py-3"><p class="font-mono text-[11px] font-bold text-slate-400">SPESA</p><p class="font-display text-[22px] font-extrabold leading-none" data-k="spesa">140 €/mese</p></div></div>
+            <p class="pl-4 text-[22px] font-bold leading-none text-amber-500" aria-hidden="true">↓</p>
+            <div class="flex items-center gap-3"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-slate-950 font-display text-[18px] font-extrabold text-amber-300">2</span><div class="min-w-0 flex-1 rounded-2xl bg-amber-50 px-4 py-3"><p class="font-mono text-[11px] font-bold text-amber-700">FABBISOGNO C</p><p class="font-display text-[22px] font-extrabold leading-none" data-k="kwh">400 kWh/mese · 13375 kWh/anno</p></div></div>
+            <p class="pl-4 text-[22px] font-bold leading-none text-amber-500" aria-hidden="true">↓</p>
+            <div class="flex items-center gap-3"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-slate-950 font-display text-[18px] font-extrabold text-amber-300">3</span><div class="min-w-0 flex-1 rounded-2xl bg-slate-50 px-4 py-3"><p class="font-mono text-[11px] font-bold text-slate-400">CARICHI</p><p class="text-[15px] font-semibold leading-5" data-k="carichi">Auto 12.000 km (1.920 kWh), Pompa 4 kW (6.400 kWh), Induzione 7 pasti (255 kWh)</p></div></div>
+            <p class="pl-4 text-[22px] font-bold leading-none text-amber-500" aria-hidden="true">↓</p>
+            <div class="flex items-center gap-3"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-slate-950 font-display text-[18px] font-extrabold text-amber-300">4</span><div class="min-w-0 flex-1 rounded-2xl bg-cyan-50 px-4 py-3"><p class="font-mono text-[11px] font-bold text-cyan-700">TETTO</p><p class="text-[15px] font-semibold" data-k="zona">Nord Italia (1.150 kWh/kWp)</p></div></div>
+            <p class="pl-4 text-[22px] font-bold leading-none text-amber-500" aria-hidden="true">↓</p>
+            <div class="flex items-center gap-3"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-slate-950 font-display text-[18px] font-extrabold text-amber-300">5</span><div class="min-w-0 flex-1 rounded-2xl bg-amber-50 px-4 py-3"><p class="font-mono text-[11px] font-bold text-amber-700">TAGLIA</p><p class="font-display text-[28px] font-extrabold leading-none" data-k="kwp">12,8 kWp</p></div></div>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Dalla bolletta ai kWh</h3>
+          <div class="mt-4 flex flex-wrap items-center gap-2 text-[14px] font-bold text-slate-950">
+            <span class="rounded-2xl bg-slate-100 px-4 py-3" data-k="spesa">140 €/mese</span>
+            <span class="text-amber-500" aria-hidden="true">÷ 0,35 →</span>
+            <span class="rounded-2xl bg-amber-50 px-4 py-3">kWh del mese</span>
+            <span class="text-amber-500" aria-hidden="true">× 12 →</span>
+            <span class="rounded-2xl bg-amber-100 px-4 py-3" data-k="kwh">400 kWh/mese · 13375 kWh/anno</span>
+          </div>
+          <p class="mt-3 text-[14px] text-slate-600">In modalità fasce la somma F1 + F2 + F3 sostituisce la spesa, nello stesso punto della catena.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Tre carichi, una somma</h3>
+          <div class="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-center">
+            <div class="rounded-2xl bg-amber-400 px-4 py-4 text-slate-950"><p class="font-mono text-[11px] font-bold">AUTO</p><p class="mt-1 font-display text-[22px] font-extrabold leading-tight" data-k="autoKwh">1.920 kWh/anno</p><p class="mt-1 text-[13px]" data-k="autoKm">12.000 km</p><p class="mt-2 font-mono text-[12px]">km × 0,16</p></div>
+            <p class="text-center text-[28px] font-bold text-amber-500" aria-hidden="true">+</p>
+            <div class="rounded-2xl bg-cyan-300 px-4 py-4 text-slate-950"><p class="font-mono text-[11px] font-bold">POMPA</p><p class="mt-1 font-display text-[22px] font-extrabold leading-tight" data-k="pompaKwh">6.400 kWh/anno</p><p class="mt-1 text-[13px]" data-k="pompaKw">4 kW</p><p class="mt-2 font-mono text-[12px]">kW × 1.600 h</p></div>
+            <p class="text-center text-[28px] font-bold text-amber-500" aria-hidden="true">+</p>
+            <div class="rounded-2xl bg-emerald-300 px-4 py-4 text-slate-950"><p class="font-mono text-[11px] font-bold">INDUZIONE</p><p class="mt-1 font-display text-[22px] font-extrabold leading-tight" data-k="indKwh">255 kWh/anno</p><p class="mt-1 text-[13px]" data-k="pasti">7 pasti/settimana</p><p class="mt-2 font-mono text-[12px]">pasti × 52 × 0,7</p></div>
+            <p class="text-center text-[28px] font-bold text-amber-500" aria-hidden="true">→</p>
+            <div class="rounded-2xl bg-slate-950 px-4 py-4 text-white"><p class="font-mono text-[11px] font-bold text-amber-300">DENTRO C</p><p class="mt-2 text-[14px] leading-5" data-k="carichi">Auto 12.000 km (1.920 kWh), Pompa 4 kW (6.400 kWh), Induzione 7 pasti (255 kWh)</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vpage">
+        <p class="vmark">PAGINA 2 DI 3 · TETTO E CASA</p>
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Resa di un kWp</h3>
+          <p class="mt-1 text-[14px] text-slate-600">Quattro fattori, uno dopo l’altro.</p>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-2xl bg-slate-50 px-4 py-4"><p class="font-mono text-[12px] font-bold text-cyan-700">G · zona</p><p class="mt-2 text-[16px] font-bold leading-5" data-k="zona">Nord Italia (1.150 kWh/kWp)</p></div>
+            <div class="rounded-2xl bg-slate-50 px-4 py-4"><p class="font-mono text-[12px] font-bold text-cyan-700">Fo · orientamento</p><p class="mt-2 text-[16px] font-bold leading-5" data-k="orientamento">Sud-Est / Sud-Ovest (90%)</p></div>
+            <div class="rounded-2xl bg-slate-50 px-4 py-4"><p class="font-mono text-[12px] font-bold text-cyan-700">Fs · ombre</p><p class="mt-2 text-[16px] font-bold leading-5" data-k="ombre">0% · Piano sole</p><p class="mt-2 text-[13px] text-slate-500" data-k="ottimizzatori">Auto · Analisi suggerita</p></div>
+            <div class="rounded-2xl bg-slate-50 px-4 py-4"><p class="font-mono text-[12px] font-bold text-cyan-700">Fi · falda</p><p class="mt-2 text-[16px] font-bold" data-k="inclinazione">22°</p></div>
+          </div>
+          <p class="mt-4 text-center text-[28px] font-bold text-amber-500" aria-hidden="true">↓ × ↓</p>
+          <div class="mx-auto mt-2 max-w-xl rounded-2xl bg-slate-950 px-4 py-4 text-center text-white">
+            <p class="font-mono text-[12px] font-bold text-amber-300">Y = G × Fo × Fs × Fi</p>
+            <p class="mt-2 text-[15px]">Poi la taglia: C ÷ Y</p>
+          </div>
+          <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-[15px] font-bold">
+            <span class="rounded-2xl bg-amber-50 px-4 py-3" data-k="kwh">400 kWh/mese · 13375 kWh/anno</span>
+            <span class="text-amber-500" aria-hidden="true">÷ Y →</span>
+            <span class="rounded-2xl bg-amber-400 px-4 py-3 text-slate-950" data-k="kwp">12,8 kWp</span>
+          </div>
+          <p class="mt-3 text-center text-[14px] text-slate-600">Spesa o carichi su <b class="text-slate-950">→</b> kWp su. Tetto che rende meno <b class="text-slate-950">→</b> più kWp.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Taglia, pezzi, batteria</h3>
+          <div class="mt-4 flex flex-wrap items-center gap-2 text-[15px] font-bold text-slate-950">
+            <span class="rounded-2xl bg-amber-50 px-4 py-3">Pannelli <b data-k="kwp">12,8 kWp</b></span>
+            <span class="text-amber-500" aria-hidden="true">→</span>
+            <span class="rounded-2xl bg-slate-100 px-4 py-3">Modulo <b data-k="modulo">0,48 kWp</b></span>
+            <span class="text-amber-500" aria-hidden="true">→</span>
+            <span class="rounded-2xl bg-slate-100 px-4 py-3">Pezzi <b data-k="moduli">27</b></span>
+            <span class="text-amber-500" aria-hidden="true">→</span>
+            <span class="rounded-2xl bg-cyan-50 px-4 py-3">Batterie <b data-k="accumulo">25,0 kWh</b></span>
+          </div>
+          <p class="mt-3 text-[16px] font-semibold" data-k="taglio">Pannelli 12,8 kWp + Batterie 25,0 kWh</p>
+          <div class="mt-4 flex flex-wrap items-center gap-2 text-[15px] font-bold">
+            <span class="rounded-2xl bg-slate-100 px-4 py-3">Moduli <b data-k="moduli">27</b></span>
+            <span class="text-amber-500" aria-hidden="true">× 1,95 mq →</span>
+            <span class="rounded-2xl bg-amber-50 px-4 py-3" data-k="superficie">52,7 mq</span>
+          </div>
+          <p class="mt-3 text-[14px] text-slate-600">Il modulo cambia i pezzi e i metri quadri. I kWp restano quelli del fabbisogno.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Chi è in casa</h3>
+          <div class="mt-4 grid gap-3 lg:grid-cols-3">
+            <div class="rounded-2xl border border-slate-200 px-4 py-4"><p class="font-mono text-[12px] font-bold text-slate-400">1 · DIURNO</p><p class="mt-2 text-[15px] font-semibold">Qualcuno c’è nelle ore di sole</p><p class="mt-3 text-[22px] font-bold text-emerald-700">quota su</p></div>
+            <div class="rounded-2xl border border-slate-200 px-4 py-4"><p class="font-mono text-[12px] font-bold text-slate-400">2 · PARZIALE</p><p class="mt-2 text-[15px] font-semibold">Mattina oppure pomeriggio</p><p class="mt-3 text-[22px] font-bold text-amber-600">quota media</p></div>
+            <div class="rounded-2xl border-2 border-amber-400 bg-amber-50 px-4 py-4"><p class="font-mono text-[12px] font-bold text-amber-700">3 · SCELTO</p><p class="mt-2 text-[15px] font-semibold" data-k="profilo">Famiglia Fuori Casa / Pendolari</p><p class="mt-3 font-display text-[32px] font-extrabold leading-none text-emerald-700" data-k="autoconsumo">76%</p></div>
+          </div>
+          <p class="mt-4 text-center text-[14px] font-bold text-slate-950">Profilo <span class="text-amber-500">→</span> autoconsumo sulla produzione</p>
+          <p class="mt-2 text-[14px] text-slate-600">Casa vuota fino a sera <b class="text-slate-950">→</b> quota giù, e la batteria tiene il sole per la cena.</p>
+        </div>
+
+        <div class="grid gap-3 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+          <div class="rounded-3xl bg-cyan-50 px-5 py-5"><p class="font-mono text-[12px] font-bold text-cyan-700">PRODUZIONE E</p><p class="mt-2 font-display text-[36px] font-extrabold leading-none" data-k="produzione">13357 kWh</p></div>
+          <p class="text-center text-[28px] font-bold text-amber-500" aria-hidden="true">?</p>
+          <div class="rounded-3xl bg-amber-50 px-5 py-5"><p class="font-mono text-[12px] font-bold text-amber-700">FABBISOGNO C</p><p class="mt-2 font-display text-[28px] font-extrabold leading-tight" data-k="kwh">400 kWh/mese · 13375 kWh/anno</p></div>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <p class="rounded-2xl bg-white px-4 py-4 text-[15px] font-semibold">E molto sopra C <span class="text-amber-500">→</span> rete a poco prezzo</p>
+          <p class="rounded-2xl bg-white px-4 py-4 text-[15px] font-semibold">E sotto C <span class="text-amber-500">→</span> casa ancora al contatore</p>
+        </div>
+      </div>
+
+      <div class="vpage">
+        <p class="vmark">PAGINA 3 DI 3 · EURO</p>
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Due percentuali diverse</h3>
+          <div class="mt-4 grid items-center gap-3 lg:grid-cols-[1fr_auto_1fr]">
+            <div class="rounded-2xl bg-slate-100 px-4 py-5"><p class="font-mono text-[12px] font-bold text-slate-500">AUTOCONSUMO · sulla produzione</p><p class="mt-2 font-display text-[40px] font-extrabold leading-none" data-k="autoconsumo">76%</p></div>
+            <p class="text-center font-display text-[40px] font-extrabold text-amber-500" aria-hidden="true">≠</p>
+            <div class="rounded-2xl bg-emerald-50 px-4 py-5"><p class="font-mono text-[12px] font-bold text-emerald-700">AUTOSUFFICIENZA · sul fabbisogno</p><p class="mt-2 font-display text-[40px] font-extrabold leading-none text-emerald-700" data-k="autosufficienza">76%</p></div>
+          </div>
+          <p class="mt-4 text-[15px] text-slate-600">kWh autoconsumati ÷ C. Per la bolletta si guarda il numero a destra.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Prezzo unico</h3>
+          <div class="mt-4 flex flex-wrap items-center gap-2 text-[16px] font-bold">
+            <span class="rounded-2xl bg-amber-50 px-4 py-4" data-k="kwp">12,8 kWp</span>
+            <span class="text-[28px] text-amber-500" aria-hidden="true">×</span>
+            <span class="rounded-2xl bg-slate-100 px-4 py-4" data-k="euroKwp">1.700 €/kWp</span>
+            <span class="text-[28px] text-amber-500" aria-hidden="true">→</span>
+            <span class="rounded-2xl bg-amber-400 px-4 py-4 text-slate-950" data-k="costo">21.760 €</span>
+          </div>
+          <p class="cost-note mt-3 text-[14px] leading-5 text-slate-700">IVA 10% compresa</p>
+          <p class="cost-note is-off js-deduct mt-1 text-[14px] leading-5 text-slate-700">Detrazione 50% non sottratta</p>
+          <div class="mt-4 grid gap-2 sm:grid-cols-3">
+            <p class="rounded-2xl bg-slate-50 px-3 py-3 text-[14px] font-semibold">Stesso prezzo <span class="text-amber-500">→</span> risparmio</p>
+            <p class="rounded-2xl bg-slate-50 px-3 py-3 text-[14px] font-semibold">Stesso prezzo <span class="text-amber-500">→</span> rientro</p>
+            <p class="rounded-2xl bg-slate-50 px-3 py-3 text-[14px] font-semibold">Stesso prezzo <span class="text-amber-500">→</span> TIR</p>
+          </div>
+          <p class="mt-3 text-[14px] text-slate-600">Non è il preventivo del tetto. È il prezzo con cui questa pagina fa il conto.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">Ritorno</h3>
+          <div class="mt-4 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-center">
+            <div class="rounded-2xl bg-amber-50 px-4 py-4"><p class="font-mono text-[11px] font-bold text-amber-700">RISPARMIO / ANNO</p><p class="mt-1 font-display text-[32px] font-extrabold leading-none" data-k="risparmio">3845 €</p></div>
+            <p class="text-center text-[28px] font-bold text-amber-500" aria-hidden="true">→</p>
+            <div class="rounded-2xl bg-slate-100 px-4 py-4"><p class="font-mono text-[11px] font-bold text-slate-500">COSTO ÷ RISPARMIO</p><p class="mt-1 font-display text-[32px] font-extrabold leading-none" data-k="payback">5,7 anni</p></div>
+            <p class="text-center text-[28px] font-bold text-amber-500" aria-hidden="true">→</p>
+            <div class="rounded-2xl bg-emerald-50 px-4 py-4"><p class="font-mono text-[11px] font-bold text-emerald-700">TIR 20 ANNI</p><p class="mt-1 font-display text-[32px] font-extrabold leading-none text-emerald-700" data-k="tir">16,9%</p></div>
+          </div>
+          <p class="mt-4 rounded-2xl bg-slate-950 px-4 py-3 text-[15px] font-semibold text-white" data-k="ammort">L'ammortamento è rapido: il rientro è breve e il TIR è alto.</p>
+          <p class="mt-3 font-mono text-[12px] font-bold tracking-wide text-slate-400">VENTI ANNI, RISPARMI COSTANTI, NEWTON</p>
+          <div class="mt-2 grid grid-cols-10 gap-1">
+            <span class="rounded-md bg-amber-400 py-2 text-center text-[11px] font-bold text-slate-950">1</span>
+            <span class="rounded-md bg-amber-400 py-2 text-center text-[11px] font-bold text-slate-950">2</span>
+            <span class="rounded-md bg-amber-400 py-2 text-center text-[11px] font-bold text-slate-950">3</span>
+            <span class="rounded-md bg-amber-400 py-2 text-center text-[11px] font-bold text-slate-950">4</span>
+            <span class="rounded-md bg-amber-300 py-2 text-center text-[11px] font-bold text-slate-950">5</span>
+            <span class="rounded-md bg-amber-200 py-2 text-center text-[11px] font-bold text-slate-950">6</span>
+            <span class="rounded-md bg-slate-200 py-2 text-center text-[11px] font-bold text-slate-600">7</span>
+            <span class="rounded-md bg-slate-200 py-2 text-center text-[11px] font-bold text-slate-600">8</span>
+            <span class="rounded-md bg-slate-200 py-2 text-center text-[11px] font-bold text-slate-600">9</span>
+            <span class="rounded-md bg-slate-200 py-2 text-center text-[11px] font-bold text-slate-600">10</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">11</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">12</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">13</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">14</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">15</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">16</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">17</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">18</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">19</span>
+            <span class="rounded-md bg-slate-100 py-2 text-center text-[11px] font-bold text-slate-500">20</span>
+          </div>
+          <p class="mt-2 text-[13px] text-slate-500">Schema fisso dei 20 anni. Il rientro di questa simulazione è <b class="text-slate-950" data-k="payback">5,7 anni</b>.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-5 lg:p-6">
+          <h3 class="font-display text-[22px] font-extrabold text-slate-950">In fila</h3>
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <p class="rounded-2xl bg-amber-50 px-3 py-4"><span class="block font-mono text-[11px] text-slate-500">Taglia</span><b class="font-display text-[22px]" data-k="kwp">12,8 kWp</b></p>
+            <p class="rounded-2xl bg-cyan-50 px-3 py-4"><span class="block font-mono text-[11px] text-slate-500">Produzione</span><b class="font-display text-[22px]" data-k="produzione">13357 kWh</b></p>
+            <p class="rounded-2xl bg-emerald-50 px-3 py-4"><span class="block font-mono text-[11px] text-slate-500">Autoconsumo</span><b class="font-display text-[22px]" data-k="autoconsumo">76%</b></p>
+            <p class="rounded-2xl bg-emerald-50 px-3 py-4"><span class="block font-mono text-[11px] text-slate-500">Autosufficienza</span><b class="font-display text-[22px]" data-k="autosufficienza">76%</b></p>
+            <p class="rounded-2xl bg-slate-100 px-3 py-4"><span class="block font-mono text-[11px] text-slate-500">Superficie</span><b class="font-display text-[22px]" data-k="superficie">52,7 mq</b></p>
+            <p class="rounded-2xl bg-amber-50 px-3 py-4"><span class="block font-mono text-[11px] text-slate-500">Costo</span><b class="font-display text-[22px]" data-k="costo">21.760 €</b><span class="cost-note mt-1 text-[11px] font-normal leading-4 text-slate-600">IVA 10% compresa</span><span class="cost-note is-off js-deduct mt-0.5 text-[11px] font-normal leading-4 text-slate-600">Detrazione 50% non sottratta</span></p>
+            <p class="rounded-2xl bg-slate-100 px-3 py-4"><span class="block font-mono text-[11px] text-slate-500">Rientro</span><b class="font-display text-[22px]" data-k="payback">5,7 anni</b></p>
+            <p class="rounded-2xl bg-emerald-50 px-3 py-4"><span class="block font-mono text-[11px] text-slate-500">TIR</span><b class="font-display text-[22px]" data-k="tir">16,9%</b></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="reportServices" class="mt-16" aria-label="Servizi SeedElio e funzioni SeedElisa">
+      <div class="grid items-stretch gap-8 lg:grid-cols-[220px_minmax(0,1fr)]">
+        <aside class="flex flex-col justify-end gap-5 rounded-[28px] bg-slate-950 px-6 py-7 text-white">
+          <img src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" width="96" height="96" class="h-20 w-20 rounded-full object-cover object-[center_18%] ring-2 ring-amber-300/80">
+          <p class="text-[15px] leading-6">Numeri di questi slider, non una media. SeedElisa apre il confronto con Dario Bonaldo. La pagina fa il conto.</p>
+        </aside>
+        <div class="flex flex-col gap-10 py-1">
+          <div>
+            <h2 class="font-mono text-[12px] font-bold tracking-[0.16em] text-amber-700">SERVIZI SEEDELIO</h2>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <a href="consulenza-impianto-fv.html" class="rounded-2xl border-l-4 border-amber-400 bg-white px-5 py-5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+                <p class="font-mono text-[11px] font-bold text-amber-600">01</p>
+                <h3 class="mt-2 font-display text-[22px] font-extrabold leading-6 text-slate-950">Consulenza impianto FV</h3>
+              </a>
+              <a href="riprese-drone-professionali.html" class="rounded-2xl border border-slate-200 bg-sky-50 px-5 py-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+                <p class="font-mono text-[11px] font-bold text-sky-700">02</p>
+                <h3 class="mt-1 font-display text-[18px] font-extrabold leading-6 text-slate-950">Riprese con droni professionali</h3>
+              </a>
+              <a href="landing-page-ai-seedelisa.html" class="rounded-2xl border border-cyan-200 bg-white px-5 py-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+                <p class="font-mono text-[11px] font-bold text-cyan-700">03</p>
+                <h3 class="mt-1 font-display text-[18px] font-extrabold leading-6 text-slate-950">Landing page AI SeedElisa</h3>
+              </a>
+              <a href="inaugurazione-green.html" class="rounded-2xl bg-emerald-600 px-5 py-4 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+                <p class="font-mono text-[11px] font-bold text-emerald-100">04</p>
+                <h3 class="mt-1 font-display text-[18px] font-extrabold leading-6">Inaugurazione green</h3>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h2 class="font-mono text-[12px] font-bold tracking-[0.16em] text-cyan-700">FUNZIONI SEEDELISA</h2>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <a href="landing-page-ai-seedelisa.html#funnel-o2o" class="flex items-center justify-between gap-3 rounded-full border border-amber-300 bg-amber-50 px-5 py-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+                <h3 class="font-display text-[18px] font-extrabold text-slate-950">Funnel O2O</h3>
+                <span class="font-mono text-[12px] font-bold text-amber-700" aria-hidden="true">→</span>
+              </a>
+              <a href="landing-page-ai-seedelisa.html#voce-ai" class="flex items-center justify-between gap-3 rounded-full bg-slate-950 px-5 py-4 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+                <h3 class="font-display text-[18px] font-extrabold">Voce AI</h3>
+                <span class="font-mono text-[12px] font-bold text-cyan-300" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="formulaArchive" hidden>
+    <div class="mt-10 grid lg:grid-cols-2 gap-4 items-start">
+      <section class="space-y-4">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">Taglia</p><p class="font-display text-[32px] font-extrabold leading-none text-amber-600" data-k="kwp">12,8 kWp</p></div>
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">Produzione</p><p class="font-display text-[32px] font-extrabold leading-none text-cyan-700" data-k="produzione">13357 kWh</p></div>
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">Autoconsumo</p><p class="font-display text-[32px] font-extrabold leading-none text-emerald-700" data-k="autoconsumo">76%</p></div>
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">Risparmio annuo</p><p class="font-display text-[32px] font-extrabold leading-none text-amber-600" data-k="risparmio">3845 €</p></div>
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">Payback</p><p class="font-display text-[32px] font-extrabold leading-none text-slate-950" data-k="payback">5,7 anni</p></div>
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">Accumulo</p><p class="font-display text-[32px] font-extrabold leading-none text-slate-950" data-k="accumulo">25,0 kWh</p></div>
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">Costo</p><p class="font-display text-[32px] font-extrabold leading-none text-amber-600" data-k="costo">21.760 €</p><p class="mt-2 text-[14px] leading-5 text-slate-700" data-k="taglio">Pannelli 12,8 kWp + Batterie 25,0 kWh</p></div>
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">Autosufficienza</p><p class="font-display text-[32px] font-extrabold leading-none text-emerald-700" data-k="autosufficienza">76%</p></div>
+          <div class="rounded-2xl bg-white p-4 border border-slate-200"><p class="font-mono text-[11px] font-bold text-slate-400">TIR 20 anni</p><p class="font-display text-[32px] font-extrabold leading-none text-slate-950" data-k="tir">16,9%</p></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="rounded-2xl bg-amber-400 p-4 text-slate-950"><p class="font-mono text-[11px] font-bold">AUTO × 0,16</p><p class="mt-1 font-display text-[22px] font-extrabold leading-tight" data-k="autoKwh">1.920 kWh/anno</p><p class="mt-1 text-[12px] leading-4" data-k="autoKm">12.000 km</p></div>
+          <div class="rounded-2xl bg-cyan-300 p-4 text-slate-950"><p class="font-mono text-[11px] font-bold">POMPA × 1.600 h</p><p class="mt-1 font-display text-[22px] font-extrabold leading-tight" data-k="pompaKwh">6.400 kWh/anno</p><p class="mt-1 text-[12px] leading-4" data-k="pompaKw">4 kW</p></div>
+          <div class="rounded-2xl bg-emerald-300 p-4 text-slate-950"><p class="font-mono text-[11px] font-bold">INDUZIONE × 52 × 0,7</p><p class="mt-1 font-display text-[22px] font-extrabold leading-tight" data-k="indKwh">255 kWh/anno</p><p class="mt-1 text-[12px] leading-4" data-k="pasti">7 pasti/settimana</p></div>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <figure class="overflow-hidden rounded-2xl border border-slate-200 bg-white"><img src="img/simulatore-bolletta.png" alt="Bolletta e consumi di casa" class="h-24 w-full object-cover"><figcaption class="px-2 py-2 text-[11px] leading-4 text-slate-500">1 · Si parte dalla spesa</figcaption></figure>
+          <figure class="overflow-hidden rounded-2xl border border-slate-200 bg-white"><img src="img/simulatore-tetto.png" alt="Falda del tetto vista dall'alto" class="h-24 w-full object-cover"><figcaption class="px-2 py-2 text-[11px] leading-4 text-slate-500">2 · Poi tetto, ombre e falda</figcaption></figure>
+          <figure class="overflow-hidden rounded-2xl border border-slate-200 bg-white"><img src="img/simulatore-modulo.png" alt="Modulo fotovoltaico in primo piano" class="h-24 w-full object-cover"><figcaption class="px-2 py-2 text-[11px] leading-4 text-slate-500">3 · Il modulo chiude la taglia</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="font-display text-[22px] font-extrabold text-slate-950">Formule</h2>
+        <p class="text-[13px] leading-5 text-slate-500">p non è i 0,35 € della bolletta. È il prezzo con cui il metodo valorizza ogni kWh autoconsumato: 0,378 €/kWh. Il costo chiavi in mano c è 1.700 €/kWp.</p>
+
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Producibilità</h3><span class="font-mono text-[12px] text-cyan-700">Y</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">Y = G × Fo × Fs × Fi</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">Quanti kWh rende un kWp su questo tetto. G è l'irraggiamento di zona, Fo l'orientamento, Fs le ombre corrette dagli ottimizzatori, Fi la falda.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Taglia</h3><span class="font-mono text-[12px] text-cyan-700">kWp</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">kWp = C / Y</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">L'impianto che copre il fabbisogno annuo C. I moduli seguono la potenza del modulo scelto.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Produzione</h3><span class="font-mono text-[12px] text-cyan-700">E</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">E = kWp × Y</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">Energia annua stimata. Nell'esempio: <span data-k="produzione">13357 kWh</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Autoconsumo</h3><span class="font-mono text-[12px] text-cyan-700">Qa</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">kWh auto = min(E, C) × Qa</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">Dipende da quando sei in casa. Qa è la quota del profilo. Qui: <span data-k="autoconsumo">76%</span>.</p>
+        </article>
+      </section>
+    </div>
+
+    <div class="mt-3 grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Accumulo</h3><span class="font-mono text-[12px] text-cyan-700">S</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">kWh batt = S × E / 365</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">S è la quota giornaliera del profilo che non cade nelle ore di sole. Per i pendolari S = 9 × 365 / 4.800. Risultato: <span data-k="accumulo">25,0 kWh</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Risparmio</h3><span class="font-mono text-[12px] text-cyan-700">R</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">R = kWh auto × p</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">Euro all'anno, con p = 0,378 €/kWh. Nell'esempio: <span data-k="risparmio">3845 €</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Payback</h3><span class="font-mono text-[12px] text-cyan-700">anni</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">anni = (kWp × c) / R</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">Anni per riprendere il costo, con c = 1.700 €/kWp. Nell'esempio: <span data-k="payback">5,7 anni</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Costo chiavi in mano</h3><span class="font-mono text-[12px] text-cyan-700">c</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">costo = kWp × c</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">c = 1.700 €/kWp, IVA 10% compresa. La detrazione 50% non è sottratta: è un credito d’imposta, non uno sconto sul chiavi in mano. Nell'esempio: <span data-k="costo">21.760 €</span>. <span data-k="taglio">Pannelli 12,8 kWp + Batterie 25,0 kWh</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Autosufficienza</h3><span class="font-mono text-[12px] text-cyan-700">C</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">autosufficienza = kWh auto / C</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">kWh auto = min(E, C) × Qa, quota del fabbisogno coperta da solare, diretta o da batteria. Non è l'autoconsumo sulla produzione. Nell'esempio: <span data-k="autosufficienza">76%</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">TIR a 20 anni</h3><span class="font-mono text-[12px] text-cyan-700">r</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">R × (1 − (1+r)^(−20)) / r = costo</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">r è il tasso che, con risparmi annui costanti, ripaga il costo in 20 anni. Si risolve con Newton. Nell'esempio: <span data-k="tir">16,9%</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-amber-300 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Auto elettrica</h3><span class="font-mono text-[12px] text-amber-700">0,16</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">kWh = km × 0,16</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">Coefficiente 0,16 kWh per chilometro. <span data-k="autoKm">12.000 km</span> → <span data-k="autoKwh">1.920 kWh/anno</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-cyan-300 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Pompa di calore</h3><span class="font-mono text-[12px] text-cyan-700">1.600 h</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">kWh = kW × 1.600 h</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">Coefficiente 1.600 ore equivalenti. <span data-k="pompaKw">4 kW</span> → <span data-k="pompaKwh">6.400 kWh/anno</span>.</p>
+        </article>
+        <article data-formula class="rounded-2xl border border-emerald-300 bg-white px-4 py-4">
+          <div class="flex items-baseline justify-between gap-3"><h3 data-fname class="font-display text-[18px] font-extrabold">Piano a induzione</h3><span class="font-mono text-[12px] text-emerald-700">52 × 0,7</span></div>
+          <p data-fexpr class="mt-2 font-mono text-[16px] text-amber-800">kWh = pasti × 52 × 0,7</p>
+          <p data-fwhy class="mt-1 text-[14px] leading-5 text-slate-600">Coefficiente 0,7 kWh a pasto, per 52 settimane. <span data-k="pasti">7 pasti/settimana</span> → <span data-k="indKwh">255 kWh/anno</span>.</p>
+        </article>
+    </div>
+
+    <section class="mt-6">
+      <h2 class="font-display text-[22px] font-extrabold text-slate-950">Variabili di questa simulazione</h2>
+      <p class="mt-1 text-[13px] text-slate-500">Se arrivi dal simulatore, questi campi si aggiornano con i numeri della sessione. G cambia con la zona: Nord, Centro o Sud.</p>
+      <div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">C · fabbisogno</p><p class="mt-1 text-[14px] font-semibold" data-k="kwh">400 kWh/mese · 13375 kWh/anno</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">G · zona</p><p class="mt-1 text-[14px] font-semibold" data-k="zona">Nord Italia (1.150 kWh/kWp)</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Fo · orientamento</p><p class="mt-1 text-[14px] font-semibold" data-k="orientamento">Sud-Est / Sud-Ovest (90%)</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Fs · ombre</p><p class="mt-1 text-[14px] font-semibold" data-k="ombre">0% · Piano sole</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Fi · inclinazione</p><p class="mt-1 text-[14px] font-semibold" data-k="inclinazione">22°</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Qa · profilo</p><p class="mt-1 text-[14px] font-semibold" data-k="profilo">Famiglia Fuori Casa / Pendolari</p><p class="text-[13px] text-slate-500" data-k="autoconsumo">76%</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">p · prezzo</p><p class="mt-1 text-[14px] font-semibold">0,378 €/kWh</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">c · €/kWp</p><p class="mt-1 text-[14px] font-semibold" data-k="euroKwp">1.700 €/kWp</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Costo</p><p class="mt-1 text-[14px] font-semibold" data-k="costo">21.760 €</p><p class="mt-1 text-[13px] text-slate-600" data-k="taglio">Pannelli 12,8 kWp + Batterie 25,0 kWh</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Autosufficienza</p><p class="mt-1 text-[14px] font-semibold" data-k="autosufficienza">76%</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">TIR</p><p class="mt-1 text-[14px] font-semibold" data-k="tir">16,9%</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Spesa</p><p class="mt-1 text-[14px] font-semibold" data-k="spesa">140 €/mese</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Modulo</p><p class="mt-1 text-[14px] font-semibold" data-k="modulo">0,48 kWp</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Ottimizzatori</p><p class="mt-1 text-[14px] font-semibold" data-k="ottimizzatori">Auto · Analisi suggerita</p></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4"><p class="font-mono text-[12px] font-bold text-amber-700">Carichi</p><p class="mt-1 text-[14px] font-semibold leading-5" data-k="carichi">Auto 12.000 km (1.920 kWh), Pompa 4 kW (6.400 kWh), Induzione 7 pasti (255 kWh)</p></article>
+      </div>
+      <figure class="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+        <img src="img/simulatore-zona.png" alt="Tetti e paesaggio del Nord Italia, usati per la zona di irraggiamento" class="h-40 w-full object-cover">
+        <figcaption class="px-4 py-2 text-[12px] text-slate-500">G cambia con la zona: Nord, Centro o Sud.</figcaption>
+      </figure>
+    </section>
+
+    <section class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <article class="rounded-2xl bg-white border border-slate-200 p-4"><p class="font-mono text-[12px] font-bold text-amber-700">01 · Consumo</p><h3 class="mt-1 font-display font-extrabold">Dalla spesa ai carichi</h3><p class="mt-1 text-[13px] leading-5 text-slate-600">Dalla spesa o dalle fasce, più auto (km × 0,16), pompa (kW × 1.600) e induzione (pasti × 52 × 0,7).</p></article>
+      <article class="rounded-2xl bg-white border border-slate-200 p-4"><p class="font-mono text-[12px] font-bold text-cyan-700">02 · Resa</p><h3 class="mt-1 font-display font-extrabold">Y sul tetto</h3><p class="mt-1 text-[13px] leading-5 text-slate-600">Zona, orientamento, ombre e falda compongono Y.</p></article>
+      <article class="rounded-2xl bg-white border border-slate-200 p-4"><p class="font-mono text-[12px] font-bold text-emerald-700">03 · Taglia</p><h3 class="mt-1 font-display font-extrabold">kWp e moduli</h3><p class="mt-1 text-[13px] leading-5 text-slate-600">I kWp sono C diviso Y. I moduli seguono la potenza scelta.</p></article>
+      <article class="rounded-2xl bg-white border border-slate-200 p-4"><p class="font-mono text-[12px] font-bold text-amber-700">04 · Ritorno</p><h3 class="mt-1 font-display font-extrabold">Euro e anni</h3><p class="mt-1 text-[13px] leading-5 text-slate-600">Il profilo dà l'autoconsumo e l'accumulo. Poi prezzo e costo: risparmio e anni.</p></article>
+    </section>
+
+    <nav class="mt-6" aria-label="Servizi e pagine">
+      <a href="index.html" class="flex min-h-[168px] flex-col justify-center rounded-2xl border-2 border-amber-400 bg-amber-50 px-6 py-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+        <h3 class="font-display text-[32px] font-extrabold leading-none text-slate-950">Home</h3>
+        <p class="mt-2 text-[15px] leading-6 text-slate-600">È la porta del sito: da qui si arriva al simulatore e a queste formule.</p>
+      </a>
+      <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <a href="consulenza-impianto-fv.html" class="flex h-[112px] flex-col rounded-2xl border border-slate-200 bg-white p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+          <h3 class="font-display text-[16px] font-extrabold leading-5 text-slate-950">Consulenza Impianto FV</h3>
+          <p class="mt-1 text-[13px] leading-5 text-slate-600">Perizia scientifica e simulazione.</p>
+        </a>
+        <a href="riprese-drone-professionali.html" class="flex h-[112px] flex-col rounded-2xl border border-slate-200 bg-white p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+          <h3 class="font-display text-[16px] font-extrabold leading-5 text-slate-950">Riprese con Droni Professionali</h3>
+          <p class="mt-1 text-[13px] leading-5 text-slate-600">Video 4K e ispezione coperture.</p>
+        </a>
+        <a href="landing-page-ai-seedelisa.html" class="flex h-[112px] flex-col rounded-2xl border border-slate-200 bg-white p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+          <h3 class="font-display text-[16px] font-extrabold leading-5 text-slate-950">Landing Page e AI</h3>
+          <p class="mt-1 text-[13px] leading-5 text-slate-600">Online-to-Offline e Voice Care.</p>
+        </a>
+        <a href="inaugurazione-green.html" class="flex h-[112px] flex-col rounded-2xl border border-slate-200 bg-white p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+          <h3 class="font-display text-[16px] font-extrabold leading-5 text-slate-950">Inaugurazione Green</h3>
+          <p class="mt-1 text-[13px] leading-5 text-slate-600">Eventi e educazione ambientale.</p>
+        </a>
+        <a href="simulatore-2.html" class="flex h-[112px] flex-col rounded-2xl border border-slate-200 bg-white p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+          <h3 class="font-display text-[16px] font-extrabold leading-5 text-slate-950">Simulatore</h3>
+          <p class="mt-1 text-[13px] leading-5 text-slate-600">Stima taglia, resa e risparmio.</p>
+        </a>
+        <a href="green-games.html" class="flex h-[112px] flex-col rounded-2xl border border-slate-200 bg-white p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+          <h3 class="font-display text-[16px] font-extrabold leading-5 text-slate-950">Green Games</h3>
+          <p class="mt-1 text-[13px] leading-5 text-slate-600">Sfida 1 vs 1 sull'energia.</p>
+        </a>
+        <a href="significato-del-logo.html" class="flex h-[112px] flex-col rounded-2xl border border-slate-200 bg-white p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+          <h3 class="font-display text-[16px] font-extrabold leading-5 text-slate-950">Significato del Logo</h3>
+          <p class="mt-1 text-[13px] leading-5 text-slate-600">Marchio e significato del logo.</p>
+        </a>
+        <a href="chi-siamo.html" class="flex h-[112px] flex-col rounded-2xl border border-slate-200 bg-white p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+          <h3 class="font-display text-[16px] font-extrabold leading-5 text-slate-950">Chi Siamo</h3>
+          <p class="mt-1 text-[13px] leading-5 text-slate-600">Dario Bonaldo, consulente energetico.</p>
+        </a>
+      </div>
+    </nav>
+
+    <section class="mt-6 rounded-2xl bg-slate-950 text-white p-5 lg:p-6 grid lg:grid-cols-[1.1fr_.9fr] gap-4 items-end">
+      <div>
+        <h2 class="font-display text-[24px] font-extrabold">Documento</h2>
+        <p class="mt-1 text-[14px] leading-6 text-slate-300">L'anteprima resta in questa pagina. Il PDF si scarica solo dopo nome ed email: resta sul dispositivo e non viene inviato.</p>
+      </div>
+      <form id="pdfForm" class="grid sm:grid-cols-2 gap-2">
+        <label class="text-[12px] font-semibold text-slate-300">Nome<input id="pdfName" name="nome" required autocomplete="name" class="mt-1 w-full rounded-xl bg-white/10 px-3 py-2 text-[14px] font-normal text-white" placeholder="Il tuo nome"></label>
+        <label class="text-[12px] font-semibold text-slate-300">Email<input id="pdfMail" name="email" type="email" required autocomplete="email" class="mt-1 w-full rounded-xl bg-white/10 px-3 py-2 text-[14px] font-normal text-white" placeholder="nome@email.it"></label>
+        <button type="submit" class="sm:col-span-2 h-11 rounded-xl bg-amber-400 font-bold text-slate-950">Scarica il PDF</button>
+      </form>
+      <p id="pdfMsg" class="lg:col-span-2 hidden text-[14px] font-semibold text-emerald-300" role="status"></p>
+    </section>
+    </div>
+  </div>
+  </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function () {
+  var EXAMPLE = {
+    zona: "Nord Italia (1.150 kWh/kWp)", spesa: "140 €/mese", kwh: "400 kWh/mese · 13375 kWh/anno",
+    profilo: "Famiglia Fuori Casa / Pendolari",
+    carichi: "Auto 12.000 km (1.920 kWh), Pompa 4 kW (6.400 kWh), Induzione 7 pasti (255 kWh)",
+    autoKm: "12.000 km", autoKwh: "1.920 kWh/anno", pompaKw: "4 kW", pompaKwh: "6.400 kWh/anno",
+    pasti: "7 pasti/settimana", indKwh: "255 kWh/anno", orientamento: "Sud-Est / Sud-Ovest (90%)",
+    ombre: "0% · Piano sole", ottimizzatori: "Auto · Analisi suggerita", inclinazione: "22°",
+    modulo: "0,48 kWp", kwp: "12,8 kWp", accumulo: "25,0 kWh", produzione: "13357 kWh",
+    autoconsumo: "76%", risparmio: "3845 €", payback: "5,7 anni",
+    costo: "21.760 €", euroKwp: "1.700 €/kWp", autosufficienza: "76%", tir: "16,9%",
+    taglio: "Pannelli 12,8 kWp + Batterie 25,0 kWh",
+    moduli: "27", superficie: "52,7 mq",
+    ammort: "L'ammortamento è rapido: il rientro è breve e il TIR è alto."
+  };
+  try {
+    var raw = sessionStorage.getItem("seedelioSim");
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (parsed && parsed.spesa && parsed.kwp) {
+        document.querySelectorAll("[data-k]").forEach(function (el) {
+          var k = el.getAttribute("data-k");
+          if (parsed[k]) el.textContent = parsed[k];
+        });
+        var badge = document.getElementById("simBadge");
+        if (badge) {
+          badge.textContent = "Dalla tua simulazione";
+          badge.className = "rounded-full bg-emerald-100 px-3 py-1 text-[12px] font-bold text-emerald-800";
+        }
+        var note = document.getElementById("simNote");
+        if (note) note.textContent = "Verdetto e numeri portati dal simulatore in questa sessione del browser. Il metodo è di SeedElio, firmato da Dario Bonaldo.";
+        if (parsed.detrazione === "sottratta" || parsed.detrazione === "non sottratta") {
+          var deductApplied = parsed.detrazione === "sottratta";
+          document.querySelectorAll(".js-deduct").forEach(function (el) {
+            el.textContent = deductApplied ? "Detrazione 50% sottratta" : "Detrazione 50% non sottratta";
+            el.classList.toggle("is-off", !deductApplied);
+            el.classList.toggle("is-on", deductApplied);
+          });
+        }
+      }
+    }
+  } catch (err) {}
+
+  function plain(s) {
+    return String(s).replace(/•/g, "-").replace(/–|—/g, "-").replace(/[‘’]/g, "'").replace(/[“”]/g, '"');
+  }
+  function toData(src) {
+    return fetch(src).then(function (r) { return r.blob(); }).then(function (blob) {
+      return new Promise(function (res, rej) {
+        var fr = new FileReader();
+        fr.onload = function () { res(fr.result); };
+        fr.onerror = rej;
+        fr.readAsDataURL(blob);
+      });
+    });
+  }
+  document.getElementById("pdfForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var msg = document.getElementById("pdfMsg");
+    var nome = document.getElementById("pdfName").value.trim();
+    var mail = document.getElementById("pdfMail").value.trim();
+    msg.classList.remove("hidden");
+    if (!window.jspdf) {
+      msg.textContent = "Il PDF non è disponibile in questo momento. Riprova tra poco.";
+      return;
+    }
+    msg.textContent = "Preparo il PDF…";
+    var doc = new window.jspdf.jsPDF({ unit: "mm", format: "a4" });
+    var pageH = doc.internal.pageSize.getHeight();
+    function header() {
+      doc.setFillColor(11, 18, 32);
+      doc.rect(0, 0, 210, 16, "F");
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(11);
+      doc.text("SeedElio  ·  VERDETTO e REPORT", 14, 10);
+    }
+    function need(h) { if (y + h > pageH - 16) { doc.addPage(); header(); y = 24; } }
+    header();
+    var y = 24;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.setTextColor(15, 23, 42);
+    doc.text(plain("VERDETTO e REPORT  ·  " + nome), 14, y); y += 6;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(71, 85, 105);
+    doc.text(plain(mail + "  ·  resta sul dispositivo, non viene inviata"), 14, y); y += 8;
+    var keys = ["zona","spesa","kwh","profilo","carichi","orientamento","ombre","ottimizzatori","inclinazione","modulo","kwp","accumulo","produzione","autoconsumo","autosufficienza","risparmio","payback","costo","euroKwp","taglio","tir","autoKm","autoKwh","pompaKw","pompaKwh","pasti","indKwh"];
+    var labels = { zona:"Zona", spesa:"Spesa", kwh:"kWh", profilo:"Profilo", carichi:"Carichi", orientamento:"Orientamento", ombre:"Ombre", ottimizzatori:"Ottimizzatori", inclinazione:"Inclinazione", modulo:"Modulo", kwp:"kWp", accumulo:"Accumulo", produzione:"Produzione", autoconsumo:"Autoconsumo", autosufficienza:"Autosufficienza", risparmio:"Risparmio", payback:"Payback", costo:"Costo", euroKwp:"€/kWp", taglio:"Taglio", tir:"TIR", autoKm:"Auto km", autoKwh:"Auto kWh", pompaKw:"Pompa kW", pompaKwh:"Pompa kWh", pasti:"Pasti", indKwh:"Induzione" };
+    var live = {};
+    document.querySelectorAll("[data-k]").forEach(function (el) { live[el.getAttribute("data-k")] = el.textContent.trim(); });
+    toData("img/home-anteprima.png").catch(function () { return null; }).then(function (img) {
+      if (img) {
+        var prop = doc.getImageProperties(img);
+        var iw = 182, ih = Math.min(70, iw * prop.height / prop.width);
+        need(ih + 8);
+        doc.addImage(img, "PNG", 14, y, iw, ih);
+        y += ih + 6;
+      }
+      keys.forEach(function (k) {
+        need(8);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(100, 116, 139);
+        doc.text(labels[k], 14, y);
+        doc.setTextColor(15, 23, 42);
+        var val = doc.splitTextToSize(plain(live[k] || EXAMPLE[k] || ""), 120);
+        doc.text(val, 52, y);
+        y += 5 * val.length;
+      });
+      y += 4;
+      need(12);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(12);
+      doc.setTextColor(15, 23, 42);
+      doc.text("Formule e coefficienti", 14, y); y += 7;
+      document.querySelectorAll("[data-formula]").forEach(function (art) {
+        var name = art.querySelector("[data-fname]").textContent.trim();
+        var expr = art.querySelector("[data-fexpr]").textContent.trim();
+        var why = art.querySelector("[data-fwhy]").textContent.trim();
+        need(18);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(15, 23, 42);
+        doc.text(plain(name), 14, y);
+        doc.setFont("courier", "bold");
+        doc.setTextColor(146, 64, 14);
+        var ex = doc.splitTextToSize(plain(expr), 110);
+        doc.text(ex, 70, y);
+        y += Math.max(5, 5 * ex.length);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(71, 85, 105);
+        var lines = doc.splitTextToSize(plain(why), 180);
+        doc.text(lines, 14, y);
+        y += 5 * lines.length + 3;
+      });
+      var n = doc.internal.getNumberOfPages();
+      for (var i = 1; i <= n; i++) {
+        doc.setPage(i);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8);
+        doc.setTextColor(100, 116, 139);
+        doc.text("SeedElio  ·  Dario Bonaldo  ·  " + i + " / " + n, 14, pageH - 8);
+      }
+      doc.save("formule-simulatore-seedelio.pdf");
+      msg.textContent = "PDF scaricato su questo dispositivo. L'email non è stata inviata.";
+    }).catch(function () {
+      msg.textContent = "Non sono riuscito a comporre il PDF. Riprova.";
+    });
+  });
+})();
+</script>
+
+'''
+<!-- FOOTER -->
+<style>
+  footer .text-\[16px\] { font-size: 19.2px; }
+  footer .text-\[12px\] { font-size: 14.4px; }
+  footer .text-\[11px\] { font-size: 13.2px; line-height: 16px; }
+  footer .text-\[10px\] { font-size: 12px; line-height: 16px; }
+  footer .text-\[9\.5px\] { font-size: 11.4px; line-height: 14px; }
+  footer .text-\[9px\] { font-size: 10.8px; line-height: 16px; }
+  footer .leading-\[18\.3px\] { line-height: 21.96px; }
+  footer .leading-\[18\.4px\] { line-height: 22.08px; }
+  footer .leading-\[15px\] { line-height: 18px; }
+  footer .leading-4 { line-height: 19.2px; }
+  footer [class~="w-[132px]"] { width: 146px; }
+  footer [class~="w-[37px]"] { width: 44px; }
+  footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+<footer class="bg-slate-950 border-t border-slate-800 text-slate-400">
+  <div class="max-w-7xl mx-auto px-8 pt-16 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="relative mt-[7px] h-[26px] flex items-start">
+          <div class="logo-line w-[132px] border-t border-slate-400/70 h-[26px] overflow-hidden relative">
+            <svg class="logo-mark absolute left-[8px] top-0" viewBox="69 70 101 45" width="47.5" height="21.2"><path class="seed s1" d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path class="seed s2" d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path class="seed s3" d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></svg>
+            <span class="absolute left-[64px] top-[4px] text-[16px] font-semibold text-white leading-none tracking-tight">SeedElio</span>
+          </div>
+          <span class="ml-[11px] mt-px font-mono text-[12px] font-bold text-cyan-400 bg-cyan-500/20 border border-cyan-500/30 rounded-md w-[37px] h-[23px] flex items-center justify-center">.AI</span>
+        </div>
+        <p class="mt-[17px] text-[11px] leading-[18.3px] text-slate-400">Piattaforma etica e indipendente di consulenza scientifica sul fotovoltaico residenziale e commerciale. Dal 2010 al fianco di famiglie e imprese.</p>
+        <div class="mt-auto border-t border-slate-800 pt-[11px] space-y-2 text-[11px] font-bold">
+          <a href="chi-siamo.html" class="flex items-center gap-[7px] h-4 text-amber-400"><svg class="ico text-[11px]" style="width:0.875em"><use href="#i-user-tie"/></svg>Chi Siamo (Dario Bonaldo)</a>
+          <a href="significato-del-logo.html" class="flex items-center gap-[7px] h-4 text-emerald-400"><svg class="ico text-[11px]"><use href="#i-leaf"/></svg>Significato Marchio &amp; Logo</a>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[14px] box-content pb-[9px] border-b border-slate-800"><span class="font-mono text-[10px] font-bold tracking-[0.1em] text-amber-400">SERVIZI E TOOL</span><span class="font-mono text-[9.5px] text-slate-500">SeedElio</span></div>
+        <ul class="mt-[12px] space-y-[6px] text-[11px] text-slate-400">
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-amber-500/20 border border-amber-500/25 text-amber-400 text-[10px] font-bold flex items-center justify-center">1</span>Consulenza Impianto FV</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-blue-500/20 border border-blue-500/25 text-blue-300 text-[10px] font-bold flex items-center justify-center">2</span>Riprese Drone 4K</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-cyan-500/20 border border-cyan-500/25 text-cyan-300 text-[10px] font-bold flex items-center justify-center">3</span>Landing Page &amp; AI</li>
+          <li class="flex items-center gap-[5px] h-[22px]"><span class="w-[22px] h-[22px] rounded-md bg-emerald-500/20 border border-emerald-500/25 text-emerald-300 text-[10px] font-bold flex items-center justify-center">4</span>Inaugurazione Green</li>
+        </ul>
+        <div class="mt-[10px] border-t border-slate-800"></div>
+        <ul class="mt-[10px] space-y-[6px] text-[11px] font-bold text-slate-200">
+                    <li><a href="simulatore-2.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-amber-400 text-[11px]" style="width:0.875em"><use href="#i-bolt"/></svg></span>Tool 1: Simulatore Energetico</a></li>
+          <li><a href="glossario-tecnico-fotovoltaico.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-cyan-400 text-[11px]" style="width:0.875em" viewBox="0 0 448 512" aria-hidden="true"><path d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l288 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0 0-32 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l32 0 0-320c0-53-43-96-96-96L96 0zM64 96c0-17.7 14.3-32 32-32l256 0c17.7 0 32 14.3 32 32l0 224-32 0c-35.3 0-64 28.7-64 64l-224 0 0-288z"/></svg></span>Tool 2: Glossario</a></li>
+          <li><a href="libretto_impianto_fotovoltaico_a3_seedelio_ai_v002.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-violet-400 text-[11px]" style="width:0.875em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true"><path d="M8 4h6v4h4v12H8V4z"/><path d="M14 4v4h4"/><path d="M10 10h5M10 13h5M10 16h3"/></svg></span>Tool 3: Diario FV</a></li>
+          <li><a href="green-games.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-emerald-400 text-[11px]" style="width:1.25em"><use href="#i-gamepad"/></svg></span>Tool 4: Green Games (1 vs 1)</a></li>
+        </ul>
+        <div class="mt-auto border-t border-slate-800 pt-[13px] flex gap-[4px] font-mono text-[9px] leading-[15px] text-slate-500"><svg class="ico text-amber-400 text-[11px] mt-[2px]"><use href="#i-shield-halved"/></svg><span>Metodo Preliminare Senza Vincoli</span></div>
+      </div>
+
+      <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[14px] box-content pb-[9px] border-b border-slate-800"><span class="font-mono text-[10px] font-bold tracking-[0.1em] text-cyan-400 whitespace-nowrap">PAGINE</span><span class="font-mono text-[9.5px] text-slate-500">Mappa</span></div>
+        <ul class="mt-[10px] space-y-[6px] text-[11px] text-slate-400">
+          <li><a href="index.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]"><use href="#i-house"/></svg></span>Home</a></li>
+          <li><a href="#" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.125em"><use href="#i-solar-panel"/></svg></span>Consulenza Impianto FV</a></li>
+          <li><a href="#" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.125em"><use href="#i-helicopter"/></svg></span>Riprese Drone</a></li>
+          <li><a href="landing-page-ai-seedelisa.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:0.875em"><use href="#i-headset"/></svg></span>Landing Page &amp; AI</a></li>
+          <li><a href="inaugurazione-green.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:1.25em"><use href="#i-champagne-glasses"/></svg></span>Inaugurazione Green</a></li>
+          <li><a href="significato-del-logo.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]"><use href="#i-leaf"/></svg></span>Significato del Logo</a></li>
+          <li><a href="chi-siamo.html" class="flex items-center gap-[5px] h-4"><span class="w-[13px] flex justify-center shrink-0"><svg class="ico text-slate-500 text-[11px]" style="width:0.875em"><use href="#i-user"/></svg></span>Chi Siamo (Dario Bonaldo)</a></li>
+        </ul>
+        <div class="mt-auto border-t border-slate-800 pt-2 font-mono text-[9.5px] font-bold text-cyan-400 flex items-center gap-1.5 h-[17px] box-content"><svg class="ico text-[10px]" style="width:0.875em"><use href="#i-check"/></svg>Navigazione Istantanea</div>
+      </div>
+
+      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex flex-col">
+        <div class="flex items-center justify-between h-[22px] box-content pb-px border-b border-slate-800">
+          <span class="font-mono text-[10px] font-bold tracking-[0.1em] text-amber-400 flex items-center gap-1.5"><svg class="ico text-[11px]" style="width:0.875em"><use href="#i-headset"/></svg>SEEDELISA AI</span>
+          <span class="font-mono text-[9px] font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-600/40 rounded-full px-2.5 h-[22px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>24/7</span>
+        </div>
+        <h4 class="mt-3 text-[12px] font-bold text-white leading-4">SeedElisa, assistente AI</h4>
+        <p class="mt-2 text-[11px] leading-[18.4px] text-slate-400">Assistente ufficiale di <b class="font-bold text-slate-300">SeedElio.AI</b>, 24/7.</p>
+        <div class="mt-3 space-y-2 text-[11px] leading-4 text-slate-300">
+          <div class="flex gap-2"><span class="w-[20px] h-[20px] rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-400 text-[10px] font-bold flex items-center justify-center shrink-0">1</span><p><b class="font-bold text-white">Risponde</b> su servizi e fotovoltaico.</p></div>
+          <div class="flex gap-2"><span class="w-[20px] h-[20px] rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold flex items-center justify-center shrink-0">2</span><p><b class="font-bold text-white">Web conference gratuita</b> con <b class="font-bold text-white">Dario.</b></p></div>
+        </div>
+        <div class="mt-auto border-t border-slate-800 pt-3 font-mono text-[9px] text-emerald-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-800 inline-block"></span>Risposta Telefonica Immediata</div>
+      </div>
+
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var DESIGN_W = 1620;
+    function fit() {
+      var w = window.innerWidth;
+      document.documentElement.style.zoom = (w >= 1024 && w < DESIGN_W) ? (w / DESIGN_W) : 1;
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+</script>
+<div id="callModal" class="fixed inset-0 z-[80] hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="callTitle">
+  <div class="absolute inset-0 bg-[#020617]/75 backdrop-blur-sm" data-call-overlay></div>
+  <div class="relative z-10 flex min-h-full items-center justify-center p-4" data-call-overlay>
+    <div data-call-card class="w-full max-w-[540px] rounded-[24px] bg-white shadow-2xl px-5 pt-3.5 pb-3.5">
+      <div class="flex items-start gap-2">
+        <span class="w-9 h-9 shrink-0 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center" aria-hidden="true"><svg class="ico" style="width:1.05em"><use href="#i-headset"/></svg></span>
+        <div class="min-w-0 flex-1 pt-px">
+          <div class="flex items-center gap-2">
+            <h2 id="callTitle" class="text-[16px] leading-5 font-bold text-slate-900">Parla con SeedElisa AI</h2>
+            <span class="ml-auto inline-flex h-6 shrink-0 items-center gap-1 rounded-full bg-[#0d3d34] pl-1.5 pr-2 text-[12px] font-semibold leading-none text-white"><span class="h-[7px] w-[7px] rounded-full bg-emerald-400 animate-blink motion-reduce:animate-none" aria-hidden="true"></span>Live &amp; Attivo 24/7</span>
+          </div>
+          <p class="mt-px text-[12px] leading-4 font-semibold text-[#159c73]">Attiva e pronta 24/7</p>
+        </div>
+        <button type="button" id="callClose" aria-label="Chiudi" class="-mr-1 shrink-0 w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
+          <svg class="ico" viewBox="0 0 384 512" style="width:0.85em" aria-hidden="true"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </button>
+      </div>
+      <div class="mt-2 border-t border-slate-200"></div>
+      <figure class="mt-2 flex justify-center rounded-2xl bg-[#e7eef6] px-2 pb-2 pt-4">
+        <div class="flex w-full items-center justify-center gap-4">
+          <div class="relative shrink-0">
+            <img src="img/famiglia-v5-famiglia.png" alt="Famiglia con la bolletta da 486 euro: Che cifra, Il fotovoltaico ci può aiutare" width="1244" height="704" class="h-[137px] w-auto">
+          </div>
+          <span class="flex h-14 w-[4.25rem] shrink-0 items-center justify-center gap-0.5 rounded-2xl bg-amber-400 text-slate-950 shadow-md" aria-label="Telefono"><svg class="ico" style="width:1.15em" aria-hidden="true"><use href="#i-phone"/></svg><svg class="ico" viewBox="0 0 24 24" style="width:0.9em" aria-hidden="true"><path d="M5 11h11.2l-3.6-3.6L14 6l6 6-6 6-1.4-1.4 3.6-3.6H5z"/></svg></span>
+          <div class="relative shrink-0">
+            <img src="img/famiglia-v5-seedelisa.png" alt="SeedElisa con la spilla" width="502" height="706" class="h-[186px] w-auto object-contain">
+            <span class="absolute top-[22%] -right-1.5 inline-flex h-6 items-center rounded-[5px] border border-cyan-300 bg-white px-1.5 font-mono text-[12px] font-bold leading-none text-cyan-700 animate-aiBlink motion-reduce:animate-none">AI</span>
+          </div>
+        </div>
+      </figure>
+      <div class="mt-2">
+        <p class="text-[13.5px] leading-5 font-semibold text-slate-800">Con la chiamata succede questo:</p>
+        <div class="mt-1 space-y-1 text-[13px] leading-5 text-slate-600">
+          <div class="flex items-start gap-2"><span class="w-[18px] h-[18px] rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-700 text-[10px] font-bold flex items-center justify-center shrink-0">1</span><p><b class="font-bold text-slate-800">Risponde alle domande</b> sul mondo del fotovoltaico.</p></div>
+          <div class="flex items-start gap-2"><span class="w-[18px] h-[18px] rounded-md bg-emerald-500/20 border border-emerald-500/30 text-emerald-700 text-[10px] font-bold flex items-center justify-center shrink-0">2</span><p><b class="font-bold text-slate-800">Prenota la web conference gratuita</b> con Dario Bonaldo.</p></div>
+        </div>
+      </div>
+      <div class="mt-2 rounded-2xl border border-[#f6e6c4] bg-[#fff8eb] px-3 pt-2 pb-2">
+        <p class="text-center text-[11px] leading-4 font-bold tracking-[0.14em] text-[#9a5b32]">CHIAMATA IMMEDIATA</p>
+        <a href="tel:+39029991481" class="mt-1.5 h-[104px] rounded-xl bg-amber-400 text-slate-950 font-bold text-[16px] flex items-center justify-center gap-2 hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"><svg class="ico" style="width:0.9em" aria-hidden="true"><use href="#i-phone"/></svg>Chiama SeedElisa</a>
+      </div>
+      <p class="mt-2.5 text-[14px] leading-5 font-semibold text-slate-800">Oppure inserisci il numero per farti richiamare adesso:</p>
+      <form id="callBackForm" class="mt-2">
+        <div class="grid grid-cols-2 gap-2">
+          <input name="nome" type="text" autocomplete="name" placeholder="Il tuo nome" aria-label="Il tuo nome" class="w-full h-10 rounded-full border border-slate-200 bg-white px-4 text-[14px] text-slate-800 placeholder:text-slate-400 outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+          <input name="cellulare" type="tel" autocomplete="tel" placeholder="Cellulare" aria-label="Cellulare" class="w-full h-10 rounded-full border border-slate-200 bg-white px-4 text-[14px] text-slate-800 placeholder:text-slate-400 outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+        </div>
+        <button type="submit" class="mt-2 w-full h-10 rounded-xl bg-slate-950 text-white font-bold text-[14px] hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">Fatti Richiamare da SeedElisa AI</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var modal = document.getElementById('callModal');
+    var openBtn = document.querySelector('header a.group');
+    var closeBtn = document.getElementById('callClose');
+    var form = document.getElementById('callBackForm');
+    if (!modal || !openBtn || !closeBtn || !form) return;
+    var last = null, prevOverflow = '';
+    function nodes() {
+      return Array.prototype.filter.call(modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])'), function (el) {
+        return el.offsetWidth || el.offsetHeight || el.getClientRects().length;
+      });
+    }
+    function open() {
+      last = document.activeElement;
+      prevOverflow = document.body.style.overflow;
+      modal.classList.remove('hidden');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function close() {
+      if (modal.classList.contains('hidden')) return;
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = prevOverflow;
+      if (last && last.focus) last.focus();
+    }
+    openBtn.addEventListener('click', function (e) { e.preventDefault(); open(); });
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (!e.target.closest('[data-call-card]')) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;
+      var list = nodes();
+      if (!list.length) return;
+      var first = list[0], lastEl = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastEl.focus(); }
+      else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); first.focus(); }
+    });
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+  })();
+</script>
+</body>
+</html>

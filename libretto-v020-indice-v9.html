@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Libretto dell’impianto fotovoltaico — Indice · SeedElio.ai</title>
+<meta name="viewport" content="width=794">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    background: #14532d;
+  }
+  body { font-family: "Outfit", system-ui, sans-serif; color: #14532d; }
+  .page {
+    position: relative;
+    width: 794px;
+    height: 1123px;
+    overflow: hidden;
+    background: #f4f7f2;
+  }
+  .stage {
+    display: grid;
+    grid-template-columns: 400px 394px;
+    height: 1077px;
+  }
+
+  .col-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 26px 18px 12px 24px;
+    background:
+      radial-gradient(460px 340px at 88% -8%, rgba(255, 214, 110, .62), rgba(255, 214, 110, 0) 62%),
+      radial-gradient(380px 280px at 0% 100%, rgba(120, 190, 130, .28), rgba(120, 190, 130, 0) 70%),
+      linear-gradient(180deg, #eef9f0 0%, #d9f3de 46%, #c8ebcf 100%);
+  }
+  .kicker {
+    font: 700 11px/1 "JetBrains Mono", monospace;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #166534;
+  }
+  h1 {
+    margin-top: 10px;
+    font: 800 44px/0.9 "Outfit", sans-serif;
+    letter-spacing: -.045em;
+    color: #14532d;
+  }
+  .lisa {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 0;
+  }
+  .lisa img {
+    display: block;
+    width: 360px;
+    height: auto;
+    filter: drop-shadow(0 14px 12px rgba(20, 60, 30, .2));
+  }
+
+  .col-right {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: #f7f8f4;
+  }
+  .voce {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 148px minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 12px 14px 12px 14px;
+    text-decoration: none;
+    color: #14532d;
+    border-bottom: 1px solid rgba(20, 83, 45, .1);
+  }
+  .voce:last-child { border-bottom: 0; }
+  .voce:nth-child(1) { background: #ffffff; }
+  .voce:nth-child(2) { background: #f3faf5; }
+  .voce:nth-child(3) { background: #ffffff; }
+  .voce:nth-child(4) { background: #fff8ec; }
+  .thumb {
+    height: 100%;
+    max-height: 236px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #e7f0ea;
+    box-shadow: 0 10px 18px rgba(22, 55, 30, .14);
+  }
+  .thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .casa { object-position: 10% 62%; }
+  .reception { object-position: 72% 48%; }
+  .grafico { object-position: 96% 40%; }
+  .famiglia { object-position: 40% 50%; }
+  .copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    gap: 3px;
+  }
+  .num {
+    font: 800 44px/.85 "Outfit", sans-serif;
+    letter-spacing: -.05em;
+  }
+  .v2 .num { color: #15803d; }
+  .v3 .num { color: #0e7490; }
+  .v4 .num { color: #166534; }
+  .v5 .num { color: #b45309; }
+  .t {
+    font: 800 18px/1.12 "Outfit", sans-serif;
+    letter-spacing: -.02em;
+  }
+  .d {
+    font: 500 12.5px/1.28 "Outfit", sans-serif;
+    color: #3d6849;
+  }
+  .pag {
+    margin-top: 7px;
+    font: 700 11px/1 "JetBrains Mono", monospace;
+    letter-spacing: .02em;
+    color: #14532d;
+    background: #fbbf24;
+    border-radius: 999px;
+    padding: 5px 9px;
+  }
+
+  footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 794px;
+    height: 46px;
+    background: #14532d;
+    color: #ecfdf5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px 0 24px;
+  }
+  .brand {
+    font: 700 15px/1 "Outfit", sans-serif;
+    letter-spacing: -.01em;
+  }
+  .brand span { color: #fbbf24; }
+  .mid {
+    font: 700 13px/1 "JetBrains Mono", monospace;
+    letter-spacing: .08em;
+    color: #14532d;
+    background: #fbbf24;
+    border-radius: 999px;
+    padding: 6px 14px;
+  }
+  .ver {
+    font: 500 12px/1 "JetBrains Mono", monospace;
+    letter-spacing: .04em;
+    color: #bbf7d0;
+  }
+
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      margin: 0;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+    }
+  }
+</style>
+</head>
+<body>
+<main class="page" id="lib-page-1">
+  <div class="stage">
+    <aside class="col-left">
+      <p class="kicker">Indice</p>
+      <h1>Libretto<br>dell’impianto<br>fotovoltaico</h1>
+      <div class="lisa">
+        <img src="img/seedelisa-landing.png" alt="SeedElisa a figura intera" width="523" height="1203">
+      </div>
+    </aside>
+    <nav class="col-right" aria-label="Indice del libretto">
+      <a class="voce v2" href="#lib-page-2">
+        <span class="thumb"><img class="casa" src="img/voice-resa.png" alt="Casa con impianto fotovoltaico al sole"></span>
+        <span class="copy">
+          <span class="num">02</span>
+          <span class="t">Scheda dell’impianto</span>
+          <span class="d">Ubicazione, potenza nominale e parametri chiave</span>
+          <span class="pag">pag. 2</span>
+        </span>
+      </a>
+      <a class="voce v3" href="#lib-page-3">
+        <span class="thumb"><img class="reception" src="img/o2o-targa.png" alt="Reception con targa e banco accoglienza"></span>
+        <span class="copy">
+          <span class="num">03</span>
+          <span class="t">Elementi dell’impianto</span>
+          <span class="d">Moduli, inverter, quadri e protezioni</span>
+          <span class="pag">pag. 3</span>
+        </span>
+      </a>
+      <a class="voce v4" href="#lib-page-4">
+        <span class="thumb"><img class="grafico" src="img/voice-resa.png" alt="Grafico della produzione solare"></span>
+        <span class="copy">
+          <span class="num">04</span>
+          <span class="t">Azienda installatrice</span>
+          <span class="d">Referenti, contatti e certificazioni</span>
+          <span class="pag">pag. 4</span>
+        </span>
+      </a>
+      <a class="voce v5" href="#lib-page-5">
+        <span class="thumb"><img class="famiglia" src="img/inaugurazione-1-1.png" alt="Famiglia in luce diurna"></span>
+        <span class="copy">
+          <span class="num">05</span>
+          <span class="t">Diario FV</span>
+          <span class="d">Produzione, manutenzione e memoria trentennale</span>
+          <span class="pag">pag. 5</span>
+        </span>
+      </a>
+    </nav>
+  </div>
+  <footer>
+    <p class="brand">SeedElio<span>.ai</span></p>
+    <p class="mid">1 / 5</p>
+    <p class="ver">Libretto v020</p>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diploma e report | Green Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #e7efe8;
+    color: #0f172a;
+    font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+  }
+  a { color: inherit; }
+  .site-chrome {
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .site-bar {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand { font-family: "Source Serif 4", Georgia, serif; font-size: 22px; font-weight: 700; text-decoration: none; }
+  nav { display: flex; gap: 16px; font-size: 14px; font-weight: 700; }
+  nav a { text-decoration: none; }
+  nav a:hover { color: #b45309; }
+  footer.site-chrome { border-bottom: 0; border-top: 1px solid #1e293b; background: #020617; color: #94a3b8; }
+  footer .site-bar { font-size: 13px; }
+  main { max-width: 920px; margin: 0 auto; padding: 28px 20px 48px; }
+  .diploma {
+    position: relative;
+    width: min(100%, 190mm);
+    min-height: 267mm;
+    margin: 0 auto;
+    padding: 18mm 14mm 14mm;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(251,191,36,.35), transparent 28%),
+      radial-gradient(circle at 90% 92%, rgba(16,185,129,.22), transparent 26%),
+      #fffaf0;
+    border: 10px solid #14532d;
+    outline: 4px solid #fbbf24;
+    outline-offset: -16px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, .16);
+    overflow: hidden;
+  }
+  .ribbon {
+    position: absolute;
+    top: 22px;
+    right: -70px;
+    width: 320px;
+    padding: 8px 0;
+    background: #fbbf24;
+    color: #1c1408;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-align: center;
+    transform: rotate(32deg);
+  }
+  .ribbon span {
+    display: inline-block;
+    transform: translateX(17px);
+  }
+  .kicker {
+    margin: 0;
+    color: #b45309;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 8px 0 0;
+    max-width: 15ch;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 42px;
+    line-height: .95;
+    font-weight: 700;
+  }
+  .lead { margin: 12px 0 0; max-width: 62ch; font-size: 16px; line-height: 1.45; }
+  .who {
+    display: grid;
+    grid-template-columns: 92px 1fr 92px;
+    gap: 14px;
+    align-items: end;
+    margin-top: 18px;
+  }
+  .who img { display: block; width: 92px; height: 132px; object-fit: contain; object-position: bottom; }
+  .who .dario { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; object-position: center 18%; border: 4px solid #fbbf24; justify-self: end; }
+  .name {
+    margin: 0;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 28px;
+    line-height: 1.2;
+    border-bottom: 2px solid #14532d;
+    padding-bottom: 4px;
+  }
+  .nick { margin: 6px 0 0; font-size: 14px; color: #334155; }
+  .games-kicker { margin: 20px 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #14532d; }
+  .games { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .games li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 64px;
+    padding: 8px 10px;
+    background: #fff;
+    border: 2px dashed #86efac;
+    border-radius: 16px;
+  }
+  .games img { width: 44px; height: 44px; object-fit: contain; }
+  .games b { display: block; font-size: 15px; line-height: 1.2; }
+  .games span { display: block; font-size: 12px; color: #475569; }
+  .foot {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .faces { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .faces li { text-align: center; width: 52px; }
+  .faces img { width: 44px; height: 44px; object-fit: contain; }
+  .faces span { display: block; font-size: 9px; font-weight: 700; color: #14532d; }
+  .seal {
+    flex: none;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    border: 6px double #b45309;
+    background: radial-gradient(circle, #fde68a, #fbbf24 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(-8deg);
+    box-shadow: inset 0 0 0 4px rgba(120, 53, 15, .25);
+  }
+  .seal svg { width: 28px; height: 34px; }
+  .seal b { font-size: 11px; letter-spacing: .08em; line-height: 1.15; }
+  .photo-rule {
+    border: 0;
+    border-top: 2px solid #14532d;
+    width: 100%;
+    margin: 16px 0 0;
+  }
+  .photo-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 16px;
+  }
+  .photo-slot { width: 220px; }
+  .photo-box {
+    box-sizing: border-box;
+    width: 100%;
+    height: 160px;
+    border: 2px dashed #14532d;
+    background: #fff;
+  }
+  .photo-note {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .release { margin: 0 0 2px; text-align: right; white-space: nowrap; }
+  .release-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #14532d;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .04em;
+  }
+  .release b {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .report {
+    margin-top: 36px;
+    padding: 28px 8px 8px;
+    border-top: 2px solid #14532d;
+  }
+  .report h2 { margin: 0; font-family: "Source Serif 4", Georgia, serif; font-size: 32px; }
+  .meta { margin: 8px 0 0; font-size: 16px; line-height: 1.45; }
+  .card {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid #d6e3d8;
+    border-radius: 18px;
+  }
+  .card h3 { margin: 0; font-size: 20px; }
+  .card p, .card li { font-size: 15px; line-height: 1.45; }
+  .who-line { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-weight: 700; }
+  .who-line img { width: 36px; height: 36px; object-fit: contain; }
+  @page { size: A4; margin: 10mm; }
+  @media print {
+    header, footer, nav, .site-chrome { display: none !important; }
+    body { background: #fff; }
+    main { max-width: none; margin: 0; padding: 0; }
+    .diploma {
+      width: auto;
+      min-height: 270mm;
+      margin: 0;
+      box-shadow: none;
+      break-after: page;
+      page-break-after: always;
+    }
+    .report { margin-top: 0; border-top: 0; break-before: page; page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="logo" viewBox="69 70 101 45"><path d="M95.3 60.0Q88.9 60.0 88.0 66.3Q87.1 72.6 86.1 75.8Q85.1 79.0 84.5 82.6Q83.9 86.2 83.6 90.8Q83.4 95.4 83.7 97.1Q84.0 98.8 84.6 100.1Q85.1 101.5 87.1 103.8Q89.0 106.0 90.3 106.9Q91.6 107.8 93.5 108.3Q95.4 108.9 99.5 108.9Q103.6 108.9 106.0 108.3Q108.4 107.8 111.1 106.8Q113.9 105.9 117.8 103.8Q121.6 101.8 121.2 100.5Q120.8 99.2 119.9 98.3Q119.0 97.4 118.9 96.8Q118.8 96.2 117.9 95.4Q117.1 94.5 116.9 93.8Q116.8 93.1 116.4 92.8Q116.0 92.4 116.0 91.6Q116.0 90.8 115.5 90.1Q115.0 89.4 115.0 88.5Q115.0 87.6 114.5 87.0Q114.0 86.4 114.0 84.1Q114.0 81.9 113.5 81.1Q113.0 80.4 113.0 78.4Q113.0 76.5 113.5 75.8Q114.0 75.1 114.0 74.2Q114.0 73.4 113.7 72.9Q113.4 72.5 109.9 71.7Q106.5 70.9 104.5 70.9Q102.5 70.9 102.1 65.4Q101.8 60.0 95.3 60.0Z" fill="#f7ee00"/><path d="M138.4 72.0Q137.4 71.9 137.2 72.1Q137.1 72.4 137.4 73.0Q137.8 73.6 137.4 74.2Q137.0 74.9 136.9 75.7Q136.9 76.5 135.8 78.6Q134.8 80.6 133.9 81.5Q133.1 82.4 132.9 83.0Q132.8 83.6 132.4 84.0Q132.0 84.4 131.9 84.9Q131.9 85.4 126.6 90.6Q121.4 95.9 120.7 96.1Q120.0 96.4 119.9 97.3Q119.9 98.2 121.1 99.8Q122.2 101.4 123.5 102.5Q124.8 103.6 126.2 104.6Q127.6 105.6 130.1 106.8Q132.6 108.0 134.5 108.5Q136.4 109.0 139.9 109.0Q143.4 109.0 146.2 108.4Q149.1 107.9 152.1 106.4Q155.1 104.9 157.4 102.6Q159.6 100.2 160.2 99.1Q160.9 97.9 161.3 95.9Q161.8 94.0 161.7 92.8Q161.6 91.5 161.2 90.0Q160.9 88.5 160.3 87.1Q159.8 85.6 158.8 84.0Q157.8 82.4 156.2 80.8Q154.8 79.2 153.2 78.1Q151.8 77.0 148.7 75.5Q145.6 74.0 142.6 73.1Q139.5 72.1 138.4 72.0Z" fill="#29bde6"/><path d="M137.6 72.3Q137.2 71.8 134.8 71.4Q132.4 71.0 132.1 65.5Q131.8 60.0 123.3 60.0Q114.9 60.0 114.4 66.7Q113.9 73.4 113.9 78.4Q113.9 83.4 114.4 83.9Q114.9 84.5 114.9 86.4Q114.9 88.2 115.4 88.9Q115.9 89.5 115.9 90.4Q115.9 91.2 116.4 91.9Q116.9 92.5 116.9 92.9Q116.9 93.2 117.4 93.9Q117.9 94.5 118.0 95.1Q118.1 95.8 118.7 96.3Q119.2 96.9 119.9 96.9Q120.5 96.9 126.6 90.8Q132.8 84.8 132.9 84.1Q133.0 83.4 133.4 82.9Q133.9 82.4 134.0 81.8Q134.1 81.2 134.9 80.4Q135.8 79.5 135.9 78.9Q136.0 78.4 136.9 76.8Q137.9 75.2 137.9 74.1Q138.0 72.9 137.6 72.3Z" fill="#44cd9e"/></symbol></svg>
+<header class="site-chrome">
+  <div class="site-bar">
+    <a class="brand" href="index.html">SeedElio</a>
+    <nav aria-label="Pagine del sito">
+      <a href="green-games.html">Green Games</a>
+      <a href="chi-siamo.html">Chi Siamo</a>
+      <a href="genealogia-seed.html">Genealogia</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <article class="diploma" id="diploma" aria-label="Diploma">
+    <div class="ribbon"><span>Seedelio. AI</span></div>
+    <p class="kicker">Green Games · famiglia SEED</p>
+    <h1>Diploma del seme che non sta fermo</h1>
+    <p class="lead">La famiglia SEED, grembiule bianco e semi in tasca, attesta che qui si è giocato sul serio. Quattro giochetti, zero scuse, e il rubinetto chiuso mentre ci si fa i complimenti.</p>
+    <div class="who">
+      <img src="img/seedelisa-giochi.png" alt="SeedElisa" width="692" height="1236">
+      <div>
+        <p class="name" id="diplomaName">Rilasciato a ________</p>
+        <p class="nick" id="diplomaNick"></p>
+      </div>
+      <img class="dario" src="img/dario-bonaldo.jpg" alt="Dario Bonaldo" width="128" height="128">
+    </div>
+    <p class="games-kicker">I quattro giochetti scelti</p>
+    <ul class="games" id="diplomaGames"></ul>
+    <div class="foot">
+      <ul class="faces" id="diplomaFaces" aria-label="Famiglia SEED"></ul>
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 64 80"><ellipse cx="32" cy="48" rx="14" ry="20" fill="#14532d"/><path d="M32 30c8 8 16 10 20 7" fill="none" stroke="#065f46" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="46" cy="32" rx="9" ry="5" fill="#34d399" transform="rotate(22 46 32)"/></svg>
+        <b>SIGILLO<br>DEL SEME</b>
+      </div>
+    </div>
+    <hr class="photo-rule">
+    <div class="photo-row">
+      <div class="photo-slot">
+        <div class="photo-box" aria-label="Spazio per la foto del giocatore"></div>
+        <p class="photo-note">Inserisci qui la tua foto e conservala per scoprire come sei cambiato nel tempo !</p>
+      </div>
+      <p class="release"><span class="release-label">Data di rilascio</span> <b id="releaseDate">11 novembre 2026</b></p>
+    </div>
+  </article>
+
+  <section class="report" id="report" aria-label="Report finale, dal foglio 2">
+    <h2>Report finale</h2>
+    <p class="meta" id="reportMeta"></p>
+    <div id="reportGames"></div>
+    <div id="reportFamily"></div>
+  </section>
+</main>
+<footer class="site-chrome">
+  <div class="site-bar">SeedElio · Dario Bonaldo, consulente energetico</div>
+</footer>
+<script>
+(function () {
+  var FACES = ["artea", "barret", "eco", "elio", "elisa", "ergia", "gaia", "harta"];
+  var data = null;
+  try { data = JSON.parse(sessionStorage.getItem("seedelioGamesReport") || "null"); } catch (err) { data = null; }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  var name = data && data.nome ? String(data.nome).trim() : "";
+  document.getElementById("diplomaName").textContent = name ? ("Rilasciato a " + name) : "Rilasciato a ________";
+  var nick = data && data.nick ? String(data.nick).trim() : "";
+  document.getElementById("diplomaNick").textContent = nick ? ("in arte " + nick) : "";
+  var games = data && data.games && data.games.length ? data.games : [];
+  var gamesHtml = games.map(function (g) {
+    return "<li><img src=\"" + esc(g.face) + "\" alt=\"\"><div><b>" + esc(g.title) + "</b><span>" + esc(g.who) + " · " + esc(g.score) + "/" + esc(g.max) + " semi</span></div></li>";
+  }).join("");
+  if (!gamesHtml) gamesHtml = "<li><div><b>Quattro giochetti</b><span>Compaiono qui dopo la partita.</span></div></li>";
+  document.getElementById("diplomaGames").innerHTML = gamesHtml;
+  var MONTHS = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+  var released = data && data.released ? new Date(data.released) : null;
+  document.getElementById("releaseDate").textContent = released && !isNaN(released.getTime())
+    ? (released.getDate() + " " + MONTHS[released.getMonth()] + " " + released.getFullYear())
+    : "11 novembre 2026";
+  document.getElementById("diplomaFaces").innerHTML = FACES.map(function (id) {
+    return "<li><img src=\"img/seed-facce/" + id + ".png\" alt=\"seed" + id + "\"><span>seed" + id + "</span></li>";
+  }).join("");
+  var meta = document.getElementById("reportMeta");
+  if (!data) {
+    meta.textContent = "Il report si riempie quando il percorso è finito. Nome e nickname restano su questo dispositivo.";
+  } else {
+    meta.textContent = (name || "Senza nome") + (nick ? " · " + nick : "") + " · " + data.semi + " semi su " + data.max + " · fascia " + data.band + ". " + data.bandLine;
+  }
+  document.getElementById("reportGames").innerHTML = games.map(function (g) {
+    var tips = (g.tips || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
+    return "<article class=\"card\"><h3>" + esc(g.title) + "</h3><p class=\"who-line\"><img src=\"" + esc(g.face) + "\" alt=\"\">" + esc(g.who) + " · " + esc(g.score) + " / " + esc(g.max) + " semi</p><p>" + esc(g.goal) + "</p><ol>" + tips + "</ol></article>";
+  }).join("");
+  var family = data && data.family ? data.family : [];
+  document.getElementById("reportFamily").innerHTML = family.length ? ("<article class=\"card\"><h3>Genealogia SEED</h3>" + family.map(function (c) {
+    return "<p class=\"who-line\"><img src=\"" + esc(c.face) + "\" alt=\"\">seed" + esc(c.suffix) + "</p><p>" + esc(c.a) + " " + esc(c.b) + "</p>";
+  }).join("") + "</article>") : "";
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Libretto v020 · Famiglia | SeedElio.ai</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&display=swap">
+<style>
+@page { size: A4 portrait; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { margin: 0; padding: 0; background: #d5ddd8; }
+body { font-family: Outfit, system-ui, sans-serif; }
+
+.alt-sheet {
+  width: 210mm; height: 297mm; margin: 14px auto; overflow: hidden;
+  position: relative; background: #fff; color: #1c2b22;
+  page-break-after: always; break-after: page;
+  box-shadow: 0 12px 36px rgba(20,30,20,.16);
+  scroll-margin-top: 8px;
+}
+.alt-sheet:last-child { page-break-after: auto; break-after: auto; margin-bottom: 20px; }
+.inner {
+  height: 100%; display: flex; flex-direction: column;
+  padding: 8mm 9mm 7mm;
+  background: var(--paper); color: var(--ink);
+  font-family: Outfit, "Plus Jakarta Sans", system-ui, sans-serif;
+}
+.inner-head, .inner-foot {
+  display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+}
+.inner-head { padding-bottom: 2.5mm; border-bottom: 1.5px solid var(--accent); }
+.inner-head a { color: inherit; text-decoration: none; }
+.inner-band { height: 2.2mm; margin: 3mm 0 4mm; background: var(--accent); border-radius: 1px; flex-shrink: 0; }
+.inner h2 {
+  margin: 0 0 1.5mm; font-family: var(--display), Georgia, serif;
+  font-size: 26px; font-weight: 700; letter-spacing: -.02em; line-height: 1.05; color: var(--ink);
+}
+.kicker { margin: 0 0 1mm; font-size: 11px; color: var(--accent); font-weight: 700; }
+.lead { margin: 0 0 4mm; font-size: 12px; line-height: 1.4; max-width: 62ch; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm 4mm; }
+.field { background: var(--card); border: 1px solid var(--line); border-radius: 2mm; padding: 2.4mm 3mm 3mm; min-height: 18mm; }
+.field.wide { grid-column: 1 / -1; }
+.field span { display: block; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 2mm; }
+.field b { display: block; border-bottom: 1px solid var(--line); height: 6mm; font-weight: 500; }
+.list { margin: 0 0 4mm; padding: 0; list-style: none; }
+.list li { padding: 1.6mm 0 1.6mm 4mm; border-bottom: 1px solid var(--line); font-size: 12.5px; position: relative; }
+.list li::before { content: ""; position: absolute; left: 0; top: 2.6mm; width: 2mm; height: 2mm; border-radius: 1px; background: var(--accent); }
+.inner-foot { margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--line); color: var(--ink); }
+.years { flex: 1; display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1.3mm; min-height: 0; margin-bottom: 3mm; }
+.year { border: 1px solid var(--line); background: var(--card); border-radius: 1.3mm; padding: 1mm 1.2mm; display: flex; flex-direction: column; min-height: 0; }
+.year strong { font-size: 8px; color: var(--accent); letter-spacing: .02em; }
+.year em { display: block; margin-top: auto; border-bottom: 1px solid var(--line); min-height: 4mm; font-style: normal; font-size: 8px; font-weight: 600; color: var(--ink); }
+.diary-foot { display: grid; grid-template-columns: 1.4fr .8fr .9fr; gap: 2.5mm; flex-shrink: 0; }
+.panel { border: 1px solid var(--line); background: var(--card); border-radius: 2mm; padding: 2.2mm 2.6mm; }
+.panel h3 { margin: 0 0 1mm; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.panel p { margin: 0; font-size: 9.5px; line-height: 1.35; }
+.bars { display: flex; align-items: flex-end; gap: 1px; height: 12mm; margin-top: 1.5mm; }
+.bars i { flex: 1; height: 35%; background: var(--accent); opacity: .35; display: block; border-radius: 1px 1px 0 0; }
+.bars i:nth-child(3n) { height: 55%; } .bars i:nth-child(4n) { height: 72%; } .bars i:nth-child(5n) { height: 48%; }
+@media print {
+  html, body { background: #fff !important; }
+  .alt-sheet { margin: 0 !important; box-shadow: none !important; }
+}
+
+@scope (#lib-page-1) {
+
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, .page, .page * {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+html, body {
+  margin: 0;
+  background: #e7f6ff;
+}
+body {
+  font-family: "Outfit", "Inter", system-ui, sans-serif;
+  color: #134e3a;
+}
+.page {
+  position: relative;
+  width: 794px;
+  height: 1123px;
+  margin: 0 auto;
+  overflow: hidden;
+  background:
+    radial-gradient(420px 260px at 88% 8%, rgba(255, 214, 110, .55), transparent 70%),
+    radial-gradient(520px 320px at 8% 22%, rgba(255, 255, 255, .7), transparent 68%),
+    linear-gradient(180deg, #d9f2ff 0%, #eef8ff 22%, #f7f3e8 46%, #f4f8f2 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 20px 32px 0;
+  position: relative;
+  z-index: 3;
+}
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 11px/1 "Outfit", sans-serif;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+.kicker i {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, #fff7c8, #ffd15c 55%, #f5a524 100%);
+  box-shadow: 0 0 0 4px rgba(255, 209, 92, .28);
+}
+h1 {
+  margin-top: 6px;
+  font: 800 31px/1.05 "Outfit", sans-serif;
+  letter-spacing: -.03em;
+  color: #14532d;
+}
+
+.hero {
+  position: relative;
+  height: 372px;
+  margin-top: 2px;
+  flex: none;
+}
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 40px;
+  opacity: .92;
+  filter: drop-shadow(0 6px 8px rgba(120, 160, 190, .12));
+}
+.cloud::before, .cloud::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+.c1 { width: 78px; height: 26px; left: 36px; top: 18px; }
+.c1::before { width: 28px; height: 28px; left: 12px; top: -14px; }
+.c1::after { width: 36px; height: 34px; left: 32px; top: -18px; }
+.c2 { width: 54px; height: 18px; left: 250px; top: 28px; opacity: .8; }
+.c2::before { width: 22px; height: 22px; left: 8px; top: -12px; }
+.c2::after { width: 26px; height: 24px; left: 24px; top: -13px; }
+.glow {
+  position: absolute;
+  right: 18px;
+  top: -6px;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff4c2 0%, #ffe07a 42%, rgba(255, 208, 90, 0) 72%);
+}
+.family {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  width: 512px;
+  height: auto;
+  z-index: 3;
+  filter: drop-shadow(0 12px 10px rgba(30, 60, 40, .12));
+}
+.house {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  width: 248px;
+  height: 308px;
+  z-index: 2;
+  border-radius: 36px;
+  overflow: hidden;
+  background: #e7f4ff;
+  box-shadow:
+    0 18px 36px rgba(30, 64, 48, .16),
+    0 0 0 4px rgba(255, 255, 255, .82);
+}
+.house img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 2% 58%;
+  display: block;
+}
+.lawn {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  bottom: -18px;
+  height: 58px;
+  z-index: 1;
+  background: radial-gradient(120% 100% at 50% 0%, #c6efc8 0%, #8ed99a 48%, #6ec888 100%);
+  border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+}
+
+.index {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 8px 22px 10px;
+  min-height: 0;
+  position: relative;
+  z-index: 3;
+}
+.voce {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 158px 62px;
+  align-items: center;
+  gap: 8px;
+  min-height: 118px;
+  padding: 8px 10px 8px 14px;
+  border-radius: 26px;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, .94);
+  box-shadow:
+    0 10px 22px rgba(20, 60, 40, .06),
+    0 0 0 1px rgba(255, 255, 255, .9);
+}
+.v2 { background: #fffdf8; }
+.v3 { background: #f5fbff; }
+.v4 { background: #f3fbf6; }
+.v5 { background: #fff8ee; }
+.num {
+  font: 800 38px/1 "Outfit", sans-serif;
+  letter-spacing: -.04em;
+}
+.v2 .num { color: #0f766e; }
+.v3 .num { color: #0369a1; }
+.v4 .num { color: #15803d; }
+.v5 .num { color: #c2410c; }
+.txt { min-width: 0; padding-right: 4px; }
+.t {
+  display: block;
+  font: 800 18.5px/1.15 "Outfit", sans-serif;
+  letter-spacing: -.02em;
+  color: #14532d;
+}
+.d {
+  display: block;
+  margin-top: 4px;
+  font: 500 13px/1.28 "Outfit", sans-serif;
+  color: #3f6b54;
+}
+.scene {
+  width: 158px;
+  height: 102px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6);
+}
+.scene svg { display: block; width: 100%; height: 100%; }
+.pg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #14532d;
+}
+.pg small {
+  font: 700 10px/1 "Outfit", sans-serif;
+  letter-spacing: .08em;
+  text-transform: lowercase;
+  color: #6d8f7c;
+}
+.pg b {
+  margin-top: 2px;
+  font: 800 30px/1 "Outfit", sans-serif;
+  letter-spacing: -.03em;
+}
+
+.foot {
+  height: 52px;
+  flex: none;
+  background: #14532d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px;
+}
+.brand { font: 700 15px/1 "Outfit", sans-serif; letter-spacing: -.01em; }
+.brand span { color: #fbbf24; }
+.ind {
+  font: 800 13px/1 "Outfit", sans-serif;
+  letter-spacing: .04em;
+  background: #fbbf24;
+  color: #14532d;
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+.ver {
+  font: 600 13px/1 "Outfit", sans-serif;
+  color: #d1fae5;
+  letter-spacing: .02em;
+}
+
+@media print {
+  html, body { width: 210mm; height: 297mm; overflow: hidden; margin: 0; }
+  .page { height: 1122px; margin: 0; }
+}
+
+}
+/* SKIN-PAGES */
+
+.s8 { display:flex; flex-direction:column; height:297mm; overflow:hidden; color:#134e3a; font-family:Outfit,sans-serif; background:radial-gradient(110mm 70mm at 88% 6%, rgba(255,214,110,.55), transparent 70%), linear-gradient(180deg, #d9f2ff 0%, #eef8ff 24%, #f7f3e8 55%, #f4f8f2 100%); }
+.s8 a { color:inherit; text-decoration:none; }
+.s8-hd { padding:4mm 6mm 0; position:relative; z-index:3; }
+.s8-eye { display:flex; align-items:center; gap:2mm; font-weight:700; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#0f766e; }
+.s8-eye i { width:4mm; height:4mm; border-radius:50%; background:radial-gradient(circle at 35% 35%, #fff7c8, #ffd15c 55%, #f5a524); box-shadow:0 0 0 1mm rgba(255,209,92,.28); }
+.s8-title { margin-top:1mm; font-weight:800; font-size:24px; letter-spacing:-.03em; color:#14532d; line-height:1.05; }
+.s8-title em { font-style:normal; color:#0f766e; }
+.s8-stage { position:relative; height:62mm; flex:none; overflow:hidden; }
+.s8-hd { z-index:5; }
+.s8.is-d .s8-stage { height:40mm; }
+.s8-cloud { position:absolute; background:#fff; border-radius:10mm; }
+.s8-cloud::before, .s8-cloud::after { content:""; position:absolute; background:#fff; border-radius:50%; }
+.s8-c1 { width:20mm; height:7mm; left:8mm; top:4mm; }
+.s8-c1::before { width:8mm; height:8mm; left:3mm; top:-4mm; }
+.s8-c1::after { width:10mm; height:9mm; left:8mm; top:-5mm; }
+.s8-c2 { width:14mm; height:5mm; left:70mm; top:7mm; opacity:.85; }
+.s8-c2::before { width:6mm; height:6mm; left:2mm; top:-3mm; }
+.s8-c2::after { width:7mm; height:6mm; left:6mm; top:-3.5mm; }
+.s8-glow { position:absolute; right:6mm; top:0; width:22mm; height:22mm; border-radius:50%; background:radial-gradient(circle, #fff4c2, #ffe07a 42%, rgba(255,208,90,0) 72%); }
+.s8-family { position:absolute; left:2mm; bottom:2mm; width:108mm; height:auto; z-index:3; filter:drop-shadow(0 8px 8px rgba(30,60,40,.12)); }
+.s8.is-d .s8-family { width:78mm; }
+.s8-house { position:absolute; right:5mm; bottom:3mm; width:52mm; height:54mm; z-index:2; border-radius:8mm; overflow:hidden; background:#e7f4ff; box-shadow:0 12px 24px rgba(30,64,48,.16), 0 0 0 1mm rgba(255,255,255,.85); }
+.s8.is-d .s8-house { width:36mm; height:36mm; }
+.s8-house img { width:100%; height:100%; object-fit:cover; object-position:2% 58%; }
+.s8-lawn { position:absolute; left:-2%; right:-2%; bottom:-3mm; height:12mm; background:radial-gradient(120% 100% at 50% 0%, #c6efc8, #8ed99a 48%, #6ec888); border-radius:50% 50% 0 0 / 80% 80% 0 0; }
+.s8-lead { position:relative; z-index:3; padding:1mm 6mm 1mm; font-size:12px; font-weight:600; color:#3f6b52; }
+.s8-list { flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr; gap:2mm; padding:1mm 5mm 2mm; align-content:stretch; }
+.s8-bubble { position:relative; background:#fff; border:2.5px solid #14532d; border-radius:5mm 5mm 5mm 1.5mm; box-shadow:1.2mm 1.2mm 0 #14532d; padding:2mm 2.4mm 1.6mm; display:flex; flex-direction:column; justify-content:center; min-height:0; }
+.s8-bubble::after { content:""; position:absolute; left:4mm; bottom:-2.2mm; border:2.2mm solid transparent; border-top-color:#14532d; }
+.s8-num { font-weight:800; font-size:12px; color:#ea580c; }
+.s8-t { font-weight:800; font-size:13px; letter-spacing:-.02em; color:#14532d; }
+.s8-d { font-size:10px; font-weight:600; color:#3f6b52; }
+.s8-blank { display:block; margin-top:.8mm; height:3.4mm; border-bottom:2px solid #14532d; }
+.s8-foot { margin-top:auto; height:12mm; background:#14532d; color:#ecfdf5; display:flex; align-items:center; justify-content:space-between; padding:0 5mm; font-weight:700; }
+.s8-pill { background:#fbbf24; color:#14532d; border-radius:999px; padding:1mm 3mm; }
+.s8.is-d .s8-list { display:flex; flex-direction:column; }
+.s8-years { flex:1; min-height:0; display:grid; grid-template-columns:repeat(6,1fr); gap:1mm; }
+.s8 .yy { background:#fff; border:2px solid #14532d; border-radius:3mm; padding:.6mm; display:flex; flex-direction:column; box-shadow:0.6mm 0.6mm 0 #86efac; }
+.s8 .yy b { font-weight:800; font-size:10px; color:#14532d; }
+.s8 .yy span, .s8 .yy i { font-style:normal; font-size:7.5px; color:#3f6b52; }
+.s8 .yy i { margin-top:auto; border-bottom:1.5px solid #14532d; min-height:2.2mm; }
+.s8-notes { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5mm; }
+.s8-note { background:#fff; border:2.5px solid #14532d; border-radius:4mm; padding:1.5mm; box-shadow:0.8mm 0.8mm 0 #fbbf24; }
+.s8-note strong { font-size:11px; }
+.s8-note p { margin-top:.4mm; font-size:9px; line-height:1.25; }
+.s8 .ybars { display:flex; align-items:flex-end; gap:1px; height:7mm; margin-top:.8mm; }
+.s8 .ybars i { flex:1; height:100%; background:#fbbf24; border:1px solid #14532d; border-bottom:0; }
+.s8.is-d .s8-bubble { flex:0 0 auto; }
+.s8.is-d .s8-years { flex:1; min-height:0; grid-template-rows:repeat(5, minmax(0,1fr)); }
+.s8.is-d .yy { min-height:0; overflow:hidden; }
+
+/* /SKIN-PAGES */
+</style>
+</head>
+<body>
+<section class="alt-sheet" id="lib-page-1" aria-label="Indice, Famiglia">
+<main class="page" >
+  <header>
+    <p class="kicker"><i></i>Indice</p>
+    <h1>Libretto dell’impianto fotovoltaico</h1>
+  </header>
+
+  <section class="hero" aria-label="Famiglia e casa con pannelli">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="cloud c1" aria-hidden="true"></div>
+    <div class="cloud c2" aria-hidden="true"></div>
+    <div class="lawn" aria-hidden="true"></div>
+    <img class="family" src="img/famiglia-v5-famiglia.png" width="1244" height="704" alt="Famiglia con la bolletta: «Che cifra!» e «Il fotovoltaico ci può aiutare?»">
+    <div class="house">
+      <img src="img/voice-resa.png" width="1280" height="720" alt="Casa tridimensionale con pannelli fotovoltaici, sole e piante">
+    </div>
+  </section>
+
+  <nav class="index" aria-label="Indice del libretto">
+    <a class="voce v2" href="#lib-page-2">
+      <span class="num">02</span>
+      <span class="txt">
+        <span class="t">Scheda dell’impianto</span>
+        <span class="d">Ubicazione, potenza nominale e parametri chiave</span>
+      </span>
+      <span class="scene" aria-hidden="true">
+        <svg viewBox="0 0 200 128" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="s2sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d4f0ff"/>
+              <stop offset="1" stop-color="#fff4d4"/>
+            </linearGradient>
+            <linearGradient id="s2wall" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fffefb"/>
+              <stop offset="1" stop-color="#f4e7d6"/>
+            </linearGradient>
+            <filter id="s2sh" x="-40%" y="-40%" width="180%" height="180%">
+              <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#1c3b32" flood-opacity=".22"/>
+            </filter>
+          </defs>
+          <rect width="200" height="128" fill="url(#s2sky)"/>
+          <circle cx="172" cy="26" r="22" fill="#ffe98a" opacity=".35"/>
+          <circle cx="172" cy="26" r="12" fill="#fff1a8"/>
+          <circle cx="168" cy="22" r="4" fill="#fff" opacity=".8"/>
+          <ellipse cx="28" cy="24" rx="16" ry="9" fill="#fff"/>
+          <ellipse cx="42" cy="22" rx="11" ry="8" fill="#fff"/>
+          <ellipse cx="104" cy="114" rx="82" ry="14" fill="#7dce96"/>
+          <ellipse cx="104" cy="112" rx="70" ry="8" fill="#b6ebc4"/>
+          <g filter="url(#s2sh)">
+            <path d="M34 62c-11 0-18 8-18 18 0 14 18 28 18 28s18-14 18-28c0-10-7-18-18-18z" fill="#f07164"/>
+            <ellipse cx="28" cy="74" rx="6" ry="4" fill="#fff" opacity=".45"/>
+            <circle cx="34" cy="79" r="6.5" fill="#fff"/>
+          </g>
+          <ellipse cx="108" cy="108" rx="36" ry="5" fill="#1c3b32" opacity=".12"/>
+          <g filter="url(#s2sh)">
+            <rect x="122" y="70" width="18" height="36" rx="3" fill="#e7d3ba"/>
+            <rect x="74" y="64" width="52" height="44" rx="5" fill="url(#s2wall)"/>
+            <ellipse cx="86" cy="72" rx="10" ry="6" fill="#fff" opacity=".7"/>
+            <path d="M66 70 L102 46 L156 68 L140 78 L102 58 L80 76 Z" fill="#3c516e"/>
+            <path d="M78 68 L102 52 L132 66 L120 70 L102 60 L88 72 Z" fill="#2a3d58"/>
+            <g transform="translate(90,56) rotate(16)">
+              <rect width="42" height="18" rx="2" fill="#1d4e96"/>
+              <rect x="2" y="2" width="12" height="7" rx="1" fill="#8ec0ea"/>
+              <rect x="16" y="2" width="12" height="7" rx="1" fill="#6eabd8"/>
+              <rect x="30" y="2" width="10" height="7" rx="1" fill="#8ec0ea"/>
+              <rect x="2" y="11" width="12" height="6" rx="1" fill="#5b9ad0"/>
+              <rect x="16" y="11" width="12" height="6" rx="1" fill="#4a8cc4"/>
+              <rect x="30" y="11" width="10" height="6" rx="1" fill="#5b9ad0"/>
+            </g>
+            <rect x="88" y="78" width="18" height="14" rx="3" fill="#b9def6"/>
+            <rect x="96" y="78" width="2.4" height="14" fill="#fffaf4"/>
+            <rect x="88" y="84" width="18" height="2.4" fill="#fffaf4"/>
+            <rect x="108" y="86" width="12" height="22" rx="3" fill="#e8b56a"/>
+            <circle cx="116" cy="97" r="1.3" fill="#fff6df"/>
+          </g>
+          <g>
+            <circle cx="64" cy="104" r="11" fill="#2f8a56"/>
+            <circle cx="59" cy="100" r="5" fill="#8ee0ad" opacity=".85"/>
+            <circle cx="146" cy="106" r="12" fill="#25764a"/>
+            <circle cx="141" cy="102" r="5" fill="#7ed6a0" opacity=".8"/>
+          </g>
+          <g filter="url(#s2sh)">
+            <circle cx="168" cy="92" r="16" fill="#fff"/>
+            <circle cx="164" cy="88" r="6" fill="#f4fff8" opacity=".9"/>
+            <path d="M168 80 a12 12 0 1 1 -10 18" fill="none" stroke="#1fa85c" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="168" cy="92" r="4" fill="#f5b942"/>
+          </g>
+        </svg>
+      </span>
+      <span class="pg"><small>pag.</small><b>2</b></span>
+    </a>
+
+    <a class="voce v3" href="#lib-page-3">
+      <span class="num">03</span>
+      <span class="txt">
+        <span class="t">Elementi dell’impianto</span>
+        <span class="d">Moduli, inverter, quadri e protezioni</span>
+      </span>
+      <span class="scene" aria-hidden="true">
+        <svg viewBox="0 0 200 128" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="s3sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e3f5ff"/>
+              <stop offset="1" stop-color="#fff6e4"/>
+            </linearGradient>
+            <filter id="s3sh" x="-30%" y="-30%" width="160%" height="170%">
+              <feDropShadow dx="0" dy="3" stdDeviation="1.8" flood-color="#1c3b32" flood-opacity=".2"/>
+            </filter>
+          </defs>
+          <rect width="200" height="128" fill="url(#s3sky)"/>
+          <circle cx="176" cy="22" r="18" fill="#ffe98a" opacity=".35"/>
+          <circle cx="176" cy="22" r="10" fill="#fff1a8"/>
+          <circle cx="173" cy="19" r="3" fill="#fff" opacity=".8"/>
+          <ellipse cx="100" cy="112" rx="88" ry="16" fill="#e7d3b0"/>
+          <ellipse cx="100" cy="108" rx="72" ry="9" fill="#f6e7cf"/>
+          <g filter="url(#s3sh)">
+            <polygon points="86,44 96,36 96,86 86,94" fill="#16386e"/>
+            <polygon points="30,44 40,36 96,36 86,44" fill="#3d78bc"/>
+            <rect x="30" y="44" width="56" height="50" rx="3" fill="#1e4f98"/>
+            <rect x="34" y="48" width="15" height="12" rx="1.5" fill="#9dcef2"/>
+            <rect x="51" y="48" width="15" height="12" rx="1.5" fill="#7eb8e4"/>
+            <rect x="68" y="48" width="14" height="12" rx="1.5" fill="#9dcef2"/>
+            <rect x="34" y="62" width="15" height="12" rx="1.5" fill="#6aabd8"/>
+            <rect x="51" y="62" width="15" height="12" rx="1.5" fill="#5a9ccc"/>
+            <rect x="68" y="62" width="14" height="12" rx="1.5" fill="#6aabd8"/>
+            <rect x="34" y="76" width="15" height="12" rx="1.5" fill="#4e90c4"/>
+            <rect x="51" y="76" width="15" height="12" rx="1.5" fill="#3f82b8"/>
+            <rect x="68" y="76" width="14" height="12" rx="1.5" fill="#4e90c4"/>
+          </g>
+          <g filter="url(#s3sh)">
+            <polygon points="140,48 152,40 152,100 140,108" fill="#c5d0dc"/>
+            <polygon points="100,48 112,40 152,40 140,48" fill="#ffffff"/>
+            <rect x="100" y="48" width="40" height="60" rx="6" fill="#f7fafc"/>
+            <rect x="106" y="56" width="28" height="18" rx="3" fill="#1b3444"/>
+            <rect x="110" y="60" width="16" height="4" rx="2" fill="#7ddea8"/>
+            <rect x="110" y="66" width="10" height="3" rx="1.5" fill="#67e8f9" opacity=".8"/>
+            <circle cx="126" cy="92" r="5" fill="#34d399"/>
+            <circle cx="124" cy="90" r="2" fill="#fff" opacity=".8"/>
+          </g>
+          <g filter="url(#s3sh)">
+            <polygon points="186,64 196,58 196,104 186,110" fill="#e0a84a"/>
+            <polygon points="156,64 166,58 196,58 186,64" fill="#ffe3a3"/>
+            <rect x="156" y="64" width="30" height="46" rx="5" fill="#f6c56a"/>
+            <rect x="162" y="70" width="18" height="16" rx="2" fill="#fff8e8"/>
+            <rect x="166" y="90" width="10" height="8" rx="2" fill="#fff"/>
+            <circle cx="171" cy="94" r="1.4" fill="#e8b15a"/>
+          </g>
+          <circle cx="22" cy="100" r="9" fill="#2f8a56"/>
+          <circle cx="18" cy="96" r="4" fill="#9ae6b8"/>
+          <circle cx="148" cy="104" r="8" fill="#25764a"/>
+          <circle cx="145" cy="101" r="3.5" fill="#86d9a8"/>
+        </svg>
+      </span>
+      <span class="pg"><small>pag.</small><b>3</b></span>
+    </a>
+
+    <a class="voce v4" href="#lib-page-4">
+      <span class="num">04</span>
+      <span class="txt">
+        <span class="t">Azienda installatrice</span>
+        <span class="d">Referenti, contatti e certificazioni</span>
+      </span>
+      <span class="scene" aria-hidden="true">
+        <svg viewBox="0 0 200 128" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="s4sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e5f6ff"/>
+              <stop offset="1" stop-color="#fff6e2"/>
+            </linearGradient>
+            <linearGradient id="s4skin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffe0c2"/>
+              <stop offset="1" stop-color="#f0b48e"/>
+            </linearGradient>
+            <filter id="s4sh" x="-30%" y="-30%" width="170%" height="180%">
+              <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#1c3b32" flood-opacity=".18"/>
+            </filter>
+          </defs>
+          <rect width="200" height="128" fill="url(#s4sky)"/>
+          <circle cx="172" cy="22" r="18" fill="#ffe98a" opacity=".32"/>
+          <circle cx="172" cy="22" r="10" fill="#fff1a8"/>
+          <ellipse cx="30" cy="26" rx="14" ry="8" fill="#fff"/>
+          <ellipse cx="42" cy="24" rx="9" ry="7" fill="#fff"/>
+          <ellipse cx="96" cy="116" rx="78" ry="13" fill="#8fd4a4"/>
+          <ellipse cx="96" cy="114" rx="60" ry="7" fill="#c8f0d2"/>
+          <g filter="url(#s4sh)">
+            <ellipse cx="58" cy="112" rx="16" ry="4" fill="#1c3b32" opacity=".15"/>
+            <rect x="42" y="78" width="32" height="32" rx="12" fill="#15915f"/>
+            <ellipse cx="52" cy="88" rx="8" ry="10" fill="#fff" opacity=".16"/>
+            <ellipse cx="36" cy="90" rx="6" ry="8" fill="#f0b48e" transform="rotate(-20 36 90)"/>
+            <rect x="54" y="70" width="8" height="10" rx="3" fill="url(#s4skin)"/>
+            <circle cx="58" cy="60" r="15" fill="url(#s4skin)"/>
+            <ellipse cx="58" cy="50" rx="14" ry="9" fill="#ffd15c"/>
+            <ellipse cx="58" cy="55" rx="17" ry="4.2" fill="#e8b03a"/>
+            <ellipse cx="54" cy="47" rx="5" ry="3" fill="#fff" opacity=".55"/>
+            <ellipse cx="52" cy="62" rx="3.4" ry="3.8" fill="#fff"/>
+            <ellipse cx="64" cy="62" rx="3.4" ry="3.8" fill="#fff"/>
+            <circle cx="53" cy="63" r="1.8" fill="#243044"/>
+            <circle cx="65" cy="63" r="1.8" fill="#243044"/>
+            <circle cx="53.7" cy="62.2" r=".6" fill="#fff"/>
+            <circle cx="65.7" cy="62.2" r=".6" fill="#fff"/>
+            <path d="M53 68 q5 5 10 0 q-5 2.5 -10 0z" fill="#d4846a"/>
+            <ellipse cx="48" cy="66" rx="2.2" ry="1.3" fill="#f5b0a4"/>
+            <ellipse cx="68" cy="66" rx="2.2" ry="1.3" fill="#f5b0a4"/>
+          </g>
+          <g filter="url(#s4sh)">
+            <ellipse cx="118" cy="112" rx="16" ry="4" fill="#1c3b32" opacity=".15"/>
+            <rect x="104" y="80" width="30" height="30" rx="12" fill="#3b82f6"/>
+            <ellipse cx="114" cy="90" rx="7" ry="9" fill="#fff" opacity=".14"/>
+            <circle cx="118" cy="64" r="15" fill="url(#s4skin)"/>
+            <ellipse cx="118" cy="54" rx="16" ry="10" fill="#6b3f2e"/>
+            <ellipse cx="106" cy="66" rx="5" ry="11" fill="#6b3f2e"/>
+            <ellipse cx="130" cy="66" rx="5" ry="11" fill="#6b3f2e"/>
+            <ellipse cx="112" cy="66" rx="3.3" ry="3.6" fill="#fff"/>
+            <ellipse cx="124" cy="66" rx="3.3" ry="3.6" fill="#fff"/>
+            <circle cx="113" cy="67" r="1.7" fill="#243044"/>
+            <circle cx="125" cy="67" r="1.7" fill="#243044"/>
+            <circle cx="113.6" cy="66.3" r=".55" fill="#fff"/>
+            <circle cx="125.6" cy="66.3" r=".55" fill="#fff"/>
+            <path d="M113 72 q5 4 10 0 q-5 2 -10 0z" fill="#d4846a"/>
+            <ellipse cx="108" cy="70" rx="2" ry="1.2" fill="#f5b0a4"/>
+            <g transform="translate(132,78) rotate(8)">
+              <rect width="32" height="36" rx="4" fill="#fff"/>
+              <circle cx="16" cy="13" r="7" fill="#f5b942"/>
+              <circle cx="16" cy="13" r="3.5" fill="#fff3c4"/>
+              <rect x="7" y="23" width="18" height="3" rx="1.5" fill="#d5e6da"/>
+              <rect x="9" y="28" width="14" height="3" rx="1.5" fill="#e7f3eb"/>
+            </g>
+          </g>
+          <circle cx="92" cy="106" r="9" fill="#2f8a56"/>
+          <circle cx="88" cy="102" r="4" fill="#9ae6b8"/>
+        </svg>
+      </span>
+      <span class="pg"><small>pag.</small><b>4</b></span>
+    </a>
+
+    <a class="voce v5" href="#lib-page-5">
+      <span class="num">05</span>
+      <span class="txt">
+        <span class="t">Diario FV</span>
+        <span class="d">Produzione, manutenzione e memoria trentennale</span>
+      </span>
+      <span class="scene" aria-hidden="true">
+        <svg viewBox="0 0 200 128" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="s5sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e4f5ff"/>
+              <stop offset="1" stop-color="#fff3d6"/>
+            </linearGradient>
+            <linearGradient id="s5bar" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#f59e0b"/>
+              <stop offset="1" stop-color="#fde68a"/>
+            </linearGradient>
+            <linearGradient id="s5wave" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#7dd3fc"/>
+              <stop offset="1" stop-color="#e0f2fe" stop-opacity=".15"/>
+            </linearGradient>
+            <filter id="s5sh" x="-25%" y="-25%" width="160%" height="170%">
+              <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#1c3b32" flood-opacity=".16"/>
+            </filter>
+          </defs>
+          <rect width="200" height="128" fill="url(#s5sky)"/>
+          <circle cx="176" cy="20" r="16" fill="#ffe98a" opacity=".4"/>
+          <circle cx="176" cy="20" r="9" fill="#fff1a8"/>
+          <ellipse cx="100" cy="120" rx="80" ry="10" fill="#b7e7c3"/>
+          <g filter="url(#s5sh)">
+            <rect x="12" y="14" width="132" height="74" rx="16" fill="#fff" fill-opacity=".94"/>
+            <path d="M24 70 c12-18 20-6 30-22 8 16 14 6 24-10 12 18 18 8 32 2 v18 H24 z" fill="url(#s5wave)"/>
+            <rect x="26" y="52" width="11" height="24" rx="5.5" fill="url(#s5bar)"/>
+            <rect x="41" y="44" width="11" height="32" rx="5.5" fill="url(#s5bar)"/>
+            <rect x="56" y="34" width="11" height="42" rx="5.5" fill="url(#s5bar)"/>
+            <rect x="71" y="26" width="11" height="50" rx="5.5" fill="url(#s5bar)"/>
+            <rect x="86" y="18" width="11" height="58" rx="5.5" fill="#fbbf24"/>
+            <ellipse cx="31.5" cy="52" rx="4" ry="2" fill="#fff" opacity=".45"/>
+            <circle cx="118" cy="34" r="11" fill="#ffe98a"/>
+            <circle cx="118" cy="34" r="6" fill="#fff6c4"/>
+            <circle cx="116" cy="32" r="2" fill="#fff"/>
+          </g>
+          <g filter="url(#s5sh)">
+            <path d="M16 92 Q52 82 90 94 L90 116 Q52 106 16 112 Z" fill="#fffaf3"/>
+            <path d="M98 94 Q136 82 172 92 L172 112 Q136 106 98 116 Z" fill="#fff"/>
+            <path d="M90 94 Q94 100 98 94 L98 116 Q94 120 90 116 Z" fill="#e6d3b8"/>
+          </g>
+          <circle cx="164" cy="100" r="10" fill="#2f8a56"/>
+          <circle cx="160" cy="96" r="4.5" fill="#9ae6b8"/>
+          <g filter="url(#s5sh)">
+            <circle cx="168" cy="70" r="15" fill="#14532d"/>
+            <ellipse cx="164" cy="66" rx="5" ry="3" fill="#fff" opacity=".2"/>
+            <text x="168" y="74" text-anchor="middle" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="#fde68a">30</text>
+          </g>
+        </svg>
+      </span>
+      <span class="pg"><small>pag.</small><b>5</b></span>
+    </a>
+  </nav>
+
+  <footer class="foot">
+    <span class="brand">SeedElio<span>.ai</span></span>
+    <span class="ind">1 / 5</span>
+    <span class="ver">Libretto v020</span>
+  </footer>
+</main>
+</section>
+<section class="alt-sheet s8" id="lib-page-2" aria-label="Scheda dell’impianto"><div class="s8-hd"><div class="s8-eye"><i></i><a class="back" href="#lib-page-1">Indice · Famiglia</a> · Foglio 02</div><div class="s8-title">Scheda <em>dell’impianto</em></div></div><div class="s8-stage"><div class="s8-glow"></div><div class="s8-cloud s8-c1"></div><div class="s8-cloud s8-c2"></div><div class="s8-lawn"></div><img class="s8-family" src="img/famiglia-v5-famiglia.png" alt="Famiglia con la bolletta"><div class="s8-house"><img src="img/voice-resa.png" alt="Casa con pannelli"></div></div><p class="s8-lead">Ubicazione, potenza nominale e parametri chiave dell’impianto. Le righe restano vuote per la compilazione a mano o in digitale.</p><div class="s8-list"><div class="s8-bubble"><span class="s8-num">01</span> <span class="s8-t">Proprietario</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">02</span> <span class="s8-t">Indirizzo dell’impianto</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">03</span> <span class="s8-t">Potenza nominale (kWp)</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">04</span> <span class="s8-t">Accumulo</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">05</span> <span class="s8-t">Data di consegna</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">06</span> <span class="s8-t">Pratiche GSE</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">07</span> <span class="s8-t">Profilo di consumo</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">08</span> <span class="s8-t">Note e allegati</span><span class="s8-blank"></span></div></div><div class="s8-foot"><span>SeedElio.ai</span><span class="s8-pill">2 / 5</span><span>Libretto v020</span></div></section>
+<section class="alt-sheet s8" id="lib-page-3" aria-label="Elementi dell’impianto"><div class="s8-hd"><div class="s8-eye"><i></i><a class="back" href="#lib-page-1">Indice · Famiglia</a> · Foglio 03</div><div class="s8-title">Elementi <em>dell’impianto</em></div></div><div class="s8-stage"><div class="s8-glow"></div><div class="s8-cloud s8-c1"></div><div class="s8-cloud s8-c2"></div><div class="s8-lawn"></div><img class="s8-family" src="img/famiglia-v5-famiglia.png" alt="Famiglia con la bolletta"><div class="s8-house"><img src="img/voice-resa.png" alt="Casa con pannelli"></div></div><p class="s8-lead">Moduli, inverter, quadri e protezioni. Stesso registro del libretto v020, in questa grafica.</p><div class="s8-list"><div class="s8-bubble"><span class="s8-num">01</span> <span class="s8-t">Moduli</span><div class="s8-d">Moduli fotovoltaici: marca, modello, potenza e quantità</div><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">02</span> <span class="s8-t">Inverter</span><div class="s8-d">Inverter o microinverter</div><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">03</span> <span class="s8-t">Strutture e cavi</span><div class="s8-d">Strutture, cablaggi e canaline</div><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">04</span> <span class="s8-t">Quadri e protezioni</span><div class="s8-d">Quadri, protezioni e contatori</div><span class="s8-blank"></span></div></div><div class="s8-foot"><span>SeedElio.ai</span><span class="s8-pill">3 / 5</span><span>Libretto v020</span></div></section>
+<section class="alt-sheet s8" id="lib-page-4" aria-label="Azienda installatrice"><div class="s8-hd"><div class="s8-eye"><i></i><a class="back" href="#lib-page-1">Indice · Famiglia</a> · Foglio 04</div><div class="s8-title">Azienda <em>installatrice</em></div></div><div class="s8-stage"><div class="s8-glow"></div><div class="s8-cloud s8-c1"></div><div class="s8-cloud s8-c2"></div><div class="s8-lawn"></div><img class="s8-family" src="img/famiglia-v5-famiglia.png" alt="Famiglia con la bolletta"><div class="s8-house"><img src="img/voice-resa.png" alt="Casa con pannelli"></div></div><p class="s8-lead">Referenti, contatti e certificazioni di chi ha posato l’impianto.</p><div class="s8-list"><div class="s8-bubble"><span class="s8-num">01</span> <span class="s8-t">Ragione sociale</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">02</span> <span class="s8-t">P. IVA</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">03</span> <span class="s8-t">Referente tecnico</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">04</span> <span class="s8-t">Telefono ed email</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">05</span> <span class="s8-t">Certificazioni</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-num">06</span> <span class="s8-t">Garanzie e assistenza</span><span class="s8-blank"></span></div></div><div class="s8-foot"><span>SeedElio.ai</span><span class="s8-pill">4 / 5</span><span>Libretto v020</span></div></section>
+<section class="alt-sheet s8 is-d" id="lib-page-5" aria-label="Diario FV"><div class="s8-hd"><div class="s8-eye"><i></i><a class="back" href="#lib-page-1">Indice · Famiglia</a> · Foglio 05</div><div class="s8-title">Diario <em>FV</em></div></div><div class="s8-stage"><div class="s8-glow"></div><div class="s8-cloud s8-c1"></div><div class="s8-cloud s8-c2"></div><div class="s8-lawn"></div><img class="s8-family" src="img/famiglia-v5-famiglia.png" alt="Famiglia con la bolletta"><div class="s8-house"><img src="img/voice-resa.png" alt="Casa con pannelli"></div></div><p class="s8-lead">Diario di produzione, memoria familiare e manutenzione (2027–2056), adattato dal libretto v020: trenta anni, curva dei kWh, reminder di Seedelio.ai e ripresa con drone.</p><div class="s8-list"><div class="s8-bubble"><span class="s8-t">Proprietario / famiglia</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-t">Località</span><span class="s8-blank"></span></div><div class="s8-bubble"><span class="s8-t">Potenza (kWp) e accumulo</span><span class="s8-blank"></span></div><div class="s8-years"><div class="yy"><b>2027</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2028</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2029</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2030</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2031</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2032</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2033</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2034</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2035</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2036</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2037</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2038</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2039</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2040</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2041</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2042</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2043</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2044</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2045</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2046</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2047</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2048</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2049</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2050</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2051</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2052</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2053</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2054</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2055</b><span>kWh</span><i>nota</i></div><div class="yy"><b>2056</b><span>kWh</span><i>nota</i></div></div><div class="s8-notes"><div class="s8-note"><strong>Curva di produzione</strong><p>kWh/anno, scala 0–12.000. Una barra per ogni anno, da colorare a fine stagione.</p><div class="ybars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="s8-note"><strong>Reminder AI</strong><p>Ogni anno Seedelio.ai ricorda, via email e voce, di aggiornare il libretto e verificare la resa.</p></div><div class="s8-note"><strong>Drone e termografia</strong><p>Ispezione aerea dei moduli, come nel diario del libretto v020.</p></div></div></div><div class="s8-foot"><span>SeedElio.ai</span><span class="s8-pill">5 / 5</span><span>Libretto v020</span></div></section>
+</body>
+</html>
